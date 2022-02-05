@@ -8,16 +8,18 @@ class SignInView extends GetView<SingInController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('SignInView'),
-        centerTitle: true,
-      ),
       body: Center(
-        child: Text(
-          'SignInView is working',
-          style: TextStyle(fontSize: 20),
-        ),
-      ),
+          child: ListView(
+        padding: EdgeInsets.only(left: 5, right: 5),
+        children: [
+          Container(
+            child: TextField(),
+          ),
+          Container(
+            child: TextField(),
+          )
+        ],
+      )),
     );
   }
 }
