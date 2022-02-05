@@ -28,4 +28,4 @@ ThemeData mainTheme = ThemeData(
     fontFamily: 'OpenSans');
 const textonormal = TextStyle(fontSize: 25, color: Colors.black54);
 const appbartext =
-    TextStyle(color: Colors.black54, fontSize: 25, fontFamily: 'OpenSans');
+    TextStyle(color: Colors.black54, fontSize: 20, fontFamily: 'OpenSans');

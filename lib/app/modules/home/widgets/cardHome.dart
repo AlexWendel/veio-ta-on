@@ -37,7 +37,7 @@ class CardHome extends GetResponsiveWidget {
             Padding(
               padding: const EdgeInsets.only(left: 8),
               child: Icon(
-                Icons.note_alt_outlined,
+                icon.icon,
                 size: 55,
               ),
             ),
