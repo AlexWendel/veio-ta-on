@@ -15,13 +15,14 @@ class LoginView extends GetView<LoginController> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SizedBox(
+            Container(
                 height: 60,
                 child: TextField(
+                    cursorColor: verdeBosta,
                     decoration: InputDecoration(
-                  hintText: "Digite seu e-mail",
-                  prefixIcon: Icon(Icons.email),
-                ))),
+                      hintText: "Digite seu e-mail",
+                      prefixIcon: Icon(Icons.email),
+                    ))),
             Divider(
               color: Colors.transparent,
               height: 10,
@@ -30,6 +31,7 @@ class LoginView extends GetView<LoginController> {
               height: 60,
               alignment: Alignment.center,
               child: TextField(
+                cursorColor: verdeBosta,
                 decoration: InputDecoration(
                   hintText: "Digite sua senha",
                   prefixIcon: Icon(Icons.lock),
@@ -43,7 +45,7 @@ class LoginView extends GetView<LoginController> {
             Container(
                 height: 60,
                 width: 1000,
-                child: MaterialButton(
+                child: ElevatedButton(
                     child: Text("Entrar"),
                     onPressed: () {
                       Get.to(() => HomeView());
