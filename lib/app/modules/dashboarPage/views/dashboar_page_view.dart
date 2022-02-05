@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:hospital_maraba/app/modules/Login/views/login_view.dart';
 import 'package:hospital_maraba/app/modules/home/views/home_view.dart';
 import 'package:hospital_maraba/app/modules/singIn/views/sing_in_view.dart';
 
@@ -14,7 +15,7 @@ class DashboarPageView extends GetView<DashboarPageController> {
         body: SafeArea(
           child: IndexedStack(
             index: controller.pageIndex,
-            children: [HomeView(), SingInView()],
+            children: [LoginView(), SingInView()],
           ),
         ),
         bottomNavigationBar: BottomNavigationBar(
