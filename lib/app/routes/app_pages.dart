@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 
+import 'package:hospital_maraba/app/modules/Login/bindings/login_binding.dart';
+import 'package:hospital_maraba/app/modules/Login/views/login_view.dart';
 import 'package:hospital_maraba/app/modules/dashboarPage/bindings/dashboar_page_binding.dart';
 import 'package:hospital_maraba/app/modules/dashboarPage/views/dashboar_page_view.dart';
 import 'package:hospital_maraba/app/modules/home/bindings/home_binding.dart';
@@ -29,6 +31,11 @@ class AppPages {
       name: _Paths.DASHBOAR_PAGE,
       page: () => DashboarPageView(),
       binding: DashboarPageBinding(),
+    ),
+    GetPage(
+      name: _Paths.LOGIN,
+      page: () => LoginView(),
+      binding: LoginBinding(),
     ),
   ];
 }
