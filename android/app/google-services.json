@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "37302047975",
+    "project_id": "agendamento-facil-8e872",
+    "storage_bucket": "agendamento-facil-8e872.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:37302047975:android:883e6cbef04029996c3e42",
+        "android_client_info": {
+          "package_name": "com.snst.hospital_maraba"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "37302047975-21flmq57ohq6ob8jl2ntoo740j1ibnu0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA0uYEHJzofbZm_Q7AgUULEXplcK5fyl4s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "37302047975-21flmq57ohq6ob8jl2ntoo740j1ibnu0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
