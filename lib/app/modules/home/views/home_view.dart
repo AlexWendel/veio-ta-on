@@ -10,7 +10,7 @@ class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: verdeBosta,
+        backgroundColor: backGround,
         appBar: AppBar(
           actions: [
             Container(
@@ -39,14 +39,7 @@ class HomeView extends GetView<HomeController> {
             ),
           ),
           backgroundColor: verdeBosta,
-          title: Text(
-            "Olá, " + "Paulete Margarete",
-            style: TextStyle(
-              color: Colors.black45,
-              fontSize: 25,
-              fontFamily: 'OpenSans',
-            ),
-          ),
+          title: Text("Olá, " + "Paulete Margarete", style: appbartext),
         ),
         body: ListView(
           children: [
@@ -60,18 +53,26 @@ class HomeView extends GetView<HomeController> {
               decoration: BoxDecoration(color: verdeBosta),
             ),
             Divider(height: 0, color: iconGray),
-            Divider(height: 30, color: Colors.transparent),
             Container(
-              height: 300,
+              height: 50,
               width: double.maxFinite,
               decoration: BoxDecoration(
-                color: backGround,
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(20),
-                  topRight: Radius.circular(20),
-                ),
+                color: verdeBosta,
+                // borderRadius: BorderRadius.only(
+                //   topLeft: Radius.circular(20),
+                //   topRight: Radius.circular(20),
+                // ),
               ),
-            )
+            ),
+            Padding(
+              padding: EdgeInsets.only(left: 15, right: 15, top: 15),
+              child: Text(
+                "Realize seu agendamento e pré-atendimento de consultas.",
+                style: textonormal,
+              ),
+            ),
+
+            //fim
           ],
         ));
   }
