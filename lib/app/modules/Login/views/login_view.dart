@@ -46,7 +46,7 @@ class LoginView extends GetView<LoginController> {
                 child: MaterialButton(
                     child: Text("Entrar"),
                     onPressed: () {
-                      Get.to(HomeView());
+                      Get.to(() => HomeView());
                     }))
           ],
         ),
