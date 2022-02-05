@@ -14,14 +14,12 @@ class LoginView extends GetResponsiveView<LoginController> {
       body: Center(
           child: Padding(
         padding: EdgeInsets.only(left: 20, right: 20),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
+        child: ListView(
           children: [
             Container(
               margin: EdgeInsets.only(top: 15, right: 5),
-              width: Get.width,
-              height: Get.height / 2,
+              width: Get.width / 1.6,
+              height: Get.height / 2.3,
               decoration: new BoxDecoration(
                 // shape: BoxShape.circle,
                 // color: backGround,
