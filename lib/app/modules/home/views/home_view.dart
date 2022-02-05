@@ -10,30 +10,69 @@ class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: Icon(null),
-        leadingWidth: 0,
-        title: Row(
-          children: [
-            Text('Olá',
-                style: TextStyle(
-                    color: Colors.black45,
-                    fontSize: 25,
-                    fontWeight: FontWeight.w800)),
-            IconButton(onPressed: () {}, icon: Icon(Icons.logout))
-          ],
-        ),
-        centerTitle: false,
         backgroundColor: verdeBosta,
-      ),
-      body: Center(
-          child: Column(
-        children: [
-          Container(
-            child: Text("Funfando"),
-          )
-        ],
-      )),
-    );
+        appBar: AppBar(
+          actions: [
+            Container(
+              margin: EdgeInsets.only(top: 15, right: 5),
+              width: 50,
+              decoration: new BoxDecoration(
+                shape: BoxShape.circle,
+                image: new DecorationImage(
+                  fit: BoxFit.fill,
+                  image: new NetworkImage("https://i.imgur.com/BoN9kdC.png"),
+                ),
+              ),
+            ),
+          ],
+          elevation: 0,
+          // leadingWidth: 10,
+          centerTitle: false,
+          leading: IconButton(
+            onPressed: () {
+              Get.back();
+            },
+            icon: Icon(
+              Icons.arrow_back_ios_rounded,
+              color: Colors.black54,
+              size: 32,
+            ),
+          ),
+          backgroundColor: verdeBosta,
+          title: Text(
+            "Olá, " + "Paulete Margarete",
+            style: TextStyle(
+              color: Colors.black45,
+              fontSize: 25,
+              fontFamily: 'OpenSans',
+            ),
+          ),
+        ),
+        body: ListView(
+          children: [
+            // Padding(
+            //   padding: EdgeInsets.only(left: 80),
+            //   child: Text("você tem uma nova notificação"),
+            // ),
+            Container(
+              height: 30,
+              width: double.maxFinite,
+              decoration: BoxDecoration(color: verdeBosta),
+            ),
+            Divider(height: 0, color: iconGray),
+            Divider(height: 30, color: Colors.transparent),
+            Container(
+              height: 300,
+              width: double.maxFinite,
+              decoration: BoxDecoration(
+                color: backGround,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(20),
+                  topRight: Radius.circular(20),
+                ),
+              ),
+            )
+          ],
+        ));
   }
 }
