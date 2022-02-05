@@ -13,7 +13,6 @@ ThemeData mainTheme = ThemeData(
         style: ButtonStyle(
             shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                 RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
                     side: BorderSide(color: Colors.transparent))),
             foregroundColor: MaterialStateProperty.all<Color>(iconGray),
             backgroundColor: MaterialStateProperty.all<Color>(verdeBosta))),
@@ -21,9 +20,8 @@ ThemeData mainTheme = ThemeData(
         focusColor: backGround,
         fillColor: backGround,
         iconColor: iconGray,
-        focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
-            borderSide: BorderSide(color: verdeBosta))),
+        focusedBorder:
+            OutlineInputBorder(borderSide: BorderSide(color: verdeBosta))),
     fontFamily: 'OpenSans');
 const textonormal = TextStyle(fontSize: 25, color: Colors.black54);
 const appbartext =
