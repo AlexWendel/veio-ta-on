@@ -2,6 +2,8 @@ import 'package:get/get.dart';
 
 import 'package:hospital_maraba/app/modules/Login/bindings/login_binding.dart';
 import 'package:hospital_maraba/app/modules/Login/views/login_view.dart';
+import 'package:hospital_maraba/app/modules/agendamentos/bindings/agendamentos_binding.dart';
+import 'package:hospital_maraba/app/modules/agendamentos/views/agendamentos_view.dart';
 import 'package:hospital_maraba/app/modules/dashboardPage/bindings/dashboard_page_binding.dart';
 import 'package:hospital_maraba/app/modules/dashboardPage/views/dashboard_page_view.dart';
 import 'package:hospital_maraba/app/modules/home/bindings/home_binding.dart';
@@ -36,6 +38,11 @@ class AppPages {
       name: _Paths.LOGIN,
       page: () => LoginView(),
       binding: LoginBinding(),
+    ),
+    GetPage(
+      name: _Paths.AGENDAMENTOS,
+      page: () => AgendamentosView(),
+      binding: AgendamentosBinding(),
     ),
   ];
 }

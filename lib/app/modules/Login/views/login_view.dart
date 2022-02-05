@@ -9,16 +9,50 @@ class LoginView extends GetView<LoginController> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Container(
-            color: verdeBosta,
-            height: 90,
-            width: 200,
-            child: MaterialButton(
-                child: Text("Entar"),
-                onPressed: () {
-                  Get.to(HomeView());
-                })),
-      ),
+          child: Padding(
+        padding: EdgeInsets.only(left: 5, right: 5),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Container(
+                height: 60,
+                child: TextField(
+                    cursorColor: verdeBosta,
+                    decoration: InputDecoration(
+                      hintText: "Digite seu e-mail",
+                      prefixIcon: Icon(Icons.email),
+                    ))),
+            Divider(
+              color: Colors.transparent,
+              height: 10,
+            ),
+            Container(
+              height: 60,
+              alignment: Alignment.center,
+              child: TextField(
+                cursorColor: verdeBosta,
+                decoration: InputDecoration(
+                  hintText: "Digite sua senha",
+                  prefixIcon: Icon(Icons.lock),
+                ),
+              ),
+            ),
+            Divider(
+              color: Colors.transparent,
+              height: 20,
+            ),
+            Container(
+                height: 60,
+                width: 1000,
+                child: ElevatedButton(
+                    child: Text("Entrar"),
+                    onPressed: () {
+                      Get.to(() => HomeView());
+                    }))
+          ],
+        ),
+      )),
     );
   }
 }
