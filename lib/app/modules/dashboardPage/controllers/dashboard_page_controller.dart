@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-class DashboarPageController extends GetxController {
+class DashboardPageController extends GetxController {
   //TODO: Implement DashboarPageController
 
   final count = 0.obs;
