@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:hospital_maraba/app/models/registerform.dart';
 import 'package:hospital_maraba/app/modules/Login/views/login_view.dart';
+import 'package:hospital_maraba/app/modules/dashboardPage/views/dashboard_page_view.dart';
 import 'package:hospital_maraba/app/modules/home/views/home_view.dart';
 
 import 'models/loginform.dart';
@@ -23,7 +24,7 @@ class AuthController extends GetxController {
   _checkForLogin(User? user) {
     if (user == null) {
       print("Sem usuário, vá para a página de login");
-      Get.offAll(LoginView());
+      Get.offAll(DashboardPageView());
     } else {
       Get.offAll(HomeView());
     }
