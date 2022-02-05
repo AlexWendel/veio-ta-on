@@ -86,17 +86,18 @@ class LoginView extends GetResponsiveView<LoginController> {
               height: 20,
             ),
             Container(
-                padding: EdgeInsets.symmetric(horizontal: 1),
-                height: 60,
-                width: 200,
-                child: ElevatedButton(
-                    child: Text(
-                      "Entrar",
-                      style: textonormal,
-                    ),
-                    onPressed: () {
-                      Get.to(() => HomeView());
-                    }))
+              padding: EdgeInsets.symmetric(horizontal: 1),
+              height: 60,
+              width: 200,
+              child: ElevatedButton(
+                  child: Text(
+                    "Entrar",
+                    style: textonormal,
+                  ),
+                  onPressed: () {
+                    Get.to(() => HomeView());
+                  }),
+            )
           ],
         ),
       )),
