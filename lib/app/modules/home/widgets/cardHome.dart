@@ -5,16 +5,24 @@ import 'package:hospital_maraba/app/utils/colorTheme.dart';
 class CardHome extends GetResponsiveWidget {
   String text = "";
   String description = "";
+  Icon icon = Icon(Icons.login);
+  void Function() onTap = () {};
 
-  CardHome({required String text, required String description}) {
+  CardHome(
+      {required String text,
+      required String description,
+      Icon icon = const Icon(Icons.login),
+      required void Function() onTap}) {
     this.text = text;
     this.description = description;
+    this.icon = icon;
+    this.onTap = onTap;
   }
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: onTap,
       child: Container(
         margin: EdgeInsets.only(left: 20, right: 20, top: 15),
         height: 80,
@@ -52,7 +60,8 @@ class CardHome extends GetResponsiveWidget {
                       this.description,
                       style: TextStyle(
                           color: Colors.black38,
-                          fontSize: 20 * Get.width / 500),
+                          fontSize:
+                              20 * context.textScaleFactor * Get.width / 500),
                     ),
                   ),
                 ],

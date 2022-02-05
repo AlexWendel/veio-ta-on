@@ -84,14 +84,9 @@ class HomeView extends GetResponsiveView<HomeController> {
                 ),
               ),
               CardHome(
+                  onTap: () {},
                   text: "Agendar consulta",
                   description: "Defina os detalhes de suas consultas"),
-              CardHome(
-                  text: "Agendar consulta",
-                  description: "Dedina os detalhes de suas consultas"),
-              CardHome(
-                  text: "Agendar consulta",
-                  description: "Dedina os detalhes de suas consultas"),
             ],
           ),
 
