@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hospital_maraba/app/modules/Login/widgets/senha.dart';
 import 'package:hospital_maraba/app/modules/home/views/home_view.dart';
 import 'package:hospital_maraba/app/utils/colorTheme.dart';
 import '../controllers/login_controller.dart';
@@ -70,7 +71,23 @@ class LoginView extends GetResponsiveView<LoginController> {
               height: 15,
             ),
             InkWell(
-              onTap: () {},
+              onTap: () async {
+                showModalBottomSheet(
+                  backgroundColor: backGround,
+                  isScrollControlled: false,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(20),
+                      topRight: Radius.circular(20),
+                    ),
+                    //side: BorderSide(color: primaryColor),
+                  ),
+                  context: context,
+                  builder: (context) => Senha(),
+                );
+                //   Navigator.push(context,
+                //       MaterialPageRoute(builder: (context) => PerfilPage()));
+              },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
