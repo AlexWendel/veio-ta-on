@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:hospital_maraba/app/modules/home/widgets/card.dart';
 
 import '../controllers/home_controller.dart';
 
@@ -10,7 +11,7 @@ class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: backGround,
+        backgroundColor: verdeBosta,
         appBar: AppBar(
           actions: [
             Container(
@@ -47,31 +48,51 @@ class HomeView extends GetView<HomeController> {
             //   padding: EdgeInsets.only(left: 80),
             //   child: Text("você tem uma nova notificação"),
             // ),
-            Container(
-              height: 30,
-              width: double.maxFinite,
-              decoration: BoxDecoration(color: verdeBosta),
-            ),
-            Divider(height: 0, color: iconGray),
+
+            Divider(height: 50, color: iconGray),
             Container(
               height: 50,
               width: double.maxFinite,
-              decoration: BoxDecoration(
-                color: verdeBosta,
-                // borderRadius: BorderRadius.only(
-                //   topLeft: Radius.circular(20),
-                //   topRight: Radius.circular(20),
-                // ),
-              ),
+              decoration: BoxDecoration(color: verdeBosta),
             ),
-            Padding(
-              padding: EdgeInsets.only(left: 15, right: 15, top: 15),
-              child: Text(
-                "Realize seu agendamento e pré-atendimento de consultas.",
-                style: textonormal,
+            Container(
+              height: 30,
+              width: double.maxFinite,
+              decoration: BoxDecoration(
+                color: backGround,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(25),
+                  topRight: Radius.circular(25),
+                ),
               ),
             ),
 
+            Container(
+              color: backGround,
+              height: 1000,
+              child: Column(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(
+                      left: 20,
+                      right: 20,
+                    ),
+                    child: Text(
+                      "Realize seu agendamento e pré-atendimento de consultas.",
+                      style: textonormal,
+                    ),
+                  ),
+                  CardW(),
+                  CardW(),
+                  CardW(),
+                  CardW(),
+                  CardW(),
+                  CardW(),
+                  CardW(),
+                  CardW(),
+                ],
+              ),
+            )
             //fim
           ],
         ));
