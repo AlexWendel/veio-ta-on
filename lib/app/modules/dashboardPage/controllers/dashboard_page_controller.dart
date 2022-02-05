@@ -4,11 +4,10 @@ class DashboardPageController extends GetxController {
   //TODO: Implement DashboarPageController
 
   final count = 0.obs;
-
-  var pageIndex = 0;
+  final pageIndex = 0.obs;
 
   void changePageIndex(int index) {
-    pageIndex = index;
+    pageIndex.value = index;
     update();
   }
 

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hospital_maraba/app/modules/Login/widgets/senha.dart';
+import 'package:hospital_maraba/app/modules/dashboardPage/views/dashboard_page_view.dart';
 import 'package:hospital_maraba/app/modules/home/views/home_view.dart';
 import 'package:hospital_maraba/app/utils/colorTheme.dart';
 import 'package:hospital_maraba/app/widgets/button.dart';
@@ -21,12 +22,12 @@ class LoginView extends GetResponsiveView<LoginController> {
               margin: EdgeInsets.only(top: 15, right: 5),
               width: Get.width / 1.6,
               height: Get.height / 2.3,
-              decoration: new BoxDecoration(
+              decoration: BoxDecoration(
                 // shape: BoxShape.circle,
                 // color: backGround,
-                image: new DecorationImage(
+                image: DecorationImage(
                   fit: BoxFit.fill,
-                  image: new NetworkImage(
+                  image: NetworkImage(
                       "https://i.pinimg.com/564x/49/66/bd/4966bddbf433db57b4ef8556531a6e78.jpg"),
                 ),
               ),
@@ -37,14 +38,13 @@ class LoginView extends GetResponsiveView<LoginController> {
             ),
             InputText(
               hintText: "Digite seu e-mail",
-              icon: Icon(Icons.email),
+              icon: Icon(Icons.email_outlined),
             ),
-            Divider(
-              color: Colors.transparent,
-              height: 20,
-            ),
+            SizedBox(height: 10),
             InputText(
               hintText: "Digite sua senha",
+              icon: Icon(Icons.lock_outline),
+              obfuscatedField: true,
             ),
             Divider(
               color: Colors.transparent,
@@ -73,13 +73,15 @@ class LoginView extends GetResponsiveView<LoginController> {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   Text(
-                    "Esqueceu sua senha?",
+                    "Esqueceu sua senha? ",
                     style: TextStyle(fontSize: 18, color: Colors.black54),
                   ),
-                  Text(
-                    "Clique aqui",
-                    style: TextStyle(fontSize: 18, color: Colors.black87),
-                  ),
+                  InkWell(
+                      onTap: () => Get.to(() => DashboardPageView()),
+                      child: Text(
+                        "Clique aqui",
+                        style: TextStyle(fontSize: 18, color: Colors.black87),
+                      )),
                 ],
               ),
             ),

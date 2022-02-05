@@ -23,7 +23,7 @@ ThemeData mainTheme = ThemeData(
         fillColor: backGround,
         iconColor: iconGray,
         focusedBorder:
-            OutlineInputBorder(borderSide: BorderSide(color: verdeBosta))),
+            OutlineInputBorder(borderSide: BorderSide(color: cardGray))),
     fontFamily: 'OpenSans');
 const textonormal = TextStyle(fontSize: 20, color: Colors.black54);
 const appbartext =
