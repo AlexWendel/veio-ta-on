@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
 import 'package:get/get.dart';
-import 'package:hospital_maraba/app/modules/home/widgets/cardHome.dart';
+import 'package:hospital_maraba/app/widgets/cardHome.dart';
 
 import '../controllers/home_controller.dart';
 
@@ -14,7 +14,7 @@ class HomeView extends GetResponsiveView<HomeController> {
     return Scaffold(
       backgroundColor: verdeBosta,
       appBar: AppBar(
-        toolbarHeight: 85,
+        toolbarHeight: 87,
         actions: [
           Container(
             margin: EdgeInsets.only(top: 5, right: 5),

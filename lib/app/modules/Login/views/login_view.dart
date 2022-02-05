@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:hospital_maraba/app/modules/Login/widgets/senha.dart';
 import 'package:hospital_maraba/app/modules/home/views/home_view.dart';
 import 'package:hospital_maraba/app/utils/colorTheme.dart';
+import 'package:hospital_maraba/app/widgets/inputText.dart';
 import '../controllers/login_controller.dart';
 
 class LoginView extends GetResponsiveView<LoginController> {
@@ -35,36 +36,16 @@ class LoginView extends GetResponsiveView<LoginController> {
               color: Colors.transparent,
               height: 10,
             ),
-            Container(
-                alignment: Alignment.bottomCenter,
-                height: 60,
-                child: TextField(
-                    cursorColor: verdeBosta,
-                    decoration: InputDecoration(
-                        hintText: "Digite seu e-mail",
-                        prefixIcon: Icon(
-                          Icons.email,
-                          size: 25,
-                        ),
-                        hintStyle: TextStyle(fontSize: 20)))),
+            InputText(
+              hintText: "Digite seu e-mail",
+              icon: Icon(Icons.email),
+            ),
             Divider(
               color: Colors.transparent,
               height: 20,
             ),
-            Container(
-              height: 60,
-              alignment: Alignment.center,
-              child: TextField(
-                cursorColor: verdeBosta,
-                decoration: InputDecoration(
-                  hintText: "Digite sua senha",
-                  hintStyle: TextStyle(fontSize: 20),
-                  prefixIcon: Icon(
-                    Icons.lock,
-                    size: 27,
-                  ),
-                ),
-              ),
+            InputText(
+              hintText: "Digite sua senha",
             ),
             Divider(
               color: Colors.transparent,

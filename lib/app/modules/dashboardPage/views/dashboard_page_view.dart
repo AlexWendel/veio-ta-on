@@ -5,7 +5,7 @@ import 'package:hospital_maraba/app/modules/signIn/views/sign_in_view.dart';
 import 'package:hospital_maraba/app/utils/colorTheme.dart';
 import '../controllers/dashboard_page_controller.dart';
 
-class DashboardPageView extends GetView<DashboardPageController> {
+class DashboardPageView extends GetResponsiveView<DashboardPageController> {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<DashboardPageController>(builder: (controller) {
