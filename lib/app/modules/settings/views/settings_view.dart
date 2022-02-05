@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hospital_maraba/app/modules/Login/widgets/senha.dart';
-import 'package:hospital_maraba/app/modules/home/views/home_view.dart';
 import 'package:hospital_maraba/app/utils/colorTheme.dart';
-import 'package:hospital_maraba/app/widgets/button.dart';
 import 'package:hospital_maraba/app/widgets/cardHome.dart';
-import 'package:hospital_maraba/app/widgets/inputText.dart';
 
 import '../../../widgets/appBarr.dart';
 

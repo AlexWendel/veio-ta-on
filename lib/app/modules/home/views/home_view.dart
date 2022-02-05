@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-
 import 'package:get/get.dart';
 import 'package:hospital_maraba/app/modules/settings/views/settings_view.dart';
-import 'package:hospital_maraba/app/routes/app_pages.dart';
 import 'package:hospital_maraba/app/widgets/cardHome.dart';
 
 import '../controllers/home_controller.dart';
