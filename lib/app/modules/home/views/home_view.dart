@@ -10,6 +10,11 @@ class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: BottomNavigationBar(items: [
+        BottomNavigationBarItem(icon: Icon(Icons.login), label: "Login"),
+        BottomNavigationBarItem(icon: Icon(Icons.login), label: "Criar Conta"),
+        BottomNavigationBarItem(icon: Icon(Icons.login), label: "")
+      ]),
       backgroundColor: backGround,
       body: Center(
         child: Column(
