@@ -18,8 +18,11 @@ class DashboardPageView extends GetView<DashboardPageController> {
         ),
         bottomNavigationBar: BottomNavigationBar(
           // fixedColor: Colors.black12,
-          unselectedItemColor: Colors.white,
-          selectedItemColor: Colors.black87,
+          selectedFontSize: 25,
+          iconSize: 35,
+          unselectedFontSize: 18,
+          unselectedItemColor: Colors.black45,
+          selectedItemColor: Colors.black,
           backgroundColor: verdeBosta,
           onTap: controller.changePageIndex,
           currentIndex: controller.pageIndex,
@@ -27,12 +30,15 @@ class DashboardPageView extends GetView<DashboardPageController> {
             BottomNavigationBarItem(
               icon: Icon(
                 Icons.login,
-                size: 35,
               ),
               label: "Login",
             ),
             BottomNavigationBarItem(
-                icon: Icon(Icons.login), label: "Criar conta")
+              icon: Icon(
+                Icons.add_circle,
+              ),
+              label: "Criar conta",
+            ),
           ],
         ),
       );
