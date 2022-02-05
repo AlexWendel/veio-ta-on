@@ -1,8 +1,8 @@
 import 'package:get/get.dart';
 
-import '../controllers/sing_in_controller.dart';
+import '../controllers/sign_in_controller.dart';
 
-class SingInBinding extends Bindings {
+class SignInBinding extends Bindings {
   @override
   void dependencies() {
     Get.lazyPut<SingInController>(
