@@ -19,8 +19,8 @@ class LoginView extends GetResponsiveView<LoginController> {
           children: [
             Container(
               margin: EdgeInsets.only(top: 15, right: 5),
-              width: 400,
-              height: 400,
+              width: Get.width,
+              height: Get.height / 2,
               decoration: new BoxDecoration(
                 // shape: BoxShape.circle,
                 // color: backGround,
