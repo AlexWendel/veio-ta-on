@@ -1,32 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hospital_maraba/app/utils/colorTheme.dart';
+import 'package:hospital_maraba/app/utils/common.sizes.dart';
 
-class CardHome extends GetResponsiveWidget {
-  String text = "";
-  String description = "";
-  Icon icon = Icon(Icons.login);
-  void Function() onTap = () {};
+class CardHome extends GetWidget {
+  final String text;
+  final String description;
+  final Icon icon;
+  final Function()? onTap;
 
   CardHome(
-      {required String text,
-      required String description,
-      Icon icon = const Icon(Icons.login),
-      required void Function() onTap}) {
-    this.text = text;
-    this.description = description;
-    this.icon = icon;
-    this.onTap = onTap;
-  }
+      {required this.text,
+      required this.description,
+      required this.icon,
+      required this.onTap});
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
+    return Ink(
+        child: InkWell(
+      splashColor: verdeBosta,
       onTap: onTap,
       child: Container(
         alignment: Alignment.center,
         height: 100,
-        margin: EdgeInsets.all(15),
+        margin: EdgeInsets.all(5),
         padding: EdgeInsets.all(5),
         decoration: BoxDecoration(
           color: textFieldGray,
@@ -40,10 +38,7 @@ class CardHome extends GetResponsiveWidget {
               children: [
                 Padding(
                   padding: const EdgeInsets.only(left: 8),
-                  child: Icon(
-                    icon.icon,
-                    size: 55,
-                  ),
+                  child: icon,
                 ),
                 VerticalDivider(
                   width: 10,
@@ -54,18 +49,23 @@ class CardHome extends GetResponsiveWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      this.text,
-                      style: TextStyle(color: Colors.black45, fontSize: 25),
+                      text,
+                      style: TextStyle(
+                          color: Color.fromRGBO(120, 120, 120, 1),
+                          fontWeight: FontWeight.w600,
+                          fontSize: defaultFontSize * context.textScaleFactor),
                     ),
                     Container(
                       width: 260,
                       padding: EdgeInsets.only(top: 5, bottom: 10),
                       child: Text(
                         description,
+                        maxLines: 1,
                         style: TextStyle(
-                            color: Colors.black38,
-                            fontSize:
-                                20 * context.textScaleFactor * Get.width / 500),
+                            color: Color.fromRGBO(160, 160, 160, 1),
+                            fontWeight: FontWeight.w400,
+                            fontSize: defaultCardDescriptionSize *
+                                context.textScaleFactor),
                       ),
                     ),
                   ],
@@ -75,6 +75,6 @@ class CardHome extends GetResponsiveWidget {
           ],
         ),
       ),
-    );
+    ));
   }
 }

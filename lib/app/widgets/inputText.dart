@@ -3,13 +3,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 
-class InputText extends GetResponsiveWidget {
-  String hintText = "";
-  Icon icon = Icon(Icons.lock);
-  InputText({Icon icon = const Icon(Icons.lock), String hintText = ""}) {
-    this.icon = icon;
-    this.hintText = hintText;
-  }
+class InputText extends GetWidget {
+  final String hintText;
+  final Icon icon;
+  final bool obfuscatedField;
+
+  InputText(
+      {required this.icon,
+      required this.hintText,
+      this.obfuscatedField = false});
 
   @override
   Widget build(BuildContext context) {
