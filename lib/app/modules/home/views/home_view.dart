@@ -14,7 +14,7 @@ class HomeView extends GetResponsiveView<HomeController> {
     return Scaffold(
       backgroundColor: verdeBosta,
       appBar: AppBar(
-        toolbarHeight: 87,
+        toolbarHeight: 90,
         actions: [
           Container(
             margin: EdgeInsets.only(top: 5, right: 5),
@@ -51,14 +51,20 @@ class HomeView extends GetResponsiveView<HomeController> {
         //   child: Text("você tem uma nova notificação"),
         // ),
 
-        Divider(height: 20, color: iconGray),
+        Divider(height: 15, color: iconGray),
         Container(
           height: 50,
           width: double.maxFinite,
           decoration: BoxDecoration(color: verdeBosta),
         ),
         Container(
-          height: 30,
+          child: Padding(
+            padding: EdgeInsets.only(left: 20, right: 20, top: 10),
+            child: Text(
+              "Realize seu agendamento e pré-atendimento de consultas.",
+              style: textonormal,
+            ),
+          ),
           width: 1000,
           decoration: BoxDecoration(
             color: backGround,
@@ -71,19 +77,10 @@ class HomeView extends GetResponsiveView<HomeController> {
 
         Expanded(
             child: Container(
+          padding: EdgeInsets.only(top: 10),
           color: backGround,
-          child: Column(
+          child: ListView(
             children: [
-              Padding(
-                padding: EdgeInsets.only(
-                  left: 20,
-                  right: 20,
-                ),
-                child: Text(
-                  "Realize seu agendamento e pré-atendimento de consultas.",
-                  style: textonormal,
-                ),
-              ),
               CardHome(
                   icon: Icon(Icons.note_alt_outlined),
                   onTap: () {},
