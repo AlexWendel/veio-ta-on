@@ -56,6 +56,7 @@ class LoginView extends GetResponsiveView<LoginController> {
                 showModalBottomSheet(
                   backgroundColor: backGround,
                   isScrollControlled: false,
+                  useRootNavigator: false,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(20),

@@ -5,10 +5,11 @@ import 'package:hospital_maraba/app/utils/colorTheme.dart';
 class Senha extends GetResponsiveWidget {
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
+    return Center(
+      heightFactor: 700,
       child: Container(
         padding: EdgeInsets.only(left: 20, right: 20),
-        child: Column(
+        child: ListView(
           children: [
             Divider(
               height: 5,
@@ -18,7 +19,7 @@ class Senha extends GetResponsiveWidget {
               alignment: Alignment.topCenter,
               height: 5,
               width: 80,
-              margin: EdgeInsets.all(5),
+              margin: EdgeInsets.symmetric(horizontal: 150),
               decoration: BoxDecoration(
                   color: verdeBosta, borderRadius: BorderRadius.circular(50)),
             ),
@@ -31,6 +32,10 @@ class Senha extends GetResponsiveWidget {
                 "Esqueceu seus dados?",
                 style: TextStyle(fontWeight: FontWeight.w500, fontSize: 30),
               ),
+            ),
+            Divider(
+              height: 5,
+              color: Colors.transparent,
             ),
             Container(
               padding: EdgeInsets.only(left: 10, right: 10),
