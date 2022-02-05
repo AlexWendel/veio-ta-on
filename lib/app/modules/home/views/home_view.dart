@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:hospital_maraba/app/modules/home/widgets/card.dart';
+import 'package:hospital_maraba/app/modules/home/widgets/cardHome.dart';
 
 import '../controllers/home_controller.dart';
 
@@ -82,14 +82,15 @@ class HomeView extends GetView<HomeController> {
                       style: textonormal,
                     ),
                   ),
-                  CardW(),
-                  CardW(),
-                  CardW(),
-                  CardW(),
-                  CardW(),
-                  CardW(),
-                  CardW(),
-                  CardW(),
+                  CardHome(
+                      text: "Agendar consulta",
+                      description: "Dedina os detalhes de suas consultas"),
+                  CardHome(
+                      text: "Agendar consulta",
+                      description: "Dedina os detalhes de suas consultas"),
+                  CardHome(
+                      text: "Agendar consulta",
+                      description: "Dedina os detalhes de suas consultas"),
                 ],
               ),
             )

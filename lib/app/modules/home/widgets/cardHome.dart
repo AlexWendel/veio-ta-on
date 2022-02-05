@@ -2,22 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hospital_maraba/app/utils/colorTheme.dart';
 
-class CardW extends GetResponsiveView {
-  // Card({
-  //   String img = 'img',
-  //   String title = 'none',
-  //   String descript = 'none',
-  //   // Function onTap = (){},
-  // }) {
-  //   this.img = img;
-  //   this.title = title;
-  //   this.descript = descript;
-  //   // this.onTap = onTap;
-  // }
+class CardHome extends GetResponsiveWidget {
+  String text = "";
+  String description = "";
 
-  // String img;
-  // String title;
-  // String descript;
+  CardHome({required String text, required String description}) {
+    this.text = text;
+    this.description = description;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -52,11 +44,11 @@ class CardW extends GetResponsiveView {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    "Agendar sua consulta",
+                    this.text,
                     style: TextStyle(color: Colors.black45, fontSize: 25),
                   ),
                   Text(
-                    "Defina os detalhes de suas consultas",
+                    this.description,
                     style: TextStyle(color: Colors.black38, fontSize: 20),
                   ),
                 ],
