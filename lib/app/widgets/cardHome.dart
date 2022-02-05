@@ -24,49 +24,54 @@ class CardHome extends GetResponsiveWidget {
     return InkWell(
       onTap: onTap,
       child: Container(
-        margin: EdgeInsets.only(left: 20, right: 20, top: 15),
-        height: 80,
+        alignment: Alignment.center,
+        height: 100,
+        margin: EdgeInsets.all(15),
+        padding: EdgeInsets.all(5),
         decoration: BoxDecoration(
           color: textFieldGray,
           borderRadius: BorderRadius.circular(8),
         ),
-        child: Row(
+        child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 8),
-              child: Icon(
-                icon.icon,
-                size: 55,
-              ),
-            ),
-            VerticalDivider(
-              width: 10,
-              color: Colors.transparent,
-            ),
-            Container(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    this.text,
-                    style: TextStyle(color: Colors.black45, fontSize: 25),
+            Row(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 8),
+                  child: Icon(
+                    icon.icon,
+                    size: 55,
                   ),
-                  FittedBox(
-                    fit: BoxFit.fitWidth,
-                    child: Text(
-                      this.description,
-                      style: TextStyle(
-                          color: Colors.black38,
-                          fontSize:
-                              20 * context.textScaleFactor * Get.width / 500),
+                ),
+                VerticalDivider(
+                  width: 10,
+                  color: Colors.transparent,
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      this.text,
+                      style: TextStyle(color: Colors.black45, fontSize: 25),
                     ),
-                  ),
-                ],
-              ),
-            )
+                    Container(
+                      width: 260,
+                      padding: EdgeInsets.only(top: 5, bottom: 10),
+                      child: Text(
+                        description,
+                        style: TextStyle(
+                            color: Colors.black38,
+                            fontSize:
+                                20 * context.textScaleFactor * Get.width / 500),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ],
         ),
       ),

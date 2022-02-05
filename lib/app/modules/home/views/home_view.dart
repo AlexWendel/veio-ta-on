@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
 import 'package:get/get.dart';
-import 'package:hospital_maraba/app/modules/settings/views/cofing.dart';
+import 'package:hospital_maraba/app/modules/settings/views/settings_view.dart';
+import 'package:hospital_maraba/app/routes/app_pages.dart';
 import 'package:hospital_maraba/app/widgets/cardHome.dart';
 
 import '../controllers/home_controller.dart';
@@ -110,7 +111,7 @@ class HomeView extends GetResponsiveView<HomeController> {
               CardHome(
                   icon: Icon(Icons.settings),
                   onTap: () {
-                    Get.to(() => Cofing());
+                    Get.to(() => SettingsView());
                   },
                   text: "Configurações",
                   description: "Configure o seu aplicativo"),

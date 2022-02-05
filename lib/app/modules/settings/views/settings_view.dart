@@ -9,7 +9,7 @@ import 'package:hospital_maraba/app/widgets/inputText.dart';
 
 import '../../../widgets/appBarr.dart';
 
-class Cofing extends GetResponsiveView {
+class SettingsView extends GetResponsiveView {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -75,7 +75,7 @@ class Cofing extends GetResponsiveView {
                 CardHome(
                     icon: Icon(Icons.settings),
                     onTap: () {
-                      Get.to(() => Cofing());
+                      Get.to(() => SettingsView());
                     },
                     text: "Política e privacidade ",
                     description:
