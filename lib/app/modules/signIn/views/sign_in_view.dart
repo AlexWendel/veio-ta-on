@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:hospital_maraba/app/utils/colorTheme.dart';
+import 'package:hospital_maraba/app/widgets/inputText.dart';
+import 'package:hospital_maraba/app/widgets/button.dart';
 
 import '../controllers/sign_in_controller.dart';
 
@@ -16,7 +18,7 @@ class SignInView extends GetResponsiveView<SingInController> {
         backgroundColor: backGround,
       ),
       body: ListView(
-        padding: EdgeInsets.only(left: 5, right: 5),
+        padding: EdgeInsets.symmetric(horizontal: 20),
         children: [
           Divider(height: 10, color: iconGray),
           Container(
@@ -30,103 +32,19 @@ class SignInView extends GetResponsiveView<SingInController> {
             ),
           ),
           Divider(height: 20, color: Colors.transparent),
-          Container(
-            height: 60,
-            padding: EdgeInsets.only(left: 20, right: 20),
-            alignment: Alignment.center,
-            child: TextField(
-              cursorColor: verdeBosta,
-              decoration: InputDecoration(
-                hintText: "Nome completo ",
-                hintStyle: TextStyle(fontSize: 20),
-                prefixIcon: Icon(
-                  Icons.person,
-                  size: 27,
-                ),
-              ),
-            ),
-          ),
+          InputText(hintText: "Nome completo", icon: Icon(Icons.person)),
           Divider(height: 20, color: Colors.transparent),
-          Container(
-            height: 60,
-            padding: EdgeInsets.only(left: 20, right: 20),
-            alignment: Alignment.center,
-            child: TextField(
-              cursorColor: verdeBosta,
-              decoration: InputDecoration(
-                hintText: "Digite o email ",
-                hintStyle: TextStyle(fontSize: 20),
-                prefixIcon: Icon(
-                  Icons.email,
-                  size: 27,
-                ),
-              ),
-            ),
-          ),
+          InputText(hintText: "Digite o e-mail", icon: Icon(Icons.email)),
           Divider(height: 20, color: Colors.transparent),
-          Container(
-            height: 60,
-            padding: EdgeInsets.only(left: 20, right: 20),
-            alignment: Alignment.center,
-            child: TextField(
-              cursorColor: verdeBosta,
-              decoration: InputDecoration(
-                hintText: "Confirme o email ",
-                hintStyle: TextStyle(fontSize: 20),
-                prefixIcon: Icon(
-                  Icons.email,
-                  size: 27,
-                ),
-              ),
-            ),
-          ),
+          InputText(hintText: "Confirme o email", icon: Icon(Icons.email)),
           Divider(height: 20, color: Colors.transparent),
-          Container(
-            height: 60,
-            padding: EdgeInsets.only(left: 20, right: 20),
-            alignment: Alignment.center,
-            child: TextField(
-              cursorColor: verdeBosta,
-              decoration: InputDecoration(
-                hintText: "Digite a senha ",
-                hintStyle: TextStyle(fontSize: 20),
-                prefixIcon: Icon(
-                  Icons.lock,
-                  size: 27,
-                ),
-              ),
-            ),
-          ),
+          InputText(hintText: "Digite a senha"),
           Divider(height: 20, color: Colors.transparent),
-          Container(
-            height: 60,
-            padding: EdgeInsets.only(left: 20, right: 20),
-            alignment: Alignment.center,
-            child: TextField(
-              cursorColor: verdeBosta,
-              decoration: InputDecoration(
-                hintText: "Confirme a senha ",
-                hintStyle: TextStyle(fontSize: 20),
-                prefixIcon: Icon(
-                  Icons.lock,
-                  size: 27,
-                ),
-              ),
-            ),
-          ),
+          InputText(hintText: "Confirme a senha"),
           Divider(height: 50, color: Colors.transparent),
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 120),
-            height: 60,
-            width: 200,
-            child: ElevatedButton(
-                child: Text(
-                  "Criar conta",
-                  style: textonormal,
-                ),
-                onPressed: () {
-                  // Get.to(() => HomeView());
-                }),
+          Button(
+            text: "Criar conta",
+            onPressed: () {},
           ),
           Divider(height: 30, color: Colors.transparent),
         ],

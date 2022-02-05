@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:hospital_maraba/app/modules/Login/widgets/senha.dart';
 import 'package:hospital_maraba/app/modules/home/views/home_view.dart';
 import 'package:hospital_maraba/app/utils/colorTheme.dart';
+import 'package:hospital_maraba/app/widgets/button.dart';
 import 'package:hospital_maraba/app/widgets/inputText.dart';
 import '../controllers/login_controller.dart';
 
@@ -85,18 +86,11 @@ class LoginView extends GetResponsiveView<LoginController> {
               color: Colors.transparent,
               height: 20,
             ),
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: 1),
-              height: 60,
-              width: 200,
-              child: ElevatedButton(
-                  child: Text(
-                    "Entrar",
-                    style: textonormal,
-                  ),
-                  onPressed: () {
-                    Get.to(() => HomeView());
-                  }),
+            Button(
+              text: "Entrar",
+              onPressed: () {
+                Get.to(() => HomeView());
+              },
             )
           ],
         ),

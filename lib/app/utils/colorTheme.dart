@@ -24,6 +24,6 @@ ThemeData mainTheme = ThemeData(
         focusedBorder:
             OutlineInputBorder(borderSide: BorderSide(color: verdeBosta))),
     fontFamily: 'OpenSans');
-const textonormal = TextStyle(fontSize: 25, color: Colors.black54);
+const textonormal = TextStyle(fontSize: 20, color: Colors.black54);
 const appbartext =
     TextStyle(color: Colors.black54, fontSize: 20, fontFamily: 'OpenSans');
