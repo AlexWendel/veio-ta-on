@@ -85,13 +85,35 @@ class HomeView extends GetResponsiveView<HomeController> {
                 ),
               ),
               CardHome(
+                  icon: Icon(Icons.note_alt_outlined),
                   onTap: () {},
                   text: "Agendar consulta",
                   description: "Defina os detalhes de suas consultas"),
               CardHome(
+                  icon: Icon(Icons.notes),
                   onTap: () {},
                   text: "Resultados dos exames",
-                  description: "Defina os detalhes de suas consultas"),
+                  description: "Resultados dos seus exames"),
+              CardHome(
+                  icon: Icon(Icons.calendar_view_week),
+                  onTap: () {},
+                  text: "Minhas consultas",
+                  description: "veja suas consultas agendadas aqui"),
+              CardHome(
+                  icon: Icon(Icons.check_box),
+                  onTap: () {},
+                  text: "Realizar checkin",
+                  description: "Crie o QR Code para fazer check-in"),
+              CardHome(
+                  icon: Icon(Icons.circle_notifications_outlined),
+                  onTap: () {},
+                  text: "Notificações",
+                  description: "Notificações do aplicativo"),
+              CardHome(
+                  icon: Icon(Icons.settings),
+                  onTap: () {},
+                  text: "Configurações",
+                  description: "Configure o seu aplicativo"),
             ],
           ),
 
