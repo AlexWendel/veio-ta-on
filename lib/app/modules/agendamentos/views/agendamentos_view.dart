@@ -8,16 +8,13 @@ class AgendamentosView extends GetView<AgendamentosController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('AgendamentosView'),
-        centerTitle: true,
-      ),
-      body: Center(
-        child: Text(
-          'AgendamentosView is working',
-          style: TextStyle(fontSize: 20),
+        appBar: AppBar(
+          title: Text('Agendamento de Exame'),
+          centerTitle: true,
         ),
-      ),
-    );
+        body: Text(
+          'Etapa {}',
+          style: TextStyle(fontSize: 20),
+        ));
   }
 }
