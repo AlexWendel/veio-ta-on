@@ -4,7 +4,7 @@ import 'package:hospital_maraba/app/modules/home/views/home_view.dart';
 import 'package:hospital_maraba/app/utils/colorTheme.dart';
 import '../controllers/login_controller.dart';
 
-class LoginView extends GetView<LoginController> {
+class LoginView extends GetResponsiveView<LoginController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -18,7 +18,6 @@ class CardHome extends GetResponsiveWidget {
       child: Container(
         margin: EdgeInsets.only(left: 20, right: 20, top: 15),
         height: 80,
-        width: double.maxFinite,
         decoration: BoxDecoration(
           color: textFieldGray,
           borderRadius: BorderRadius.circular(8),
@@ -47,9 +46,14 @@ class CardHome extends GetResponsiveWidget {
                     this.text,
                     style: TextStyle(color: Colors.black45, fontSize: 25),
                   ),
-                  Text(
-                    this.description,
-                    style: TextStyle(color: Colors.black38, fontSize: 20),
+                  FittedBox(
+                    fit: BoxFit.fitWidth,
+                    child: Text(
+                      this.description,
+                      style: TextStyle(
+                          color: Colors.black38,
+                          fontSize: 20 * Get.width / 500),
+                    ),
                   ),
                 ],
               ),
