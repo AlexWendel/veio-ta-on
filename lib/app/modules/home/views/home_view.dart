@@ -10,38 +10,30 @@ class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: BottomNavigationBar(items: [
-        BottomNavigationBarItem(icon: Icon(Icons.login), label: "Login"),
-        BottomNavigationBarItem(icon: Icon(Icons.login), label: "Criar Conta"),
-        BottomNavigationBarItem(icon: Icon(Icons.login), label: "")
-      ]),
-      backgroundColor: backGround,
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
+      appBar: AppBar(
+        leading: Icon(null),
+        leadingWidth: 0,
+        title: Row(
           children: [
-            Container(
-              color: textFieldGray,
-              height: 50,
-              child: TextField(),
-            ),
-            Container(
-              color: textFieldGray,
-              height: 50,
-              child: TextField(),
-            ),
-            Container(
-              color: button,
-              height: 50,
-              child: MaterialButton(
-                onPressed: null,
-                child: Text("Entrar"),
-              ),
-            ),
+            Text('Olá',
+                style: TextStyle(
+                    color: Colors.black45,
+                    fontSize: 25,
+                    fontWeight: FontWeight.w800)),
+            IconButton(onPressed: () {}, icon: Icon(Icons.logout))
           ],
         ),
+        centerTitle: false,
+        backgroundColor: verdeBosta,
       ),
+      body: Center(
+          child: Column(
+        children: [
+          Container(
+            child: Text("Funfando"),
+          )
+        ],
+      )),
     );
   }
 }

@@ -1,9 +1,16 @@
 import 'package:get/get.dart';
 
-class HomeController extends GetxController {
-  //TODO: Implement HomeController
+class DashboarPageController extends GetxController {
+  //TODO: Implement DashboarPageController
 
   final count = 0.obs;
+
+  var pageIndex = 0;
+
+  void changePageIndex(int index) {
+    pageIndex = index;
+    update();
+  }
 
   @override
   void onInit() {
