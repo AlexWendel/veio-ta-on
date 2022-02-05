@@ -6,16 +6,21 @@ import '../utils/colorTheme.dart';
 class Button extends GetResponsiveWidget {
   String text = "";
   void Function() onPressed = () {};
+  EdgeInsets padding = EdgeInsets.symmetric(horizontal: 80);
 
-  Button({text = "", required void Function() onPressed}) {
+  Button(
+      {text = "",
+      required void Function() onPressed,
+      padding = const EdgeInsets.symmetric(horizontal: 80)}) {
     this.text = text;
     this.onPressed = onPressed;
+    this.padding = padding;
   }
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 80),
+      padding: padding,
       height: 60,
       width: 200,
       child: ElevatedButton(
