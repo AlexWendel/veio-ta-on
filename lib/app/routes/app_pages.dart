@@ -2,19 +2,19 @@ import 'package:get/get.dart';
 
 import 'package:hospital_maraba/app/modules/Login/bindings/login_binding.dart';
 import 'package:hospital_maraba/app/modules/Login/views/login_view.dart';
-import 'package:hospital_maraba/app/modules/dashboarPage/bindings/dashboar_page_binding.dart';
-import 'package:hospital_maraba/app/modules/dashboarPage/views/dashboar_page_view.dart';
+import 'package:hospital_maraba/app/modules/dashboardPage/bindings/dashboard_page_binding.dart';
+import 'package:hospital_maraba/app/modules/dashboardPage/views/dashboard_page_view.dart';
 import 'package:hospital_maraba/app/modules/home/bindings/home_binding.dart';
 import 'package:hospital_maraba/app/modules/home/views/home_view.dart';
-import 'package:hospital_maraba/app/modules/singIn/bindings/sing_in_binding.dart';
-import 'package:hospital_maraba/app/modules/singIn/views/sing_in_view.dart';
+import 'package:hospital_maraba/app/modules/signIn/bindings/sign_in_binding.dart';
+import 'package:hospital_maraba/app/modules/signIn/views/sign_in_view.dart';
 
 part 'app_routes.dart';
 
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.DASHBOAR_PAGE;
+  static const INITIAL = Routes.DASHBOARD_PAGE;
 
   static final routes = [
     GetPage(
@@ -23,14 +23,14 @@ class AppPages {
       binding: HomeBinding(),
     ),
     GetPage(
-      name: _Paths.SING_IN,
-      page: () => SingInView(),
-      binding: SingInBinding(),
+      name: _Paths.SIGN_IN,
+      page: () => SignInView(),
+      binding: SignInBinding(),
     ),
     GetPage(
-      name: _Paths.DASHBOAR_PAGE,
-      page: () => DashboarPageView(),
-      binding: DashboarPageBinding(),
+      name: _Paths.DASHBOARD_PAGE,
+      page: () => DashboardPageView(),
+      binding: DashboardPageBinding(),
     ),
     GetPage(
       name: _Paths.LOGIN,
