@@ -6,6 +6,7 @@ const verdeBosta = Color.fromARGB(255, 164, 228, 137);
 const iconGray = Color.fromARGB(255, 121, 121, 121);
 const grayBackground = Color.fromARGB(255, 239, 239, 239);
 
+<<<<<<< HEAD
 final ThemeData mainTheme = ThemeData(
     buttonTheme: ButtonThemeData(buttonColor: verdeBosta),
     inputDecorationTheme: InputDecorationTheme(
@@ -19,3 +20,8 @@ final ThemeData mainTheme = ThemeData(
       iconColor: iconGray,
     ),
     fontFamily: 'OpenSans');
+=======
+const textonormal = TextStyle(fontSize: 25, color: Colors.black54);
+const appbartext =
+    TextStyle(color: Colors.black54, fontSize: 25, fontFamily: 'OpenSans');
+>>>>>>> 9bf400b57ec96388265ade84f03d933e85775100
