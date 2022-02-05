@@ -38,10 +38,10 @@ class Senha extends GetResponsiveWidget {
               color: Colors.transparent,
             ),
             Container(
-              padding: EdgeInsets.only(left: 10, right: 10),
+              padding: EdgeInsets.all(10),
               alignment: Alignment.center,
               //padding: EdgeInsets.only(left: 20),
-              height: 50,
+
               width: double.maxFinite,
               child: Text(
                 "preencha os campos, enviaremos um link de recuperação de senha para seu email.",
@@ -125,7 +125,7 @@ class Senha extends GetResponsiveWidget {
             ),
             Divider(
               color: Colors.transparent,
-              height: 100,
+              height: 50,
             ),
           ],
         ),

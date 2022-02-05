@@ -17,6 +17,7 @@ ThemeData mainTheme = ThemeData(
             foregroundColor: MaterialStateProperty.all<Color>(iconGray),
             backgroundColor: MaterialStateProperty.all<Color>(verdeBosta))),
     inputDecorationTheme: InputDecorationTheme(
+        filled: true,
         border: OutlineInputBorder(borderSide: BorderSide(color: verdeBosta)),
         focusColor: backGround,
         fillColor: backGround,

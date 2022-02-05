@@ -19,9 +19,12 @@ class InputText extends GetResponsiveWidget {
       child: TextField(
         cursorColor: verdeBosta,
         decoration: InputDecoration(
-          border: OutlineInputBorder(
+          focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
-              borderSide: BorderSide(color: textFieldGray, width: 1)),
+              borderSide: BorderSide(color: verdeBosta)),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
           hintText: hintText,
           hintStyle: TextStyle(fontSize: 20),
           prefixIcon: Icon(
