@@ -120,7 +120,7 @@ class Senha extends GetResponsiveWidget {
             ),
             Divider(
               color: Colors.transparent,
-              height: 20,
+              height: 100,
             ),
           ],
         ),
