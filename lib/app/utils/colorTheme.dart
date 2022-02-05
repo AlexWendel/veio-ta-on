@@ -13,7 +13,7 @@ ThemeData mainTheme = ThemeData(
                 RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
                     side: BorderSide(color: Colors.transparent))),
-            foregroundColor: MaterialStateProperty.all<Color>(backGround),
+            foregroundColor: MaterialStateProperty.all<Color>(iconGray),
             backgroundColor: MaterialStateProperty.all<Color>(verdeBosta))),
     inputDecorationTheme: InputDecorationTheme(
         border: OutlineInputBorder(
