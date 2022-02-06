@@ -18,12 +18,14 @@ class HomeView extends GetResponsiveView<HomeController> {
       Container(
         margin: EdgeInsets.only(top: 40),
         child: Padding(
-          padding: EdgeInsets.only(left: 10, right: 10, top: 20, bottom: 90),
+          padding: EdgeInsets.only(
+              left: 10, right: 10, top: 20, bottom: context.height / 5),
           child: Column(children: [
             Text(
               "Realize o agendamento e check-in de suas consultas já agendadas:",
-              style:
-                  TextStyle(fontSize: sectionHeaderFontSize, color: headerGray),
+              style: TextStyle(
+                  fontSize: sectionHeaderFontSize / context.textScaleFactor,
+                  color: headerGray),
             ),
             CardHome(
                 icon: Icon(Icons.note_alt_outlined,
@@ -122,7 +124,8 @@ class HomeView extends GetResponsiveView<HomeController> {
                             fontWeight: FontWeight.w700,
                             color: Colors.black54)),
                   ]),
-                  Text("Paulete", style: TextStyle(fontSize: 14))
+                  Text("Paulete",
+                      style: TextStyle(fontSize: 14 / context.textScaleFactor))
                 ],
               ),
               floating: true,

@@ -23,8 +23,9 @@ class NovoAgendamentoView extends GetView<NovoAgendamentoController> {
               padding: const EdgeInsets.all(5),
               child: Text(
                 "Essas são as informações relevantes para sua consulta, clique em Iniciar agendamento para começar",
-                style:
-                    TextStyle(fontSize: sectionHeaderFontSize, color: iconGray),
+                style: TextStyle(
+                    fontSize: sectionHeaderFontSize / context.textScaleFactor,
+                    color: iconGray),
               ),
             ),
             CardHome(
@@ -119,7 +120,7 @@ class NovoAgendamentoView extends GetView<NovoAgendamentoController> {
               ),
               title: Text("Agendamento de consultas",
                   style: TextStyle(
-                      fontSize: 23,
+                      fontSize: 23 / context.textScaleFactor,
                       fontWeight: FontWeight.w600,
                       color: Colors.black54)),
               floating: true,

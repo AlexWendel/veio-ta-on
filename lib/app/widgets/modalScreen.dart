@@ -23,8 +23,8 @@ class ModalScreen extends GetWidget {
               ),
               margin: EdgeInsets.only(top: 40),
               child: Padding(
-                padding:
-                    EdgeInsets.only(left: 10, right: 10, top: 20, bottom: 90),
+                padding: EdgeInsets.only(
+                    left: 10, right: 10, top: 20, bottom: Get.height / 5),
                 child: Column(
                   children: body,
                 ),

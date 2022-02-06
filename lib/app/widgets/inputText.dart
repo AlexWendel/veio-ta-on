@@ -1,5 +1,6 @@
+import 'package:hospital_maraba/app/utils/common.sizes.dart';
+
 import '../utils/colorTheme.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 
@@ -28,7 +29,8 @@ class InputText extends GetWidget {
             borderRadius: BorderRadius.circular(10),
           ),
           hintText: hintText,
-          hintStyle: TextStyle(fontSize: 20),
+          hintStyle:
+              TextStyle(fontSize: defaultFontSize / context.textScaleFactor),
           prefixIcon: Icon(
             icon.icon,
             size: 27,

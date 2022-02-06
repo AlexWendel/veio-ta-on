@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hospital_maraba/app/utils/common.sizes.dart';
-import 'package:hospital_maraba/app/utils/textSacel.dart';
 
-final double textScale = 1 / Get.textScaleFactor;
 const textFieldGray = Color.fromARGB(255, 241, 241, 241);
 const backGround = Color.fromARGB(255, 253, 253, 253);
 const verdeBosta = Color.fromARGB(255, 164, 228, 137);
@@ -29,7 +27,6 @@ ThemeData mainTheme = ThemeData(
         focusedBorder:
             OutlineInputBorder(borderSide: BorderSide(color: cardGray))),
     fontFamily: 'OpenSans');
-final textonormal =
-    TextStyle(fontSize: defaultFontSize * textScale, color: Colors.black54);
+final textonormal = TextStyle(fontSize: defaultFontSize, color: Colors.black54);
 final appbartext = TextStyle(
     color: Colors.black54, fontSize: defaultFontSize, fontFamily: 'OpenSans');

@@ -4,6 +4,7 @@ import 'package:hospital_maraba/app/modules/Login/widgets/senha.dart';
 import 'package:hospital_maraba/app/modules/dashboardPage/views/dashboard_page_view.dart';
 import 'package:hospital_maraba/app/modules/home/views/home_view.dart';
 import 'package:hospital_maraba/app/utils/colorTheme.dart';
+import 'package:hospital_maraba/app/utils/common.sizes.dart';
 import 'package:hospital_maraba/app/widgets/button.dart';
 import 'package:hospital_maraba/app/widgets/inputText.dart';
 import '../controllers/login_controller.dart';
@@ -74,13 +75,19 @@ class LoginView extends GetResponsiveView<LoginController> {
                 children: [
                   Text(
                     "Esqueceu sua senha? ",
-                    style: TextStyle(fontSize: 18, color: Colors.black54),
+                    style: TextStyle(
+                        fontSize:
+                            sectionHeaderFontSize / context.textScaleFactor,
+                        color: Colors.black54),
                   ),
                   InkWell(
                       onTap: () => Get.to(() => DashboardPageView()),
                       child: Text(
                         "Clique aqui",
-                        style: TextStyle(fontSize: 18, color: Colors.black87),
+                        style: TextStyle(
+                            fontSize:
+                                sectionHeaderFontSize / context.textScaleFactor,
+                            color: Colors.black87),
                       )),
                 ],
               ),

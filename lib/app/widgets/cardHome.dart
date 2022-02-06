@@ -53,7 +53,7 @@ class CardHome extends GetWidget {
                       style: TextStyle(
                           color: Color.fromRGBO(120, 120, 120, 1),
                           fontWeight: FontWeight.w600,
-                          fontSize: defaultFontSize),
+                          fontSize: defaultFontSize / context.textScaleFactor),
                     ),
                     Container(
                       width: 260,
@@ -64,7 +64,8 @@ class CardHome extends GetWidget {
                         style: TextStyle(
                             color: Color.fromRGBO(160, 160, 160, 1),
                             fontWeight: FontWeight.w400,
-                            fontSize: defaultCardDescriptionSize),
+                            fontSize: defaultCardDescriptionSize /
+                                context.textScaleFactor),
                       ),
                     ),
                   ],
