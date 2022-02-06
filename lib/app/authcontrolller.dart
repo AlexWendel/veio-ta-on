@@ -21,12 +21,12 @@ class AuthController extends GetxController {
   }
 
   _checkForLogin(User? user) {
-    if (user == null) {
-      print("Sem usuário, vá para a página de login");
-      Get.offAll(DashboardPageView());
-    } else {
-      Get.offAll(HomeView());
-    }
+    // if (user == null) {
+    //   print("Sem usuário, vá para a página de login");
+    // Get.offAll(() => DashboardPageView());
+    // } else {
+    //   Get.offAll(HomeView());
+    // }
   }
 
   void register(RegisterForm form) async {
