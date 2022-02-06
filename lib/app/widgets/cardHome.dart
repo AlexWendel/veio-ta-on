@@ -19,7 +19,7 @@ class CardHome extends GetView {
   Widget build(BuildContext context) {
     return Ink(
         child: InkWell(
-      splashColor: verdeBosta,
+      splashColor: Get.theme.splashColor,
       onTap: onTap,
       child: Container(
         alignment: Alignment.center,
@@ -27,7 +27,7 @@ class CardHome extends GetView {
         margin: EdgeInsets.symmetric(vertical: 5),
         padding: EdgeInsets.all(5),
         decoration: BoxDecoration(
-          color: textFieldGray,
+          color: Get.theme.highlightColor,
           borderRadius: BorderRadius.circular(8),
         ),
         child: Column(

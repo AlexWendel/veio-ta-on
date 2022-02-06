@@ -23,7 +23,6 @@ class DashboardPageView extends GetView<DashboardPageController> {
           unselectedFontSize: 15,
           unselectedItemColor: Colors.black45,
           selectedItemColor: Colors.black,
-          backgroundColor: verdeBosta,
           onTap: controller.changePageIndex,
           currentIndex: controller.pageIndex.value,
           items: [

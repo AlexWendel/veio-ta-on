@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hospital_maraba/app/utils/common.colors.dart';
 import 'package:hospital_maraba/app/utils/common.sizes.dart';
+import 'package:hospital_maraba/app/utils/functions.colors.dart';
 
 const textFieldGray = Color.fromARGB(255, 241, 241, 241);
 const backGround = Color.fromARGB(255, 253, 253, 253);
@@ -16,37 +17,49 @@ final appbartext = TextStyle(
 // const background2 = Colors.grey.shade300;
 
 ThemeData mainTheme = ThemeData.light().copyWith(
-    iconTheme: IconThemeData(color: iconGray, size: mediumIconSize),
-    backgroundColor: verdeBosta,
+    highlightColor: textFieldGray,
+    canvasColor: backGround,
+    primaryTextTheme: TextTheme(
+      displaySmall: TextStyle(fontSize: 30),
+      displayMedium: TextStyle(fontSize: 35),
+      displayLarge: TextStyle(fontSize: 45),
+    ).apply(
+      displayColor: Colors.black54,
+      bodyColor: Colors.black54,
+    ),
     textTheme: TextTheme(
-            displayMedium: TextStyle(fontFamily: 'OpenSans'),
-            displaySmall: TextStyle(fontSize: 30))
-        .apply(
-            fontFamily: 'Arial',
-            bodyColor: cardGray,
-            displayColor: cardGray,
-            decorationColor: verdeBosta),
-    canvasColor: grayBackground,
-    colorScheme: ColorScheme.fromSwatch(
-        primarySwatch: verdeBostaMaterialColor,
-        backgroundColor: backGround,
-        accentColor: verdeBosta,
-        cardColor: textFieldGray,
-        errorColor: Colors.red.shade400),
-    textSelectionTheme: TextSelectionThemeData(
-        cursorColor: verdeBosta,
-        selectionColor: verdeBosta,
-        selectionHandleColor: verdeBosta),
-    elevatedButtonTheme: ElevatedButtonThemeData(
-        style: ButtonStyle(
-            shape: MaterialStateProperty.all<RoundedRectangleBorder>(RoundedRectangleBorder(
-                side: BorderSide(color: Colors.transparent))),
-            foregroundColor: MaterialStateProperty.all<Color>(iconGray),
-            backgroundColor: MaterialStateProperty.all<Color>(verdeBosta))),
-    inputDecorationTheme: InputDecorationTheme(
-        filled: true,
-        border: OutlineInputBorder(borderSide: BorderSide(color: verdeBosta)),
-        focusColor: backGround,
-        fillColor: backGround,
-        iconColor: iconGray,
-        focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: cardGray))));
+      displaySmall: TextStyle(fontSize: 30),
+      displayMedium: TextStyle(fontSize: 35),
+      displayLarge: TextStyle(fontSize: 45),
+    ).apply(
+      displayColor: Colors.black54,
+      bodyColor: Colors.black54,
+    )
+    // elevatedButtonTheme: ElevatedButtonThemeData()
+    );
+    // colorScheme: ColorScheme.fromSwatch(
+    //     primarySwatch: getMaterialColorFromColor(verdeBosta)));
+    // primaryColor: verdeBosta,
+    // canvasColor: backGround,
+    // iconTheme: IconThemeData(color: iconGray, size: mediumIconSize),
+    // backgroundColor: verdeBosta,
+    // textTheme:
+    //     TextTheme(displaySmall: TextStyle(fontSize: 30, color: Colors.black54)),
+    // // backgroundColor: backGround,
+    // // accentColor: Colors.white,
+    // // cardColor: textFieldGray,
+    // // errorColor: Colors.red.shade400),
+    //     style: ButtonStyle(
+    //         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+    //             RoundedRectangleBorder(
+    //                 side: BorderSide(color: Colors.transparent))),
+    //         foregroundColor: MaterialStateProperty.all<Color>(iconGray),
+    //         backgroundColor: MaterialStateProperty.all<Color>(verdeBosta))),
+    // inputDecorationTheme: InputDecorationTheme(
+    //     filled: true,
+    //     border: OutlineInputBorder(borderSide: BorderSide(color: verdeBosta)),
+    //     focusColor: backGround,
+    //     fillColor: backGround,
+    //     iconColor: iconGray,
+    //     focusedBorder:
+    //         OutlineInputBorder(borderSide: BorderSide(color: cardGray))));

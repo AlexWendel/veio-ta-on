@@ -25,11 +25,10 @@ class InputText extends GetView {
         onEditingComplete: () =>
             {}, // TODO: Verificar se o valor é igual em InputText que estiverem ligados
         controller: textFieldController.value,
-        cursorColor: verdeBosta,
         decoration: InputDecoration(
           focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
-              borderSide: BorderSide(color: verdeBosta)),
+              borderSide: BorderSide(color: Get.theme.primaryColor)),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
           ),

@@ -17,6 +17,7 @@ class TitleSliverAppBar extends GetWidget {
         floating: true,
         snap: true,
         elevation: 0,
+        backgroundColor: Get.theme.backgroundColor,
         flexibleSpace: Container(
           decoration: BoxDecoration(
               color: Get.theme.backgroundColor,

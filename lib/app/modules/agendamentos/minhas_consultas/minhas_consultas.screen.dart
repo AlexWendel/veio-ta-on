@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:hospital_maraba/app/modules/DefaultDesignScreen.dart';
+import 'package:hospital_maraba/app/modules/agendamentos/minhas_consultas/views/consulta_agendada.dart';
 import 'package:hospital_maraba/app/modules/settings/widgets/cardConsultas.dart';
 import 'package:hospital_maraba/app/utils/colorTheme.dart';
 import 'package:hospital_maraba/app/utils/common.sizes.dart';
@@ -15,7 +16,7 @@ class MinhasConsultasScreen extends GetView<MinhasConsultasController> {
   @override
   Widget build(BuildContext context) {
     return DefaultDesignScreen(
-      sliverAppBar: TitleSliverAppBar(title: "Configurações do aplicativo"),
+      sliverAppBar: TitleSliverAppBar(title: "Minhas Consultas"),
       body: Column(children: [
         Text(
           "Esses são suas consultas médicas, caso não tenha nenhuma marcada clique em nova consulta",
@@ -23,47 +24,35 @@ class MinhasConsultasScreen extends GetView<MinhasConsultasController> {
               Get.theme.textTheme.displaySmall?.copyWith(color: Colors.black54),
         ),
         SizedBox(height: 8),
-        Container(
-          alignment: Alignment.center,
-          // height: 150,
-          margin: EdgeInsets.all(5),
-          padding: EdgeInsets.all(5),
-          decoration: BoxDecoration(
-            // color: Colors.grey.shade100,
-            borderRadius: BorderRadius.circular(8),
-          ),
-          child: Column(
-            children: [
-              CardConsultas(
-                  text: "Neurologista",
-                  description: "description",
-                  icon: Icon(
-                    Icons.local_hospital_outlined,
-                    size: mediumIconSize,
-                    color: iconGray,
-                  ),
-                  onTap: () {}),
-              CardConsultas(
-                  text: "Neurologista",
-                  description: "description",
-                  icon: Icon(Icons.local_hospital_outlined,
-                      size: mediumIconSize, color: iconGray),
-                  onTap: () {}),
-              CardConsultas(
-                  text: "Neurologista",
-                  description: "description",
-                  icon: Icon(Icons.local_hospital_outlined,
-                      size: mediumIconSize, color: iconGray),
-                  onTap: () {}),
-              CardConsultas(
-                  text: "Neurologista",
-                  description: "description",
-                  icon: Icon(Icons.local_hospital_outlined,
-                      size: mediumIconSize, color: iconGray),
-                  onTap: () {}),
-            ],
-          ),
-        ),
+        CardConsultas(
+            text: "Neurologista",
+            description: "description",
+            icon: Icon(
+              Icons.local_hospital_outlined,
+              size: mediumIconSize,
+              color: iconGray,
+            ),
+            onTap: () {
+              Get.to(() => ConsultaAgendada());
+            }),
+        CardConsultas(
+            text: "Neurologista",
+            description: "description",
+            icon: Icon(Icons.local_hospital_outlined,
+                size: mediumIconSize, color: iconGray),
+            onTap: () {}),
+        CardConsultas(
+            text: "Neurologista",
+            description: "description",
+            icon: Icon(Icons.local_hospital_outlined,
+                size: mediumIconSize, color: iconGray),
+            onTap: () {}),
+        CardConsultas(
+            text: "Neurologista",
+            description: "description",
+            icon: Icon(Icons.local_hospital_outlined,
+                size: mediumIconSize, color: iconGray),
+            onTap: () {}),
       ]),
     );
     // Scaffold(
