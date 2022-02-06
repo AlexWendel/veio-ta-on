@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import '../utils/colorTheme.dart';
 import '../utils/common.sizes.dart';
 
-class Button extends GetResponsiveWidget {
+class Button extends GetView {
   String text = "";
   void Function() onPressed = () {};
   EdgeInsets padding = EdgeInsets.symmetric(horizontal: 80);
