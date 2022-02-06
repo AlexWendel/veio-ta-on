@@ -10,6 +10,7 @@ abstract class Routes {
   static const LOGIN = _Paths.LOGIN;
   static const AGENDAMENTOS = _Paths.AGENDAMENTOS;
   static const SETTINGS = _Paths.SETTINGS;
+  static const NOVO_AGENDAMENTO = _Paths.NOVO_AGENDAMENTO;
 }
 
 abstract class _Paths {
@@ -19,4 +20,5 @@ abstract class _Paths {
   static const LOGIN = '/login';
   static const AGENDAMENTOS = '/agendamentos';
   static const SETTINGS = '/settings';
+  static const NOVO_AGENDAMENTO = '/novo-agendamento';
 }
