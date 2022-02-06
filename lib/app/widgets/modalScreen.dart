@@ -27,7 +27,7 @@ class ModalScreen extends GetView {
                     left: 10,
                     right: 10,
                     top: 20,
-                    bottom: Get.height / (body.length + 1)),
+                    bottom: Get.height / 5 + (Get.height / (body.length + 1))),
                 child: Column(
                   children: body,
                 ),
