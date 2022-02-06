@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:hospital_maraba/app/utils/textSacel.dart';
 
 const textFieldGray = Color.fromARGB(255, 241, 241, 241);
 const backGround = Color.fromARGB(255, 253, 253, 253);
