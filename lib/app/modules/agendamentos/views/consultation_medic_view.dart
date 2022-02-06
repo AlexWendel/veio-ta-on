@@ -10,9 +10,8 @@ import 'package:hospital_maraba/app/widgets/inputText.dart';
 import 'package:hospital_maraba/app/widgets/scrollBox.dart';
 
 import 'consultation_date_view.dart';
-import 'consultation_medic_view.dart';
 
-class ConsultationPlaceView extends GetView {
+class ConsultationMedicView extends GetView {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -63,7 +62,7 @@ class ConsultationPlaceView extends GetView {
                             borderRadius: BorderRadius.circular(10))),
                   ),
                   onPressed: () {
-                    Get.to(() => ConsultationMedicView());
+                    Get.to(() => ConsultationDateView());
                   },
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
@@ -82,7 +81,7 @@ class ConsultationPlaceView extends GetView {
         ),
       ),
       backgroundColor: verdeBosta,
-      appBar: myAppbar(text: "Escolha o Local", context: context),
+      appBar: myAppbar(text: "Escolha o especialista", context: context),
       body: Center(
         child: Column(
           children: [
@@ -100,7 +99,7 @@ class ConsultationPlaceView extends GetView {
                   width: 1000,
                   alignment: Alignment.centerLeft,
                   child: Text(
-                    "Etapa 2: Local da consulta",
+                    "Etapa 3: Médico",
                     style: TextStyle(
                         color: Colors.black54,
                         fontFamily: "OpenSans",
@@ -112,7 +111,7 @@ class ConsultationPlaceView extends GetView {
                   width: 1000,
                   alignment: Alignment.centerLeft,
                   child: Text(
-                    "Selecione a unidade de atendimento:",
+                    "Selecione um médico para realizar o exame:",
                     style: TextStyle(
                         color: Colors.black54,
                         fontFamily: "OpenSans",
@@ -121,7 +120,8 @@ class ConsultationPlaceView extends GetView {
                   ),
                 ),
                 InputText(
-                    icon: Icon(Icons.search), hintText: "Pesquisar unidade"),
+                    icon: Icon(Icons.search),
+                    hintText: "Pesquisar especialista"),
                 Divider(
                   color: Colors.transparent,
                   height: 10,

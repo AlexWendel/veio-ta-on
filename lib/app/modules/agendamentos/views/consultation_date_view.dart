@@ -1,47 +1,82 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:hospital_maraba/app/modules/agendamentos/views/consultation_type_view.dart';
 import 'package:hospital_maraba/app/utils/colorTheme.dart';
 import 'package:hospital_maraba/app/utils/common.sizes.dart';
 import 'package:hospital_maraba/app/widgets/appBarr.dart';
 import 'package:hospital_maraba/app/widgets/cardHome.dart';
+import 'package:hospital_maraba/app/widgets/dateCard.dart';
 import 'package:hospital_maraba/app/widgets/inputText.dart';
 import 'package:hospital_maraba/app/widgets/scrollBox.dart';
+import 'package:intl/date_time_patterns.dart';
 
-import 'consultation_type_view.dart';
+import 'consultation_date_view.dart';
+import 'consultation_medic_view.dart';
 
 class ConsultationDateView extends GetView {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: Container(
+        padding: EdgeInsets.symmetric(vertical: 20),
         // height: 70,
         color: backGround,
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.end,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Container(
-              margin: EdgeInsets.all(20),
-              height: 60,
+            Expanded(
               // width: 200,
-              child: ElevatedButton(
-                style: ButtonStyle(
-                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                      RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10))),
+              child: Container(
+                padding: EdgeInsets.symmetric(horizontal: 20),
+                height: 60,
+                child: ElevatedButton(
+                  style: ButtonStyle(
+                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10))),
+                  ),
+                  onPressed: () {
+                    Get.back();
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Icon(Icons.arrow_back_ios_rounded),
+                      Text(
+                        "Voltar",
+                        style: textonormal,
+                      ),
+                    ],
+                  ),
                 ),
-                onPressed: () {
-                  Get.to(() => ConsultationTypeView());
-                },
-                child: Row(
-                  children: [
-                    Text(
-                      "Próxima etapa",
-                      style: textonormal,
-                    ),
-                    Icon(Icons.arrow_forward_ios_rounded)
-                  ],
+              ),
+            ),
+            Expanded(
+              // width: 200,
+              child: Container(
+                padding: EdgeInsets.symmetric(horizontal: 20),
+                height: 60,
+                child: ElevatedButton(
+                  style: ButtonStyle(
+                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10))),
+                  ),
+                  onPressed: () {
+                    Get.to(() => ConsultationMedicView());
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Text(
+                        "Continuar",
+                        style: textonormal,
+                      ),
+                      Icon(Icons.arrow_forward_ios_rounded)
+                    ],
+                  ),
                 ),
               ),
             )
@@ -49,7 +84,7 @@ class ConsultationDateView extends GetView {
         ),
       ),
       backgroundColor: verdeBosta,
-      appBar: myAppbar(text: "Escolha o exame", context: context),
+      appBar: myAppbar(text: "Escolha a data e hora", context: context),
       body: Center(
         child: Column(
           children: [
@@ -67,8 +102,9 @@ class ConsultationDateView extends GetView {
                   width: 1000,
                   alignment: Alignment.centerLeft,
                   child: Text(
-                    "Etapa 1: Tipo de exame",
+                    "Etapa 4: horário da consulta",
                     style: TextStyle(
+                        color: Colors.black54,
                         fontFamily: "OpenSans",
                         fontSize: titleFontSize / context.textScaleFactor),
                   ),
@@ -78,37 +114,52 @@ class ConsultationDateView extends GetView {
                   width: 1000,
                   alignment: Alignment.centerLeft,
                   child: Text(
-                    "Escolha o tipo de exame que deseja agendar:",
+                    "Selecione o dia e a hora da consulta, entre os horários disponíveis",
                     style: TextStyle(
+                        color: Colors.black54,
                         fontFamily: "OpenSans",
                         fontSize:
                             sectionHeaderFontSize / context.textScaleFactor),
                   ),
                 ),
-                InputText(
-                    icon: Icon(Icons.search),
-                    hintText: "Pesquisar tipo de exame"),
-                Divider(
-                  color: Colors.transparent,
-                  height: 10,
+                Container(
+                  padding: EdgeInsets.only(top: 10, bottom: 10),
+                  width: 1000,
+                  alignment: Alignment.center,
+                  child: Text(
+                    "Selecione a data e o horário do atendimento:",
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                        fontFamily: "OpenSans",
+                        fontSize:
+                            sectionHeaderFontSize / context.textScaleFactor),
+                  ),
                 ),
-                ScrollBox(itemList: [
-                  CardHome(
-                      text: "Neurologista",
-                      description: "Medico para a sua cabeça",
-                      icon: Icon(Icons.tab),
-                      onTap: () {}),
-                  CardHome(
-                      text: "Neurologista",
-                      description: "Medico para a sua cabeça",
-                      icon: Icon(Icons.tab),
-                      onTap: () {}),
-                  CardHome(
-                      text: "Neurologista",
-                      description: "Medico para a sua cabeça",
-                      icon: Icon(Icons.tab),
-                      onTap: () {})
-                ])
+                DateCard(
+                    text: "CALENDÁRIO",
+                    description: "Selecione a data em que deseja ser atendido",
+                    icon: Icon(
+                      Icons.keyboard_arrow_down_rounded,
+                      size: 50,
+                    ),
+                    onTap: () {
+                      showDatePicker(
+                        lastDate: DateTime(2030),
+                        context: context,
+                        initialDate: DateTime.now(),
+                        firstDate: DateTime.now(),
+                      );
+                    }),
+                DateCard(
+                    text: "HORÁRIO",
+                    description:
+                        "Selecione o horário em que deseja ser atendido",
+                    icon: Icon(
+                      Icons.keyboard_arrow_down_rounded,
+                      size: 50,
+                    ),
+                    onTap: () {})
               ]),
               margin: EdgeInsets.only(top: 20),
               decoration: BoxDecoration(

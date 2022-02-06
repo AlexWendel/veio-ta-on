@@ -70,6 +70,7 @@ class ConsultationTypeView extends GetView {
                   child: Text(
                     "Etapa 1: Tipo de exame",
                     style: TextStyle(
+                        color: Colors.black54,
                         fontFamily: "OpenSans",
                         fontSize: titleFontSize / context.textScaleFactor),
                   ),
@@ -81,6 +82,7 @@ class ConsultationTypeView extends GetView {
                   child: Text(
                     "Escolha o tipo de exame que deseja agendar:",
                     style: TextStyle(
+                        color: Colors.black54,
                         fontFamily: "OpenSans",
                         fontSize:
                             sectionHeaderFontSize / context.textScaleFactor),
