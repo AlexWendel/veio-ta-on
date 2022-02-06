@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hospital_maraba/app/modules/Login/views/perfil.dart';
 import 'package:hospital_maraba/app/utils/colorTheme.dart';
 import 'package:hospital_maraba/app/utils/common.icons.dart';
 import 'package:hospital_maraba/app/utils/common.sizes.dart';
@@ -65,14 +66,19 @@ class HomeSliverAppBar extends GetWidget {
         ],
       ),
       actions: [
-        Container(
-          margin: EdgeInsets.only(top: 5, right: 5, bottom: 10),
-          width: 40,
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            image: DecorationImage(
-              fit: BoxFit.cover,
-              image: NetworkImage("https://i.imgur.com/BoN9kdC.png"),
+        InkWell(
+          onTap: () {
+            Get.to(PerfilView());
+          },
+          child: Container(
+            margin: EdgeInsets.only(top: 5, right: 5, bottom: 10),
+            width: 40,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              image: DecorationImage(
+                fit: BoxFit.cover,
+                image: NetworkImage("https://i.imgur.com/BoN9kdC.png"),
+              ),
             ),
           ),
         )

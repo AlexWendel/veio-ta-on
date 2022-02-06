@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hospital_maraba/app/modules/DefaultDesignScreen.dart';
+import 'package:hospital_maraba/app/modules/Login/views/perfil.dart';
 import 'package:hospital_maraba/app/modules/home/widgets/HomeSliverAppBar.dart';
 import 'package:hospital_maraba/app/modules/settings/controllers/settings_controller.dart';
 import 'package:hospital_maraba/app/utils/colorTheme.dart';
@@ -30,7 +31,9 @@ class SettingsView extends GetView {
             CardHome(
                 icon: Icon(Icons.person_pin_rounded,
                     size: mediumIconSize, color: iconGray),
-                onTap: () {},
+                onTap: () {
+                  Get.to(() => PerfilView());
+                },
                 text: "Perfil",
                 description: "Configurações de perfil"),
             CardHome(
