@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 import 'package:hospital_maraba/app/models/agendamento.dart';
+import 'package:hospital_maraba/app/modules/agendamentos/minhas_consultas/minhas_consultas.screen.dart';
 import 'package:hospital_maraba/app/modules/agendamentos/views/check_in_view.dart';
 import 'package:hospital_maraba/app/modules/novo_agendamento/views/novo_agendamento_view.dart';
 import 'package:hospital_maraba/app/modules/settings/views/settings_view.dart';
@@ -59,7 +60,9 @@ class HomeView extends GetResponsiveView<HomeController> {
             CardHome(
                 icon: Icon(Icons.calendar_view_week,
                     size: mediumIconSize, color: iconGray),
-                onTap: () {},
+                onTap: () {
+                  Get.to(() => MinhasConsultasScreen());
+                },
                 text: "Minhas consultas",
                 description: "Veja suas consultas agendadas"),
             CardHome(
