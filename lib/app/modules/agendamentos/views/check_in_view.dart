@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:hospital_maraba/app/models/agendamento.dart';
 import 'package:hospital_maraba/app/utils/colorTheme.dart';
 import 'package:hospital_maraba/app/utils/common.sizes.dart';
-import 'package:hospital_maraba/app/widgets/button.dart';
+import 'package:hospital_maraba/utils/common.sizes.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
 import 'package:qr_flutter/qr_flutter.dart';
@@ -17,9 +17,10 @@ class CheckInView extends GetView {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          toolbarHeight: 75 * context.textScaleFactor,
+          toolbarHeight: appBarHeight * context.textScaleFactor,
           title: Text('Check-in de consulta',
-              style: TextStyle(color: Color.fromRGBO(80, 80, 80, 1))),
+              style: Get.theme.textTheme.headlineSmall
+                  ?.copyWith(color: Colors.black54)),
           centerTitle: false,
           elevation: 1,
           bottomOpacity: 0.8,
@@ -50,10 +51,9 @@ class CheckInView extends GetView {
                             child: Text(
                                 "Abaixo estão os detalhes da sua consulta",
                                 textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    fontSize: sectionHeaderFontSize /
-                                        context.textScaleFactor,
-                                    fontWeight: FontWeight.w700)))),
+                                style: Get.theme.textTheme.headline5?.copyWith(
+                                    color: Colors.black54,
+                                    fontWeight: FontWeight.w500)))),
                     Center(
                         child: QrImage(
                       data: agendamento.paciente,
@@ -71,7 +71,9 @@ class CheckInView extends GetView {
                             fontWeight: FontWeight.w400))
                   ])),
               Divider(height: 15, color: Colors.grey.shade400),
+              SizedBox(height: 8),
               DetalhesExame(agendamento),
+              SizedBox(height: 8),
               BotaoCompartilhar()
             ]))));
   }
