@@ -75,7 +75,9 @@ class NovoAgendamentoView extends GetView<NovoAgendamentoController> {
             padding: EdgeInsets.only(left: 20, right: 20, top: 10),
             child: Text(
               "Essas são as informações relevantes para sua consulta, clique em Iniciar agendamento para começar",
-              style: textonormal,
+              style: TextStyle(
+                  fontSize: defaultFontSize / context.textScaleFactor,
+                  color: Colors.black54),
             ),
           ),
           CardHome(

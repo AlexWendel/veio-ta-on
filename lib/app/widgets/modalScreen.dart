@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 
 import '../utils/colorTheme.dart';
 
-class ModalScreen extends GetWidget {
+class ModalScreen extends GetView {
   List<Widget> itemList = [];
   String title = "";
 

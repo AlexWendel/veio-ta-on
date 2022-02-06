@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import '../utils/colorTheme.dart';
+import '../utils/common.sizes.dart';
 
 class Button extends GetResponsiveWidget {
   String text = "";
@@ -31,7 +32,9 @@ class Button extends GetResponsiveWidget {
         onPressed: onPressed,
         child: Text(
           text,
-          style: textonormal,
+          style: TextStyle(
+              fontSize: defaultFontSize / context.textScaleFactor,
+              color: Colors.black54),
         ),
       ),
     );

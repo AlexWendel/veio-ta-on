@@ -51,7 +51,8 @@ class CheckInView extends GetView {
                                 "Abaixo estão os detalhes da sua consulta",
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
-                                    fontSize: sectionHeaderFontSize,
+                                    fontSize: sectionHeaderFontSize /
+                                        context.textScaleFactor,
                                     fontWeight: FontWeight.w700)))),
                     Center(
                         child: QrImage(
@@ -65,7 +66,8 @@ class CheckInView extends GetView {
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             color: Color.fromRGBO(50, 50, 50, 1),
-                            fontSize: sectionSubheaderFontSize,
+                            fontSize: sectionSubheaderFontSize /
+                                context.textScaleFactor,
                             fontWeight: FontWeight.w400))
                   ])),
               Divider(height: 15, color: Colors.grey.shade400),
@@ -88,7 +90,7 @@ class BotaoCompartilhar extends GetWidget {
           child: Text(
             'Compartilhar',
             style: TextStyle(
-                fontSize: 15 * context.textScaleFactor, color: Colors.black54),
+                fontSize: 15 / context.textScaleFactor, color: Colors.black54),
           ),
           onPressed: () {},
         ));
@@ -111,7 +113,7 @@ class DetalheExameField extends GetView {
             title,
             textAlign: TextAlign.start,
             style: TextStyle(
-                fontSize: defaultFontSize,
+                fontSize: defaultFontSize / context.textScaleFactor,
                 color: Color.fromRGBO(120, 120, 120, 1)),
           ),
           SizedBox(height: 5),
@@ -119,7 +121,7 @@ class DetalheExameField extends GetView {
             value,
             textAlign: TextAlign.left,
             style: TextStyle(
-                fontSize: sectionSubheaderFontSize,
+                fontSize: sectionSubheaderFontSize / context.textScaleFactor,
                 color: Color.fromRGBO(80, 80, 80, 1),
                 fontWeight: FontWeight.w500),
           ),
