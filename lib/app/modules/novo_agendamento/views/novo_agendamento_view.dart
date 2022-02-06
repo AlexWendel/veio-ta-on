@@ -10,7 +10,7 @@ import 'package:hospital_maraba/app/widgets/modalScreen.dart';
 
 import '../controllers/novo_agendamento_controller.dart';
 
-class NovoAgendamentoView extends GetView<NovoAgendamentoController> {
+class NovoAgendamentoView extends GetResponsiveView<NovoAgendamentoController> {
   @override
   Widget build(BuildContext context) {
     // List<Widget> itemL = [
@@ -76,7 +76,7 @@ class NovoAgendamentoView extends GetView<NovoAgendamentoController> {
             child: Text(
               "Essas são as informações relevantes para sua consulta, clique em Iniciar agendamento para começar",
               style: TextStyle(
-                  fontSize: defaultFontSize / context.textScaleFactor,
+                  fontSize: defaultFontSize / Get.textScaleFactor,
                   color: Colors.black54),
             ),
           ),
