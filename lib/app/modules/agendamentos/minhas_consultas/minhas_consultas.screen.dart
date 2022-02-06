@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:hospital_maraba/app/modules/DefaultDesignScreen.dart';
+import 'package:hospital_maraba/app/modules/agendamentos/minhas_consultas/views/consulta_agendada.dart';
 import 'package:hospital_maraba/app/modules/settings/widgets/cardConsultas.dart';
 import 'package:hospital_maraba/app/utils/colorTheme.dart';
 import 'package:hospital_maraba/app/utils/common.sizes.dart';
@@ -15,7 +16,7 @@ class MinhasConsultasScreen extends GetView<MinhasConsultasController> {
   @override
   Widget build(BuildContext context) {
     return DefaultDesignScreen(
-      sliverAppBar: TitleSliverAppBar(title: "Configurações do aplicativo"),
+      sliverAppBar: TitleSliverAppBar(title: "Minhas Consultas"),
       body: Column(children: [
         Text(
           "Esses são suas consultas médicas, caso não tenha nenhuma marcada clique em nova consulta",
@@ -42,7 +43,9 @@ class MinhasConsultasScreen extends GetView<MinhasConsultasController> {
                     size: mediumIconSize,
                     color: iconGray,
                   ),
-                  onTap: () {}),
+                  onTap: () {
+                    Get.to(() => ConsultaAgendada());
+                  }),
               CardConsultas(
                   text: "Neurologista",
                   description: "description",
