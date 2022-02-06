@@ -10,11 +10,9 @@ class SettingsView extends GetResponsiveView {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: verdeBosta,
-<<<<<<< HEAD
-      body: Center(
-          child: Column(
-        children: [
+        backgroundColor: verdeBosta,
+        body: Center(
+            child: Column(children: [
           Divider(height: 15, color: iconGray),
           Container(
             height: 50,
@@ -82,20 +80,6 @@ class SettingsView extends GetResponsiveView {
 
             //fim
           )),
-=======
-      body: ModalScreen(
-        body: [
-          Padding(
-            padding: EdgeInsets.only(left: 20, right: 20, top: 10),
-            child: Text(
-              "Essas são as configurações desse aplicativo:",
-              style: textonormal,
-            ),
-          ),
->>>>>>> 9f91ae5395e60d6c047eeee71b50435721fe05b6
-        ],
-        title: "Configurações",
-      ),
-    );
+        ])));
   }
 }
