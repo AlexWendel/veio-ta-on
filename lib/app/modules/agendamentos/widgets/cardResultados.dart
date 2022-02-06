@@ -3,20 +3,21 @@ import 'package:get/get.dart';
 import 'package:hospital_maraba/app/models/agendamento.dart';
 import 'package:hospital_maraba/app/modules/agendamentos/minhas_consultas/views/consulta_agendada.dart';
 import 'package:hospital_maraba/app/modules/agendamentos/views/check_in_view.dart';
+import 'package:hospital_maraba/app/modules/agendamentos/views/resultado_final.dart';
 import 'package:hospital_maraba/app/utils/colorTheme.dart';
 import 'package:hospital_maraba/app/utils/common.colors.dart';
 import 'package:hospital_maraba/app/utils/common.sizes.dart';
 
-class CardConsultas extends GetResponsiveView {
+class CardResultados extends GetResponsiveView {
   final Agendamento agendamento;
-  CardConsultas({required this.agendamento});
+  CardResultados({required this.agendamento});
 
   @override
   Widget build(BuildContext context) {
     return Ink(
         child: InkWell(
       splashColor: Get.theme.splashColor,
-      onTap: () => Get.to(CheckInView(agendamento)),
+      onTap: () => Get.to(ResultadoFinal(agendamento)),
       child: Container(
         alignment: Alignment.centerLeft,
         // height: 150,

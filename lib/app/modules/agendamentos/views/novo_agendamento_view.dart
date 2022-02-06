@@ -6,6 +6,7 @@ import 'package:hospital_maraba/app/modules/agendamentos/views/consultation_type
 import 'package:hospital_maraba/app/modules/settings/views/settings_view.dart';
 import 'package:hospital_maraba/app/utils/colorTheme.dart';
 import 'package:hospital_maraba/app/utils/common.sizes.dart';
+import 'package:hospital_maraba/app/widgets/TitleSliverAppBar.dart';
 import 'package:hospital_maraba/app/widgets/button.dart';
 import 'package:hospital_maraba/app/widgets/cardHome.dart';
 import 'package:hospital_maraba/app/widgets/modalScreen.dart';

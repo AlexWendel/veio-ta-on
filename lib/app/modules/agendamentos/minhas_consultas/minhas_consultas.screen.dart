@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:hospital_maraba/app/models/agendamento.dart';
 import 'package:hospital_maraba/app/modules/DefaultDesignScreen.dart';
 import 'package:hospital_maraba/app/modules/agendamentos/minhas_consultas/views/consulta_agendada.dart';
 import 'package:hospital_maraba/app/modules/settings/widgets/cardConsultas.dart';
@@ -17,139 +18,66 @@ class MinhasConsultasScreen extends GetView<MinhasConsultasController> {
   Widget build(BuildContext context) {
     return DefaultDesignScreen(
       sliverAppBar: TitleSliverAppBar(title: "Minhas Consultas"),
-      body: Column(children: [
-        Text(
-          "Esses são suas consultas médicas, caso não tenha nenhuma marcada clique em nova consulta",
-          style:
-              Get.theme.textTheme.displaySmall?.copyWith(color: Colors.black54),
-        ),
-        SizedBox(height: 8),
-        CardConsultas(
-            text: "Neurologista",
-            description: "description",
-            icon: Icon(
-              Icons.local_hospital_outlined,
-              size: mediumIconSize,
-              color: iconGray,
-            ),
-            onTap: () {
-              Get.to(() => ConsultaAgendada());
-            }),
-        CardConsultas(
-            text: "Neurologista",
-            description: "description",
-            icon: Icon(Icons.local_hospital_outlined,
-                size: mediumIconSize, color: iconGray),
-            onTap: () {}),
-        CardConsultas(
-            text: "Neurologista",
-            description: "description",
-            icon: Icon(Icons.local_hospital_outlined,
-                size: mediumIconSize, color: iconGray),
-            onTap: () {}),
-        CardConsultas(
-            text: "Neurologista",
-            description: "description",
-            icon: Icon(Icons.local_hospital_outlined,
-                size: mediumIconSize, color: iconGray),
-            onTap: () {}),
-      ]),
+      body: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "Esses são suas consultas agendadas",
+                    style: Get.theme.textTheme.displaySmall?.copyWith(
+                        color: Colors.black54, fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(height: 5),
+                  Text(
+                    "Toque para ver detalhes da consulta",
+                    style: Get.theme.textTheme.headline5
+                        ?.copyWith(color: Colors.black54),
+                  )
+                ]),
+            SizedBox(height: 8),
+            Container(
+                alignment: Alignment.center,
+                // height: 150,
+                margin: EdgeInsets.all(5),
+                decoration: BoxDecoration(
+                  // color: Colors.grey.shade100,
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: Column(children: [
+                  CardConsultas(
+                      agendamento: Agendamento(
+                          especialidade: "Cirurgia de catarata",
+                          medico: "Dr. João",
+                          local: "Clínica dos olhos",
+                          paciente: "Alex Wendel Oliveira da Silva",
+                          protocolo: "999999999999999")),
+                  CardConsultas(
+                      agendamento: Agendamento(
+                          especialidade: "Ressonância Magnética",
+                          medico: "Dr. Josué Carvalho Sarazaro",
+                          local: "Hospital Regional de Marabá",
+                          paciente: "Alex Wendel Oliveira da Silva",
+                          protocolo: "999999999999998")),
+                  CardConsultas(
+                      agendamento: Agendamento(
+                          especialidade: "Tomografia Computadorizada",
+                          medico: "Dr. Henrique Santos",
+                          local: "Hospital Municipal de Marabá",
+                          paciente: "Alex Wendel Oliveira da Silva",
+                          protocolo: "999999999999999")),
+                  CardConsultas(
+                      agendamento: Agendamento(
+                          especialidade: "Análise psiquiátrica",
+                          medico: "Dr. Warley Rabelo Galvão",
+                          local: "Hospital Municipal de Marabá",
+                          paciente: "Alex Wendel Oliveira da Silva",
+                          protocolo: "999999999999989")),
+                ])),
+          ]),
     );
-    // Scaffold(
-    //   backgroundColor: verdeBosta,
-    //   body: ModalScreen(
-    //     body: [
-    // Text(
-    //   "Esses são suas consultas médicas, caso não tenha nenhuma marcada clique em nova consulta",
-    //   style: Get.theme.textTheme.displaySmall
-    //       ?.copyWith(color: Colors.black54),
-    // ),
-    // SizedBox(height: 8),
-    // Padding(
-    //   padding: EdgeInsets.only(left: 20, right: 20, top: 10),
-    //   child: Text(
-    //     "",
-    //     style: TextStyle(
-    //         fontSize: defaultFontSize / Get.textScaleFactor,
-    //         color: Colors.black54),
-    //   ),
-    // ),
-    // Container(
-    //   alignment: Alignment.center,
-    //   // height: 150,
-    //   margin: EdgeInsets.all(5),
-    //   padding: EdgeInsets.all(5),
-    //   decoration: BoxDecoration(
-    //     // color: Colors.grey.shade100,
-    //     borderRadius: BorderRadius.circular(8),
-    //   ),
-    //   child: Column(
-    //     children: [
-    //       CardConsultas(
-    //           text: "Neurologista",
-    //           description: "description",
-    //           icon: Icon(
-    //             Icons.local_hospital_outlined,
-    //             size: mediumIconSize,
-    //             color: iconGray,
-    //           ),
-    //           onTap: () {}),
-    //       CardConsultas(
-    //           text: "Neurologista",
-    //           description: "description",
-    //           icon: Icon(Icons.local_hospital_outlined,
-    //               size: mediumIconSize, color: iconGray),
-    //           onTap: () {}),
-    //       CardConsultas(
-    //           text: "Neurologista",
-    //           description: "description",
-    //           icon: Icon(Icons.local_hospital_outlined,
-    //               size: mediumIconSize, color: iconGray),
-    //           onTap: () {}),
-    //       CardConsultas(
-    //           text: "Neurologista",
-    //           description: "description",
-    //           icon: Icon(Icons.local_hospital_outlined,
-    //               size: mediumIconSize, color: iconGray),
-    //           onTap: () {}),
-    //     ],
-    //   ),
-    // ),
-    //     ],
-    //     title: "Minhas consultas",
-    //   ),
-    //   bottomNavigationBar: Container(
-    //     // height: 70,
-    //     color: backGround,
-    //     child: Row(
-    //       crossAxisAlignment: CrossAxisAlignment.center,
-    //       mainAxisAlignment: MainAxisAlignment.end,
-    //       children: [
-    //         Container(
-    //           margin: EdgeInsets.all(20),
-    //           height: 60,
-    //           // width: 200,
-    //           child: ElevatedButton(
-    //             style: ButtonStyle(
-    //               shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-    //                   RoundedRectangleBorder(
-    //                       borderRadius: BorderRadius.circular(10))),
-    //             ),
-    //             onPressed: () {},
-    //             child: Row(
-    //               children: [
-    //                 Text(
-    //                   "Nova consulta",
-    //                   style: textonormal,
-    //                 ),
-    //                 Icon(Icons.arrow_forward_ios_rounded)
-    //               ],
-    //             ),
-    //           ),
-    //         )
-    //       ],
-    //     ),
-    //   ),
-    // );
   }
 }
