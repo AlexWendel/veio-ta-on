@@ -9,9 +9,13 @@ const verdeBosta = Color.fromARGB(255, 164, 228, 137);
 const iconGray = Color.fromARGB(255, 121, 121, 121);
 const grayBackground = Color.fromARGB(255, 239, 239, 239);
 const cardGray = Colors.black38;
+<<<<<<< HEAD
 final textonormal = TextStyle(fontSize: defaultFontSize, color: Colors.black54);
 final appbartext = TextStyle(
     color: Colors.black54, fontSize: defaultFontSize, fontFamily: 'OpenSans');
+=======
+// const background2 = Colors.grey.shade300;
+>>>>>>> 82bff2bca2b2ffc1f9d2336f6eebcd37cd6fcffa
 
 ThemeData mainTheme = ThemeData.light().copyWith(
     backgroundColor: verdeBosta,

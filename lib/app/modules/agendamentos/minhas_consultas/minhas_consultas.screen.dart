@@ -1,0 +1,111 @@
+import 'package:flutter/material.dart';
+
+import 'package:get/get.dart';
+import 'package:hospital_maraba/app/modules/settings/widgets/cardConsultas.dart';
+import 'package:hospital_maraba/app/utils/colorTheme.dart';
+import 'package:hospital_maraba/app/utils/common.sizes.dart';
+import 'package:hospital_maraba/app/widgets/cardHome.dart';
+import 'package:hospital_maraba/app/widgets/modalScreen.dart';
+
+import 'controllers/minhas_consultas.controller.dart';
+
+class MinhasConsultasScreen extends GetView<MinhasConsultasController> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: verdeBosta,
+      body: ModalScreen(
+        body: [
+          Padding(
+            padding: EdgeInsets.only(left: 20, right: 20, top: 10),
+            child: Text(
+              "Esses são suas consultas médicas, caso não tenha nenhuma marcada clique em nova consulta",
+              style: TextStyle(
+                  fontSize: defaultFontSize / Get.textScaleFactor,
+                  color: Colors.black54),
+            ),
+          ),
+          Container(
+            alignment: Alignment.center,
+            // height: 150,
+            margin: EdgeInsets.all(5),
+            padding: EdgeInsets.all(5),
+            decoration: BoxDecoration(
+              color: textFieldGray,
+              borderRadius: BorderRadius.circular(8),
+            ),
+            child: Column(
+              children: [
+                CardConsultas(
+                    text: "Neurologista",
+                    description: "description",
+                    icon: Icon(
+                      Icons.local_hospital_outlined,
+                      size: 40,
+                    ),
+                    onTap: () {}),
+                CardConsultas(
+                    text: "Neurologista",
+                    description: "description",
+                    icon: Icon(
+                      Icons.local_hospital_outlined,
+                      size: 40,
+                    ),
+                    onTap: () {}),
+                CardConsultas(
+                    text: "Neurologista",
+                    description: "description",
+                    icon: Icon(
+                      Icons.local_hospital_outlined,
+                      size: 40,
+                    ),
+                    onTap: () {}),
+                CardConsultas(
+                    text: "Neurologista",
+                    description: "description",
+                    icon: Icon(
+                      Icons.local_hospital_outlined,
+                      size: 40,
+                    ),
+                    onTap: () {}),
+              ],
+            ),
+          ),
+        ],
+        title: "Minhas consultas",
+      ),
+      bottomNavigationBar: Container(
+        // height: 70,
+        color: backGround,
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            Container(
+              margin: EdgeInsets.all(20),
+              height: 60,
+              // width: 200,
+              child: ElevatedButton(
+                style: ButtonStyle(
+                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                      RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10))),
+                ),
+                onPressed: () {},
+                child: Row(
+                  children: [
+                    Text(
+                      "Nova consulta",
+                      style: textonormal,
+                    ),
+                    Icon(Icons.arrow_forward_ios_rounded)
+                  ],
+                ),
+              ),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}

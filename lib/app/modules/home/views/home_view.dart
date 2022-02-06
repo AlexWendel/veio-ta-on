@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hive/hive.dart';
 import 'package:hospital_maraba/app/models/agendamento.dart';
+import 'package:hospital_maraba/app/modules/agendamentos/minhas_consultas/minhas_consultas.screen.dart';
 import 'package:hospital_maraba/app/modules/agendamentos/views/check_in_view.dart';
+<<<<<<< HEAD
 import 'package:hospital_maraba/app/modules/home/widgets/HomeSliverAppBar.dart';
+=======
+>>>>>>> 82bff2bca2b2ffc1f9d2336f6eebcd37cd6fcffa
 import 'package:hospital_maraba/app/modules/agendamentos/views/novo_agendamento_view.dart';
 import 'package:hospital_maraba/app/modules/settings/views/settings_view.dart';
 import 'package:hospital_maraba/app/utils/common.colors.dart';
@@ -60,7 +63,9 @@ class HomeView extends GetView<HomeController> {
             CardHome(
                 icon: Icon(Icons.calendar_view_week,
                     size: mediumIconSize, color: iconGray),
-                onTap: () {},
+                onTap: () {
+                  Get.to(() => MinhasConsultasScreen());
+                },
                 text: "Minhas consultas",
                 description: "Veja suas consultas agendadas"),
             CardHome(
