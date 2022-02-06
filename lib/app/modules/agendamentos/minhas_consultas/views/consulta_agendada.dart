@@ -36,28 +36,28 @@ class ConsultaAgendada extends GetView {
               fontWeight: FontWeight.w400,
               fontSize: defaultFontSize * 1.6),
         ),
-        SizedBox(height: 20),
+        SizedBox(height: 5),
         DetalheResultadosField(
           title: "Nome do paciente ",
           description: "Paulinho Paixão Pacana Pereira",
         ),
-        SizedBox(height: 20),
+        SizedBox(height: 5),
         DetalheResultadosField(
           title: "Médico responsável:",
           description: "Warley Rabelo Xerado",
         ),
-        SizedBox(height: 20),
+        SizedBox(height: 5),
         DetalheResultadosField(
           title: "Local de atendimento:",
           description:
               "Hospital Muncipal - Folha 17, Quadra Especial, Lote 10 - Nova Marabá",
         ),
-        SizedBox(height: 20),
+        SizedBox(height: 5),
         DetalheResultadosField(
           title: "Tipo de atendimento:",
           description: "Tratamento para Vício de Valorant",
         ),
-        SizedBox(height: 20),
+        SizedBox(height: 5),
         DetalheResultadosField(
           title: "Data do atemdimento:",
           description: "Sexta feira, 13 de Março de 2023 às 14:00h",

@@ -36,33 +36,33 @@ class ResultadoFinal extends GetView {
               fontWeight: FontWeight.w400,
               fontSize: defaultFontSize * 1.6),
         ),
-        SizedBox(height: 20),
+        SizedBox(height: 5),
         DetalheResultadosField(
           title: "Nome do paciente ",
           description: "Paulinho Paixão Pacana Pereira",
         ),
-        SizedBox(height: 20),
+        SizedBox(height: 5),
         DetalheResultadosField(
           title: "Médico responsável:",
           description: "Warley Rabelo Xerado",
         ),
-        SizedBox(height: 20),
+        SizedBox(height: 5),
         DetalheResultadosField(
           title: "Local de atendimento:",
           description:
               "Hospital Muncipal - Folha 17, Quadra Especial, Lote 10 - Nova Marabá",
         ),
-        SizedBox(height: 20),
+        SizedBox(height: 5),
         DetalheResultadosField(
           title: "Tipo de atendimento:",
           description: "Exame toxicológico",
         ),
-        SizedBox(height: 20),
+        SizedBox(height: 5),
         DetalheResultadosField(
           title: "Data do atemdimento:",
           description: "Sexta feira, 13 de Março de 2023 às 14:00h",
         ),
-        SizedBox(height: 20),
+        SizedBox(height: 5),
         DetalheResultadosField(
           title: "Resultado:",
           description:
@@ -70,14 +70,35 @@ class ResultadoFinal extends GetView {
         ),
         Divider(height: 15, color: Colors.grey.shade400),
         Text(
-          "Compareça no local de atendimento pelo menos 10 minutos antes da consulta para realizar seu check-in.",
+          "Abaixo está o documento do resultado do exame",
           style: TextStyle(
               color: Color.fromRGBO(80, 80, 80, 1),
               fontWeight: FontWeight.w800,
               fontSize: defaultFontSize * 1.3),
         ),
+        BotaoBaixar()
       ]),
     );
+  }
+}
+
+class BotaoBaixar extends GetWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Align(
+        alignment: Alignment.bottomCenter,
+        child: ElevatedButton(
+          style: ElevatedButton.styleFrom(
+              padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10))),
+          child: Text(
+            'Baixar',
+            style: TextStyle(
+                fontSize: 15 / context.textScaleFactor, color: Colors.white),
+          ),
+          onPressed: () {},
+        ));
   }
 }
 
