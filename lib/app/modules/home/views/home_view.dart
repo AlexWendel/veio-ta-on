@@ -15,8 +15,10 @@ class HomeView extends GetResponsiveView<HomeController> {
   Widget build(BuildContext context) {
     List<Widget> itemList = [
       Container(
+        height: Get.height,
+        margin: EdgeInsets.only(top: 40),
         child: Padding(
-          padding: EdgeInsets.only(left: 10, right: 10, top: 20, bottom: 20),
+          padding: EdgeInsets.only(left: 10, right: 10, top: 20, bottom: 90),
           child: Column(children: [
             Text(
               "Realize o agendamento e check-in de suas consultas já agendadas:",
@@ -95,11 +97,10 @@ class HomeView extends GetResponsiveView<HomeController> {
               ),
               actions: [
                 Container(
-                  margin: EdgeInsets.only(top: 5, right: 5),
+                  margin: EdgeInsets.only(top: 5, right: 5, bottom: 10),
                   width: 50,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    border: Border.all(color: Colors.white, width: 2),
                     image: DecorationImage(
                       fit: BoxFit.cover,
                       image: NetworkImage("https://i.imgur.com/BoN9kdC.png"),
@@ -127,7 +128,8 @@ class HomeView extends GetResponsiveView<HomeController> {
               flexibleSpace: Container(
                 decoration: BoxDecoration(
                     color: verdeBosta,
-                    border: Border.all(color: Colors.transparent)),
+                    border:
+                        Border(bottom: BorderSide(color: iconGray, width: 1))),
               ),
             ),
             SliverList(
