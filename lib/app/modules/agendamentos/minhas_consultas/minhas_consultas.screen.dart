@@ -31,7 +31,7 @@ class MinhasConsultasScreen extends GetView<MinhasConsultasController> {
             margin: EdgeInsets.all(5),
             padding: EdgeInsets.all(5),
             decoration: BoxDecoration(
-              color: textFieldGray,
+              // color: Colors.grey.shade100,
               borderRadius: BorderRadius.circular(8),
             ),
             child: Column(

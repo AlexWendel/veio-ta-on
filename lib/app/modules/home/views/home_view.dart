@@ -3,6 +3,9 @@ import 'package:get/get.dart';
 import 'package:hospital_maraba/app/models/agendamento.dart';
 import 'package:hospital_maraba/app/modules/agendamentos/minhas_consultas/minhas_consultas.screen.dart';
 import 'package:hospital_maraba/app/modules/agendamentos/views/check_in_view.dart';
+
+import 'package:hospital_maraba/app/modules/home/widgets/HomeSliverAppBar.dart';
+
 import 'package:hospital_maraba/app/modules/home/widgets/HomeSliverAppBar.dart';
 import 'package:hospital_maraba/app/modules/agendamentos/views/novo_agendamento_view.dart';
 import 'package:hospital_maraba/app/modules/settings/views/settings_view.dart';
