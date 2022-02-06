@@ -30,11 +30,10 @@ class HomeView extends GetView<HomeController> {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                Text(
-                    "Realize o agendamento e check-in de suas consultas já agendadas:",
+                Text("Faça agendamento e check-in de suas consultas",
                     textAlign: TextAlign.justify,
-                    style: Get.theme.textTheme.displaySmall
-                        ?.copyWith(color: headerGray)),
+                    style: Get.theme.textTheme.displaySmall?.copyWith(
+                        color: Colors.black54, fontWeight: FontWeight.w500)),
                 SizedBox(height: 8),
                 CardHome(
                     icon: Icon(Icons.note_alt_outlined,

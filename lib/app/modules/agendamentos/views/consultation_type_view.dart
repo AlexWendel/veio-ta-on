@@ -33,7 +33,8 @@ class ConsultationTypeView extends GetView {
               ]),
           SizedBox(height: 20),
           InputText(
-              icon: Icon(Icons.search), hintText: "Pesquisar tipo de exame"),
+              icon: Icon(Icons.search),
+              hintText: "Procurar por um tipo de exame"),
           Divider(
             color: Colors.transparent,
             height: 10,
