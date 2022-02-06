@@ -41,32 +41,27 @@ class MinhasConsultasScreen extends GetView<MinhasConsultasController> {
                     description: "description",
                     icon: Icon(
                       Icons.local_hospital_outlined,
-                      size: 40,
+                      size: mediumIconSize,
+                      color: iconGray,
                     ),
                     onTap: () {}),
                 CardConsultas(
                     text: "Neurologista",
                     description: "description",
-                    icon: Icon(
-                      Icons.local_hospital_outlined,
-                      size: 40,
-                    ),
+                    icon: Icon(Icons.local_hospital_outlined,
+                        size: mediumIconSize, color: iconGray),
                     onTap: () {}),
                 CardConsultas(
                     text: "Neurologista",
                     description: "description",
-                    icon: Icon(
-                      Icons.local_hospital_outlined,
-                      size: 40,
-                    ),
+                    icon: Icon(Icons.local_hospital_outlined,
+                        size: mediumIconSize, color: iconGray),
                     onTap: () {}),
                 CardConsultas(
                     text: "Neurologista",
                     description: "description",
-                    icon: Icon(
-                      Icons.local_hospital_outlined,
-                      size: 40,
-                    ),
+                    icon: Icon(Icons.local_hospital_outlined,
+                        size: mediumIconSize, color: iconGray),
                     onTap: () {}),
               ],
             ),
