@@ -23,63 +23,66 @@ class HomeView extends GetView<HomeController> {
         child: Padding(
           padding: EdgeInsets.only(
               left: 20, right: 20, top: 20, bottom: context.height / 5),
-          child: Column(children: [
-            Text(
-              "Realize o agendamento e check-in de suas consultas já agendadas:",
-              style: TextStyle(
-                  fontSize: sectionHeaderFontSize / context.textScaleFactor,
-                  color: headerGray),
-            ),
-            CardHome(
-                icon: Icon(Icons.note_alt_outlined,
-                    size: mediumIconSize, color: iconGray),
-                onTap: () {
-                  Get.to(() => NovoAgendamentoView());
-                },
-                text: "Agendar consulta",
-                description: "Agende uma nova consulta"),
-            CardHome(
-                icon: Icon(Icons.check_box_outlined,
-                    size: mediumIconSize, color: iconGray),
-                onTap: () {
-                  Get.to(() => CheckInView(Agendamento(
-                      especialidade: "Tratamento para Vício de Valorant",
-                      medico: "Warley Rabelo Xeradão",
-                      paciente: "Paulinho Paixão Bacana Pereira",
-                      local: "Hospício Municipal de Marabá",
-                      protocolo: "9999999999999999")));
-                },
-                text: "Fazer check-in",
-                description: "Gerar QR Code de uma consulta"),
-            CardHome(
-                icon: Icon(Icons.notes_outlined,
-                    size: mediumIconSize, color: iconGray),
-                onTap: () {},
-                text: "Resultados dos exames",
-                description: "Resultados dos seus exames"),
-            CardHome(
-                icon: Icon(Icons.calendar_view_week,
-                    size: mediumIconSize, color: iconGray),
-                onTap: () {
-                  Get.to(() => MinhasConsultasScreen());
-                },
-                text: "Minhas consultas",
-                description: "Veja suas consultas agendadas"),
-            CardHome(
-                icon: Icon(Icons.circle_notifications_outlined,
-                    size: mediumIconSize, color: iconGray),
-                onTap: () {},
-                text: "Notificações",
-                description: "Notificações do aplicativo"),
-            CardHome(
-                icon: Icon(Icons.settings_outlined,
-                    size: mediumIconSize, color: iconGray),
-                onTap: () {
-                  Get.to(() => SettingsView());
-                },
-                text: "Configurações",
-                description: "Configure o seu aplicativo"),
-          ]),
+          child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Text(
+                    "Realize o agendamento e check-in de suas consultas já agendadas:",
+                    textAlign: TextAlign.justify,
+                    style: Get.theme.textTheme.displaySmall
+                        ?.copyWith(color: headerGray)),
+                SizedBox(height: 8),
+                CardHome(
+                    icon: Icon(Icons.note_alt_outlined,
+                        size: mediumIconSize, color: iconGray),
+                    onTap: () {
+                      Get.to(() => NovoAgendamentoView());
+                    },
+                    text: "Agendar consulta",
+                    description: "Agende uma nova consulta"),
+                CardHome(
+                    icon: Icon(Icons.check_box_outlined,
+                        size: mediumIconSize, color: iconGray),
+                    onTap: () {
+                      Get.to(() => CheckInView(Agendamento(
+                          especialidade: "Tratamento para Vício de Valorant",
+                          medico: "Warley Rabelo Xeradão",
+                          paciente: "Paulinho Paixão Bacana Pereira",
+                          local: "Hospício Municipal de Marabá",
+                          protocolo: "9999999999999999")));
+                    },
+                    text: "Fazer check-in",
+                    description: "Gerar QR Code de uma consulta"),
+                CardHome(
+                    icon: Icon(Icons.notes_outlined,
+                        size: mediumIconSize, color: iconGray),
+                    onTap: () {},
+                    text: "Resultados dos exames",
+                    description: "Resultados dos seus exames"),
+                CardHome(
+                    icon: Icon(Icons.calendar_view_week,
+                        size: mediumIconSize, color: iconGray),
+                    onTap: () {
+                      Get.to(() => MinhasConsultasScreen());
+                    },
+                    text: "Minhas consultas",
+                    description: "Veja suas consultas agendadas"),
+                CardHome(
+                    icon: Icon(Icons.circle_notifications_outlined,
+                        size: mediumIconSize, color: iconGray),
+                    onTap: () {},
+                    text: "Notificações",
+                    description: "Notificações do aplicativo"),
+                CardHome(
+                    icon: Icon(Icons.settings_outlined,
+                        size: mediumIconSize, color: iconGray),
+                    onTap: () {
+                      Get.to(() => SettingsView());
+                    },
+                    text: "Configurações",
+                    description: "Configure o seu aplicativo"),
+              ]),
         ),
         width: 1000,
         decoration: BoxDecoration(
