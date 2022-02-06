@@ -3,13 +3,13 @@ import 'package:get/get.dart';
 import 'package:hospital_maraba/app/utils/colorTheme.dart';
 import 'package:hospital_maraba/app/widgets/cardHome.dart';
 
-import '../../../widgets/appBarr.dart';
+import "../../../widgets/appBarr.dart";
 
 class SettingsView extends GetResponsiveView {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: MyAppBar(text: "Configurações"),
+      appBar: myAppbar(text: "Configurações"),
       backgroundColor: verdeBosta,
       body: Center(
           child: Column(
