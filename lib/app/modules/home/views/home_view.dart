@@ -20,53 +20,56 @@ class HomeView extends GetResponsiveView<HomeController> {
         margin: EdgeInsets.only(top: 40),
         child: Padding(
           padding: EdgeInsets.only(left: 10, right: 10, top: 20, bottom: 90),
-          child: Column(children: [
-            Text(
-              "Realize o agendamento e check-in de suas consultas já agendadas:",
-              style:
-                  TextStyle(fontSize: sectionHeaderFontSize, color: headerGray),
-            ),
-            CardHome(
-                icon: Icon(Icons.note_alt_outlined,
-                    size: mediumIconSize, color: iconGray),
-                onTap: () {
-                  Get.to(() => NovoAgendamentoView());
-                },
-                text: "Agendar consulta",
-                description: "Agende uma nova consulta"),
-            CardHome(
-                icon: Icon(Icons.check_box_outlined,
-                    size: mediumIconSize, color: iconGray),
-                onTap: () {},
-                text: "Realizar check-in",
-                description: "Crie o QR Code para fazer check-in"),
-            CardHome(
-                icon: Icon(Icons.notes_outlined,
-                    size: mediumIconSize, color: iconGray),
-                onTap: () {},
-                text: "Resultados dos exames",
-                description: "Resultados dos seus exames"),
-            CardHome(
-                icon: Icon(Icons.calendar_view_week,
-                    size: mediumIconSize, color: iconGray),
-                onTap: () {},
-                text: "Minhas consultas",
-                description: "Veja suas consultas agendadas"),
-            CardHome(
-                icon: Icon(Icons.circle_notifications_outlined,
-                    size: mediumIconSize, color: iconGray),
-                onTap: () {},
-                text: "Notificações",
-                description: "Notificações do aplicativo"),
-            CardHome(
-                icon: Icon(Icons.settings_outlined,
-                    size: mediumIconSize, color: iconGray),
-                onTap: () {
-                  Get.to(() => SettingsView());
-                },
-                text: "Configurações",
-                description: "Configure o seu aplicativo")
-          ]),
+          child: SingleChildScrollView(
+            child: Column(children: [
+              Text(
+                "Realize o agendamento e check-in de suas consultas já agendadas:",
+                style: TextStyle(
+                    fontSize: sectionHeaderFontSize / Get.textScaleFactor,
+                    color: headerGray),
+              ),
+              CardHome(
+                  icon: Icon(Icons.note_alt_outlined,
+                      size: mediumIconSize, color: iconGray),
+                  onTap: () {
+                    Get.to(() => NovoAgendamentoView());
+                  },
+                  text: "Agendar consulta",
+                  description: "Agende uma nova consulta"),
+              CardHome(
+                  icon: Icon(Icons.check_box_outlined,
+                      size: mediumIconSize, color: iconGray),
+                  onTap: () {},
+                  text: "Realizar check-in",
+                  description: "Crie o QR Code para fazer check-in"),
+              CardHome(
+                  icon: Icon(Icons.notes_outlined,
+                      size: mediumIconSize, color: iconGray),
+                  onTap: () {},
+                  text: "Resultados dos exames",
+                  description: "Resultados dos seus exames"),
+              CardHome(
+                  icon: Icon(Icons.calendar_view_week,
+                      size: mediumIconSize, color: iconGray),
+                  onTap: () {},
+                  text: "Minhas consultas",
+                  description: "Veja suas consultas agendadas"),
+              CardHome(
+                  icon: Icon(Icons.circle_notifications_outlined,
+                      size: mediumIconSize, color: iconGray),
+                  onTap: () {},
+                  text: "Notificações",
+                  description: "Notificações do aplicativo"),
+              CardHome(
+                  icon: Icon(Icons.settings_outlined,
+                      size: mediumIconSize, color: iconGray),
+                  onTap: () {
+                    Get.to(() => SettingsView());
+                  },
+                  text: "Configurações",
+                  description: "Configure o seu aplicativo"),
+            ]),
+          ),
         ),
         width: 1000,
         decoration: BoxDecoration(
