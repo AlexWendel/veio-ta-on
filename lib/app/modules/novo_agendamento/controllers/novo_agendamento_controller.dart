@@ -1,10 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
-class SettingsController extends GetxController {
-  //TODO: Implement SettingsController
-
-  List<Widget> body = <Widget>[].obs;
+class NovoAgendamentoController extends GetxController {
+  //TODO: Implement NovoAgendamentoController
 
   final count = 0.obs;
   @override

@@ -8,6 +8,8 @@ import 'package:hospital_maraba/app/modules/dashboardPage/bindings/dashboard_pag
 import 'package:hospital_maraba/app/modules/dashboardPage/views/dashboard_page_view.dart';
 import 'package:hospital_maraba/app/modules/home/bindings/home_binding.dart';
 import 'package:hospital_maraba/app/modules/home/views/home_view.dart';
+import 'package:hospital_maraba/app/modules/novo_agendamento/bindings/novo_agendamento_binding.dart';
+import 'package:hospital_maraba/app/modules/novo_agendamento/views/novo_agendamento_view.dart';
 import 'package:hospital_maraba/app/modules/settings/bindings/settings_binding.dart';
 import 'package:hospital_maraba/app/modules/settings/views/settings_view.dart';
 import 'package:hospital_maraba/app/modules/signIn/bindings/sign_in_binding.dart';
@@ -50,6 +52,11 @@ class AppPages {
       name: _Paths.SETTINGS,
       page: () => SettingsView(),
       binding: SettingsBinding(),
+    ),
+    GetPage(
+      name: _Paths.NOVO_AGENDAMENTO,
+      page: () => NovoAgendamentoView(),
+      binding: NovoAgendamentoBinding(),
     ),
   ];
 }

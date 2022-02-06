@@ -29,13 +29,13 @@ class SignInView extends GetResponsiveView<SingInController> {
           InputText(
               hintText: "Nome completo",
               icon: Icon(Icons.person_outline_rounded)),
-          SizedBox(height: 10),
+          SizedBox(height: 20),
           InputText(
               hintText: "Digite o e-mail", icon: Icon(Icons.email_outlined)),
           SizedBox(height: 2),
           InputText(
               hintText: "Confirme o email", icon: Icon(Icons.email_outlined)),
-          SizedBox(height: 10),
+          SizedBox(height: 20),
           InputText(
             hintText: "Digite a senha",
             obfuscatedField: true,
@@ -47,7 +47,7 @@ class SignInView extends GetResponsiveView<SingInController> {
             obfuscatedField: true,
             icon: Icon(Icons.lock_outline),
           ),
-          SizedBox(height: 10),
+          SizedBox(height: 20),
           Button(
             text: "Criar conta",
             onPressed: () {},
