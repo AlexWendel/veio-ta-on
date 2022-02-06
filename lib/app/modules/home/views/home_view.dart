@@ -3,6 +3,10 @@ import 'package:get/get.dart';
 import 'package:hospital_maraba/app/models/agendamento.dart';
 import 'package:hospital_maraba/app/modules/agendamentos/minhas_consultas/minhas_consultas.screen.dart';
 import 'package:hospital_maraba/app/modules/agendamentos/views/check_in_view.dart';
+
+import 'package:hospital_maraba/app/modules/home/widgets/HomeSliverAppBar.dart';
+
+import 'package:hospital_maraba/app/modules/home/widgets/HomeSliverAppBar.dart';
 import 'package:hospital_maraba/app/modules/agendamentos/views/novo_agendamento_view.dart';
 import 'package:hospital_maraba/app/modules/settings/views/settings_view.dart';
 import 'package:hospital_maraba/app/utils/common.colors.dart';
@@ -13,7 +17,7 @@ import '../controllers/home_controller.dart';
 
 import '../../../utils/colorTheme.dart';
 
-class HomeView extends GetResponsiveView<HomeController> {
+class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     List<Widget> itemList = [
@@ -21,7 +25,7 @@ class HomeView extends GetResponsiveView<HomeController> {
         margin: EdgeInsets.only(top: 40),
         child: Padding(
           padding: EdgeInsets.only(
-              left: 10, right: 10, top: 20, bottom: context.height / 5),
+              left: 20, right: 20, top: 20, bottom: context.height / 5),
           child: Column(children: [
             Text(
               "Realize o agendamento e check-in de suas consultas já agendadas:",
@@ -48,8 +52,8 @@ class HomeView extends GetResponsiveView<HomeController> {
                       local: "Hospício Municipal de Marabá",
                       protocolo: "9999999999999999")));
                 },
-                text: "Realizar check-in",
-                description: "Crie o QR Code para fazer check-in"),
+                text: "Fazer check-in",
+                description: "Gerar QR Code de uma consulta"),
             CardHome(
                 icon: Icon(Icons.notes_outlined,
                     size: mediumIconSize, color: iconGray),
@@ -95,59 +99,7 @@ class HomeView extends GetResponsiveView<HomeController> {
         backgroundColor: verdeBosta,
         body: CustomScrollView(
           slivers: [
-            SliverAppBar(
-              backgroundColor: verdeBosta,
-              toolbarHeight: 80 * context.textScaleFactor,
-              elevation: 0,
-              centerTitle: false,
-              leading: IconButton(
-                onPressed: () {
-                  Get.back();
-                },
-                icon: Icon(
-                  Icons.arrow_back_ios_outlined,
-                  color: Colors.black54,
-                  size: 32,
-                ),
-              ),
-              actions: [
-                Container(
-                  margin: EdgeInsets.only(top: 5, right: 5, bottom: 10),
-                  width: 50,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    image: DecorationImage(
-                      fit: BoxFit.cover,
-                      image: NetworkImage("https://i.imgur.com/BoN9kdC.png"),
-                    ),
-                  ),
-                ),
-              ],
-              title: Column(
-                children: [
-                  Row(children: [
-                    Text("Olá, ",
-                        style: TextStyle(
-                            fontWeight: FontWeight.w400,
-                            color: Colors.black54)),
-                    Text("Paulete",
-                        style: TextStyle(
-                            fontWeight: FontWeight.w700,
-                            color: Colors.black54)),
-                  ]),
-                  Text("Paulete",
-                      style: TextStyle(fontSize: 14 / context.textScaleFactor))
-                ],
-              ),
-              floating: true,
-              expandedHeight: 100,
-              flexibleSpace: Container(
-                decoration: BoxDecoration(
-                    color: verdeBosta,
-                    border: Border(
-                        bottom: BorderSide(color: iconGray, width: 0.4))),
-              ),
-            ),
+            HomeSliverAppBar(),
             SliverList(
                 delegate: SliverChildBuilderDelegate(
                     (context, index) => itemList[index],
