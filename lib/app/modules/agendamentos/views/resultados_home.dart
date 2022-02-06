@@ -28,10 +28,10 @@ class ResultadosHome extends GetView {
         CardResultados(
             agendamento: Agendamento(
                 especialidade: "Ressonância Magnética",
-                medico: "Dr. Josué Carvalho Sarazaro",
-                local: "Hospital Regional de Marabá",
+                medico: "Dr.Iago Costa da silva",
+                local: "Hospital Municipal de Marabá",
                 paciente: "Alex Wendel Oliveira da Silva",
-                protocolo: "999999999999998"))
+                protocolo: "111111111111111111111"))
       ]),
     );
   }

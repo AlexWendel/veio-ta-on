@@ -17,7 +17,7 @@ class CardResultados extends GetResponsiveView {
     return Ink(
         child: InkWell(
       splashColor: Get.theme.splashColor,
-      onTap: () => Get.to(ResultadoFinal()),
+      onTap: () => Get.to(ResultadoFinal(agendamento)),
       child: Container(
         alignment: Alignment.centerLeft,
         // height: 150,

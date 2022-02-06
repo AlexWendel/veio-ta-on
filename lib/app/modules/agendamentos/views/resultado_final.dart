@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:hospital_maraba/app/models/agendamento.dart';
 import 'package:hospital_maraba/app/modules/DefaultDesignScreen.dart';
 import 'package:hospital_maraba/app/modules/settings/widgets/cardConsultas.dart';
 import 'package:hospital_maraba/app/utils/colorTheme.dart';
@@ -10,6 +11,8 @@ import 'package:hospital_maraba/app/widgets/cardHome.dart';
 import 'package:hospital_maraba/app/widgets/modalScreen.dart';
 
 class ResultadoFinal extends GetView {
+  Agendamento agendamento;
+  ResultadoFinal(this.agendamento);
   @override
   Widget build(BuildContext context) {
     return DefaultDesignScreen(
