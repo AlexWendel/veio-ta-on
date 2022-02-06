@@ -9,14 +9,14 @@ import 'package:hospital_maraba/app/widgets/TitleSliverAppBar.dart';
 import 'package:hospital_maraba/app/widgets/cardHome.dart';
 import 'package:hospital_maraba/app/widgets/modalScreen.dart';
 
-class ConsultaAgendada extends GetView {
+class ResultadoFinal extends GetView {
   @override
   Widget build(BuildContext context) {
     return DefaultDesignScreen(
-      sliverAppBar: TitleSliverAppBar(title: "Consulta agendada"),
+      sliverAppBar: TitleSliverAppBar(title: "Resultado do exame"),
       body: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         Text(
-          "Consulta agendada",
+          "Resultado do exame",
           style: TextStyle(
               color: Color.fromRGBO(120, 120, 120, 1),
               fontWeight: FontWeight.w600,
@@ -24,13 +24,13 @@ class ConsultaAgendada extends GetView {
         ),
         SizedBox(height: 8),
         Text(
-          "Abaixo estão os detalhes de sua consulta, é possível cancelar ou gerar o QR Code.",
+          "Abaixo estão os detalhes de seu exame, é possível baixar o documento completo na parte inferior da tela",
           style:
               Get.theme.textTheme.displaySmall?.copyWith(color: Colors.black54),
         ),
         Divider(height: 15, color: Colors.grey.shade400),
         Text(
-          "Detalhes da consulta",
+          "Detalhes do resultado",
           style: TextStyle(
               color: Color.fromRGBO(120, 120, 120, 1),
               fontWeight: FontWeight.w400,
@@ -55,22 +55,50 @@ class ConsultaAgendada extends GetView {
         SizedBox(height: 5),
         DetalheResultadosField(
           title: "Tipo de atendimento:",
-          description: "Tratamento para Vício de Valorant",
+          description: "Exame toxicológico",
         ),
         SizedBox(height: 5),
         DetalheResultadosField(
           title: "Data do atemdimento:",
           description: "Sexta feira, 13 de Março de 2023 às 14:00h",
         ),
+        SizedBox(height: 5),
+        DetalheResultadosField(
+          title: "Resultado:",
+          description:
+              "Presente no sangue do paciêntecocáina, maconha, valorante e outras drogas",
+        ),
+        Divider(height: 15, color: Colors.grey.shade400),
         Text(
-          "Compareça no local de atendimento pelo menos 10 minutos antes da consulta para realizar seu check-in.",
+          "Abaixo está o documento do resultado do exame",
           style: TextStyle(
               color: Color.fromRGBO(80, 80, 80, 1),
               fontWeight: FontWeight.w800,
               fontSize: defaultFontSize * 1.3),
         ),
+        BotaoBaixar()
       ]),
     );
+  }
+}
+
+class BotaoBaixar extends GetWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Align(
+        alignment: Alignment.bottomCenter,
+        child: ElevatedButton(
+          style: ElevatedButton.styleFrom(
+              padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10))),
+          child: Text(
+            'Baixar',
+            style: TextStyle(
+                fontSize: 15 / context.textScaleFactor, color: Colors.white),
+          ),
+          onPressed: () {},
+        ));
   }
 }
 

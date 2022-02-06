@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:hospital_maraba/app/models/agendamento.dart';
 import 'package:hospital_maraba/app/modules/agendamentos/minhas_consultas/minhas_consultas.screen.dart';
 import 'package:hospital_maraba/app/modules/agendamentos/views/check_in_view.dart';
+import 'package:hospital_maraba/app/modules/agendamentos/views/resultados_home.dart';
 
 import 'package:hospital_maraba/app/modules/home/widgets/HomeSliverAppBar.dart';
 
@@ -59,7 +60,9 @@ class HomeView extends GetView<HomeController> {
                 CardHome(
                     icon: Icon(Icons.notes_outlined,
                         size: mediumIconSize, color: iconGray),
-                    onTap: () {},
+                    onTap: () {
+                      Get.to(() => ResultadosHome());
+                    },
                     text: "Resultados dos exames",
                     description: "Resultados dos seus exames"),
                 CardHome(

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:hospital_maraba/app/modules/agendamentos/views/consultation_type_view.dart';
+import 'package:hospital_maraba/app/modules/home/views/home_view.dart';
 import 'package:hospital_maraba/app/utils/colorTheme.dart';
 import 'package:hospital_maraba/app/utils/common.sizes.dart';
 import 'package:hospital_maraba/app/widgets/appBarr.dart';
@@ -46,7 +47,9 @@ class ConsultationDateView extends GetView {
                       Icon(Icons.arrow_back_ios_rounded),
                       Text(
                         "Voltar",
-                        style: textonormal,
+                        style: TextStyle(
+                            fontSize: defaultFontSize / context.textScaleFactor,
+                            color: Colors.black54),
                       ),
                     ],
                   ),
@@ -65,14 +68,26 @@ class ConsultationDateView extends GetView {
                             borderRadius: BorderRadius.circular(10))),
                   ),
                   onPressed: () {
-                    Get.to(() => ConsultationMedicView());
+                    Get.defaultDialog(
+                      titleStyle: TextStyle(color: Colors.black54),
+                      middleTextStyle: TextStyle(color: Colors.black54),
+                      barrierDismissible: false,
+                      buttonColor: verdeBosta,
+                      onConfirm: () => Get.to(() => HomeView()),
+                      backgroundColor: backGround,
+                      title: "Concluido",
+                      middleText: "Agendamento realizado com sucesso",
+                      confirmTextColor: Colors.black54,
+                    );
                   },
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Text(
                         "Continuar",
-                        style: textonormal,
+                        style: TextStyle(
+                            fontSize: defaultFontSize / context.textScaleFactor,
+                            color: Colors.black54),
                       ),
                       Icon(Icons.arrow_forward_ios_rounded)
                     ],
@@ -159,7 +174,12 @@ class ConsultationDateView extends GetView {
                       Icons.keyboard_arrow_down_rounded,
                       size: 50,
                     ),
-                    onTap: () {})
+                    onTap: () {
+                      showTimePicker(
+                          initialEntryMode: TimePickerEntryMode.input,
+                          context: context,
+                          initialTime: TimeOfDay(hour: 0, minute: 0));
+                    })
               ]),
               margin: EdgeInsets.only(top: 20),
               decoration: BoxDecoration(

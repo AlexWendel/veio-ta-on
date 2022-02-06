@@ -44,7 +44,9 @@ class ConsultationPlaceView extends GetView {
                       Icon(Icons.arrow_back_ios_rounded),
                       Text(
                         "Voltar",
-                        style: textonormal,
+                        style: TextStyle(
+                            fontSize: defaultFontSize / context.textScaleFactor,
+                            color: Colors.black54),
                       ),
                     ],
                   ),
@@ -70,7 +72,9 @@ class ConsultationPlaceView extends GetView {
                     children: [
                       Text(
                         "Continuar",
-                        style: textonormal,
+                        style: TextStyle(
+                            fontSize: defaultFontSize / context.textScaleFactor,
+                            color: Colors.black54),
                       ),
                       Icon(Icons.arrow_forward_ios_rounded)
                     ],
