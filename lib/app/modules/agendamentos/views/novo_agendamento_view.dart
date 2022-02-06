@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:hospital_maraba/app/modules/agendamentos/views/consultation_type_view.dart';
 import 'package:hospital_maraba/app/modules/settings/views/settings_view.dart';
 import 'package:hospital_maraba/app/utils/colorTheme.dart';
 import 'package:hospital_maraba/app/utils/common.sizes.dart';
@@ -126,11 +127,13 @@ class NovoAgendamentoView extends GetResponsiveView<NovoAgendamentoController> {
                       RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10))),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  Get.to(() => ConsultationTypeView());
+                },
                 child: Row(
                   children: [
                     Text(
-                      "Iniciar gerenciamento",
+                      "Iniciar agendamento",
                       style: textonormal,
                     ),
                     Icon(Icons.arrow_forward_ios_rounded)

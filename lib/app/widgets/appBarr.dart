@@ -2,9 +2,9 @@ import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:hospital_maraba/app/utils/colorTheme.dart';
 
-PreferredSizeWidget myAppbar({text = ""}) {
+PreferredSizeWidget myAppbar({text = "", required BuildContext context}) {
   return AppBar(
-    toolbarHeight: 90,
+    toolbarHeight: 90 * context.textScaleFactor,
 
     elevation: 0,
     // leadingWidth: 10,
