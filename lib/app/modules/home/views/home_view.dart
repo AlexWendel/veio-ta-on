@@ -131,8 +131,8 @@ class HomeView extends GetResponsiveView<HomeController> {
               flexibleSpace: Container(
                 decoration: BoxDecoration(
                     color: verdeBosta,
-                    border:
-                        Border(bottom: BorderSide(color: iconGray, width: 1))),
+                    border: Border(
+                        bottom: BorderSide(color: iconGray, width: 0.4))),
               ),
             ),
             SliverList(
