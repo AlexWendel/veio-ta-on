@@ -22,9 +22,8 @@ class HomeView extends GetResponsiveView<HomeController> {
           child: Column(children: [
             Text(
               "Realize o agendamento e check-in de suas consultas já agendadas:",
-              style: TextStyle(
-                  fontSize: sectionHeaderFontSize / Get.textScaleFactor,
-                  color: headerGray),
+              style:
+                  TextStyle(fontSize: sectionHeaderFontSize, color: headerGray),
             ),
             CardHome(
                 icon: Icon(Icons.note_alt_outlined,
