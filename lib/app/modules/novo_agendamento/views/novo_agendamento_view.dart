@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:hospital_maraba/app/modules/settings/views/settings_view.dart';
 import 'package:hospital_maraba/app/utils/colorTheme.dart';
 import 'package:hospital_maraba/app/utils/common.sizes.dart';
+import 'package:hospital_maraba/app/widgets/button.dart';
 import 'package:hospital_maraba/app/widgets/cardHome.dart';
 
 import '../controllers/novo_agendamento_controller.dart';
@@ -35,19 +36,19 @@ class NovoAgendamentoView extends GetView<NovoAgendamentoController> {
                 text: "Tipo de consulta",
                 description: "Escolha o tipo de consulta que deseja agendar"),
             CardHome(
-                icon: Icon(Icons.check_box_outlined,
+                icon: Icon(Icons.calendar_today_sharp,
                     size: mediumIconSize, color: iconGray),
                 onTap: () {},
                 text: "Data da consulta",
                 description: "Escolha uma data disponível para a consulta"),
             CardHome(
-                icon: Icon(Icons.notes_outlined,
+                icon: Icon(Icons.add_location,
                     size: mediumIconSize, color: iconGray),
                 onTap: () {},
                 text: "Local da consulta",
                 description: "Selecione a unidade de atendimento"),
             CardHome(
-                icon: Icon(Icons.calendar_view_week,
+                icon: Icon(Icons.medical_services_outlined,
                     size: mediumIconSize, color: iconGray),
                 onTap: () {},
                 text: "Seleciona o especialista ",
@@ -66,6 +67,38 @@ class NovoAgendamentoView extends GetView<NovoAgendamentoController> {
     ];
 
     return Scaffold(
+        bottomNavigationBar: Container(
+          // height: 70,
+          color: backGround,
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Container(
+                margin: EdgeInsets.all(20),
+                height: 60,
+                // width: 200,
+                child: ElevatedButton(
+                  style: ButtonStyle(
+                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10))),
+                  ),
+                  onPressed: () {},
+                  child: Row(
+                    children: [
+                      Text(
+                        "Iniciar gerenciamento",
+                        style: textonormal,
+                      ),
+                      Icon(Icons.arrow_forward_ios_rounded)
+                    ],
+                  ),
+                ),
+              )
+            ],
+          ),
+        ),
         backgroundColor: verdeBosta,
         body: CustomScrollView(
           slivers: [
