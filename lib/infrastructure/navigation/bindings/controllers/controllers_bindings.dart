@@ -1,0 +1,1 @@
+export 'package:hospital_maraba/infrastructure/navigation/bindings/controllers/minhas_consultas.controller.binding.dart'; 

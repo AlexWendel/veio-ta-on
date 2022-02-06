@@ -1,0 +1,1 @@
+export 'package:hospital_maraba/app/modules/agendamentos/minhas_consultas/minhas_consultas.screen.dart';
