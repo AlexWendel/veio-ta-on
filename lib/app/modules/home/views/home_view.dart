@@ -99,7 +99,7 @@ class HomeView extends GetView<HomeController> {
     ];
 
     return Scaffold(
-        backgroundColor: verdeBosta,
+        backgroundColor: Get.theme.backgroundColor,
         body: CustomScrollView(
           slivers: [
             HomeSliverAppBar(),
