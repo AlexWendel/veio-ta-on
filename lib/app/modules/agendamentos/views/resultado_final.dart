@@ -123,19 +123,14 @@ class DetalheResultadosField extends GetView {
               fontWeight: FontWeight.w300,
               fontSize: defaultFontSize / context.textScaleFactor),
         ),
-        Container(
-          // width: 260,
-          // margin: EdgeInsets.all(2),
-          padding: EdgeInsets.only(top: 5, bottom: 10),
-          child: Text(
-            description,
-            maxLines: 1,
-            style: TextStyle(
-                color: Color.fromRGBO(80, 80, 80, 1),
-                fontWeight: FontWeight.w900,
-                fontSize: sectionSubheaderFontSize / context.textScaleFactor),
-          ),
-        ),
+        Text(
+          description,
+          textAlign: TextAlign.left,
+          style: TextStyle(
+              fontSize: sectionSubheaderFontSize / context.textScaleFactor,
+              color: Color.fromRGBO(80, 80, 80, 1),
+              fontWeight: FontWeight.w500),
+        )
       ],
     );
   }
