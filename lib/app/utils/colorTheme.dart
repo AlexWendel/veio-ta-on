@@ -10,16 +10,23 @@ const iconGray = Color.fromARGB(255, 121, 121, 121);
 const grayBackground = Color.fromARGB(255, 239, 239, 239);
 const cleareGrayBrackground = Color.fromARGB(255, 245, 245, 245);
 const cardGray = Colors.black38;
-
 final textonormal = TextStyle(fontSize: defaultFontSize, color: Colors.black54);
 final appbartext = TextStyle(
     color: Colors.black54, fontSize: defaultFontSize, fontFamily: 'OpenSans');
-
 // const background2 = Colors.grey.shade300;
 
 ThemeData mainTheme = ThemeData.light().copyWith(
+    iconTheme: IconThemeData(color: iconGray, size: mediumIconSize),
     backgroundColor: verdeBosta,
-    textTheme: TextTheme(displayMedium: TextStyle(fontFamily: 'OpenSans')),
+    textTheme: TextTheme(
+            displayMedium: TextStyle(fontFamily: 'OpenSans'),
+            displaySmall: TextStyle(fontSize: 30))
+        .apply(
+            fontFamily: 'Arial',
+            bodyColor: cardGray,
+            displayColor: cardGray,
+            decorationColor: verdeBosta),
+    canvasColor: grayBackground,
     colorScheme: ColorScheme.fromSwatch(
         primarySwatch: verdeBostaMaterialColor,
         backgroundColor: backGround,
@@ -32,9 +39,8 @@ ThemeData mainTheme = ThemeData.light().copyWith(
         selectionHandleColor: verdeBosta),
     elevatedButtonTheme: ElevatedButtonThemeData(
         style: ButtonStyle(
-            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                RoundedRectangleBorder(
-                    side: BorderSide(color: Colors.transparent))),
+            shape: MaterialStateProperty.all<RoundedRectangleBorder>(RoundedRectangleBorder(
+                side: BorderSide(color: Colors.transparent))),
             foregroundColor: MaterialStateProperty.all<Color>(iconGray),
             backgroundColor: MaterialStateProperty.all<Color>(verdeBosta))),
     inputDecorationTheme: InputDecorationTheme(
@@ -43,5 +49,4 @@ ThemeData mainTheme = ThemeData.light().copyWith(
         focusColor: backGround,
         fillColor: backGround,
         iconColor: iconGray,
-        focusedBorder:
-            OutlineInputBorder(borderSide: BorderSide(color: cardGray))));
+        focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: cardGray))));
