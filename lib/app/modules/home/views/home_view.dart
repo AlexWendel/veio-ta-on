@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hive/hive.dart';
 import 'package:hospital_maraba/app/models/agendamento.dart';
 import 'package:hospital_maraba/app/modules/agendamentos/views/check_in_view.dart';
-import 'package:hospital_maraba/app/modules/novo_agendamento/views/novo_agendamento_view.dart';
+import 'package:hospital_maraba/app/modules/agendamentos/views/novo_agendamento_view.dart';
 import 'package:hospital_maraba/app/modules/settings/views/settings_view.dart';
 import 'package:hospital_maraba/app/utils/common.colors.dart';
 import 'package:hospital_maraba/app/widgets/cardHome.dart';

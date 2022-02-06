@@ -9,7 +9,7 @@ import 'package:hospital_maraba/app/modules/dashboardPage/views/dashboard_page_v
 import 'package:hospital_maraba/app/modules/home/bindings/home_binding.dart';
 import 'package:hospital_maraba/app/modules/home/views/home_view.dart';
 import 'package:hospital_maraba/app/modules/novo_agendamento/bindings/novo_agendamento_binding.dart';
-import 'package:hospital_maraba/app/modules/novo_agendamento/views/novo_agendamento_view.dart';
+import 'package:hospital_maraba/app/modules/agendamentos/views/novo_agendamento_view.dart';
 import 'package:hospital_maraba/app/modules/settings/bindings/settings_binding.dart';
 import 'package:hospital_maraba/app/modules/settings/views/settings_view.dart';
 import 'package:hospital_maraba/app/modules/signIn/bindings/sign_in_binding.dart';

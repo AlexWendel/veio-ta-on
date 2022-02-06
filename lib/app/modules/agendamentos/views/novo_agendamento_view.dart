@@ -8,7 +8,7 @@ import 'package:hospital_maraba/app/widgets/button.dart';
 import 'package:hospital_maraba/app/widgets/cardHome.dart';
 import 'package:hospital_maraba/app/widgets/modalScreen.dart';
 
-import '../controllers/novo_agendamento_controller.dart';
+import '../../novo_agendamento/controllers/novo_agendamento_controller.dart';
 
 class NovoAgendamentoView extends GetResponsiveView<NovoAgendamentoController> {
   @override
