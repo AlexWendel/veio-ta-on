@@ -33,8 +33,9 @@ class HomeView extends GetView<HomeController> {
                 Text(
                     "Realize o agendamento e check-in de suas consultas já agendadas:",
                     textAlign: TextAlign.justify,
-                    style: Get.theme.textTheme.displaySmall
-                        ?.copyWith(color: headerGray)),
+                    style: Get.theme.textTheme.displaySmall?.copyWith(
+                        color: headerGray,
+                        fontSize: defaultFontSize / context.textScaleFactor)),
                 SizedBox(height: 8),
                 CardHome(
                     icon: Icon(Icons.note_alt_outlined,
