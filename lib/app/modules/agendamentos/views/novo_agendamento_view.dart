@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:hospital_maraba/app/modules/DefaultDesignScreen.dart';
 import 'package:hospital_maraba/app/modules/agendamentos/views/consultation_type_view.dart';
 import 'package:hospital_maraba/app/modules/settings/views/settings_view.dart';
 import 'package:hospital_maraba/app/utils/colorTheme.dart';
@@ -9,6 +10,8 @@ import 'package:hospital_maraba/app/widgets/button.dart';
 import 'package:hospital_maraba/app/widgets/cardHome.dart';
 import 'package:hospital_maraba/app/widgets/modalScreen.dart';
 
+import '../../../widgets/TitleSliverAppBar.dart';
+import '../../bottomNavBarDesignScreen.dart';
 import '../../novo_agendamento/controllers/novo_agendamento_controller.dart';
 
 class NovoAgendamentoView extends GetResponsiveView<NovoAgendamentoController> {
@@ -68,18 +71,48 @@ class NovoAgendamentoView extends GetResponsiveView<NovoAgendamentoController> {
     //   ),
     // ];
 
-    return Scaffold(
-      backgroundColor: verdeBosta,
-      body: ModalScreen(
-        body: [
-          Padding(
-            padding: EdgeInsets.only(left: 20, right: 20, top: 10),
-            child: Text(
-              "Essas são as informações relevantes para sua consulta, clique em Iniciar agendamento para começar",
-              style: TextStyle(
-                  fontSize: defaultFontSize / Get.textScaleFactor,
-                  color: Colors.black54),
-            ),
+    return BottomNavBarDesignScreen(
+        bottomNavBar: Container(
+          // height: 70,
+          color: backGround,
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Container(
+                margin: EdgeInsets.all(20),
+                height: 60,
+                // width: 200,
+                child: ElevatedButton(
+                  style: ButtonStyle(
+                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10))),
+                  ),
+                  onPressed: () {
+                    Get.to(() => ConsultationTypeView());
+                  },
+                  child: Row(
+                    children: [
+                      Text(
+                        "Iniciar agendamento",
+                        style: textonormal,
+                      ),
+                      Icon(Icons.arrow_forward_ios_rounded)
+                    ],
+                  ),
+                ),
+              )
+            ],
+          ),
+        ),
+        body: Column(children: [
+          Text(
+            "Essas são as informações relevantes para sua consulta, clique em Iniciar agendamento para começar",
+            textAlign: TextAlign.justify,
+            style: TextStyle(
+                fontSize: defaultFontSize / Get.textScaleFactor,
+                color: Colors.black54),
           ),
           CardHome(
               icon: Icon(Icons.local_hospital_outlined,
@@ -107,82 +140,7 @@ class NovoAgendamentoView extends GetResponsiveView<NovoAgendamentoController> {
               onTap: () {},
               text: "Seleciona o especialista ",
               description: "Selecione um especialista"),
-        ],
-        title: "Agendamento de consultas",
-      ),
-      bottomNavigationBar: Container(
-        // height: 70,
-        color: backGround,
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            Container(
-              margin: EdgeInsets.all(20),
-              height: 60,
-              // width: 200,
-              child: ElevatedButton(
-                style: ButtonStyle(
-                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                      RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10))),
-                ),
-                onPressed: () {
-                  Get.to(() => ConsultationTypeView());
-                },
-                child: Row(
-                  children: [
-                    Text(
-                      "Iniciar agendamento",
-                      style: textonormal,
-                    ),
-                    Icon(Icons.arrow_forward_ios_rounded)
-                  ],
-                ),
-              ),
-            )
-          ],
-        ),
-      ),
-      // backgroundColor: verdeBosta,
-      // body: CustomScrollView(
-      //   slivers: [
-      //     SliverAppBar(
-      //       backgroundColor: verdeBosta,
-      //       toolbarHeight: 80 * context.textScaleFactor,
-      //       elevation: 0,
-      //       centerTitle: false,
-      //       leading: IconButton(
-      //         onPressed: () {
-      //           Get.back();
-      //         },
-      //         icon: Icon(
-      //           Icons.arrow_back_ios_outlined,
-      //           color: Colors.black54,
-      //           size: 32,
-      //         ),
-      //       ),
-      //       title: Text("Agendamento de consultas",
-      //           style: TextStyle(
-      //               fontSize: 23,
-      //               fontWeight: FontWeight.w600,
-      //               color: Colors.black54)),
-      //       floating: true,
-      //       expandedHeight: 100,
-      //       flexibleSpace: Container(
-      //         decoration: BoxDecoration(
-      //             color: verdeBosta,
-      //             border: Border(
-      //                 bottom: BorderSide(color: iconGray, width: 0.4))),
-      //       ),
-      //       //aqui....................
-      //     ),
-      //     SliverList(
-      //         delegate: SliverChildBuilderDelegate(
-      //             (context, index) => itemL[index],
-      //             childCount: itemL.length))
-      //   ],
-      // ),
-    );
+        ]),
+        sliverAppBar: TitleSliverAppBar(title: "Agendamento de consultas"));
   }
 }

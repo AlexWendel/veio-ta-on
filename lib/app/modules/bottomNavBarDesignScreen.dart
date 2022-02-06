@@ -1,14 +1,15 @@
+// ignore_for_file: unnecessary_this
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hospital_maraba/app/modules/DefaultDesignScreen.dart';
 
-class DefaultDesignScreen extends GetView {
-  final Widget body;
-  final sliverAppBar;
+class BottomNavBarDesignScreen extends DefaultDesignScreen {
+  final Widget bottomNavBar;
 
-  DefaultDesignScreen({
-    required this.body,
-    required this.sliverAppBar,
-  });
+  BottomNavBarDesignScreen(
+      {required Widget body, required sliverAppBar, required this.bottomNavBar})
+      : super(body: body, sliverAppBar: sliverAppBar);
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +21,7 @@ class DefaultDesignScreen extends GetView {
                 left: 20,
                 right: 20,
                 top: 20,
-                bottom: Get.height / 5 + (Get.height / (3 + 1))),
+                bottom: (Get.height / 5) + (Get.height / (3 + 1))),
             child: body),
         decoration: BoxDecoration(
           color: Get.theme.canvasColor,
@@ -33,6 +34,7 @@ class DefaultDesignScreen extends GetView {
     ];
 
     return Scaffold(
+        bottomNavigationBar: bottomNavBar,
         backgroundColor: Get.theme.backgroundColor,
         body: CustomScrollView(
           slivers: [
