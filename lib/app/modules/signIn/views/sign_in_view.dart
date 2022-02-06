@@ -7,10 +7,11 @@ import 'package:hospital_maraba/app/widgets/button.dart';
 
 import '../controllers/sign_in_controller.dart';
 
-class SignInView extends GetResponsiveView<SingInController> {
+class SignInView extends GetView<SingInController> {
   @override
   Widget build(BuildContext context) {
-    print(context.textScaleFactor);
+    Get.put(SingInController());
+
     return Scaffold(
       body: ListView(
         padding: EdgeInsets.symmetric(horizontal: 20),
@@ -26,31 +27,19 @@ class SignInView extends GetResponsiveView<SingInController> {
                         TextStyle(fontWeight: FontWeight.w500, fontSize: 30)),
                 Divider(height: 15 * context.textScaleFactor, color: cardGray),
               ])),
-          InputText(
-              hintText: "Nome completo",
-              icon: Icon(Icons.person_outline_rounded)),
+          controller.nameInput.value,
           SizedBox(height: 20),
-          InputText(
-              hintText: "Digite o e-mail", icon: Icon(Icons.email_outlined)),
+          controller.emailInput.value,
           SizedBox(height: 2),
-          InputText(
-              hintText: "Confirme o email", icon: Icon(Icons.email_outlined)),
+          controller.emailConfirmInput.value,
           SizedBox(height: 20),
-          InputText(
-            hintText: "Digite a senha",
-            obfuscatedField: true,
-            icon: Icon(Icons.lock_outline),
-          ),
+          controller.passwordInput.value,
           SizedBox(height: 2),
-          InputText(
-            hintText: "Confirme a senha",
-            obfuscatedField: true,
-            icon: Icon(Icons.lock_outline),
-          ),
+          controller.passwordConfirmInput.value,
           SizedBox(height: 20),
           Button(
             text: "Criar conta",
-            onPressed: () {},
+            onPressed: () => controller.register(),
           ),
           Divider(height: 30, color: Colors.transparent),
         ],

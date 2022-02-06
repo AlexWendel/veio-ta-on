@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hospital_maraba/app/authcontrolller.dart';
+import 'package:hospital_maraba/app/models/loginform.dart';
 import 'package:hospital_maraba/app/modules/Login/widgets/senha.dart';
 import 'package:hospital_maraba/app/modules/dashboardPage/views/dashboard_page_view.dart';
 import 'package:hospital_maraba/app/modules/home/views/home_view.dart';
@@ -8,7 +10,15 @@ import 'package:hospital_maraba/app/widgets/button.dart';
 import 'package:hospital_maraba/app/widgets/inputText.dart';
 import '../controllers/login_controller.dart';
 
-class LoginView extends GetResponsiveView<LoginController> {
+class LoginView extends GetView<LoginController> {
+  final emailInput = InputText(
+      hintText: "Digite seu e-mail", icon: Icon(Icons.email_outlined));
+
+  final passwordInput = InputText(
+      hintText: "Digite sua senha",
+      icon: Icon(Icons.lock_outline),
+      obfuscatedField: true);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,16 +46,9 @@ class LoginView extends GetResponsiveView<LoginController> {
               color: Colors.transparent,
               height: 10,
             ),
-            InputText(
-              hintText: "Digite seu e-mail",
-              icon: Icon(Icons.email_outlined),
-            ),
+            emailInput,
             SizedBox(height: 10),
-            InputText(
-              hintText: "Digite sua senha",
-              icon: Icon(Icons.lock_outline),
-              obfuscatedField: true,
-            ),
+            passwordInput,
             Divider(
               color: Colors.transparent,
               height: 15,
@@ -76,12 +79,10 @@ class LoginView extends GetResponsiveView<LoginController> {
                     "Esqueceu sua senha? ",
                     style: TextStyle(fontSize: 18, color: Colors.black54),
                   ),
-                  InkWell(
-                      onTap: () => Get.to(() => DashboardPageView()),
-                      child: Text(
-                        "Clique aqui",
-                        style: TextStyle(fontSize: 18, color: Colors.black87),
-                      )),
+                  Text(
+                    "Clique aqui",
+                    style: TextStyle(fontSize: 18, color: Colors.black87),
+                  ),
                 ],
               ),
             ),
@@ -92,7 +93,10 @@ class LoginView extends GetResponsiveView<LoginController> {
             Button(
               text: "Entrar",
               onPressed: () {
-                Get.to(() => HomeView());
+                Get.offAll(() => HomeView());
+                // AuthController.instance.login(LoginForm(
+                //     email: emailInput.textFieldController.value.value.text,
+                //     password: passwordInput.textFieldController.value.text));
               },
             )
           ],

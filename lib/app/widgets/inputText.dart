@@ -7,6 +7,8 @@ class InputText extends GetWidget {
   final String hintText;
   final Icon icon;
   final bool obfuscatedField;
+  final Rx<TextEditingController> textFieldController =
+      TextEditingController().obs;
 
   InputText(
       {required this.icon,
@@ -19,6 +21,9 @@ class InputText extends GetWidget {
       height: 60,
       alignment: Alignment.center,
       child: TextField(
+        onEditingComplete: () =>
+            {}, // TODO: Verificar se o valor é igual em InputText que estiverem ligados
+        controller: textFieldController.value,
         cursorColor: verdeBosta,
         decoration: InputDecoration(
           focusedBorder: OutlineInputBorder(
