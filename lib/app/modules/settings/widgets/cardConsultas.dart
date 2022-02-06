@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:hospital_maraba/app/utils/colorTheme.dart';
 import 'package:hospital_maraba/app/utils/common.sizes.dart';
 
-class CardConsultas extends GetWidget {
+class CardConsultas extends GetResponsiveView {
   final String text;
   final String description;
   final Icon icon;
@@ -84,7 +84,7 @@ class CardConsultas extends GetWidget {
     ));
   }
 
-  Row RowStyle(BuildContext context, IconData icone, String texto) {
+  Widget RowStyle(BuildContext context, IconData icone, String texto) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -94,11 +94,10 @@ class CardConsultas extends GetWidget {
           color: iconGray, //Color.fromRGBO(160, 160, 160, 1),
         ),
         Container(
-          // width: 260,
+          width: 260,
           padding: EdgeInsets.only(top: 5, bottom: 10),
           child: Text(
             texto,
-            maxLines: 1,
             style: TextStyle(
                 color: Color.fromRGBO(160, 160, 160, 1),
                 fontWeight: FontWeight.w400,
