@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:hospital_maraba/app/utils/colorTheme.dart';
 import 'package:hospital_maraba/app/utils/common.sizes.dart';
 
-class CardHome extends GetWidget {
+class CardHome extends GetView {
   final String text;
   final String description;
   final Icon icon;

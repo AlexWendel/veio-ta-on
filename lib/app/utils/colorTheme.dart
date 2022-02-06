@@ -8,6 +8,7 @@ const backGround = Color.fromARGB(255, 253, 253, 253);
 const verdeBosta = Color.fromARGB(255, 164, 228, 137);
 const iconGray = Color.fromARGB(255, 121, 121, 121);
 const grayBackground = Color.fromARGB(255, 239, 239, 239);
+const cleareGrayBrackground = Color.fromARGB(255, 245, 245, 245);
 const cardGray = Colors.black38;
 <<<<<<< HEAD
 final textonormal = TextStyle(fontSize: defaultFontSize, color: Colors.black54);

@@ -4,7 +4,7 @@ import '../utils/colorTheme.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 
-class InputText extends GetWidget {
+class InputText extends GetView {
   final String hintText;
   final Icon icon;
   final bool obfuscatedField;
