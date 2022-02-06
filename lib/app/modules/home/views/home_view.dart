@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
+import 'package:hospital_maraba/app/models/agendamento.dart';
+import 'package:hospital_maraba/app/modules/agendamentos/views/check_in_view.dart';
 import 'package:hospital_maraba/app/modules/novo_agendamento/views/novo_agendamento_view.dart';
 import 'package:hospital_maraba/app/modules/settings/views/settings_view.dart';
 import 'package:hospital_maraba/app/utils/common.colors.dart';
@@ -37,7 +39,14 @@ class HomeView extends GetResponsiveView<HomeController> {
             CardHome(
                 icon: Icon(Icons.check_box_outlined,
                     size: mediumIconSize, color: iconGray),
-                onTap: () {},
+                onTap: () {
+                  Get.to(() => CheckInView(Agendamento(
+                      especialidade: "Tratamento para Vício de Valorant",
+                      medico: "Warley Rabelo Xeradão",
+                      paciente: "Paulinho Paixão Bacana Pereira",
+                      local: "Hospício Municipal de Marabá",
+                      protocolo: "9999999999999999")));
+                },
                 text: "Realizar check-in",
                 description: "Crie o QR Code para fazer check-in"),
             CardHome(
