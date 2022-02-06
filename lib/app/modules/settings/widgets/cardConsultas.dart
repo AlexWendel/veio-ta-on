@@ -25,7 +25,7 @@ class CardConsultas extends GetResponsiveView {
         alignment: Alignment.centerLeft,
         // height: 150,
         margin: EdgeInsets.all(5),
-        padding: EdgeInsets.all(8),
+        padding: EdgeInsets.all(10),
         decoration: BoxDecoration(
           color: textFieldGray,
           borderRadius: BorderRadius.circular(8),
@@ -43,8 +43,8 @@ class CardConsultas extends GetResponsiveView {
             ),
 
             Container(
-              width: 260,
-              padding: EdgeInsets.only(top: 5, left: 10),
+              // width: 260,
+              padding: EdgeInsets.only(top: 8, left: 20),
               child: Text(
                 "Hospital Municipal - Folha 17, Quadra Especial - Nova Marabá - PA",
                 style: TextStyle(
@@ -55,8 +55,8 @@ class CardConsultas extends GetResponsiveView {
               ),
             ),
             Container(
-              width: 260,
-              padding: EdgeInsets.only(top: 5, left: 10),
+              // width: 260,
+              padding: EdgeInsets.only(top: 8, left: 20),
               child: Text(
                 "13/05/22 as 14:30h",
                 style: TextStyle(
@@ -67,8 +67,8 @@ class CardConsultas extends GetResponsiveView {
               ),
             ),
             Container(
-              width: 260,
-              padding: EdgeInsets.only(top: 5, left: 10),
+              // width: 260,
+              padding: EdgeInsets.only(top: 8, left: 20),
               child: Text(
                 "Dr. Wanderley Andrade",
                 style: TextStyle(
@@ -78,18 +78,18 @@ class CardConsultas extends GetResponsiveView {
                         defaultCardDescriptionSize / context.textScaleFactor),
               ),
             ),
-            Container(
-              width: 260,
-              padding: EdgeInsets.only(top: 5, bottom: 5, left: 10),
-              child: Text(
-                "Clique para saber mais ",
-                style: TextStyle(
-                    color: Color.fromRGBO(160, 160, 160, 1),
-                    fontWeight: FontWeight.w400,
-                    fontSize:
-                        defaultCardDescriptionSize / context.textScaleFactor),
-              ),
-            ),
+            // Container(
+            //   width: 260,
+            //   padding: EdgeInsets.only(top: 5, bottom: 5, left: 20),
+            //   child: Text(
+            //     "Clique para saber mais ",
+            //     style: TextStyle(
+            //         color: Color.fromRGBO(160, 160, 160, 1),
+            //         fontWeight: FontWeight.w400,
+            //         fontSize:
+            //             defaultCardDescriptionSize / context.textScaleFactor),
+            //   ),
+            // ),
 
             // Text(
             //   "Clique para saber mais ",
