@@ -65,7 +65,7 @@ class ConsultaAgendada extends GetView {
         Text(
           "Compareça no local de atendimento pelo menos 10 minutos antes da consulta para realizar seu check-in.",
           style: TextStyle(
-              color: Colors.black87,
+              color: Color.fromRGBO(80, 80, 80, 1),
               fontWeight: FontWeight.w800,
               fontSize: defaultFontSize * 1.3),
         ),
@@ -93,7 +93,7 @@ class DetalheResultadosField extends GetView {
           style: TextStyle(
               color: Color.fromRGBO(120, 120, 120, 1),
               fontWeight: FontWeight.w300,
-              fontSize: defaultFontSize * 1.4),
+              fontSize: defaultFontSize / context.textScaleFactor),
         ),
         Container(
           width: 260,
@@ -102,9 +102,9 @@ class DetalheResultadosField extends GetView {
             description,
             maxLines: 1,
             style: TextStyle(
-                color: Color.fromRGBO(160, 160, 160, 1),
+                color: Color.fromRGBO(80, 80, 80, 1),
                 fontWeight: FontWeight.w900,
-                fontSize: defaultCardDescriptionSize * 1.3),
+                fontSize: sectionSubheaderFontSize / context.textScaleFactor),
           ),
         ),
       ],

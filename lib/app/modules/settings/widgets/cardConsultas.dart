@@ -24,7 +24,7 @@ class CardConsultas extends GetResponsiveView {
       child: Container(
         alignment: Alignment.centerLeft,
         // height: 150,
-        margin: EdgeInsets.all(5),
+        margin: EdgeInsets.symmetric(vertical: 5),
         padding: EdgeInsets.all(10),
         decoration: BoxDecoration(
           color: textFieldGray,

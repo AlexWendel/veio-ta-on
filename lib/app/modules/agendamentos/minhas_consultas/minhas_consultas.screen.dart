@@ -24,49 +24,35 @@ class MinhasConsultasScreen extends GetView<MinhasConsultasController> {
               Get.theme.textTheme.displaySmall?.copyWith(color: Colors.black54),
         ),
         SizedBox(height: 8),
-        Container(
-          alignment: Alignment.center,
-          // height: 150,
-          margin: EdgeInsets.all(5),
-          padding: EdgeInsets.all(5),
-          decoration: BoxDecoration(
-            // color: Colors.grey.shade100,
-            borderRadius: BorderRadius.circular(8),
-          ),
-          child: Column(
-            children: [
-              CardConsultas(
-                  text: "Neurologista",
-                  description: "description",
-                  icon: Icon(
-                    Icons.local_hospital_outlined,
-                    size: mediumIconSize,
-                    color: iconGray,
-                  ),
-                  onTap: () {
-                    Get.to(() => ConsultaAgendada());
-                  }),
-              CardConsultas(
-                  text: "Neurologista",
-                  description: "description",
-                  icon: Icon(Icons.local_hospital_outlined,
-                      size: mediumIconSize, color: iconGray),
-                  onTap: () {}),
-              CardConsultas(
-                  text: "Neurologista",
-                  description: "description",
-                  icon: Icon(Icons.local_hospital_outlined,
-                      size: mediumIconSize, color: iconGray),
-                  onTap: () {}),
-              CardConsultas(
-                  text: "Neurologista",
-                  description: "description",
-                  icon: Icon(Icons.local_hospital_outlined,
-                      size: mediumIconSize, color: iconGray),
-                  onTap: () {}),
-            ],
-          ),
-        ),
+        CardConsultas(
+            text: "Neurologista",
+            description: "description",
+            icon: Icon(
+              Icons.local_hospital_outlined,
+              size: mediumIconSize,
+              color: iconGray,
+            ),
+            onTap: () {
+              Get.to(() => ConsultaAgendada());
+            }),
+        CardConsultas(
+            text: "Neurologista",
+            description: "description",
+            icon: Icon(Icons.local_hospital_outlined,
+                size: mediumIconSize, color: iconGray),
+            onTap: () {}),
+        CardConsultas(
+            text: "Neurologista",
+            description: "description",
+            icon: Icon(Icons.local_hospital_outlined,
+                size: mediumIconSize, color: iconGray),
+            onTap: () {}),
+        CardConsultas(
+            text: "Neurologista",
+            description: "description",
+            icon: Icon(Icons.local_hospital_outlined,
+                size: mediumIconSize, color: iconGray),
+            onTap: () {}),
       ]),
     );
     // Scaffold(
