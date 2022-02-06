@@ -22,7 +22,7 @@ class SettingsView extends GetResponsiveView {
           ),
           Container(
             child: Padding(
-              padding: EdgeInsets.only(left: 20, right: 20, top: 10),
+              padding: EdgeInsets.only(left: 20, right: 20, top: 20),
               child: Text(
                 "Essas são as configurações desse aplicativo",
                 style: textonormal,
@@ -39,7 +39,7 @@ class SettingsView extends GetResponsiveView {
           ),
           Expanded(
               child: Container(
-            padding: EdgeInsets.only(top: 10),
+            padding: EdgeInsets.only(top: 10, left: 10, right: 10),
             color: backGround,
             child: ListView(
               children: [
