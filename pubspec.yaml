@@ -16,6 +16,8 @@ dependencies:
   intl: ^0.17.0
   flutter: 
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
 
 dev_dependencies: 
   hive_generator: ^1.1.2
