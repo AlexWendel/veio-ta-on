@@ -43,27 +43,6 @@ class CardConsultas extends GetResponsiveView {
               Container(
                 alignment: Alignment.centerLeft,
                 width: Get.width / 2,
-<<<<<<< HEAD
-                child: FittedBox(
-                  fit: BoxFit.scaleDown,
-                  child: RichText(
-                    overflow: TextOverflow.ellipsis,
-                    text: TextSpan(
-                      style: DefaultTextStyle.of(context).style,
-                      children: <TextSpan>[
-                        TextSpan(
-                            text: 'Médico: ',
-                            style: TextStyle(
-                                fontWeight: FontWeight.w500,
-                                color: Colors.black54)),
-                        TextSpan(
-                            text: agendamento.medico,
-                            style: Get.theme.textTheme.headline6?.copyWith(
-                                color: headerGray,
-                                fontWeight: FontWeight.w400)),
-                      ],
-                    ),
-=======
                 child: RichText(
                   text: TextSpan(
                     style: DefaultTextStyle.of(context).style,
@@ -78,35 +57,12 @@ class CardConsultas extends GetResponsiveView {
                           style: TextStyle(
                               color: headerGray, fontWeight: FontWeight.w400)),
                     ],
->>>>>>> 189596b41ef511d37b34c56d07b32b62e40a8f39
                   ),
                 ),
               ),
               Container(
                 alignment: Alignment.centerLeft,
                 width: Get.width / 2,
-<<<<<<< HEAD
-                child: FittedBox(
-                  alignment: Alignment.centerLeft,
-                  fit: BoxFit.scaleDown,
-                  child: RichText(
-                    overflow: TextOverflow.ellipsis,
-                    text: TextSpan(
-                      style: DefaultTextStyle.of(context).style,
-                      children: <TextSpan>[
-                        TextSpan(
-                            text: 'Local: ',
-                            style: TextStyle(
-                                fontWeight: FontWeight.w500,
-                                color: Colors.black54)),
-                        TextSpan(
-                            text: agendamento.local,
-                            style: Get.theme.textTheme.headline6?.copyWith(
-                                color: headerGray,
-                                fontWeight: FontWeight.w400)),
-                      ],
-                    ),
-=======
                 child: RichText(
                   text: TextSpan(
                     style: DefaultTextStyle.of(context).style,
@@ -121,34 +77,12 @@ class CardConsultas extends GetResponsiveView {
                           style: TextStyle(
                               color: headerGray, fontWeight: FontWeight.w400)),
                     ],
->>>>>>> 189596b41ef511d37b34c56d07b32b62e40a8f39
                   ),
                 ),
               ),
               Container(
                 width: Get.width / 2,
                 alignment: Alignment.centerLeft,
-<<<<<<< HEAD
-                child: FittedBox(
-                  fit: BoxFit.scaleDown,
-                  child: RichText(
-                    overflow: TextOverflow.ellipsis,
-                    text: TextSpan(
-                      style: DefaultTextStyle.of(context).style,
-                      children: <TextSpan>[
-                        TextSpan(
-                            text: 'Horário: ',
-                            style: TextStyle(
-                                fontWeight: FontWeight.w500,
-                                color: Colors.black54)),
-                        TextSpan(
-                            text: agendamento.data,
-                            style: Get.theme.textTheme.headline6?.copyWith(
-                                color: headerGray,
-                                fontWeight: FontWeight.w400)),
-                      ],
-                    ),
-=======
                 child: RichText(
                   text: TextSpan(
                     style: DefaultTextStyle.of(context).style,
@@ -164,7 +98,6 @@ class CardConsultas extends GetResponsiveView {
                               fontWeight: FontWeight.w400,
                               color: Colors.black54)),
                     ],
->>>>>>> 189596b41ef511d37b34c56d07b32b62e40a8f39
                   ),
                 ),
               ),
@@ -173,7 +106,7 @@ class CardConsultas extends GetResponsiveView {
           IconButton(
               icon: Icon(Icons.arrow_forward_ios, color: headerGray),
               onPressed: () =>
-                  Get.to(ConsultaAgendada(agendamento: agendamento)))
+                  Get.to(() => ConsultaAgendada(agendamento: agendamento)))
         ]),
       ),
     ));
