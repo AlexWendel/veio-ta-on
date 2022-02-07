@@ -48,23 +48,30 @@ class HomeSliverAppBar extends GetWidget {
           Row(children: [
             // Icon(Icons.circle_rounded,
             //     size: 14, color: Colors.lightGreenAccent),
-            RichText(
-              text: TextSpan(
-                text: 'Você tem ',
-                style: TextStyle(
-                    fontSize: 14,
-                    /*color: Colors.black54*/
-                    fontWeight: FontWeight.w600),
-                children: <TextSpan>[
-                  TextSpan(
-                      text: '4 ',
-                      style: Get.theme.textTheme.bodyMedium
-                          ?.copyWith(fontWeight: FontWeight.w800)),
-                  TextSpan(
-                      text: 'novas notificações!',
-                      style: Get.theme.textTheme.bodyMedium
-                          ?.copyWith(fontWeight: FontWeight.w600)),
-                ],
+            Container(
+              alignment: Alignment.centerLeft,
+              width: Get.width / 2,
+              child: FittedBox(
+                fit: BoxFit.scaleDown,
+                child: RichText(
+                  text: TextSpan(
+                    text: 'Você tem ',
+                    style: TextStyle(
+                        fontSize: 14,
+                        /*color: Colors.black54*/
+                        fontWeight: FontWeight.w600),
+                    children: <TextSpan>[
+                      TextSpan(
+                          text: '4 ',
+                          style: Get.theme.textTheme.bodyMedium
+                              ?.copyWith(fontWeight: FontWeight.w800)),
+                      TextSpan(
+                          text: 'novas notificações!',
+                          style: Get.theme.textTheme.bodyMedium
+                              ?.copyWith(fontWeight: FontWeight.w600)),
+                    ],
+                  ),
+                ),
               ),
             )
           ])
