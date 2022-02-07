@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hospital_maraba/app/modules/agendamentos/controllers/agendamentos_controller.dart';
 import 'package:hospital_maraba/app/utils/common.sizes.dart';
 
 class CardAgendamentos extends GetView {
@@ -12,6 +13,7 @@ class CardAgendamentos extends GetView {
   final isSelected = false.obs;
   final relatives = <Rx<Color>>[].obs;
   int index = 0;
+  AgendamentosController controller = Get.put(AgendamentosController());
 
   CardAgendamentos({
     required this.text,
@@ -34,6 +36,7 @@ class CardAgendamentos extends GetView {
             for (int i = index + 1; i < relatives.length; i++) {
               relatives[i].value = Get.theme.highlightColor;
             }
+            controller.isPicked = true;
             onTap!();
           },
           child: Obx(() => Container(

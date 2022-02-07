@@ -28,6 +28,7 @@ class ConsultationMedicView extends GetView<AgendamentosController> {
     BuildContext context,
   ) {
     AgendamentosController controller = Get.put(AgendamentosController());
+    controller.isPicked = false;
     return BottomNavBarDesignScreen(
         sliverAppBar: TitleSliverAppBar(title: "Escolha o especialista"),
         body: Column(children: [
@@ -96,9 +97,14 @@ class ConsultationMedicView extends GetView<AgendamentosController> {
                   icon: Icon(Icons.arrow_back_ios_outlined)),
               GenericButton(
                   color: Get.theme.primaryColor,
-                  onPressed: () => Get.to(() => ConsultationDateView(
-                        currentAgendamento: currentAgendamento,
-                      )),
+                  onPressed: () => {
+                        if (controller.isPicked)
+                          {
+                            Get.to(() => ConsultationDateView(
+                                  currentAgendamento: currentAgendamento,
+                                ))
+                          }
+                      },
                   text: Text("Continuar",
                       style: Get.theme.textTheme.headline6
                           ?.copyWith(fontWeight: FontWeight.w500)),

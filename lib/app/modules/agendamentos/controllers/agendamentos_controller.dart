@@ -23,7 +23,8 @@ class AgendamentosController extends GetxController {
   final agendamento = <Agendamento>[].obs;
 
   final hilightColor = Get.theme.highlightColor.obs;
-
+  bool isDatePicket = false;
+  bool isTimePicked = false;
   bool isPicked = false;
 
   @override

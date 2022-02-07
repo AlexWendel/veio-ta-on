@@ -33,6 +33,7 @@ extension TimeOfDayExtension on TimeOfDay {
 
 class ConsultationDateView extends GetView {
   HomeController controller = Get.find<HomeController>();
+  AgendamentosController controller2 = Get.put(AgendamentosController());
   Agendamento currentAgendamento;
   DateTime _selectedDate = DateTime.now();
   TimeOfDay _selectedTime = TimeOfDay.now();
@@ -65,6 +66,8 @@ class ConsultationDateView extends GetView {
 
   @override
   Widget build(BuildContext context) {
+    controller2.isDatePicket = false;
+    controller2.isTimePicked = false;
     return BottomNavBarDesignScreen(
       body: Column(
         children: [
@@ -92,6 +95,7 @@ class ConsultationDateView extends GetView {
             height: 20,
           ),
           DateCard(
+              name: "date",
               text: "CALENDÁRIO",
               description: "Selecione a data em que deseja ser atendido",
               icon: Icon(
@@ -110,6 +114,7 @@ class ConsultationDateView extends GetView {
                 print(currentAgendamento.data);
               }),
           DateCard(
+              name: "time",
               text: "HORÁRIO",
               description: "Selecione o horário em que deseja ser atendido",
               icon: Icon(
@@ -149,24 +154,27 @@ class ConsultationDateView extends GetView {
                 // width: 200,
                 GenericButton(
                     onPressed: () {
-                      Get.defaultDialog(
-                        titleStyle: TextStyle(color: Colors.black54),
-                        middleTextStyle: TextStyle(color: Colors.black54),
-                        barrierDismissible: false,
-                        buttonColor: Get.theme.backgroundColor,
-                        onConfirm: () {
-                          currentAgendamento.paciente =
-                              AuthController.instance.currentUser.value.name;
-                          controller.agendamento.add(currentAgendamento);
-                          Get.off(HomeView());
-                          Get.to(() => ConsultaAgendada(
-                              agendamento: currentAgendamento));
-                        },
-                        backgroundColor: backGround,
-                        title: "Concluído",
-                        middleText: "Agendamento realizado com sucesso",
-                        confirmTextColor: Colors.black54,
-                      );
+                      if (controller2.isDatePicket &&
+                          controller2.isTimePicked) {
+                        Get.defaultDialog(
+                          titleStyle: TextStyle(color: Colors.black54),
+                          middleTextStyle: TextStyle(color: Colors.black54),
+                          barrierDismissible: false,
+                          buttonColor: Get.theme.backgroundColor,
+                          onConfirm: () {
+                            currentAgendamento.paciente =
+                                AuthController.instance.currentUser.value.name;
+                            controller.agendamento.add(currentAgendamento);
+                            Get.off(HomeView());
+                            Get.to(() => ConsultaAgendada(
+                                agendamento: currentAgendamento));
+                          },
+                          backgroundColor: backGround,
+                          title: "Concluído",
+                          middleText: "Agendamento realizado com sucesso",
+                          confirmTextColor: Colors.black54,
+                        );
+                      }
                     },
                     color: Get.theme.primaryColor,
                     text: Text(

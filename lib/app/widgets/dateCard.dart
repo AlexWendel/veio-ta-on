@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
+import 'package:hospital_maraba/app/models/agendamento.dart';
+import 'package:hospital_maraba/app/modules/agendamentos/controllers/agendamentos_controller.dart';
 
 import '../utils/colorTheme.dart';
 import '../utils/common.sizes.dart';
@@ -10,9 +12,12 @@ class DateCard extends GetView {
   final String description;
   final Icon icon;
   final Function()? onTap;
+  final String name;
+  AgendamentosController controller = Get.put(AgendamentosController());
 
   DateCard(
-      {required this.text,
+      {required this.name,
+      required this.text,
       required this.description,
       required this.icon,
       required this.onTap});
@@ -23,7 +28,16 @@ class DateCard extends GetView {
     return Ink(
         child: InkWell(
       splashColor: verdeBosta,
-      onTap: onTap,
+      onTap: () {
+        if (name == "date") {
+          controller.isDatePicket = true;
+        }
+        if (this.name == "time") {
+          controller.isTimePicked = true;
+        }
+
+        onTap!();
+      },
       child: Container(
         width: Get.width,
         alignment: Alignment.center,
