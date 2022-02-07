@@ -141,7 +141,7 @@ class ConsultationDateView extends GetView {
                     color: Get.theme.primaryColor,
                     onPressed: () => Get.back(),
                     iconAtLeft: true,
-                    text: Text("Regressar",
+                    text: Text("Voltar",
                         style: Get.theme.textTheme.headline6
                             ?.copyWith(fontWeight: FontWeight.w500)),
                     icon: Icon(Icons.arrow_back_ios_outlined)),
@@ -154,11 +154,13 @@ class ConsultationDateView extends GetView {
                         barrierDismissible: false,
                         buttonColor: Get.theme.backgroundColor,
                         onConfirm: () {
+                          currentAgendamento.paciente =
+                              AuthController.instance.currentUser.value.name;
                           controller.agendamento.add(currentAgendamento);
                           Get.offAll(() => HomeView());
                         },
                         backgroundColor: backGround,
-                        title: "Concluido",
+                        title: "Concluído",
                         middleText: "Agendamento realizado com sucesso",
                         confirmTextColor: Colors.black54,
                       );

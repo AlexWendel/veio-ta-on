@@ -4,14 +4,9 @@ import 'package:get/get.dart';
 import 'package:hospital_maraba/app/authcontrolller.dart';
 import 'package:hospital_maraba/app/models/agendamento.dart';
 import 'package:hospital_maraba/app/modules/DefaultDesignScreen.dart';
-import 'package:hospital_maraba/app/modules/agendamentos/minhas_consultas/views/consulta_agendada.dart';
 import 'package:hospital_maraba/app/modules/home/controllers/home_controller.dart';
 import 'package:hospital_maraba/app/modules/settings/widgets/cardConsultas.dart';
-import 'package:hospital_maraba/app/utils/colorTheme.dart';
-import 'package:hospital_maraba/app/utils/common.sizes.dart';
 import 'package:hospital_maraba/app/widgets/TitleSliverAppBar.dart';
-import 'package:hospital_maraba/app/widgets/cardHome.dart';
-import 'package:hospital_maraba/app/widgets/modalScreen.dart';
 
 import 'controllers/minhas_consultas.controller.dart';
 
@@ -86,8 +81,8 @@ class MinhasConsultasScreen extends GetView {
                       return CardConsultas(
                           agendamento: Agendamento(
                               protocolo: "999999999999989",
-                              paciente: AuthController
-                                  .instance.currentUser.value.name,
+                              paciente:
+                                  controller.agendamento[index - 3].paciente,
                               local: controller.agendamento[index - 3].local,
                               medico: controller.agendamento[index - 3].medico,
                               especialidade: controller
