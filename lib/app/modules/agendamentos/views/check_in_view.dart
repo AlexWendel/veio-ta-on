@@ -73,6 +73,9 @@ class CheckInView extends GetView {
               Divider(height: 15, color: Colors.grey.shade400),
               SizedBox(height: 8),
               DetalhesExame(agendamento),
+              SizedBox(height: 8),
+              BotaoCompartilhar(),
+
               // BotaoCompartilhar()
             ]))));
   }
