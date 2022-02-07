@@ -28,8 +28,9 @@ class SingInController extends GetxController {
 
   register() {
     AuthController.instance.register(RegisterForm(
-        email: emailInput.value.textFieldController.value.text,
-        password: passwordInput.value.textFieldController.value.text));
+        name: nameInput.value.textFieldController.value.value.text,
+        email: emailInput.value.textFieldController.value.value.text,
+        password: passwordInput.value.textFieldController.value.value.text));
   }
 
   @override
