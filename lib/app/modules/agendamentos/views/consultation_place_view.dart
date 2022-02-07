@@ -59,21 +59,21 @@ class ConsultationPlaceView extends GetView<AgendamentosController> {
           ScrollBox(itemSearchInput: controller.itemSearchInput2, itemList: [
             CardAgendamentos(
                 text: "Instituto da visão",
-                description: "Medico para a sua cabeça",
+                description: "Tocantins, Cidade Nova",
                 icon: Icon(Icons.tab),
                 onTap: () {
                   currentAgendamento.local = "Instituto da visão";
                 }),
             CardAgendamentos(
                 text: "Clinica popular",
-                description: "Medico para a sua cabeça",
+                description: "Folha 21, Nova Marabá",
                 icon: Icon(Icons.tab),
                 onTap: () {
                   currentAgendamento.local = "Clinica popular";
                 }),
             CardAgendamentos(
                 text: "Clinica Mais Vida",
-                description: "Medico para a sua cabeça",
+                description: "Folha 16, Nova Marabá",
                 icon: Icon(Icons.tab),
                 onTap: () {
                   currentAgendamento.local = "Clinica Mais Vida";

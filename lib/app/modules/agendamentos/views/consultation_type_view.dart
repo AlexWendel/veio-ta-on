@@ -85,21 +85,21 @@ class ConsultationTypeView extends GetView<AgendamentosController> {
         ScrollBox(itemSearchInput: controller.itemSearchInput1, itemList: [
           CardAgendamentos(
               text: "Hemograma",
-              description: "Medico para a sua cabeça",
+              description: "Exame de sangue",
               icon: Icon(Icons.tab),
               onTap: () {
                 currentAgendamento.especialidade = "Hemograma";
               }),
           CardAgendamentos(
               text: "Glicemia",
-              description: "Medico para a sua cabeça",
+              description: "Exame de sangue",
               icon: Icon(Icons.tab),
               onTap: () {
                 currentAgendamento.especialidade = "Glicemia";
               }),
           CardAgendamentos(
               text: "Transaminases",
-              description: "Medico para a sua cabeça",
+              description: "Exame de sangue",
               icon: Icon(Icons.tab),
               onTap: () {
                 currentAgendamento.especialidade = "Transaminases";
