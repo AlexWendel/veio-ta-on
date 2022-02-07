@@ -58,21 +58,21 @@ class ConsultationMedicView extends GetView<AgendamentosController> {
           ScrollBox(itemSearchInput: controller.itemSearchInput3, itemList: [
             CardAgendamentos(
                 text: "Dr. Kledilson Farias",
-                description: "Medico para a sua cabeça",
+                description: "Neurologista",
                 icon: Icon(Icons.tab),
                 onTap: () {
                   currentAgendamento.medico = "Dr. Kledilson Farias";
                 }),
             CardAgendamentos(
                 text: "Dra. Aline Cardozo",
-                description: "Medico para a sua cabeça",
+                description: "Odontólogo",
                 icon: Icon(Icons.tab),
                 onTap: () {
                   currentAgendamento.medico = "Dra. Aline Cardozo";
                 }),
             CardAgendamentos(
                 text: "Dr. Iago Flores",
-                description: "Medico para a sua cabeça",
+                description: "Psiquiatra",
                 icon: Icon(Icons.tab),
                 onTap: () {
                   currentAgendamento.medico = "Dr. Iago Flores";
