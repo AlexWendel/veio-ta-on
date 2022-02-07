@@ -75,6 +75,7 @@ class ConsultationDateView extends GetView {
                     context: context,
                     initialTime: TimeOfDay(hour: 0, minute: 0));
               }),
+          SizedBox(height: 200),
         ],
       ),
       sliverAppBar: TitleSliverAppBar(title: "Escolha a data e a hora"),
