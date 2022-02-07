@@ -61,7 +61,7 @@ class AuthController extends GetxController {
       currentUser.value.name = form.name;
       currentUser.value.email = form.email;
       currentUser.value.password = form.password;
-      Get.off(() => HomeView());
+      Get.offAll(() => HomeView());
       print("Nominho:" + currentUser.value.firstName);
     } else {
       Get.snackbar("Falha no registro", "Não foi possível criar seu usuário",
@@ -77,7 +77,7 @@ class AuthController extends GetxController {
     if (!(form.email.isEmpty && form.password.isEmpty)) {
       currentUser.value.email = form.email;
       currentUser.value.password = form.password;
-      Get.off(() => HomeView());
+      Get.offAll(() => HomeView());
       print("Nominho:" + currentUser.value.firstName);
     } else {
       Get.snackbar("Sobre o Login", "Não foi possível realizar o login",
@@ -99,6 +99,7 @@ class AuthController extends GetxController {
   }
 
   void logout() async {
+    Get.offAll(() => DashboardPageView());
     // await auth.signOut();
   }
 }
