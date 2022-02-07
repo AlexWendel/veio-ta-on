@@ -60,7 +60,8 @@ class SettingsView extends GetView {
                   Get.to(() => DashboardPageView());
                 },
                 text: "Sair da conta",
-                description: "Clique para fazer o logout")
+                description: "Clique para fazer o logout"),
+            SizedBox(height: 80),
           ]),
     );
   }
