@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hospital_maraba/app/modules/DefaultDesignScreen.dart';
+import 'package:hospital_maraba/app/utils/colorTheme.dart';
 
 class BottomNavBarDesignScreen extends DefaultDesignScreen {
   final Widget bottomNavBar;
@@ -15,13 +16,11 @@ class BottomNavBarDesignScreen extends DefaultDesignScreen {
   Widget build(BuildContext context) {
     List<Widget> itemList = [
       Container(
+        key: key,
         margin: EdgeInsets.only(top: 40),
         child: Padding(
             padding: EdgeInsets.only(
-                left: 20,
-                right: 20,
-                top: 20,
-                bottom: (Get.height / 5) + (Get.height / (3 + 1))),
+                left: 20, right: 20, top: 20, bottom: Get.height / 3),
             child: body),
         decoration: BoxDecoration(
           color: Get.theme.canvasColor,
@@ -34,16 +33,17 @@ class BottomNavBarDesignScreen extends DefaultDesignScreen {
     ];
 
     return Scaffold(
-        bottomNavigationBar: bottomNavBar,
-        backgroundColor: Get.theme.backgroundColor,
-        body: CustomScrollView(
-          slivers: [
-            sliverAppBar,
-            SliverList(
-                delegate: SliverChildBuilderDelegate(
-                    (context, index) => itemList[index],
-                    childCount: itemList.length))
-          ],
-        ));
+      bottomNavigationBar: bottomNavBar,
+      backgroundColor: Get.theme.backgroundColor,
+      body: CustomScrollView(
+        slivers: [
+          sliverAppBar,
+          SliverList(
+              delegate: SliverChildBuilderDelegate(
+                  (context, index) => itemList[index],
+                  childCount: itemList.length)),
+        ],
+      ),
+    );
   }
 }
