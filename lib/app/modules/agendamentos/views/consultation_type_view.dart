@@ -29,7 +29,7 @@ class ConsultationTypeView extends GetView<AgendamentosController> {
 
   @override
   Widget build(BuildContext context) {
-    AgendamentosController controller = Get.find<AgendamentosController>();
+    AgendamentosController controller = Get.put(AgendamentosController());
     controller.isPicked = false;
     return BottomNavBarDesignScreen(
       bottomNavBar: Container(
