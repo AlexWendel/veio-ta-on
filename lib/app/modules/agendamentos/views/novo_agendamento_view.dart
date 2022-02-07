@@ -80,12 +80,6 @@ class NovoAgendamentoView extends GetResponsiveView<NovoAgendamentoController> {
                   text: "Tipo de consulta",
                   description: "Escolha o tipo de consulta"),
               CardHome(
-                  icon: Icon(Icons.calendar_today_sharp,
-                      size: mediumIconSize, color: iconGray),
-                  onTap: () {},
-                  text: "Data da consulta",
-                  description: "Escolha uma data disponível para a consulta"),
-              CardHome(
                   icon: Icon(Icons.add_location,
                       size: mediumIconSize, color: iconGray),
                   onTap: () {},
@@ -97,6 +91,12 @@ class NovoAgendamentoView extends GetResponsiveView<NovoAgendamentoController> {
                   onTap: () {},
                   text: "Seleciona o especialista ",
                   description: "Selecione um especialista"),
+              CardHome(
+                  icon: Icon(Icons.calendar_today_sharp,
+                      size: mediumIconSize, color: iconGray),
+                  onTap: () {},
+                  text: "Data da consulta",
+                  description: "Escolha uma data disponível para a consulta")
             ]),
         sliverAppBar: TitleSliverAppBar(title: "Agendamento de consultas"));
   }
