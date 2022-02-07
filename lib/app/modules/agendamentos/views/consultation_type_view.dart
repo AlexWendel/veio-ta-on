@@ -41,7 +41,11 @@ class ConsultationTypeView extends GetView<AgendamentosController> {
           children: [
             GenericButton(
                 color: Get.theme.primaryColor,
-                onPressed: () => {},
+                onPressed: () => {
+                      Get.to(() => ConsultationPlaceView(
+                            currentAgendamento: currentAgendamento,
+                          ))
+                    },
                 text: Text("Próxima etapa",
                     style: Get.theme.textTheme.headline6
                         ?.copyWith(fontWeight: FontWeight.w500)),

@@ -23,6 +23,7 @@ class CardHome extends GetView {
           splashColor: Get.theme.splashColor,
           onTap: onTap,
           child: Container(
+            width: Get.width,
             alignment: Alignment.center,
             height: 100,
             margin: EdgeInsets.symmetric(vertical: 5),
