@@ -39,20 +39,19 @@ class SemExames extends GetResponsiveView<NovoAgendamentoController> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.end,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Agendar uma nova consulta",
+                      "Resultados de exames",
                       style: Get.theme.textTheme.displaySmall?.copyWith(
                           color: Colors.black54, fontWeight: FontWeight.bold),
                     ),
-                    SizedBox(height: 5),
+                    SizedBox(height: 400),
                     RichText(
                         text: TextSpan(children: [
                       TextSpan(
-                        text:
-                            "Essas são as etapas para agendar uma consulta, toque em",
+                        text: "Você ainda não tem exames marcados ",
                         style: Get.theme.textTheme.headline5
                             ?.copyWith(color: Colors.black54),
                       ),
@@ -62,39 +61,13 @@ class SemExames extends GetResponsiveView<NovoAgendamentoController> {
                             color: Colors.black54, fontWeight: FontWeight.w700),
                       ),
                       TextSpan(
-                        text: "para começar",
+                        text: "para marcar uma consulta!",
                         style: Get.theme.textTheme.headline5
                             ?.copyWith(color: Colors.black54),
                       )
                     ]))
                   ]),
               SizedBox(height: 8),
-              CardHome(
-                  icon: Icon(Icons.local_hospital_outlined,
-                      size: mediumIconSize, color: iconGray),
-                  onTap: () {
-                    // Get.to(() => NovoAgendamentoView());
-                  },
-                  text: "Tipo de consulta",
-                  description: "Escolha o tipo de consulta"),
-              CardHome(
-                  icon: Icon(Icons.calendar_today_sharp,
-                      size: mediumIconSize, color: iconGray),
-                  onTap: () {},
-                  text: "Data da consulta",
-                  description: "Escolha uma data disponível para a consulta"),
-              CardHome(
-                  icon: Icon(Icons.add_location,
-                      size: mediumIconSize, color: iconGray),
-                  onTap: () {},
-                  text: "Local da consulta",
-                  description: "Selecione o local"),
-              CardHome(
-                  icon: Icon(Icons.medical_services_outlined,
-                      size: mediumIconSize, color: iconGray),
-                  onTap: () {},
-                  text: "Seleciona o especialista ",
-                  description: "Selecione um especialista"),
             ]),
         sliverAppBar: TitleSliverAppBar(title: "Agendamento de consultas"));
   }
