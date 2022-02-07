@@ -82,7 +82,7 @@ class CardConsultas extends GetResponsiveView {
                             fontWeight: FontWeight.w500,
                             color: Colors.black54)),
                     TextSpan(
-                        text: "13 de Fevereiro de 2022 às 14:30h",
+                        text: agendamento.data,
                         style: TextStyle(
                             fontWeight: FontWeight.w400,
                             color: Colors.black54)),

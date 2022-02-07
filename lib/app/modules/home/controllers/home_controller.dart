@@ -1,8 +1,11 @@
 import 'package:get/get.dart';
 
+import '../../../models/agendamento.dart';
+
 class HomeController extends GetxController {
   //TODO: Implement HomeController
 
+  final agendamento = <Agendamento>[].obs;
   final count = 0.obs;
 
   @override

@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:hospital_maraba/app/authcontrolller.dart';
+import 'package:hospital_maraba/app/modules/agendamentos/controllers/agendamentos_controller.dart';
+import 'package:hospital_maraba/app/modules/agendamentos/views/agendamentos_view.dart';
 import 'package:hospital_maraba/app/modules/agendamentos/views/consultation_type_view.dart';
 import 'package:hospital_maraba/app/modules/bottomNavBarDesignScreen.dart';
+import 'package:hospital_maraba/app/modules/home/controllers/home_controller.dart';
 import 'package:hospital_maraba/app/modules/home/views/home_view.dart';
 import 'package:hospital_maraba/app/utils/colorTheme.dart';
 import 'package:hospital_maraba/app/utils/common.sizes.dart';
@@ -20,12 +24,21 @@ import '../../../widgets/TitleSliverAppBar.dart';
 import 'consultation_date_view.dart';
 import 'consultation_medic_view.dart';
 
+extension TimeOfDayExtension on TimeOfDay {
+  TimeOfDay addHour(int hour) {
+    return this.replacing(hour: this.hour + hour, minute: this.minute);
+  }
+}
+
 class ConsultationDateView extends GetView {
+  HomeController controller = Get.find<HomeController>();
   Agendamento currentAgendamento;
   DateTime _selectedDate = DateTime.now();
   TimeOfDay _selectedTime = TimeOfDay.now();
 
-  ConsultationDateView({required this.currentAgendamento});
+  ConsultationDateView({
+    required this.currentAgendamento,
+  });
 
   _selectDate(BuildContext context) async {
     final DateTime? selected = await showDatePicker(
@@ -38,7 +51,16 @@ class ConsultationDateView extends GetView {
     if (selected != null && selected != _selectedDate) _selectedDate = selected;
   }
 
-  _selectTime(BuildContext context) {}
+  _selectTime(BuildContext context) async {
+    _selectedTime.addHour(1);
+
+    final TimeOfDay? selected = await showTimePicker(
+        initialEntryMode: TimePickerEntryMode.input,
+        context: context,
+        initialTime: TimeOfDay(hour: 0, minute: 0));
+
+    if (selected != null && selected != _selectedTime) _selectedTime = selected;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -76,10 +98,13 @@ class ConsultationDateView extends GetView {
                 size: 50,
               ),
               onTap: () {
-                _selectDate(context);
-
-                currentAgendamento.data =
-                    DateFormat('dd/MM/yyyy').format(_selectedDate);
+                showDatePicker(
+                  lastDate: DateTime(2030),
+                  context: context,
+                  initialDate: DateTime.now(),
+                  firstDate: DateTime.now(),
+                ).then((pickedDate) => currentAgendamento.data =
+                    DateFormat('dd/MM/yyyy').format(pickedDate!));
 
                 print(currentAgendamento.data);
               }),
@@ -92,9 +117,13 @@ class ConsultationDateView extends GetView {
               ),
               onTap: () {
                 showTimePicker(
-                    initialEntryMode: TimePickerEntryMode.input,
-                    context: context,
-                    initialTime: TimeOfDay(hour: 0, minute: 0));
+                        initialEntryMode: TimePickerEntryMode.input,
+                        context: context,
+                        initialTime: TimeOfDay(hour: 0, minute: 0))
+                    .then((pickedTime) =>
+                        currentAgendamento.hora = pickedTime!.format(context));
+
+                print(currentAgendamento.hora);
               }),
           SizedBox(height: 200),
         ],
@@ -124,7 +153,10 @@ class ConsultationDateView extends GetView {
                         middleTextStyle: TextStyle(color: Colors.black54),
                         barrierDismissible: false,
                         buttonColor: Get.theme.backgroundColor,
-                        onConfirm: () => Get.offAll(() => HomeView()),
+                        onConfirm: () {
+                          controller.agendamento.add(currentAgendamento);
+                          Get.offAll(() => HomeView());
+                        },
                         backgroundColor: backGround,
                         title: "Concluido",
                         middleText: "Agendamento realizado com sucesso",

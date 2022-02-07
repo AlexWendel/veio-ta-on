@@ -14,6 +14,7 @@ import 'package:hospital_maraba/app/widgets/scrollBox.dart';
 
 import '../../../widgets/TitleSliverAppBar.dart';
 import '../../../widgets/cardAgendamentos.dart';
+import '../../home/controllers/home_controller.dart';
 import 'consultation_date_view.dart';
 
 class ConsultationMedicView extends GetView {

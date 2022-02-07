@@ -5,6 +5,7 @@ import 'package:hospital_maraba/app/models/agendamento.dart';
 import 'package:hospital_maraba/app/modules/DefaultDesignScreen.dart';
 
 import 'package:hospital_maraba/app/modules/bottomNavBarDesignScreen.dart';
+import 'package:hospital_maraba/app/modules/home/controllers/home_controller.dart';
 
 import 'package:hospital_maraba/app/utils/colorTheme.dart';
 import 'package:hospital_maraba/app/utils/common.sizes.dart';

@@ -1,262 +1,32 @@
-Column(
-          children: [
-            Divider(
-              color: iconGray,
-              height: 15,
-            ),
-            Expanded(
-                child: Container(
-              padding:
-                  EdgeInsets.only(top: 20, left: 10, right: 10, bottom: 20),
-              width: 1000,
-              child: ListView(children: [
-                Container(
-                  width: 1000,
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    "Etapa 4: horário da consulta",
-                    style: TextStyle(
-                        color: Colors.black54,
-                        fontFamily: "OpenSans",
-                        fontSize: titleFontSize / context.textScaleFactor),
-                  ),
-                ),
-                Container(
-                  padding: EdgeInsets.only(top: 10, bottom: 10),
-                  width: 1000,
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    "Selecione o dia e a hora da consulta, entre os horários disponíveis",
-                    style: TextStyle(
-                        color: Colors.black54,
-                        fontFamily: "OpenSans",
-                        fontSize:
-                            sectionHeaderFontSize / context.textScaleFactor),
-                  ),
-                ),
-                Container(
-                  padding: EdgeInsets.only(top: 10, bottom: 10),
-                  width: 1000,
-                  alignment: Alignment.center,
-                  child: Text(
-                    "Selecione a data e o horário do atendimento:",
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black,
-                        fontFamily: "OpenSans",
-                        fontSize:
-                            sectionHeaderFontSize / context.textScaleFactor),
-                  ),
-                ),
-                DateCard(
-                    text: "CALENDÁRIO",
-                    description: "Selecione a data em que deseja ser atendido",
-                    icon: Icon(
-                      Icons.keyboard_arrow_down_rounded,
-                      size: 50,
-                    ),
-                    onTap: () {
-                      showDatePicker(
-                        lastDate: DateTime(2030),
-                        context: context,
-                        initialDate: DateTime.now(),
-                        firstDate: DateTime.now(),
-                      );
-                    }),
-                DateCard(
-                    text: "HORÁRIO",
-                    description:
-                        "Selecione o horário em que deseja ser atendido",
-                    icon: Icon(
-                      Icons.keyboard_arrow_down_rounded,
-                      size: 50,
-                    ),
-                    onTap: () {
-                      showTimePicker(
-                          initialEntryMode: TimePickerEntryMode.input,
-                          context: context,
-                          initialTime: TimeOfDay(hour: 0, minute: 0));
-                    })
-              ]),
-              margin: EdgeInsets.only(top: 20),
-              decoration: BoxDecoration(
-                  color: backGround,
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(25),
-                      topRight: Radius.circular(25))),
-            ))
-          ],
-        )
-
-
-
-        Container(
-        padding: EdgeInsets.symmetric(vertical: 20),
-        // height: 70,
-        color: backGround,
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Expanded(
-              // width: 200,
-              child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 20),
-                height: 60,
-                child: ElevatedButton(
-                  style: ButtonStyle(
-                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                        RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10))),
-                  ),
-                  onPressed: () {
-                    Get.back();
-                  },
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Icon(Icons.arrow_back_ios_rounded),
-                      Text(
-                        "Voltar",
-                        style: TextStyle(
-                            fontSize: defaultFontSize / context.textScaleFactor,
-                            color: Colors.black54),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-            Expanded(
-              // width: 200,
-              child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 20),
-                height: 60,
-                child: ElevatedButton(
-                  style: ButtonStyle(
-                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                        RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10))),
-                  ),
-                  onPressed: () {
-                    Get.defaultDialog(
-                      titleStyle: TextStyle(color: Colors.black54),
-                      middleTextStyle: TextStyle(color: Colors.black54),
-                      barrierDismissible: false,
-                      buttonColor: verdeBosta,
-                      onConfirm: () => Get.to(() => HomeView()),
-                      backgroundColor: backGround,
-                      title: "Concluido",
-                      middleText: "Agendamento realizado com sucesso",
-                      confirmTextColor: Colors.black54,
-                    );
-                  },
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Text(
-                        "Continuar",
-                        style: TextStyle(
-                            fontSize: defaultFontSize / context.textScaleFactor,
-                            color: Colors.black54),
-                      ),
-                      Icon(Icons.arrow_forward_ios_rounded)
-                    ],
-                  ),
-                ),
-              ),
-            )
-          ],
-        ),
-      )
-
-
-      Column(
-          children: [
-            Divider(
-              color: iconGray,
-              height: 15,
-            ),
-            Expanded(
-                child: Container(
-              padding:
-                  EdgeInsets.only(top: 20, left: 10, right: 10, bottom: 20),
-              width: 1000,
-              child: Column(children: [
-                Container(
-                  width: 1000,
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    "Etapa 4: horário da consulta",
-                    style: TextStyle(
-                        color: Colors.black54,
-                        fontFamily: "OpenSans",
-                        fontSize: titleFontSize / context.textScaleFactor),
-                  ),
-                ),
-                Container(
-                  padding: EdgeInsets.only(top: 10, bottom: 10),
-                  width: 1000,
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    "Selecione o dia e a hora da consulta, entre os horários disponíveis",
-                    style: TextStyle(
-                        color: Colors.black54,
-                        fontFamily: "OpenSans",
-                        fontSize:
-                            sectionHeaderFontSize / context.textScaleFactor),
-                  ),
-                ),
-                Container(
-                  padding: EdgeInsets.only(top: 10, bottom: 10),
-                  width: 1000,
-                  alignment: Alignment.center,
-                  child: Text(
-                    "Selecione a data e o horário do atendimento:",
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black,
-                        fontFamily: "OpenSans",
-                        fontSize:
-                            sectionHeaderFontSize / context.textScaleFactor),
-                  ),
-                ),
-                DateCard(
-                    text: "CALENDÁRIO",
-                    description: "Selecione a data em que deseja ser atendido",
-                    icon: Icon(
-                      Icons.keyboard_arrow_down_rounded,
-                      size: 50,
-                    ),
-                    onTap: () {
-                      showDatePicker(
-                        lastDate: DateTime(2030),
-                        context: context,
-                        initialDate: DateTime.now(),
-                        firstDate: DateTime.now(),
-                      );
-                    }),
-                DateCard(
-                    text: "HORÁRIO",
-                    description:
-                        "Selecione o horário em que deseja ser atendido",
-                    icon: Icon(
-                      Icons.keyboard_arrow_down_rounded,
-                      size: 50,
-                    ),
-                    onTap: () {
-                      showTimePicker(
-                          initialEntryMode: TimePickerEntryMode.input,
-                          context: context,
-                          initialTime: TimeOfDay(hour: 0, minute: 0));
-                    })
-              ]),
-              margin: EdgeInsets.only(top: 20),
-              decoration: BoxDecoration(
-                  color: backGround,
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(25),
-                      topRight: Radius.circular(25))),
-            ))
-          ],
-        )
+CardConsultas(
+  agendamento: Agendamento(
+      data: "25/10/2022",
+      especialidade: "Cirurgia de catarata",
+      medico: "Dr. João",
+      local: "Clínica dos olhos",
+      paciente: "Alex Wendel Oliveira da Silva",
+      protocolo: "999999999999999")),
+CardConsultas(
+  agendamento: Agendamento(
+      data: "25/10/2022",
+      especialidade: "Ressonância Magnética",
+      medico: "Dr. Josué Carvalho Sarazaro",
+      local: "Hospital Regional de Marabá",
+      paciente: "Alex Wendel Oliveira da Silva",
+      protocolo: "999999999999998")),
+CardConsultas(
+  agendamento: Agendamento(
+      data: "25/10/2022",
+      especialidade: "Tomografia Computadorizada",
+      medico: "Dr. Henrique Santos",
+      local: "Hospital Municipal de Marabá",
+      paciente: "Alex Wendel Oliveira da Silva",
+      protocolo: "999999999999999")),
+CardConsultas(
+  agendamento: Agendamento(
+      data: "25/10/2022",
+      especialidade: "Análise psiquiátrica",
+      medico: "Dr. Warley Rabelo Galvão",
+      local: "Hospital Municipal de Marabá",
+      paciente: "Alex Wendel Oliveira da Silva",
+      protocolo: "999999999999989")),

@@ -19,6 +19,7 @@ import '../controllers/home_controller.dart';
 import '../../../utils/colorTheme.dart';
 
 class HomeView extends GetView<HomeController> {
+  HomeController controller = Get.find<HomeController>();
   @override
   Widget build(BuildContext context) {
     List<Widget> itemList = [
