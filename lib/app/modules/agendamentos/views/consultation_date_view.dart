@@ -117,7 +117,7 @@ class ConsultationDateView extends GetView {
               ),
               onTap: () {
                 showTimePicker(
-                        initialEntryMode: TimePickerEntryMode.input,
+                        initialEntryMode: TimePickerEntryMode.dial,
                         context: context,
                         initialTime: TimeOfDay(hour: 0, minute: 0))
                     .then((pickedTime) =>
