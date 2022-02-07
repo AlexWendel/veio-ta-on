@@ -93,7 +93,8 @@ class CardConsultas extends GetResponsiveView {
           ),
           IconButton(
               icon: Icon(Icons.arrow_forward_ios, color: headerGray),
-              onPressed: () => Get.to(ConsultaAgendada()))
+              onPressed: () =>
+                  Get.to(ConsultaAgendada(agendamento: agendamento)))
         ]),
       ),
     ));

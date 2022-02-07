@@ -12,6 +12,9 @@ import 'package:hospital_maraba/app/widgets/inputText.dart';
 import '../controllers/login_controller.dart';
 
 class LoginView extends GetView<LoginController> {
+  @override
+  final controller = Get.put(LoginController());
+
   final emailInput = InputText(
       hintText: "Digite seu e-mail", icon: Icon(Icons.email_outlined));
 
@@ -37,15 +40,13 @@ class LoginView extends GetView<LoginController> {
                 // shape: BoxShape.circle,
                 // color: backGround,
                 image: DecorationImage(
-                  fit: BoxFit.fill,
-                  image: NetworkImage(
-                      "https://i.pinimg.com/564x/49/66/bd/4966bddbf433db57b4ef8556531a6e78.jpg"),
+                  fit: BoxFit.cover,
+                  image: AssetImage('imgs/realLogo.jpg'),
                 ),
               ),
             ),
-            Divider(
-              color: Colors.transparent,
-              height: 10,
+            SizedBox(
+              height: 30,
             ),
             emailInput,
             SizedBox(height: 10),
@@ -84,7 +85,22 @@ class LoginView extends GetView<LoginController> {
                         color: Colors.black54),
                   ),
                   InkWell(
-                      onTap: () => Get.to(() => DashboardPageView()),
+                      onTap: () async {
+                        showModalBottomSheet(
+                          backgroundColor: backGround,
+                          isScrollControlled: false,
+                          useRootNavigator: false,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(20),
+                              topRight: Radius.circular(20),
+                            ),
+                            //side: BorderSide(color: primaryColor),
+                          ),
+                          context: context,
+                          builder: (context) => Senha(),
+                        );
+                      },
                       child: Text(
                         "Clique aqui",
                         style: TextStyle(
@@ -99,10 +115,18 @@ class LoginView extends GetView<LoginController> {
               color: Colors.transparent,
               height: 20,
             ),
-            Button(
-              text: "Entrar",
+            ElevatedButton(
+              child: Padding(
+                  padding: EdgeInsets.symmetric(vertical: 20),
+                  child: Text("Entrar",
+                      style: Get.theme.textTheme.headline5?.copyWith(
+                          color: Get.theme.canvasColor,
+                          fontWeight: FontWeight.w600))),
               onPressed: () {
-                Get.offAll(() => HomeView());
+                AuthController.instance.login(LoginForm(
+                    email: emailInput.textFieldController.value.value.text,
+                    password: passwordInput.textFieldController.value.text));
+                // Get.offAll(() => HomeView());
                 // AuthController.instance.login(LoginForm(
                 //     email: emailInput.textFieldController.value.value.text,
                 //     password: passwordInput.textFieldController.value.text));

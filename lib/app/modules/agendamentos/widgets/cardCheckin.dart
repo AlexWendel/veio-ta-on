@@ -8,16 +8,16 @@ import 'package:hospital_maraba/app/utils/colorTheme.dart';
 import 'package:hospital_maraba/app/utils/common.colors.dart';
 import 'package:hospital_maraba/app/utils/common.sizes.dart';
 
-class CardResultados extends GetView {
+class CardCheckin extends GetView {
   final Agendamento agendamento;
-  CardResultados({required this.agendamento});
+  CardCheckin({required this.agendamento});
 
   @override
   Widget build(BuildContext context) {
     return Ink(
         child: InkWell(
       splashColor: Get.theme.splashColor,
-      onTap: () => Get.to(ResultadoFinal(agendamento)),
+      onTap: () => Get.to(CheckInView(agendamento)),
       child: Container(
         alignment: Alignment.centerLeft,
         // height: 150,
@@ -94,7 +94,7 @@ class CardResultados extends GetView {
           ),
           IconButton(
               icon: Icon(Icons.arrow_forward_ios, color: headerGray),
-              onPressed: () => Get.to(ResultadoFinal(agendamento)))
+              onPressed: () {})
         ]),
       ),
     ));

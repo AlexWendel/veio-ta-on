@@ -9,6 +9,8 @@ import 'package:hospital_maraba/app/utils/colorTheme.dart';
 import 'package:hospital_maraba/app/utils/common.sizes.dart';
 import 'package:hospital_maraba/app/widgets/TitleSliverAppBar.dart';
 import 'package:hospital_maraba/app/widgets/cardAgendamentos.dart';
+import 'package:hospital_maraba/app/widgets/cardHome.dart';
+import 'package:hospital_maraba/app/widgets/genericButton.dart';
 import 'package:hospital_maraba/app/widgets/inputText.dart';
 import 'package:hospital_maraba/app/widgets/scrollBox.dart';
 import '../controllers/agendamentos_controller.dart';
@@ -26,30 +28,13 @@ class ConsultationTypeView extends GetView<AgendamentosController> {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            Container(
-              margin: EdgeInsets.all(20),
-              height: 60,
-              // width: 200,
-              child: ElevatedButton(
-                style: ButtonStyle(
-                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                      RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10))),
-                ),
-                onPressed: () {
-                  Get.to(() => ConsultationPlaceView());
-                },
-                child: Row(
-                  children: [
-                    Text(
-                      "Próxima etapa",
-                      style: textonormal,
-                    ),
-                    Icon(Icons.arrow_forward_ios_rounded)
-                  ],
-                ),
-              ),
-            )
+            GenericButton(
+                color: Get.theme.primaryColor,
+                onPressed: () => Get.to(() => ConsultationPlaceView()),
+                text: Text("Próxima etapa",
+                    style: Get.theme.textTheme.headline6
+                        ?.copyWith(fontWeight: FontWeight.w500)),
+                icon: Icon(Icons.arrow_forward_ios_rounded))
           ],
         ),
       ),

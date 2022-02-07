@@ -74,7 +74,9 @@ class CheckInView extends GetView {
               SizedBox(height: 8),
               DetalhesExame(agendamento),
               SizedBox(height: 8),
-              BotaoCompartilhar()
+              BotaoCompartilhar(),
+
+              // BotaoCompartilhar()
             ]))));
   }
 }
@@ -89,11 +91,7 @@ class BotaoCompartilhar extends GetWidget {
               padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10))),
-          child: Text(
-            'Compartilhar',
-            style: TextStyle(
-                fontSize: 15 / context.textScaleFactor, color: Colors.black54),
-          ),
+          child: Text('Compartilhar', style: Get.theme.textTheme.headline6),
           onPressed: () {},
         ));
   }
@@ -114,18 +112,15 @@ class DetalheExameField extends GetView {
           Text(
             title,
             textAlign: TextAlign.start,
-            style: TextStyle(
-                fontSize: defaultFontSize / context.textScaleFactor,
-                color: Color.fromRGBO(120, 120, 120, 1)),
+            style: Get.theme.textTheme.headline5
+                ?.copyWith(color: Colors.black54, fontWeight: FontWeight.w600),
           ),
-          SizedBox(height: 5),
+          SizedBox(height: 2),
           Text(
             value,
             textAlign: TextAlign.left,
-            style: TextStyle(
-                fontSize: sectionSubheaderFontSize / context.textScaleFactor,
-                color: Color.fromRGBO(80, 80, 80, 1),
-                fontWeight: FontWeight.w500),
+            style: Get.theme.textTheme.headline6
+                ?.copyWith(color: Colors.black54, fontWeight: FontWeight.w400),
           ),
           SizedBox(height: 5)
         ]);

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hospital_maraba/app/authcontrolller.dart';
 import 'package:hospital_maraba/app/modules/Login/views/perfil.dart';
 import 'package:hospital_maraba/app/utils/colorTheme.dart';
 import 'package:hospital_maraba/app/utils/common.icons.dart';
@@ -38,11 +39,11 @@ class HomeSliverAppBar extends GetWidget {
                   fontSize: 20,
                   fontWeight: FontWeight.w700, /*color: Colors.black54*/
                 )),
-            Text("Paulete",
+            Obx(() => Text(AuthController.instance.currentUser.value.firstName,
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.w900, /*color: Colors.black54*/
-                )),
+                ))),
           ]),
           Row(children: [
             // Icon(Icons.circle_rounded,
@@ -81,7 +82,7 @@ class HomeSliverAppBar extends GetWidget {
               shape: BoxShape.circle,
               image: DecorationImage(
                 fit: BoxFit.cover,
-                image: NetworkImage("https://i.imgur.com/BoN9kdC.png"),
+                image: AssetImage("imgs/cj.png"),
               ),
             ),
           ),

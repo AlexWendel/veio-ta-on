@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hospital_maraba/app/models/agendamento.dart';
 import 'package:hospital_maraba/app/modules/agendamentos/minhas_consultas/minhas_consultas.screen.dart';
+import 'package:hospital_maraba/app/modules/agendamentos/views/check_in_home.dart';
 import 'package:hospital_maraba/app/modules/agendamentos/views/check_in_view.dart';
 import 'package:hospital_maraba/app/modules/agendamentos/views/resultados_home.dart';
 
@@ -48,12 +49,15 @@ class HomeView extends GetView<HomeController> {
                     icon: Icon(Icons.check_box_outlined,
                         size: mediumIconSize, color: iconGray),
                     onTap: () {
-                      Get.to(() => CheckInView(Agendamento(
-                          especialidade: "Tratamento para Vício de Valorant",
-                          medico: "Warley Rabelo Xeradão",
-                          paciente: "Paulinho Paixão Bacana Pereira",
-                          local: "Hospício Municipal de Marabá",
-                          protocolo: "9999999999999999")));
+                      Get.to(CheckInHome());
+                      // () => CheckInView(
+                      // Agendamento(
+                      //   especialidade: "Tratamento para Vício de Valorant",
+                      //   medico: "Warley Rabelo Xeradão",
+                      //   paciente: "Paulinho Paixão Bacana Pereira",
+                      //   local: "Hospício Municipal de Marabá",
+                      //   protocolo: "9999999999999999"))
+                      //   );
                     },
                     text: "Fazer check-in",
                     description: "Gerar QR Code de uma consulta"),

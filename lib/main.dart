@@ -14,7 +14,8 @@ Future<void> main() async {
   await Hive.initFlutter();
   SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
-  await Firebase.initializeApp().then((value) => Get.put(AuthController()));
+  // await Firebase.initializeApp().then((value) => Get.put(AuthController()));
+  Get.put(AuthController());
 
   runApp(
     GetMaterialApp(

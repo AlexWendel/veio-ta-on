@@ -33,6 +33,6 @@ class TitleSliverAppBar extends GetWidget {
             icon: Icon(backIcon, size: mediumIconSize)),
         title: Text(title,
             style: Get.theme.textTheme.headlineSmall
-                ?.apply(color: Colors.black54)));
+                ?.copyWith(fontWeight: FontWeight.w600)));
   }
 }

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hospital_maraba/app/authcontrolller.dart';
 import 'package:hospital_maraba/app/utils/colorTheme.dart';
+import 'package:hospital_maraba/app/utils/common.colors.dart';
 
 class Senha extends GetResponsiveWidget {
   @override
@@ -21,7 +23,8 @@ class Senha extends GetResponsiveWidget {
               width: 80,
               margin: EdgeInsets.symmetric(horizontal: 150),
               decoration: BoxDecoration(
-                  color: verdeBosta, borderRadius: BorderRadius.circular(50)),
+                  color: Get.theme.primaryColor,
+                  borderRadius: BorderRadius.circular(50)),
             ),
             Container(
               alignment: Alignment.centerLeft,
@@ -30,12 +33,9 @@ class Senha extends GetResponsiveWidget {
               width: double.maxFinite,
               child: Text(
                 "Esqueceu seus dados?",
-                style: TextStyle(fontWeight: FontWeight.w500, fontSize: 30),
+                style: Get.textTheme.displaySmall
+                    ?.copyWith(color: headerGray, fontWeight: FontWeight.bold),
               ),
-            ),
-            Divider(
-              height: 5,
-              color: Colors.transparent,
             ),
             Container(
               padding: EdgeInsets.all(10),
@@ -44,10 +44,9 @@ class Senha extends GetResponsiveWidget {
 
               width: double.maxFinite,
               child: Text(
-                "preencha os campos, enviaremos um link de recuperação de senha para seu email.",
-                style: TextStyle(
-                  fontSize: 25,
-                ),
+                "Preencha os campos abaixo, e enviaremos um link de recuperação de senha para seu email.",
+                style: Get.theme.textTheme.headline5
+                    ?.copyWith(color: Colors.black54),
               ),
             ),
             Divider(
@@ -58,7 +57,7 @@ class Senha extends GetResponsiveWidget {
               height: 60,
               alignment: Alignment.center,
               child: TextField(
-                cursorColor: verdeBosta,
+                cursorColor: Get.theme.primaryColor,
                 decoration: InputDecoration(
                   hintText: "Digite sua senha",
                   hintStyle: TextStyle(fontSize: 20),
@@ -77,7 +76,7 @@ class Senha extends GetResponsiveWidget {
               height: 60,
               alignment: Alignment.center,
               child: TextField(
-                cursorColor: verdeBosta,
+                cursorColor: Get.theme.primaryColor,
                 decoration: InputDecoration(
                   hintText: "Digite seu email",
                   hintStyle: TextStyle(fontSize: 20),
@@ -96,7 +95,7 @@ class Senha extends GetResponsiveWidget {
               height: 60,
               alignment: Alignment.center,
               child: TextField(
-                cursorColor: verdeBosta,
+                cursorColor: Get.theme.primaryColor,
                 decoration: InputDecoration(
                   hintText: "Confirme seu email",
                   hintStyle: TextStyle(fontSize: 20),
@@ -109,22 +108,24 @@ class Senha extends GetResponsiveWidget {
             ),
             Divider(
               color: Colors.transparent,
-              height: 20,
+              height: 10,
             ),
             Container(
-              height: 60,
-              width: 200,
-              child: ElevatedButton(
-                  child: Text(
-                    "Enviar",
-                    style: textonormal,
-                  ),
+                height: 60,
+                width: 200,
+                child: ElevatedButton(
+                  child: Padding(
+                      padding: EdgeInsets.symmetric(vertical: 20),
+                      child: Text("Entrar",
+                          style: Get.theme.textTheme.headline5?.copyWith(
+                              color: Get.theme.canvasColor,
+                              fontWeight: FontWeight.w600))),
                   onPressed: () {
-                    // Get.to(() => HomeView());
-                  }),
-            ),
-            Divider(
-              color: Colors.transparent,
+                    AuthController.instance.recuperarSenha();
+                    Get.back(closeOverlays: true);
+                  },
+                )),
+            SizedBox(
               height: 50,
             ),
           ],
