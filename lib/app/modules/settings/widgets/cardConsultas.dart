@@ -18,6 +18,7 @@ class CardConsultas extends GetResponsiveView {
       splashColor: Get.theme.splashColor,
       onTap: () => Get.to(ConsultaAgendada(agendamento: agendamento)),
       child: Container(
+        width: Get.width,
         alignment: Alignment.centerLeft,
         // height: 150,
         margin: EdgeInsets.symmetric(vertical: 5),
