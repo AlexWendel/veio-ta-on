@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:hospital_maraba/app/models/agendamento.dart';
 
 import 'package:hospital_maraba/app/modules/bottomNavBarDesignScreen.dart';
 import 'package:hospital_maraba/app/utils/colorTheme.dart';
@@ -16,8 +17,14 @@ import '../../../widgets/cardAgendamentos.dart';
 import 'consultation_date_view.dart';
 
 class ConsultationMedicView extends GetView {
+  Agendamento currentAgendamento;
+
+  ConsultationMedicView({required this.currentAgendamento});
+
   @override
-  Widget build(BuildContext context) {
+  Widget build(
+    BuildContext context,
+  ) {
     return BottomNavBarDesignScreen(
         sliverAppBar: TitleSliverAppBar(title: "Escolha o especialista"),
         body: Column(children: [
@@ -48,20 +55,26 @@ class ConsultationMedicView extends GetView {
           ),
           ScrollBox(itemList: [
             CardAgendamentos(
-                text: "Neurologista",
+                text: "Dr. Kledilson Farias",
                 description: "Medico para a sua cabeça",
                 icon: Icon(Icons.tab),
-                onTap: () {}),
+                onTap: () {
+                  currentAgendamento.medico = "Dr. Kledilson Farias";
+                }),
             CardAgendamentos(
-                text: "Neurologista",
+                text: "Dra. Aline Cardozo",
                 description: "Medico para a sua cabeça",
                 icon: Icon(Icons.tab),
-                onTap: () {}),
+                onTap: () {
+                  currentAgendamento.medico = "Dra. Aline Cardozo";
+                }),
             CardAgendamentos(
-                text: "Neurologista",
+                text: "Dr. Iago Flores",
                 description: "Medico para a sua cabeça",
                 icon: Icon(Icons.tab),
-                onTap: () {})
+                onTap: () {
+                  currentAgendamento.medico = "Dr. Iago Flores";
+                })
           ])
         ]),
         bottomNavBar: Container(
@@ -76,14 +89,16 @@ class ConsultationMedicView extends GetView {
                   color: Get.theme.primaryColor,
                   onPressed: () => Get.back(),
                   iconAtLeft: true,
-                  text: Text("Voltar etapa",
+                  text: Text("Regressar",
                       style: Get.theme.textTheme.headline6
                           ?.copyWith(fontWeight: FontWeight.w500)),
                   icon: Icon(Icons.arrow_back_ios_outlined)),
               GenericButton(
                   color: Get.theme.primaryColor,
-                  onPressed: () => Get.to(() => ConsultationDateView()),
-                  text: Text("Próxima etapa",
+                  onPressed: () => Get.to(() => ConsultationDateView(
+                        currentAgendamento: currentAgendamento,
+                      )),
+                  text: Text("Continuar",
                       style: Get.theme.textTheme.headline6
                           ?.copyWith(fontWeight: FontWeight.w500)),
                   icon: Icon(Icons.arrow_forward_ios_rounded))

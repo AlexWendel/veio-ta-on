@@ -31,7 +31,7 @@ class GenericButton extends GetView {
     }
 
     return Container(
-        margin: EdgeInsets.all(20),
+        margin: EdgeInsets.symmetric(horizontal: 20),
         height: 50,
 
         // width: 200,

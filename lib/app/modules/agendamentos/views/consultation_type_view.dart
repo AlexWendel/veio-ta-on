@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:hospital_maraba/app/models/agendamento.dart';
 import 'package:hospital_maraba/app/modules/DefaultDesignScreen.dart';
 
 import 'package:hospital_maraba/app/modules/bottomNavBarDesignScreen.dart';
@@ -17,11 +18,20 @@ import '../controllers/agendamentos_controller.dart';
 import 'consultation_place_view.dart';
 
 class ConsultationTypeView extends GetView<AgendamentosController> {
+  Agendamento currentAgendamento = Agendamento(
+      medico: "",
+      especialidade: "",
+      local: "",
+      protocolo: "",
+      paciente: "",
+      data: "");
+
   @override
   Widget build(BuildContext context) {
     AgendamentosController controller = Get.put(AgendamentosController());
     return BottomNavBarDesignScreen(
       bottomNavBar: Container(
+        padding: EdgeInsets.symmetric(vertical: 20),
         // height: 70,
         color: backGround,
         child: Row(
@@ -30,7 +40,9 @@ class ConsultationTypeView extends GetView<AgendamentosController> {
           children: [
             GenericButton(
                 color: Get.theme.primaryColor,
-                onPressed: () => Get.to(() => ConsultationPlaceView()),
+                onPressed: () => Get.to(() => ConsultationPlaceView(
+                      currentAgendamento: currentAgendamento,
+                    )),
                 text: Text("Próxima etapa",
                     style: Get.theme.textTheme.headline6
                         ?.copyWith(fontWeight: FontWeight.w500)),
@@ -67,20 +79,26 @@ class ConsultationTypeView extends GetView<AgendamentosController> {
         ),
         ScrollBox(itemList: [
           CardAgendamentos(
-              text: "Neurologista",
+              text: "Hemograma",
               description: "Medico para a sua cabeça",
               icon: Icon(Icons.tab),
-              onTap: () {}),
+              onTap: () {
+                currentAgendamento.especialidade = "Hemograma";
+              }),
           CardAgendamentos(
-              text: "Neurologista",
+              text: "Glicemia",
               description: "Medico para a sua cabeça",
               icon: Icon(Icons.tab),
-              onTap: () {}),
+              onTap: () {
+                currentAgendamento.especialidade = "Glicemia";
+              }),
           CardAgendamentos(
-              text: "Neurologista",
+              text: "Transaminases",
               description: "Medico para a sua cabeça",
               icon: Icon(Icons.tab),
-              onTap: () {})
+              onTap: () {
+                currentAgendamento.especialidade = "Transaminases";
+              })
         ])
       ]),
     );
