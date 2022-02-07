@@ -17,6 +17,7 @@ class CardCheckin extends GetView {
       splashColor: Get.theme.splashColor,
       onTap: () => Get.to(() => CheckInView(agendamento)),
       child: Container(
+        width: Get.width,
         alignment: Alignment.centerLeft,
         // height: 150,
         margin: EdgeInsets.symmetric(vertical: 5),
@@ -39,59 +40,71 @@ class CardCheckin extends GetView {
                     fontSize: defaultFontSize / context.textScaleFactor),
               ),
               SizedBox(height: 10),
-              RichText(
-                text: TextSpan(
-                  style: DefaultTextStyle.of(context).style,
-                  children: <TextSpan>[
-                    TextSpan(
-                        text: 'Médico: ',
-                        style: TextStyle(
-                            fontWeight: FontWeight.w500,
-                            color: Colors.black54)),
-                    TextSpan(
-                        text: agendamento.medico,
-                        style: TextStyle(
-                            color: headerGray, fontWeight: FontWeight.w400)),
-                  ],
+              Container(
+                width: Get.width / 1.6,
+                child: RichText(
+                  text: TextSpan(
+                    style: DefaultTextStyle.of(context).style,
+                    children: <TextSpan>[
+                      TextSpan(
+                          text: 'Médico: ',
+                          style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              color: Colors.black54)),
+                      TextSpan(
+                          text: agendamento.medico,
+                          style: TextStyle(
+                              color: headerGray, fontWeight: FontWeight.w400)),
+                    ],
+                  ),
                 ),
               ),
-              RichText(
-                text: TextSpan(
-                  style: DefaultTextStyle.of(context).style,
-                  children: <TextSpan>[
-                    TextSpan(
-                        text: 'Local: ',
-                        style: TextStyle(
-                            fontWeight: FontWeight.w500,
-                            color: Colors.black54)),
-                    TextSpan(
-                        text: agendamento.local,
-                        style: TextStyle(
-                            color: headerGray, fontWeight: FontWeight.w400)),
-                  ],
+              Container(
+                width: Get.width / 1.6,
+                child: RichText(
+                  text: TextSpan(
+                    style: DefaultTextStyle.of(context).style,
+                    children: <TextSpan>[
+                      TextSpan(
+                          text: 'Local: ',
+                          style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              color: Colors.black54)),
+                      TextSpan(
+                          text: agendamento.local,
+                          style: TextStyle(
+                              color: headerGray, fontWeight: FontWeight.w400)),
+                    ],
+                  ),
                 ),
               ),
-              RichText(
-                text: TextSpan(
-                  style: DefaultTextStyle.of(context).style,
-                  children: <TextSpan>[
-                    TextSpan(
-                        text: 'Horário: ',
-                        style: TextStyle(
-                            fontWeight: FontWeight.w500,
-                            color: Colors.black54)),
-                    TextSpan(
-                        text:
-                            agendamento.data + " às " + agendamento.hora + "h",
-                        style: TextStyle(
-                            fontWeight: FontWeight.w400,
-                            color: Colors.black54)),
-                  ],
+              Container(
+                width: Get.width / 1.6,
+                child: RichText(
+                  text: TextSpan(
+                    style: DefaultTextStyle.of(context).style,
+                    children: <TextSpan>[
+                      TextSpan(
+                          text: 'Horário: ',
+                          style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              color: Colors.black54)),
+                      TextSpan(
+                          text: agendamento.data +
+                              " às " +
+                              agendamento.hora +
+                              "h",
+                          style: TextStyle(
+                              fontWeight: FontWeight.w400,
+                              color: Colors.black54)),
+                    ],
+                  ),
                 ),
               )
             ],
           ),
           IconButton(
+              iconSize: Get.width / 20,
               icon: Icon(Icons.arrow_forward_ios, color: headerGray),
               onPressed: () {})
         ]),
