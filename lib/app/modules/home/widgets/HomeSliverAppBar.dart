@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hospital_maraba/app/modules/Login/views/perfil.dart';
 import 'package:hospital_maraba/app/utils/colorTheme.dart';
 import 'package:hospital_maraba/app/utils/common.icons.dart';
 import 'package:hospital_maraba/app/utils/common.sizes.dart';
@@ -34,14 +35,14 @@ class HomeSliverAppBar extends GetWidget {
           Row(children: [
             Text("Olá, ",
                 style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w400,
-                    color: Colors.black54)),
+                  fontSize: 20,
+                  fontWeight: FontWeight.w700, /*color: Colors.black54*/
+                )),
             Text("Paulete",
                 style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w700,
-                    color: Colors.black54)),
+                  fontSize: 20,
+                  fontWeight: FontWeight.w900, /*color: Colors.black54*/
+                )),
           ]),
           Row(children: [
             // Icon(Icons.circle_rounded,
@@ -49,15 +50,19 @@ class HomeSliverAppBar extends GetWidget {
             RichText(
               text: TextSpan(
                 text: 'Você tem ',
-                style: TextStyle(fontSize: 14, color: Colors.black54),
+                style: TextStyle(
+                    fontSize: 14,
+                    /*color: Colors.black54*/
+                    fontWeight: FontWeight.w600),
                 children: <TextSpan>[
                   TextSpan(
                       text: '4 ',
                       style: Get.theme.textTheme.bodyMedium
-                          ?.copyWith(fontWeight: FontWeight.w600)),
+                          ?.copyWith(fontWeight: FontWeight.w800)),
                   TextSpan(
                       text: 'novas notificações!',
-                      style: Get.theme.textTheme.bodyMedium),
+                      style: Get.theme.textTheme.bodyMedium
+                          ?.copyWith(fontWeight: FontWeight.w600)),
                 ],
               ),
             )
@@ -65,14 +70,19 @@ class HomeSliverAppBar extends GetWidget {
         ],
       ),
       actions: [
-        Container(
-          margin: EdgeInsets.only(top: 5, right: 5, bottom: 10),
-          width: 40,
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            image: DecorationImage(
-              fit: BoxFit.cover,
-              image: NetworkImage("https://i.imgur.com/BoN9kdC.png"),
+        InkWell(
+          onTap: () {
+            Get.to(PerfilView());
+          },
+          child: Container(
+            margin: EdgeInsets.only(top: 5, right: 5, bottom: 10),
+            width: 40,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              image: DecorationImage(
+                fit: BoxFit.cover,
+                image: NetworkImage("https://i.imgur.com/BoN9kdC.png"),
+              ),
             ),
           ),
         )
