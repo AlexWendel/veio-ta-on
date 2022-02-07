@@ -27,8 +27,7 @@ class CardConsultas extends GetResponsiveView {
           color: textFieldGray,
           borderRadius: BorderRadius.circular(8),
         ),
-        child:
-            Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+        child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
           Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -47,6 +46,7 @@ class CardConsultas extends GetResponsiveView {
                 child: FittedBox(
                   fit: BoxFit.scaleDown,
                   child: RichText(
+                    overflow: TextOverflow.ellipsis,
                     text: TextSpan(
                       style: DefaultTextStyle.of(context).style,
                       children: <TextSpan>[
@@ -57,7 +57,7 @@ class CardConsultas extends GetResponsiveView {
                                 color: Colors.black54)),
                         TextSpan(
                             text: agendamento.medico,
-                            style: TextStyle(
+                            style: Get.theme.textTheme.headline6?.copyWith(
                                 color: headerGray,
                                 fontWeight: FontWeight.w400)),
                       ],
@@ -72,6 +72,7 @@ class CardConsultas extends GetResponsiveView {
                   alignment: Alignment.centerLeft,
                   fit: BoxFit.scaleDown,
                   child: RichText(
+                    overflow: TextOverflow.ellipsis,
                     text: TextSpan(
                       style: DefaultTextStyle.of(context).style,
                       children: <TextSpan>[
@@ -82,7 +83,7 @@ class CardConsultas extends GetResponsiveView {
                                 color: Colors.black54)),
                         TextSpan(
                             text: agendamento.local,
-                            style: TextStyle(
+                            style: Get.theme.textTheme.headline6?.copyWith(
                                 color: headerGray,
                                 fontWeight: FontWeight.w400)),
                       ],
@@ -95,6 +96,7 @@ class CardConsultas extends GetResponsiveView {
                 child: FittedBox(
                   fit: BoxFit.scaleDown,
                   child: RichText(
+                    overflow: TextOverflow.ellipsis,
                     text: TextSpan(
                       style: DefaultTextStyle.of(context).style,
                       children: <TextSpan>[
@@ -105,9 +107,9 @@ class CardConsultas extends GetResponsiveView {
                                 color: Colors.black54)),
                         TextSpan(
                             text: agendamento.data,
-                            style: TextStyle(
-                                fontWeight: FontWeight.w400,
-                                color: Colors.black54)),
+                            style: Get.theme.textTheme.headline6?.copyWith(
+                                color: headerGray,
+                                fontWeight: FontWeight.w400)),
                       ],
                     ),
                   ),
