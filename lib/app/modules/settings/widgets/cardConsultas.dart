@@ -27,8 +27,7 @@ class CardConsultas extends GetResponsiveView {
           color: textFieldGray,
           borderRadius: BorderRadius.circular(8),
         ),
-        child:
-            Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+        child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
           Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -107,7 +106,7 @@ class CardConsultas extends GetResponsiveView {
           IconButton(
               icon: Icon(Icons.arrow_forward_ios, color: headerGray),
               onPressed: () =>
-                  Get.to(ConsultaAgendada(agendamento: agendamento)))
+                  Get.to(() => ConsultaAgendada(agendamento: agendamento)))
         ]),
       ),
     ));

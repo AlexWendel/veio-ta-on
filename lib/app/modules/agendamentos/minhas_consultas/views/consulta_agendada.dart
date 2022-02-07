@@ -17,23 +17,26 @@ class ConsultaAgendada extends GetView {
   Widget build(BuildContext context) {
     return BottomNavBarDesignScreen(
       bottomNavBar: Container(
-        padding: EdgeInsets.symmetric(vertical: 20),
+        padding: EdgeInsets.symmetric(vertical: 10),
         color: Get.theme.canvasColor,
-        child: Row(
+        child: FittedBox(
+            child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             GenericButton(
-                icon: Icon(Icons.delete_outline),
+                icon: Icon(Icons.delete_outline, color: Get.theme.canvasColor),
+                iconAtLeft: true,
                 text: Text(
-                  "     Remover    ",
+                  "Remover",
                   style: Get.theme.textTheme.headline6?.copyWith(
                       fontSize: sectionHeaderFontSize / context.textScaleFactor,
                       fontWeight: FontWeight.w500),
                 ),
                 color: Get.theme.errorColor),
             GenericButton(
-                icon: Icon(Icons.share_outlined),
+                icon: Icon(Icons.share_outlined, color: Get.theme.canvasColor),
+                iconAtLeft: true,
                 color: Get.theme.primaryColor,
                 text: Text("Compartilhar",
                     style: Get.theme.textTheme.headline6?.copyWith(
@@ -41,7 +44,7 @@ class ConsultaAgendada extends GetView {
                             sectionHeaderFontSize / context.textScaleFactor,
                         fontWeight: FontWeight.w500)))
           ],
-        ),
+        )),
       ),
       sliverAppBar: TitleSliverAppBar(title: "Consulta agendada"),
       body: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [

@@ -50,37 +50,22 @@ class CardHome extends GetView {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Container(
-                          width: Get.width / 2,
-                          alignment: Alignment.centerLeft,
-                          padding: EdgeInsets.only(top: 5),
-                          child: FittedBox(
-                            fit: BoxFit.scaleDown,
-                            child: Text(
-                              text,
-                              style: TextStyle(
-                                  color: Color.fromRGBO(120, 120, 120, 1),
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: defaultFontSize /
-                                      context.textScaleFactor),
-                            ),
-                          ),
+                        Text(
+                          text,
+                          softWrap: true,
+                          style: TextStyle(
+                              color: Color.fromRGBO(120, 120, 120, 1),
+                              fontWeight: FontWeight.w600,
+                              fontSize:
+                                  defaultFontSize / context.textScaleFactor),
                         ),
-                        Container(
-                          alignment: Alignment.centerLeft,
-                          width: Get.width / 2,
-                          padding: EdgeInsets.only(bottom: 10),
-                          child: FittedBox(
-                            fit: BoxFit.scaleDown,
-                            child: Text(
-                              description,
-                              style: TextStyle(
-                                  color: Color.fromRGBO(160, 160, 160, 1),
-                                  fontWeight: FontWeight.w400,
-                                  fontSize: defaultCardDescriptionSize /
-                                      context.textScaleFactor),
-                            ),
-                          ),
+                        Text(
+                          description,
+                          style: TextStyle(
+                              color: Color.fromRGBO(160, 160, 160, 1),
+                              fontWeight: FontWeight.w400,
+                              fontSize:
+                                  Get.theme.textTheme.headline6?.fontSize),
                         ),
                       ],
                     ),

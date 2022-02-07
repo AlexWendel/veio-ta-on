@@ -59,45 +59,7 @@ class Senha extends GetResponsiveWidget {
               child: TextField(
                 cursorColor: Get.theme.primaryColor,
                 decoration: InputDecoration(
-                  hintText: "Digite sua senha",
-                  hintStyle: TextStyle(fontSize: 20),
-                  prefixIcon: Icon(
-                    Icons.lock,
-                    size: 27,
-                  ),
-                ),
-              ),
-            ),
-            Divider(
-              color: Colors.transparent,
-              height: 20,
-            ),
-            Container(
-              height: 60,
-              alignment: Alignment.center,
-              child: TextField(
-                cursorColor: Get.theme.primaryColor,
-                decoration: InputDecoration(
                   hintText: "Digite seu email",
-                  hintStyle: TextStyle(fontSize: 20),
-                  prefixIcon: Icon(
-                    Icons.email,
-                    size: 27,
-                  ),
-                ),
-              ),
-            ),
-            Divider(
-              color: Colors.transparent,
-              height: 20,
-            ),
-            Container(
-              height: 60,
-              alignment: Alignment.center,
-              child: TextField(
-                cursorColor: Get.theme.primaryColor,
-                decoration: InputDecoration(
-                  hintText: "Confirme seu email",
                   hintStyle: TextStyle(fontSize: 20),
                   prefixIcon: Icon(
                     Icons.email,
@@ -112,11 +74,11 @@ class Senha extends GetResponsiveWidget {
             ),
             Container(
                 height: 60,
-                width: 200,
+                width: 50,
                 child: ElevatedButton(
                   child: Padding(
                       padding: EdgeInsets.symmetric(vertical: 20),
-                      child: Text("Entrar",
+                      child: Text("Enviar",
                           style: Get.theme.textTheme.headline5?.copyWith(
                               color: Get.theme.canvasColor,
                               fontWeight: FontWeight.w600))),

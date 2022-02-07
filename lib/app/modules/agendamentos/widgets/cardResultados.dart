@@ -17,7 +17,7 @@ class CardResultados extends GetView {
     return Ink(
         child: InkWell(
       splashColor: Get.theme.splashColor,
-      onTap: () => Get.to(ResultadoFinal(agendamento)),
+      onTap: () => Get.to(() => ResultadoFinal(agendamento)),
       child: Container(
         alignment: Alignment.centerLeft,
         // height: 150,
@@ -42,6 +42,7 @@ class CardResultados extends GetView {
               ),
               SizedBox(height: 10),
               RichText(
+                overflow: TextOverflow.ellipsis,
                 text: TextSpan(
                   style: DefaultTextStyle.of(context).style,
                   children: <TextSpan>[
@@ -58,6 +59,7 @@ class CardResultados extends GetView {
                 ),
               ),
               RichText(
+                overflow: TextOverflow.ellipsis,
                 text: TextSpan(
                   style: DefaultTextStyle.of(context).style,
                   children: <TextSpan>[
@@ -74,6 +76,7 @@ class CardResultados extends GetView {
                 ),
               ),
               RichText(
+                overflow: TextOverflow.ellipsis,
                 text: TextSpan(
                   style: DefaultTextStyle.of(context).style,
                   children: <TextSpan>[

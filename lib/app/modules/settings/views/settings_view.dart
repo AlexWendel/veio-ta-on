@@ -43,8 +43,8 @@ class SettingsView extends GetView {
                 icon: Icon(Icons.circle_notifications_outlined,
                     size: mediumIconSize, color: iconGray),
                 onTap: () {},
-                text: "Configurações de notificações",
-                description: "Configurações das notificações do aplicativo"),
+                text: "Notificações",
+                description: "Configurações das notificações"),
             CardHome(
                 icon:
                     Icon(Icons.settings, size: mediumIconSize, color: iconGray),
@@ -52,15 +52,14 @@ class SettingsView extends GetView {
                   Get.to(() => SettingsView());
                 },
                 text: "Política de privacidade ",
-                description:
-                    "Veja todos os termos e conheça mais dobre os desenvolvedores"),
+                description: "Termos e políticas de privacidade"),
             CardHome(
                 icon: Icon(Icons.close, size: mediumIconSize, color: iconGray),
                 onTap: () {
                   Get.to(() => DashboardPageView());
                 },
                 text: "Sair da conta",
-                description: "Clique para fazer o logout"),
+                description: "Clique para sair"),
             SizedBox(height: 80),
           ]),
     );

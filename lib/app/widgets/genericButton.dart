@@ -44,6 +44,7 @@ class GenericButton extends GetView {
           ),
           onPressed: onPressed,
           child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: children,
           ),
         ));
