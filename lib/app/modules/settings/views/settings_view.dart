@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hospital_maraba/app/authcontrolller.dart';
 import 'package:hospital_maraba/app/modules/DefaultDesignScreen.dart';
 import 'package:hospital_maraba/app/modules/Login/views/login_view.dart';
 import 'package:hospital_maraba/app/modules/Login/views/perfil.dart';
+import 'package:hospital_maraba/app/modules/dashboardPage/views/dashboard_page_view.dart';
 import 'package:hospital_maraba/app/modules/home/widgets/HomeSliverAppBar.dart';
 import 'package:hospital_maraba/app/modules/settings/controllers/settings_controller.dart';
 import 'package:hospital_maraba/app/utils/colorTheme.dart';
@@ -55,10 +57,11 @@ class SettingsView extends GetView {
             CardHome(
                 icon: Icon(Icons.close, size: mediumIconSize, color: iconGray),
                 onTap: () {
-                  Get.to(() => LoginView());
+                  Get.to(() => DashboardPageView());
                 },
                 text: "Sair da conta",
-                description: "Clique para fazer o logout")
+                description: "Clique para fazer o logout"),
+            SizedBox(height: 80),
           ]),
     );
   }

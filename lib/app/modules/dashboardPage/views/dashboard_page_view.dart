@@ -7,6 +7,9 @@ import '../controllers/dashboard_page_controller.dart';
 
 class DashboardPageView extends GetView<DashboardPageController> {
   @override
+  final controller = Get.put(DashboardPageController());
+
+  @override
   Widget build(BuildContext context) {
     return GetBuilder<DashboardPageController>(builder: (controller) {
       return Scaffold(
