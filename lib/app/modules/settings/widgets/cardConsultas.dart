@@ -16,7 +16,7 @@ class CardConsultas extends GetResponsiveView {
     return Ink(
         child: InkWell(
       splashColor: Get.theme.splashColor,
-      onTap: () => Get.to(CheckInView(agendamento)),
+      onTap: () => Get.to(ConsultaAgendada(agendamento: agendamento)),
       child: Container(
         width: Get.width,
         alignment: Alignment.centerLeft,
