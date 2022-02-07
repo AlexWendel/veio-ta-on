@@ -158,7 +158,7 @@ class ConsultationDateView extends GetView {
                           currentAgendamento.paciente =
                               AuthController.instance.currentUser.value.name;
                           controller.agendamento.add(currentAgendamento);
-                          Get.off(HomeView());
+                          Get.offAll(() => HomeView());
                           Get.to(() => ConsultaAgendada(
                               agendamento: currentAgendamento));
                         },
