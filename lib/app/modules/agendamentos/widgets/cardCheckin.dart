@@ -28,7 +28,7 @@ class CardCheckin extends GetView {
         child:
             Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
           Column(
-            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
