@@ -19,11 +19,22 @@ class ResultadosHome extends GetView {
     return DefaultDesignScreen(
       sliverAppBar: TitleSliverAppBar(title: "Resultados dos exames"),
       body: Column(children: [
-        Text(
-          "Clique em alguma exame para vizualizar o resutado ",
-          style:
-              Get.theme.textTheme.displaySmall?.copyWith(color: Colors.black54),
-        ),
+        Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Text(
+                "Resultados de seus exames",
+                style: Get.theme.textTheme.displaySmall?.copyWith(
+                    color: Colors.black54, fontWeight: FontWeight.bold),
+              ),
+              SizedBox(height: 5),
+              Text(
+                "Toque para ver o resultado dos exames",
+                style: Get.theme.textTheme.headline5
+                    ?.copyWith(color: Colors.black54),
+              )
+            ]),
         SizedBox(height: 8),
         CardResultados(
             agendamento: Agendamento(

@@ -1,17 +1,14 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:hospital_maraba/app/modules/agendamentos/views/consultation_type_view.dart';
 import 'package:hospital_maraba/app/modules/bottomNavBarDesignScreen.dart';
 import 'package:hospital_maraba/app/utils/colorTheme.dart';
 import 'package:hospital_maraba/app/utils/common.sizes.dart';
-import 'package:hospital_maraba/app/widgets/appBarr.dart';
 import 'package:hospital_maraba/app/widgets/cardHome.dart';
+import 'package:hospital_maraba/app/widgets/genericButton.dart';
 import 'package:hospital_maraba/app/widgets/inputText.dart';
 import 'package:hospital_maraba/app/widgets/scrollBox.dart';
-
 import '../../../widgets/TitleSliverAppBar.dart';
-import 'consultation_date_view.dart';
 import 'consultation_medic_view.dart';
 
 class ConsultationPlaceView extends GetView {
@@ -39,7 +36,7 @@ class ConsultationPlaceView extends GetView {
           SizedBox(height: 20),
           InputText(
               icon: Icon(Icons.search),
-              hintText: "Pesquisar unidade de atendimento"),
+              hintText: "Procurar um local de atendimento"),
           Divider(
             color: Colors.transparent,
             height: 10,
@@ -68,71 +65,25 @@ class ConsultationPlaceView extends GetView {
           // height: 70,
           color: backGround,
           child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Expanded(
-                // width: 200,
-                child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 20),
-                  height: 60,
-                  child: ElevatedButton(
-                    style: ButtonStyle(
-                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                          RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10))),
-                    ),
-                    onPressed: () {
-                      Get.back();
-                    },
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Icon(Icons.arrow_back_ios_rounded),
-                        Text(
-                          "Voltar",
-                          style: TextStyle(
-                              fontSize:
-                                  defaultFontSize / context.textScaleFactor,
-                              color: Colors.black54),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-              Expanded(
-                // width: 200,
-                child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 20),
-                  height: 60,
-                  child: ElevatedButton(
-                    style: ButtonStyle(
-                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                          RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10))),
-                    ),
-                    onPressed: () {
-                      Get.to(() => ConsultationMedicView());
-                    },
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Text(
-                          "Continuar",
-                          style: TextStyle(
-                              fontSize:
-                                  defaultFontSize / context.textScaleFactor,
-                              color: Colors.black54),
-                        ),
-                        Icon(Icons.arrow_forward_ios_rounded)
-                      ],
-                    ),
-                  ),
-                ),
-              )
-            ],
-          ),
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                GenericButton(
+                    color: Get.theme.primaryColor,
+                    onPressed: () => Get.back(),
+                    iconAtLeft: true,
+                    text: Text("Voltar etapa",
+                        style: Get.theme.textTheme.headline6
+                            ?.copyWith(fontWeight: FontWeight.w500)),
+                    icon: Icon(Icons.arrow_back_ios_outlined)),
+                GenericButton(
+                    color: Get.theme.primaryColor,
+                    onPressed: () => Get.to(() => ConsultationMedicView()),
+                    text: Text("Próxima etapa",
+                        style: Get.theme.textTheme.headline6
+                            ?.copyWith(fontWeight: FontWeight.w500)),
+                    icon: Icon(Icons.arrow_forward_ios_rounded))
+              ]),
         ));
   }
 }

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hospital_maraba/app/models/agendamento.dart';
 import 'package:hospital_maraba/app/modules/DefaultDesignScreen.dart';
+import 'package:hospital_maraba/app/modules/agendamentos/views/check_in_view.dart';
 import 'package:hospital_maraba/app/modules/settings/widgets/cardConsultas.dart';
 import 'package:hospital_maraba/app/utils/colorTheme.dart';
 import 'package:hospital_maraba/app/utils/common.sizes.dart';
@@ -13,73 +14,73 @@ import 'package:hospital_maraba/app/widgets/modalScreen.dart';
 class ResultadoFinal extends GetView {
   Agendamento agendamento;
   ResultadoFinal(this.agendamento);
+
   @override
   Widget build(BuildContext context) {
     return DefaultDesignScreen(
       sliverAppBar: TitleSliverAppBar(title: "Resultado do exame"),
       body: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+        Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "Resultado de exame",
+                style: Get.theme.textTheme.displaySmall?.copyWith(
+                    color: Colors.black54, fontWeight: FontWeight.bold),
+              ),
+              SizedBox(height: 5),
+              Text(
+                "Veja abaixo os detalhes e resultado do exame",
+                style: Get.theme.textTheme.headline5
+                    ?.copyWith(color: Colors.black54),
+              )
+            ]),
+        Divider(height: 30, color: Colors.grey.shade400),
         Text(
-          "Resultado do exame",
-          style: TextStyle(
-              color: Color.fromRGBO(120, 120, 120, 1),
-              fontWeight: FontWeight.w600,
-              fontSize: defaultFontSize * 1.6),
+          "Detalhes do exame",
+          style: Get.theme.textTheme.displaySmall,
         ),
         SizedBox(height: 8),
-        Text(
-          "Abaixo estão os detalhes de seu exame, é possível baixar o documento completo na parte inferior da tela",
-          style:
-              Get.theme.textTheme.displaySmall?.copyWith(color: Colors.black54),
-        ),
-        Divider(height: 15, color: Colors.grey.shade400),
-        Text(
-          "Detalhes do resultado",
-          style: TextStyle(
-              color: Color.fromRGBO(120, 120, 120, 1),
-              fontWeight: FontWeight.w400,
-              fontSize: defaultFontSize * 1.6),
+        DetalheExameField(
+          title: "Nome do paciente:",
+          value: agendamento.paciente,
         ),
         SizedBox(height: 5),
-        DetalheResultadosField(
-          title: "Nome do paciente ",
-          description: "Paulinho Paixão Pacana Pereira",
-        ),
-        SizedBox(height: 5),
-        DetalheResultadosField(
+        DetalheExameField(
           title: "Médico responsável:",
-          description: "Warley Rabelo Xerado",
+          value: agendamento.medico,
         ),
         SizedBox(height: 5),
-        DetalheResultadosField(
+        DetalheExameField(
           title: "Local de atendimento:",
-          description:
-              "Hospital Muncipal - Folha 17, Quadra Especial, Lote 10 - Nova Marabá",
+          value: agendamento.local,
         ),
         SizedBox(height: 5),
-        DetalheResultadosField(
+        DetalheExameField(
           title: "Tipo de atendimento:",
-          description: "Exame toxicológico",
+          value: agendamento.especialidade,
         ),
         SizedBox(height: 5),
-        DetalheResultadosField(
-          title: "Data do atemdimento:",
-          description: "Sexta feira, 13 de Março de 2023 às 14:00h",
+        DetalheExameField(
+          title: "Data do atendimento:",
+          value: "Sexta feira, 13 de Março de 2023 às 14:00h",
         ),
         SizedBox(height: 5),
-        DetalheResultadosField(
+        DetalheExameField(
           title: "Resultado:",
-          description:
+          value:
               "Presente no sangue do paciêntecocáina, maconha, valorante e outras drogas",
         ),
+        SizedBox(height: 5),
         Divider(height: 15, color: Colors.grey.shade400),
         Text(
-          "Abaixo está o documento do resultado do exame",
-          style: TextStyle(
-              color: Color.fromRGBO(80, 80, 80, 1),
-              fontWeight: FontWeight.w800,
-              fontSize: defaultFontSize * 1.3),
+          "Clique no botão abaixo para baixar o documento do resultado do exame",
+          style: Get.theme.textTheme.headline6?.copyWith(color: Colors.black54),
+          textAlign: TextAlign.center,
         ),
-        BotaoBaixar()
+        SizedBox(height: 5),
+        BotaoBaixar(),
       ]),
     );
   }
@@ -95,46 +96,8 @@ class BotaoBaixar extends GetWidget {
               padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10))),
-          child: Text(
-            'Baixar',
-            style: TextStyle(
-                fontSize: 15 / context.textScaleFactor, color: Colors.white),
-          ),
+          child: Text('Baixar resultado', style: Get.theme.textTheme.headline6),
           onPressed: () {},
         ));
-  }
-}
-
-class DetalheResultadosField extends GetView {
-  final String title;
-  final String description;
-  DetalheResultadosField({
-    required this.title,
-    required this.description,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        Text(
-          title,
-          style: TextStyle(
-              color: Color.fromRGBO(120, 120, 120, 1),
-              fontWeight: FontWeight.w300,
-              fontSize: defaultFontSize / context.textScaleFactor),
-        ),
-        Text(
-          description,
-          textAlign: TextAlign.left,
-          style: TextStyle(
-              fontSize: sectionSubheaderFontSize / context.textScaleFactor,
-              color: Color.fromRGBO(80, 80, 80, 1),
-              fontWeight: FontWeight.w500),
-        )
-      ],
-    );
   }
 }

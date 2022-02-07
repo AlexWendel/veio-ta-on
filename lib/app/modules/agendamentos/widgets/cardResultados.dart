@@ -8,7 +8,7 @@ import 'package:hospital_maraba/app/utils/colorTheme.dart';
 import 'package:hospital_maraba/app/utils/common.colors.dart';
 import 'package:hospital_maraba/app/utils/common.sizes.dart';
 
-class CardResultados extends GetResponsiveView {
+class CardResultados extends GetView {
   final Agendamento agendamento;
   CardResultados({required this.agendamento});
 
@@ -94,7 +94,7 @@ class CardResultados extends GetResponsiveView {
           ),
           IconButton(
               icon: Icon(Icons.arrow_forward_ios, color: headerGray),
-              onPressed: () => Get.to(ConsultaAgendada()))
+              onPressed: () => Get.to(ResultadoFinal(agendamento)))
         ]),
       ),
     ));
