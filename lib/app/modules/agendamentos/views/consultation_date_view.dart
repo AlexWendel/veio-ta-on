@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hospital_maraba/app/authcontrolller.dart';
 import 'package:hospital_maraba/app/modules/agendamentos/controllers/agendamentos_controller.dart';
+import 'package:hospital_maraba/app/modules/agendamentos/minhas_consultas/views/consulta_agendada.dart';
 import 'package:hospital_maraba/app/modules/agendamentos/views/agendamentos_view.dart';
 import 'package:hospital_maraba/app/modules/agendamentos/views/consultation_type_view.dart';
 import 'package:hospital_maraba/app/modules/bottomNavBarDesignScreen.dart';
@@ -157,7 +158,9 @@ class ConsultationDateView extends GetView {
                           currentAgendamento.paciente =
                               AuthController.instance.currentUser.value.name;
                           controller.agendamento.add(currentAgendamento);
-                          Get.offAll(() => HomeView());
+                          Get.off(HomeView());
+                          Get.to(() => ConsultaAgendada(
+                              agendamento: currentAgendamento));
                         },
                         backgroundColor: backGround,
                         title: "Concluído",
