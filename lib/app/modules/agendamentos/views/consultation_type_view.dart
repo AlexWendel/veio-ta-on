@@ -29,7 +29,7 @@ class ConsultationTypeView extends GetView<AgendamentosController> {
 
   @override
   Widget build(BuildContext context) {
-    AgendamentosController controller = Get.put(AgendamentosController());
+    AgendamentosController controller = Get.find<AgendamentosController>();
     controller.isPicked = false;
     return BottomNavBarDesignScreen(
       bottomNavBar: Container(
@@ -54,9 +54,7 @@ class ConsultationTypeView extends GetView<AgendamentosController> {
                           Get.defaultDialog(
                             titleStyle: TextStyle(color: Colors.black54),
                             middleTextStyle: TextStyle(color: Colors.black54),
-                            barrierDismissible: false,
                             buttonColor: Get.theme.backgroundColor,
-                            onConfirm: () {},
                             backgroundColor: backGround,
                             title: "Selecione um Exame",
                             middleText: "Exame não selecionado!",

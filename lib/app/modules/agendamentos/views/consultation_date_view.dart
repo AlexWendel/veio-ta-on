@@ -33,7 +33,7 @@ extension TimeOfDayExtension on TimeOfDay {
 
 class ConsultationDateView extends GetView {
   HomeController controller = Get.find<HomeController>();
-  AgendamentosController controller2 = Get.put(AgendamentosController());
+  AgendamentosController controller2 = Get.find<AgendamentosController>();
   Agendamento currentAgendamento;
   DateTime _selectedDate = DateTime.now();
   TimeOfDay _selectedTime = TimeOfDay.now();
@@ -145,7 +145,7 @@ class ConsultationDateView extends GetView {
               children: [
                 GenericButton(
                     color: Get.theme.primaryColor,
-                    onPressed: () => Get.back(),
+                    onPressed: () => {controller2.isPicked = true, Get.back()},
                     iconAtLeft: true,
                     text: Text("Voltar",
                         style: Get.theme.textTheme.headline6
@@ -172,6 +172,16 @@ class ConsultationDateView extends GetView {
                           backgroundColor: backGround,
                           title: "Concluído",
                           middleText: "Agendamento realizado com sucesso",
+                          confirmTextColor: Colors.black54,
+                        );
+                      } else {
+                        Get.defaultDialog(
+                          titleStyle: TextStyle(color: Colors.black54),
+                          middleTextStyle: TextStyle(color: Colors.black54),
+                          buttonColor: Get.theme.backgroundColor,
+                          backgroundColor: backGround,
+                          title: "Selecione a Data e Hora",
+                          middleText: "Data e/ou Hora não selecionado!",
                           confirmTextColor: Colors.black54,
                         );
                       }
