@@ -24,6 +24,8 @@ class AgendamentosController extends GetxController {
 
   final hilightColor = Get.theme.highlightColor.obs;
 
+  bool isPicked = false;
+
   @override
   void onInit() {
     super.onInit();
