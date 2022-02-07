@@ -9,7 +9,8 @@ import 'package:hospital_maraba/app/modules/home/controllers/home_controller.dar
 import 'package:hospital_maraba/app/widgets/TitleSliverAppBar.dart';
 
 class CheckInHome extends GetView {
-  HomeController homeController = Get.put(HomeController());
+  @override
+  HomeController controller = Get.put(HomeController());
   List<Agendamento> defaultAgendamento = [
     Agendamento(
         data: "25/10/2022",
