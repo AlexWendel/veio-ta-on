@@ -50,25 +50,36 @@ class CardHome extends GetView {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(
-                          text,
-                          style: TextStyle(
-                              color: Color.fromRGBO(120, 120, 120, 1),
-                              fontWeight: FontWeight.w600,
-                              fontSize:
-                                  defaultFontSize / context.textScaleFactor),
-                        ),
                         Container(
                           width: 260,
+                          alignment: Alignment.centerLeft,
                           padding: EdgeInsets.only(top: 5, bottom: 10),
-                          child: Text(
-                            description,
-                            maxLines: 1,
-                            style: TextStyle(
-                                color: Color.fromRGBO(160, 160, 160, 1),
-                                fontWeight: FontWeight.w400,
-                                fontSize: defaultCardDescriptionSize /
-                                    context.textScaleFactor),
+                          child: FittedBox(
+                            fit: BoxFit.none,
+                            child: Text(
+                              text,
+                              style: TextStyle(
+                                  color: Color.fromRGBO(120, 120, 120, 1),
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: defaultFontSize /
+                                      context.textScaleFactor),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          alignment: Alignment.centerLeft,
+                          width: 260,
+                          padding: EdgeInsets.only(top: 5, bottom: 10),
+                          child: FittedBox(
+                            fit: BoxFit.none,
+                            child: Text(
+                              description,
+                              style: TextStyle(
+                                  color: Color.fromRGBO(160, 160, 160, 1),
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: defaultCardDescriptionSize /
+                                      context.textScaleFactor),
+                            ),
                           ),
                         ),
                       ],
