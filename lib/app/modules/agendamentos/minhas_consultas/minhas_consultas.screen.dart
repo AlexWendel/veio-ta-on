@@ -17,6 +17,29 @@ import 'controllers/minhas_consultas.controller.dart';
 
 class MinhasConsultasScreen extends GetView {
   HomeController controller = Get.put(HomeController());
+  List<Agendamento> defaultAgendamento = [
+    Agendamento(
+        medico: "Dr. Henrique Santos",
+        especialidade: "Ressonancia magnética",
+        local: "Hospital Regional de Marabá",
+        protocolo: "999999999999",
+        paciente: AuthController.instance.currentUser.value.name,
+        data: "13/06/2022, às 15:00h"),
+    Agendamento(
+        medico: "Dr. Warley Galvão",
+        especialidade: "Análise psiquiátrica",
+        local: "Hospital Regional de Marabá",
+        protocolo: "999999999999",
+        paciente: AuthController.instance.currentUser.value.name,
+        data: "13/02/2022, às 14:30h"),
+    Agendamento(
+        medico: "Dr. Josué Carvalho",
+        especialidade: "Ressonancia magnética",
+        local: "Hospital Regional de Marabá",
+        protocolo: "999999999999",
+        paciente: AuthController.instance.currentUser.value.name,
+        data: "13/03/2023, às 14:00h"),
+  ];
   @override
   Widget build(BuildContext context) {
     return DefaultDesignScreen(
@@ -53,20 +76,26 @@ class MinhasConsultasScreen extends GetView {
                 child: ListView.builder(
                     physics: NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
-                    itemCount: controller.agendamento.length,
+                    itemCount: controller.agendamento.length + 3,
                     itemBuilder: (context, index) {
+                      if (index <= 2) {
+                        return CardConsultas(
+                            agendamento: defaultAgendamento[index]);
+                      }
+
                       return CardConsultas(
                           agendamento: Agendamento(
                               protocolo: "999999999999989",
                               paciente: AuthController
                                   .instance.currentUser.value.name,
-                              local: controller.agendamento[index].local,
-                              medico: controller.agendamento[index].medico,
-                              especialidade:
-                                  controller.agendamento[index].especialidade,
-                              data: controller.agendamento[index].data +
+                              local: controller.agendamento[index - 3].local,
+                              medico: controller.agendamento[index - 3].medico,
+                              especialidade: controller
+                                  .agendamento[index - 3].especialidade,
+                              data: controller.agendamento[index - 3].data +
                                   " às " +
-                                  controller.agendamento[index].hora));
+                                  controller.agendamento[index - 3].hora +
+                                  "h"));
                     }))),
           ]),
     );

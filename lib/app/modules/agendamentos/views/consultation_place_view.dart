@@ -61,7 +61,7 @@ class ConsultationPlaceView extends GetView<AgendamentosController> {
                 description: "Medico para a sua cabeça",
                 icon: Icon(Icons.tab),
                 onTap: () {
-                  currentAgendamento.medico = "Instituto da visão";
+                  currentAgendamento.local = "Instituto da visão";
                 }),
             CardAgendamentos(
                 text: "Clinica popular",

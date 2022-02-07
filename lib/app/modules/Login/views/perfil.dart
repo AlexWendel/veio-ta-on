@@ -227,83 +227,86 @@ class PerfilView extends GetView {
             width: 10,
             color: Colors.transparent,
           ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Row(
-                children: [
-                  Text(
-                    "Nome:",
-                    style: TextStyle(
-                        color: Color.fromRGBO(120, 120, 120, 1),
-                        fontWeight: FontWeight.w600,
-                        fontSize: defaultFontSize / context.textScaleFactor),
-                  ),
-                  Container(
-                    width: 260,
-                    child: Obx(() => Text(
-                          AuthController.instance.currentUser.value.name,
-                          maxLines: 1,
-                          style: TextStyle(
-                              color: Color.fromRGBO(160, 160, 160, 1),
-                              fontWeight: FontWeight.w400,
-                              fontSize: defaultCardDescriptionSize /
-                                  context.textScaleFactor),
-                        )),
-                  )
-                ],
-              ),
-              SizedBox(height: 8),
-              Row(
-                children: [
-                  Text(
-                    "CPF:",
-                    style: TextStyle(
-                        color: Color.fromRGBO(120, 120, 120, 1),
-                        fontWeight: FontWeight.w600,
-                        fontSize: defaultFontSize / context.textScaleFactor),
-                  ),
-                  Container(
-                      width: 260,
-                      child: Obx(
-                        () => Text(
-                          AuthController.instance.currentUser.value.cpf,
-                          maxLines: 1,
-                          style: TextStyle(
-                              color: Color.fromRGBO(160, 160, 160, 1),
-                              fontWeight: FontWeight.w400,
-                              fontSize: defaultCardDescriptionSize /
-                                  context.textScaleFactor),
-                        ),
-                      ))
-                ],
-              ),
-              SizedBox(height: 8),
-              Row(
-                children: [
-                  Text(
-                    "Email:",
-                    style: TextStyle(
-                        color: Color.fromRGBO(120, 120, 120, 1),
-                        fontWeight: FontWeight.w600,
-                        fontSize: defaultFontSize / context.textScaleFactor),
-                  ),
-                  Container(
-                    width: 260,
-                    child: Obx(() => Text(
-                          AuthController.instance.currentUser.value.email,
-                          maxLines: 1,
-                          style: TextStyle(
-                              color: Color.fromRGBO(160, 160, 160, 1),
-                              fontWeight: FontWeight.w400,
-                              fontSize: defaultCardDescriptionSize /
-                                  context.textScaleFactor),
-                        )),
-                  )
-                ],
-              ),
-            ],
+          Container(
+            width: 250,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Row(
+                  children: [
+                    Text(
+                      "Nome:",
+                      style: TextStyle(
+                          color: Color.fromRGBO(120, 120, 120, 1),
+                          fontWeight: FontWeight.w600,
+                          fontSize: defaultFontSize / context.textScaleFactor),
+                    ),
+                    Container(
+                      width: 150,
+                      child: Obx(() => Text(
+                            AuthController.instance.currentUser.value.name,
+                            maxLines: 1,
+                            style: TextStyle(
+                                color: Color.fromRGBO(160, 160, 160, 1),
+                                fontWeight: FontWeight.w400,
+                                fontSize: defaultCardDescriptionSize /
+                                    context.textScaleFactor),
+                          )),
+                    )
+                  ],
+                ),
+                SizedBox(height: 8),
+                Row(
+                  children: [
+                    Text(
+                      "CPF:",
+                      style: TextStyle(
+                          color: Color.fromRGBO(120, 120, 120, 1),
+                          fontWeight: FontWeight.w600,
+                          fontSize: defaultFontSize / context.textScaleFactor),
+                    ),
+                    Container(
+                        width: 150,
+                        child: Obx(
+                          () => Text(
+                            AuthController.instance.currentUser.value.cpf,
+                            maxLines: 1,
+                            style: TextStyle(
+                                color: Color.fromRGBO(160, 160, 160, 1),
+                                fontWeight: FontWeight.w400,
+                                fontSize: defaultCardDescriptionSize /
+                                    context.textScaleFactor),
+                          ),
+                        ))
+                  ],
+                ),
+                SizedBox(height: 8),
+                Row(
+                  children: [
+                    Text(
+                      "Email:",
+                      style: TextStyle(
+                          color: Color.fromRGBO(120, 120, 120, 1),
+                          fontWeight: FontWeight.w600,
+                          fontSize: defaultFontSize / context.textScaleFactor),
+                    ),
+                    Container(
+                      width: 150,
+                      child: Obx(() => Text(
+                            AuthController.instance.currentUser.value.email,
+                            maxLines: 1,
+                            style: TextStyle(
+                                color: Color.fromRGBO(160, 160, 160, 1),
+                                fontWeight: FontWeight.w400,
+                                fontSize: defaultCardDescriptionSize /
+                                    context.textScaleFactor),
+                          )),
+                    )
+                  ],
+                ),
+              ],
+            ),
           ),
         ],
       ),

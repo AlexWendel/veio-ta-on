@@ -17,6 +17,7 @@ class ConsultaAgendada extends GetView {
   Widget build(BuildContext context) {
     return BottomNavBarDesignScreen(
       bottomNavBar: Container(
+        padding: EdgeInsets.symmetric(vertical: 20),
         color: Get.theme.canvasColor,
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -25,17 +26,20 @@ class ConsultaAgendada extends GetView {
             GenericButton(
                 icon: Icon(Icons.delete_outline),
                 text: Text(
-                  "Cancelar consulta",
-                  style: Get.theme.textTheme.headline6
-                      ?.copyWith(fontWeight: FontWeight.w500),
+                  "     Remover    ",
+                  style: Get.theme.textTheme.headline6?.copyWith(
+                      fontSize: sectionHeaderFontSize / context.textScaleFactor,
+                      fontWeight: FontWeight.w500),
                 ),
                 color: Get.theme.errorColor),
             GenericButton(
                 icon: Icon(Icons.share_outlined),
                 color: Get.theme.primaryColor,
                 text: Text("Compartilhar",
-                    style: Get.theme.textTheme.headline6
-                        ?.copyWith(fontWeight: FontWeight.w500)))
+                    style: Get.theme.textTheme.headline6?.copyWith(
+                        fontSize:
+                            sectionHeaderFontSize / context.textScaleFactor,
+                        fontWeight: FontWeight.w500)))
           ],
         ),
       ),
