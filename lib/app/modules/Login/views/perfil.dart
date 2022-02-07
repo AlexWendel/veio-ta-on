@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:hospital_maraba/app/authcontrolller.dart';
 import 'package:hospital_maraba/app/modules/DefaultDesignScreen.dart';
 import 'package:hospital_maraba/app/modules/bottomNavBarDesignScreen.dart';
+import 'package:hospital_maraba/app/modules/home/views/home_view.dart';
 import 'package:hospital_maraba/app/modules/settings/widgets/cardConsultas.dart';
 import 'package:hospital_maraba/app/utils/colorTheme.dart';
 import 'package:hospital_maraba/app/utils/common.sizes.dart';
@@ -12,6 +14,18 @@ import 'package:hospital_maraba/app/widgets/inputText.dart';
 import 'package:hospital_maraba/app/widgets/modalScreen.dart';
 
 class PerfilView extends GetView {
+  final nomeInput =
+      InputText(icon: Icon(Icons.edit), hintText: "Digite seu novo nome");
+
+  final cpfInput = InputText(
+      icon: Icon(Icons.document_scanner), hintText: "Digite seu novo CPF");
+
+  final emailInput =
+      InputText(icon: Icon(Icons.email), hintText: "Digite seu novo Email");
+
+  final passwordInput =
+      InputText(icon: Icon(Icons.lock), hintText: "Digite sua nova senha");
+
   @override
   Widget build(BuildContext context) {
     return BottomNavBarDesignScreen(
@@ -54,7 +68,28 @@ class PerfilView extends GetView {
                       RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10))),
                 ),
-                onPressed: () async {},
+                onPressed: () {
+                  if (emailInput.textFieldController.value.text.isNotEmpty) {
+                    AuthController.instance.currentUser.value.email =
+                        emailInput.textFieldController.value.text;
+                  }
+
+                  if (cpfInput.textFieldController.value.text.isNotEmpty) {
+                    AuthController.instance.currentUser.value.cpf =
+                        cpfInput.textFieldController.value.text;
+                  }
+
+                  if (passwordInput.textFieldController.value.text.isNotEmpty) {
+                    AuthController.instance.currentUser.value.email =
+                        emailInput.textFieldController.value.text;
+                  }
+
+                  if (nomeInput.textFieldController.value.text.isNotEmpty) {
+                    AuthController.instance.currentUser.value.name =
+                        nomeInput.textFieldController.value.text;
+                  }
+                  Get.to(() => HomeView());
+                },
                 child: Text(
                   "  Confirmar  ",
                   style: Get.theme.textTheme.headline6,
@@ -81,6 +116,7 @@ class PerfilView extends GetView {
               fontWeight: FontWeight.w300,
               fontSize: defaultFontSize / context.textScaleFactor),
         ),
+        nomeInput,
         SizedBox(height: 8),
         InputText(icon: Icon(Icons.edit), hintText: "Digite seu novo nome"),
         SizedBox(height: 8),
@@ -134,9 +170,7 @@ class PerfilView extends GetView {
               fontSize: defaultFontSize / context.textScaleFactor),
         ),
         SizedBox(height: 8),
-        InputText(
-            icon: Icon(Icons.document_scanner),
-            hintText: "Digite seu novo CPF"),
+        cpfInput,
         SizedBox(height: 8),
         Text(
           "Email",
@@ -146,7 +180,7 @@ class PerfilView extends GetView {
               fontSize: defaultFontSize / context.textScaleFactor),
         ),
         SizedBox(height: 8),
-        InputText(icon: Icon(Icons.email), hintText: "Digite seu novo Email"),
+        emailInput,
         SizedBox(height: 8),
         InputText(icon: Icon(Icons.email), hintText: "Confirmar novo email"),
         SizedBox(height: 8),
@@ -158,7 +192,7 @@ class PerfilView extends GetView {
               fontSize: defaultFontSize / context.textScaleFactor),
         ),
         SizedBox(height: 8),
-        InputText(icon: Icon(Icons.lock), hintText: "Digite sua nova senha"),
+        passwordInput,
         SizedBox(height: 8),
         InputText(icon: Icon(Icons.lock), hintText: "Confirmar sua nova senha")
       ]),
@@ -208,15 +242,15 @@ class PerfilView extends GetView {
                   ),
                   Container(
                     width: 260,
-                    child: Text(
-                      "Paulete Maragarete da Silva",
-                      maxLines: 1,
-                      style: TextStyle(
-                          color: Color.fromRGBO(160, 160, 160, 1),
-                          fontWeight: FontWeight.w400,
-                          fontSize: defaultCardDescriptionSize /
-                              context.textScaleFactor),
-                    ),
+                    child: Obx(() => Text(
+                          AuthController.instance.currentUser.value.name,
+                          maxLines: 1,
+                          style: TextStyle(
+                              color: Color.fromRGBO(160, 160, 160, 1),
+                              fontWeight: FontWeight.w400,
+                              fontSize: defaultCardDescriptionSize /
+                                  context.textScaleFactor),
+                        )),
                   )
                 ],
               ),
@@ -231,17 +265,18 @@ class PerfilView extends GetView {
                         fontSize: defaultFontSize / context.textScaleFactor),
                   ),
                   Container(
-                    width: 260,
-                    child: Text(
-                      "000 000 000 000",
-                      maxLines: 1,
-                      style: TextStyle(
-                          color: Color.fromRGBO(160, 160, 160, 1),
-                          fontWeight: FontWeight.w400,
-                          fontSize: defaultCardDescriptionSize /
-                              context.textScaleFactor),
-                    ),
-                  )
+                      width: 260,
+                      child: Obx(
+                        () => Text(
+                          AuthController.instance.currentUser.value.cpf,
+                          maxLines: 1,
+                          style: TextStyle(
+                              color: Color.fromRGBO(160, 160, 160, 1),
+                              fontWeight: FontWeight.w400,
+                              fontSize: defaultCardDescriptionSize /
+                                  context.textScaleFactor),
+                        ),
+                      ))
                 ],
               ),
               SizedBox(height: 8),
@@ -256,15 +291,15 @@ class PerfilView extends GetView {
                   ),
                   Container(
                     width: 260,
-                    child: Text(
-                      "teste@snst.dev",
-                      maxLines: 1,
-                      style: TextStyle(
-                          color: Color.fromRGBO(160, 160, 160, 1),
-                          fontWeight: FontWeight.w400,
-                          fontSize: defaultCardDescriptionSize /
-                              context.textScaleFactor),
-                    ),
+                    child: Obx(() => Text(
+                          AuthController.instance.currentUser.value.email,
+                          maxLines: 1,
+                          style: TextStyle(
+                              color: Color.fromRGBO(160, 160, 160, 1),
+                              fontWeight: FontWeight.w400,
+                              fontSize: defaultCardDescriptionSize /
+                                  context.textScaleFactor),
+                        )),
                   )
                 ],
               ),

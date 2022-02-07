@@ -22,6 +22,7 @@ class InputText extends GetView {
       height: 60,
       alignment: Alignment.center,
       child: TextField(
+        style: TextStyle(color: Colors.black87),
         onEditingComplete: () =>
             {}, // TODO: Verificar se o valor é igual em InputText que estiverem ligados
         controller: textFieldController.value,
