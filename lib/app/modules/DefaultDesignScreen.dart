@@ -17,10 +17,7 @@ class DefaultDesignScreen extends GetView {
         margin: EdgeInsets.only(top: 40),
         child: Padding(
             padding: EdgeInsets.only(
-                left: 20,
-                right: 20,
-                top: 20,
-                bottom: Get.height / 5 + (Get.height / (3 + 1))),
+                left: 20, right: 20, top: 20, bottom: Get.height / 3),
             child: body),
         decoration: BoxDecoration(
           color: Get.theme.canvasColor,
