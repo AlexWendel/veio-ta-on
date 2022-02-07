@@ -37,9 +37,10 @@ class CardAgendamentos extends GetView {
             onTap!();
           },
           child: Obx(() => Container(
+                width: Get.width,
                 alignment: Alignment.center,
                 height: height.value,
-                margin: EdgeInsets.symmetric(vertical: 5),
+                margin: EdgeInsets.all(10),
                 padding: EdgeInsets.all(5),
                 decoration: BoxDecoration(
                   color: (color.value),
@@ -63,25 +64,36 @@ class CardAgendamentos extends GetView {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text(
-                              text,
-                              style: TextStyle(
-                                  color: Color.fromRGBO(120, 120, 120, 1),
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: defaultFontSize /
-                                      context.textScaleFactor),
+                            Container(
+                              alignment: Alignment.centerLeft,
+                              width: Get.width / 2,
+                              child: FittedBox(
+                                fit: BoxFit.scaleDown,
+                                child: Text(
+                                  text,
+                                  style: TextStyle(
+                                      color: Color.fromRGBO(120, 120, 120, 1),
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: defaultFontSize /
+                                          context.textScaleFactor),
+                                ),
+                              ),
                             ),
                             Container(
-                              width: 260,
+                              alignment: Alignment.centerLeft,
+                              width: Get.width / 2,
                               padding: EdgeInsets.only(top: 5, bottom: 10),
-                              child: Text(
-                                description,
-                                maxLines: 1,
-                                style: TextStyle(
-                                    color: Color.fromRGBO(160, 160, 160, 1),
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: defaultCardDescriptionSize /
-                                        context.textScaleFactor),
+                              child: FittedBox(
+                                fit: BoxFit.scaleDown,
+                                child: Text(
+                                  description,
+                                  maxLines: 1,
+                                  style: TextStyle(
+                                      color: Color.fromRGBO(160, 160, 160, 1),
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: defaultCardDescriptionSize /
+                                          context.textScaleFactor),
+                                ),
                               ),
                             ),
                           ],
