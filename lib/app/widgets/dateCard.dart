@@ -25,6 +25,7 @@ class DateCard extends GetView {
       splashColor: verdeBosta,
       onTap: onTap,
       child: Container(
+        width: Get.width,
         alignment: Alignment.center,
         height: 100,
         margin: EdgeInsets.all(5),
@@ -52,7 +53,7 @@ class DateCard extends GetView {
                           fontSize: defaultFontSize / context.textScaleFactor),
                     ),
                     Container(
-                      width: 260,
+                      width: Get.width / 1.5,
                       padding: EdgeInsets.only(top: 5, bottom: 5),
                       child: FittedBox(
                           child: Text(
@@ -67,7 +68,9 @@ class DateCard extends GetView {
                     ),
                   ],
                 ),
-                icon
+                FittedBox(
+                  child: icon,
+                )
               ],
             ),
           ],
