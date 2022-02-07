@@ -16,7 +16,7 @@ class CardConsultas extends GetResponsiveView {
     return Ink(
         child: InkWell(
       splashColor: Get.theme.splashColor,
-      onTap: () => Get.to(ConsultaAgendada(agendamento: agendamento)),
+      onTap: () => Get.to(() => ConsultaAgendada(agendamento: agendamento)),
       child: Container(
         width: Get.width,
         alignment: Alignment.centerLeft,
@@ -27,7 +27,8 @@ class CardConsultas extends GetResponsiveView {
           color: textFieldGray,
           borderRadius: BorderRadius.circular(8),
         ),
-        child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
+        child:
+            Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
           Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,

@@ -89,14 +89,14 @@ class NovoAgendamentoView extends GetResponsiveView<NovoAgendamentoController> {
                   icon: Icon(Icons.medical_services_outlined,
                       size: mediumIconSize, color: iconGray),
                   onTap: () {},
-                  text: "Seleciona o especialista ",
-                  description: "Selecione um especialista"),
+                  text: "Médico especialista",
+                  description: "Selecione um médico"),
               CardHome(
                   icon: Icon(Icons.calendar_today_sharp,
                       size: mediumIconSize, color: iconGray),
                   onTap: () {},
                   text: "Data da consulta",
-                  description: "Escolha uma data disponível para a consulta")
+                  description: "Selecione uma data")
             ]),
         sliverAppBar: TitleSliverAppBar(title: "Agendamento de consultas"));
   }

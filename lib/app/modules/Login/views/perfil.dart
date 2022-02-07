@@ -10,6 +10,7 @@ import 'package:hospital_maraba/app/utils/colorTheme.dart';
 import 'package:hospital_maraba/app/utils/common.sizes.dart';
 import 'package:hospital_maraba/app/widgets/TitleSliverAppBar.dart';
 import 'package:hospital_maraba/app/widgets/cardHome.dart';
+import 'package:hospital_maraba/app/widgets/genericButton.dart';
 import 'package:hospital_maraba/app/widgets/inputText.dart';
 import 'package:hospital_maraba/app/widgets/modalScreen.dart';
 
@@ -32,72 +33,59 @@ class PerfilView extends GetView {
       sliverAppBar: TitleSliverAppBar(title: "Perfil"),
       bottomNavBar: Container(
         color: backGround,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Container(
-              margin: EdgeInsets.all(20),
-              height: 60,
-
-              // width: 200,
-              child: ElevatedButton(
-                style: ButtonStyle(
-                  backgroundColor:
-                      MaterialStateProperty.all(Get.theme.errorColor),
-                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                      RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10))),
+        child: Padding(
+            padding: EdgeInsets.all(10),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                GenericButton(
+                  icon: Icon(Icons.arrow_back_ios_outlined,
+                      color: Get.theme.canvasColor),
+                  onPressed: () {
+                    () => Get.back();
+                  },
+                  iconAtLeft: true,
+                  color: Get.theme.errorColor,
+                  text: Text(
+                    "Cancelar",
+                    style: Get.theme.textTheme.headline6,
+                  ),
                 ),
-                onPressed: () {
-                  Get.back();
-                },
-                child: Text(
-                  "  Cancelar  ",
-                  style: Get.theme.textTheme.headline6,
-                ),
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.all(20),
-              height: 60,
-              // width: 200,
-              child: ElevatedButton(
-                style: ButtonStyle(
-                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                      RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10))),
-                ),
-                onPressed: () {
-                  if (emailInput.textFieldController.value.text.isNotEmpty) {
-                    AuthController.instance.currentUser.value.email =
-                        emailInput.textFieldController.value.text;
-                  }
+                GenericButton(
+                  icon:
+                      Icon(Icons.check_outlined, color: Get.theme.canvasColor),
+                  color: Get.theme.primaryColor,
+                  onPressed: () {
+                    if (emailInput.textFieldController.value.text.isNotEmpty) {
+                      AuthController.instance.currentUser.value.email =
+                          emailInput.textFieldController.value.text;
+                    }
 
-                  if (cpfInput.textFieldController.value.text.isNotEmpty) {
-                    AuthController.instance.currentUser.value.cpf =
-                        cpfInput.textFieldController.value.text;
-                  }
+                    if (cpfInput.textFieldController.value.text.isNotEmpty) {
+                      AuthController.instance.currentUser.value.cpf =
+                          cpfInput.textFieldController.value.text;
+                    }
 
-                  if (passwordInput.textFieldController.value.text.isNotEmpty) {
-                    AuthController.instance.currentUser.value.email =
-                        emailInput.textFieldController.value.text;
-                  }
+                    if (passwordInput
+                        .textFieldController.value.text.isNotEmpty) {
+                      AuthController.instance.currentUser.value.email =
+                          emailInput.textFieldController.value.text;
+                    }
 
-                  if (nomeInput.textFieldController.value.text.isNotEmpty) {
-                    AuthController.instance.currentUser.value.name =
-                        nomeInput.textFieldController.value.text;
-                  }
-                  Get.to(() => HomeView());
-                },
-                child: Text(
-                  "  Confirmar  ",
-                  style: Get.theme.textTheme.headline6,
+                    if (nomeInput.textFieldController.value.text.isNotEmpty) {
+                      AuthController.instance.currentUser.value.name =
+                          nomeInput.textFieldController.value.text;
+                    }
+                    Get.to(() => HomeView());
+                  },
+                  text: Text(
+                    "  Confirmar  ",
+                    style: Get.theme.textTheme.headline6,
+                  ),
                 ),
-              ),
-            ),
-          ],
-        ),
+              ],
+            )),
       ),
       body: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         Text(
@@ -117,8 +105,6 @@ class PerfilView extends GetView {
               fontSize: defaultFontSize / context.textScaleFactor),
         ),
         nomeInput,
-        SizedBox(height: 8),
-        InputText(icon: Icon(Icons.edit), hintText: "Digite seu novo nome"),
         SizedBox(height: 8),
         Text(
           "Foto",
@@ -201,6 +187,7 @@ class PerfilView extends GetView {
 
   Container Foto(BuildContext context) {
     return Container(
+      clipBehavior: Clip.hardEdge,
       alignment: Alignment.center,
       // height: 200,
       margin: EdgeInsets.symmetric(vertical: 10),
@@ -209,107 +196,110 @@ class PerfilView extends GetView {
         color: Get.theme.highlightColor,
         borderRadius: BorderRadius.circular(8),
       ),
-      child: Row(
-        children: [
-          Container(
-            width: 90,
-            height: 90,
-            margin: EdgeInsets.all(5),
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              image: DecorationImage(
-                fit: BoxFit.cover,
-                image: AssetImage("imgs/cj.png"),
+      child: Wrap(children: [
+        Row(
+          children: [
+            Container(
+              width: 64,
+              height: 64,
+              margin: EdgeInsets.all(5),
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                image: DecorationImage(
+                  fit: BoxFit.cover,
+                  image: AssetImage("imgs/cj.png"),
+                ),
               ),
             ),
-          ),
-          VerticalDivider(
-            width: 10,
-            color: Colors.transparent,
-          ),
-          Container(
-            width: 250,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Row(
-                  children: [
-                    Text(
-                      "Nome:",
-                      style: TextStyle(
-                          color: Color.fromRGBO(120, 120, 120, 1),
-                          fontWeight: FontWeight.w600,
-                          fontSize: defaultFontSize / context.textScaleFactor),
-                    ),
-                    Container(
-                      width: 150,
-                      child: Obx(() => Text(
-                            AuthController.instance.currentUser.value.name,
-                            maxLines: 1,
-                            style: TextStyle(
-                                color: Color.fromRGBO(160, 160, 160, 1),
-                                fontWeight: FontWeight.w400,
-                                fontSize: defaultCardDescriptionSize /
-                                    context.textScaleFactor),
-                          )),
-                    )
-                  ],
-                ),
-                SizedBox(height: 8),
-                Row(
-                  children: [
-                    Text(
-                      "CPF:",
-                      style: TextStyle(
-                          color: Color.fromRGBO(120, 120, 120, 1),
-                          fontWeight: FontWeight.w600,
-                          fontSize: defaultFontSize / context.textScaleFactor),
-                    ),
-                    Container(
-                        width: 150,
-                        child: Obx(
-                          () => Text(
-                            AuthController.instance.currentUser.value.cpf,
-                            maxLines: 1,
-                            style: TextStyle(
-                                color: Color.fromRGBO(160, 160, 160, 1),
-                                fontWeight: FontWeight.w400,
-                                fontSize: defaultCardDescriptionSize /
-                                    context.textScaleFactor),
-                          ),
-                        ))
-                  ],
-                ),
-                SizedBox(height: 8),
-                Row(
-                  children: [
-                    Text(
-                      "Email:",
-                      style: TextStyle(
-                          color: Color.fromRGBO(120, 120, 120, 1),
-                          fontWeight: FontWeight.w600,
-                          fontSize: defaultFontSize / context.textScaleFactor),
-                    ),
-                    Container(
-                      width: 150,
-                      child: Obx(() => Text(
-                            AuthController.instance.currentUser.value.email,
-                            maxLines: 1,
-                            style: TextStyle(
-                                color: Color.fromRGBO(160, 160, 160, 1),
-                                fontWeight: FontWeight.w400,
-                                fontSize: defaultCardDescriptionSize /
-                                    context.textScaleFactor),
-                          )),
-                    )
-                  ],
-                ),
-              ],
+            VerticalDivider(
+              width: 10,
+              color: Colors.transparent,
             ),
-          ),
-        ],
-      ),
+            Container(
+              width: 250,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Row(
+                    children: [
+                      Text(
+                        "Nome:",
+                        style: TextStyle(
+                            color: Color.fromRGBO(120, 120, 120, 1),
+                            fontWeight: FontWeight.w600,
+                            fontSize: Get.theme.textTheme.headline6?.fontSize),
+                      ),
+                      Container(
+                        width: 150,
+                        child: Obx(() => Text(
+                              AuthController.instance.currentUser.value.name,
+                              maxLines: 1,
+                              style: TextStyle(
+                                  color: Color.fromRGBO(160, 160, 160, 1),
+                                  fontWeight: FontWeight.w400,
+                                  fontSize:
+                                      Get.theme.textTheme.headline6?.fontSize),
+                            )),
+                      )
+                    ],
+                  ),
+                  SizedBox(height: 8),
+                  Row(
+                    children: [
+                      Text(
+                        "CPF:",
+                        style: TextStyle(
+                            color: Color.fromRGBO(120, 120, 120, 1),
+                            fontWeight: FontWeight.w600,
+                            fontSize: Get.theme.textTheme.headline6?.fontSize),
+                      ),
+                      Container(
+                          width: 150,
+                          child: Obx(
+                            () => Text(
+                              AuthController.instance.currentUser.value.cpf,
+                              maxLines: 1,
+                              style: TextStyle(
+                                  color: Color.fromRGBO(160, 160, 160, 1),
+                                  fontWeight: FontWeight.w400,
+                                  fontSize:
+                                      Get.theme.textTheme.headline6?.fontSize),
+                            ),
+                          ))
+                    ],
+                  ),
+                  SizedBox(height: 8),
+                  FittedBox(
+                      child: Row(
+                    children: [
+                      Text(
+                        "Email:",
+                        style: TextStyle(
+                            color: Color.fromRGBO(120, 120, 120, 1),
+                            fontWeight: FontWeight.w600,
+                            fontSize: Get.theme.textTheme.headline6?.fontSize),
+                      ),
+                      Container(
+                        width: 150,
+                        child: Obx(() => Text(
+                              AuthController.instance.currentUser.value.email,
+                              maxLines: 1,
+                              style: TextStyle(
+                                  color: Color.fromRGBO(160, 160, 160, 1),
+                                  fontWeight: FontWeight.w400,
+                                  fontSize:
+                                      Get.theme.textTheme.headline6?.fontSize),
+                            )),
+                      )
+                    ],
+                  )),
+                ],
+              ),
+            ),
+          ],
+        )
+      ]),
     );
   }
 }

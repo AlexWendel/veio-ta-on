@@ -56,7 +56,7 @@ class SettingsView extends GetView {
             CardHome(
                 icon: Icon(Icons.close, size: mediumIconSize, color: iconGray),
                 onTap: () {
-                  Get.to(() => DashboardPageView());
+                  AuthController.instance.logout();
                 },
                 text: "Sair da conta",
                 description: "Clique para sair"),
