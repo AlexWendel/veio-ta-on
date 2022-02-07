@@ -41,53 +41,76 @@ class CardConsultas extends GetResponsiveView {
                     fontSize: defaultFontSize / context.textScaleFactor),
               ),
               SizedBox(height: 10),
-              RichText(
-                text: TextSpan(
-                  style: DefaultTextStyle.of(context).style,
-                  children: <TextSpan>[
-                    TextSpan(
-                        text: 'Médico: ',
-                        style: TextStyle(
-                            fontWeight: FontWeight.w500,
-                            color: Colors.black54)),
-                    TextSpan(
-                        text: agendamento.medico,
-                        style: TextStyle(
-                            color: headerGray, fontWeight: FontWeight.w400)),
-                  ],
+              Container(
+                alignment: Alignment.centerLeft,
+                width: Get.width / 2,
+                child: FittedBox(
+                  fit: BoxFit.scaleDown,
+                  child: RichText(
+                    text: TextSpan(
+                      style: DefaultTextStyle.of(context).style,
+                      children: <TextSpan>[
+                        TextSpan(
+                            text: 'Médico: ',
+                            style: TextStyle(
+                                fontWeight: FontWeight.w500,
+                                color: Colors.black54)),
+                        TextSpan(
+                            text: agendamento.medico,
+                            style: TextStyle(
+                                color: headerGray,
+                                fontWeight: FontWeight.w400)),
+                      ],
+                    ),
+                  ),
                 ),
               ),
-              RichText(
-                text: TextSpan(
-                  style: DefaultTextStyle.of(context).style,
-                  children: <TextSpan>[
-                    TextSpan(
-                        text: 'Local: ',
-                        style: TextStyle(
-                            fontWeight: FontWeight.w500,
-                            color: Colors.black54)),
-                    TextSpan(
-                        text: agendamento.local,
-                        style: TextStyle(
-                            color: headerGray, fontWeight: FontWeight.w400)),
-                  ],
+              Container(
+                alignment: Alignment.centerLeft,
+                width: Get.width / 2,
+                child: FittedBox(
+                  alignment: Alignment.centerLeft,
+                  fit: BoxFit.scaleDown,
+                  child: RichText(
+                    text: TextSpan(
+                      style: DefaultTextStyle.of(context).style,
+                      children: <TextSpan>[
+                        TextSpan(
+                            text: 'Local: ',
+                            style: TextStyle(
+                                fontWeight: FontWeight.w500,
+                                color: Colors.black54)),
+                        TextSpan(
+                            text: agendamento.local,
+                            style: TextStyle(
+                                color: headerGray,
+                                fontWeight: FontWeight.w400)),
+                      ],
+                    ),
+                  ),
                 ),
               ),
-              RichText(
-                text: TextSpan(
-                  style: DefaultTextStyle.of(context).style,
-                  children: <TextSpan>[
-                    TextSpan(
-                        text: 'Horário: ',
-                        style: TextStyle(
-                            fontWeight: FontWeight.w500,
-                            color: Colors.black54)),
-                    TextSpan(
-                        text: agendamento.data,
-                        style: TextStyle(
-                            fontWeight: FontWeight.w400,
-                            color: Colors.black54)),
-                  ],
+              Container(
+                alignment: Alignment.centerLeft,
+                child: FittedBox(
+                  fit: BoxFit.scaleDown,
+                  child: RichText(
+                    text: TextSpan(
+                      style: DefaultTextStyle.of(context).style,
+                      children: <TextSpan>[
+                        TextSpan(
+                            text: 'Horário: ',
+                            style: TextStyle(
+                                fontWeight: FontWeight.w500,
+                                color: Colors.black54)),
+                        TextSpan(
+                            text: agendamento.data,
+                            style: TextStyle(
+                                fontWeight: FontWeight.w400,
+                                color: Colors.black54)),
+                      ],
+                    ),
+                  ),
                 ),
               )
             ],

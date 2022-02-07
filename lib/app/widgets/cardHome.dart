@@ -51,11 +51,11 @@ class CardHome extends GetView {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Container(
-                          width: 260,
+                          width: Get.width / 2,
                           alignment: Alignment.centerLeft,
-                          padding: EdgeInsets.only(top: 5, bottom: 10),
+                          padding: EdgeInsets.only(top: 5),
                           child: FittedBox(
-                            fit: BoxFit.none,
+                            fit: BoxFit.scaleDown,
                             child: Text(
                               text,
                               style: TextStyle(
@@ -68,10 +68,10 @@ class CardHome extends GetView {
                         ),
                         Container(
                           alignment: Alignment.centerLeft,
-                          width: 260,
-                          padding: EdgeInsets.only(top: 5, bottom: 10),
+                          width: Get.width / 2,
+                          padding: EdgeInsets.only(bottom: 10),
                           child: FittedBox(
-                            fit: BoxFit.none,
+                            fit: BoxFit.scaleDown,
                             child: Text(
                               description,
                               style: TextStyle(
