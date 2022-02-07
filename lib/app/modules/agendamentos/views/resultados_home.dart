@@ -44,7 +44,7 @@ class ResultadosHome extends GetView {
                 local: "Hospital Municipal de Marabá",
                 paciente: "Alex Wendel Oliveira da Silva",
                 protocolo: "111111111111111111111")),
-        CardConsultas(
+        CardResultados(
             agendamento: Agendamento(
                 data: "25/10/2022",
                 especialidade: "Ressonância Magnética",
@@ -52,7 +52,7 @@ class ResultadosHome extends GetView {
                 local: "Hospital Regional de Marabá",
                 paciente: "Alex Wendel Oliveira da Silva",
                 protocolo: "99411516565158")),
-        CardConsultas(
+        CardResultados(
             agendamento: Agendamento(
                 data: "25/10/2022",
                 especialidade: "Tomografia Computadorizada",
@@ -60,7 +60,7 @@ class ResultadosHome extends GetView {
                 local: "Hospital Municipal de Marabá",
                 paciente: "Alex Wendel Oliveira da Silva",
                 protocolo: "999999999999999")),
-        CardConsultas(
+        CardResultados(
             agendamento: Agendamento(
                 data: "25/10/2022",
                 especialidade: "Análise psiquiátrica",
