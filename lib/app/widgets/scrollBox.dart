@@ -34,7 +34,7 @@ class ScrollBox extends GetView {
       padding: EdgeInsets.symmetric(vertical: 10),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.all(Radius.circular(10)),
-        color: cleareGrayBrackground,
+        color: grayBackground.withOpacity(0.3),
       ),
       width: 1000,
       height: Get.height / 2.3,

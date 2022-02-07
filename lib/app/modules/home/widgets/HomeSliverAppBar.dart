@@ -80,7 +80,7 @@ class HomeSliverAppBar extends GetWidget {
       actions: [
         InkWell(
           onTap: () {
-            Get.to(PerfilView());
+            Get.to(() => PerfilView());
           },
           child: Container(
             margin: EdgeInsets.only(top: 5, right: 5, bottom: 10),
