@@ -31,7 +31,7 @@ class NovoAgendamentoView extends GetResponsiveView<NovoAgendamentoController> {
                 icon: Icon(Icons.arrow_forward_ios_rounded,
                     color: Get.theme.canvasColor),
                 color: Get.theme.colorScheme.primary,
-                onPressed: () => {Get.to(ConsultationTypeView())},
+                onPressed: () => {Get.to(() => ConsultationTypeView())},
               )
             ],
           ),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:hospital_maraba/app/models/agendamento.dart';
+import 'package:hospital_maraba/app/modules/agendamentos/controllers/agendamentos_controller.dart';
 
 import 'package:hospital_maraba/app/modules/bottomNavBarDesignScreen.dart';
 import 'package:hospital_maraba/app/utils/colorTheme.dart';
@@ -17,7 +18,7 @@ import '../../../widgets/cardAgendamentos.dart';
 import '../../home/controllers/home_controller.dart';
 import 'consultation_date_view.dart';
 
-class ConsultationMedicView extends GetView {
+class ConsultationMedicView extends GetView<AgendamentosController> {
   Agendamento currentAgendamento;
 
   ConsultationMedicView({required this.currentAgendamento});
@@ -26,6 +27,7 @@ class ConsultationMedicView extends GetView {
   Widget build(
     BuildContext context,
   ) {
+    AgendamentosController controller = Get.put(AgendamentosController());
     return BottomNavBarDesignScreen(
         sliverAppBar: TitleSliverAppBar(title: "Escolha o especialista"),
         body: Column(children: [
@@ -47,14 +49,12 @@ class ConsultationMedicView extends GetView {
                 )
               ]),
           SizedBox(height: 20),
-          InputText(
-              icon: Icon(Icons.search),
-              hintText: "Pesquisar por um médico específico"),
+          controller.itemSearchInput3.value,
           Divider(
             color: Colors.transparent,
             height: 10,
           ),
-          ScrollBox(itemList: [
+          ScrollBox(itemSearchInput: controller.itemSearchInput3, itemList: [
             CardAgendamentos(
                 text: "Dr. Kledilson Farias",
                 description: "Medico para a sua cabeça",

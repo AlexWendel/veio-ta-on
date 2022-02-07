@@ -4,6 +4,7 @@ import 'package:hospital_maraba/app/utils/common.sizes.dart';
 
 class CardAgendamentos extends GetView {
   final color = Get.theme.highlightColor.obs;
+  final height = 100.0.obs;
   final String text;
   final String description;
   final Icon icon;
@@ -37,7 +38,7 @@ class CardAgendamentos extends GetView {
           },
           child: Obx(() => Container(
                 alignment: Alignment.center,
-                height: 100,
+                height: height.value,
                 margin: EdgeInsets.symmetric(vertical: 5),
                 padding: EdgeInsets.all(5),
                 decoration: BoxDecoration(

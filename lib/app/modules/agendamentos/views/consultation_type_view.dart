@@ -71,14 +71,12 @@ class ConsultationTypeView extends GetView<AgendamentosController> {
               )
             ]),
         SizedBox(height: 20),
-        InputText(
-            icon: Icon(Icons.search),
-            hintText: "Procurar por um tipo de exame"),
+        controller.itemSearchInput1.value,
         Divider(
           color: Colors.transparent,
           height: 10,
         ),
-        ScrollBox(itemList: [
+        ScrollBox(itemSearchInput: controller.itemSearchInput1, itemList: [
           CardAgendamentos(
               text: "Hemograma",
               description: "Medico para a sua cabeça",
