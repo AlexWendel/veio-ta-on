@@ -69,8 +69,7 @@ class ResultadoFinal extends GetView {
         SizedBox(height: 5),
         DetalheExameField(
           title: "Resultado:",
-          value:
-              "Presente no sangue do paciêntecocáina, maconha, valorante e outras drogas",
+          value: "Aqui ficará o resultado do exame.",
         ),
         SizedBox(height: 5),
         Divider(height: 15, color: Colors.grey.shade400),
