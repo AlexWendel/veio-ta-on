@@ -48,11 +48,25 @@ class NovoAgendamentoView extends GetResponsiveView<NovoAgendamentoController> {
                           color: Colors.black54, fontWeight: FontWeight.bold),
                     ),
                     SizedBox(height: 5),
-                    Text(
-                      "Siga as seguintes etapas para agendar sua consulta",
-                      style: Get.theme.textTheme.headline5
-                          ?.copyWith(color: Colors.black54),
-                    )
+                    RichText(
+                        text: TextSpan(children: [
+                      TextSpan(
+                        text:
+                            "Essas são as etapas para agendar uma consulta, toque em",
+                        style: Get.theme.textTheme.headline5
+                            ?.copyWith(color: Colors.black54),
+                      ),
+                      TextSpan(
+                        text: " Iniciar Agendamento ",
+                        style: Get.theme.textTheme.headline5?.copyWith(
+                            color: Colors.black54, fontWeight: FontWeight.w700),
+                      ),
+                      TextSpan(
+                        text: "para começar",
+                        style: Get.theme.textTheme.headline5
+                            ?.copyWith(color: Colors.black54),
+                      )
+                    ]))
                   ]),
               SizedBox(height: 8),
               CardHome(
