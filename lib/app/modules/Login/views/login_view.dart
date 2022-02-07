@@ -37,9 +37,8 @@ class LoginView extends GetView<LoginController> {
                 // shape: BoxShape.circle,
                 // color: backGround,
                 image: DecorationImage(
-                  fit: BoxFit.fill,
-                  image: NetworkImage(
-                      "https://i.pinimg.com/564x/49/66/bd/4966bddbf433db57b4ef8556531a6e78.jpg"),
+                  fit: BoxFit.cover,
+                  image: AssetImage('imgs/realLogo.jpg'),
                 ),
               ),
             ),
@@ -99,8 +98,13 @@ class LoginView extends GetView<LoginController> {
               color: Colors.transparent,
               height: 20,
             ),
-            Button(
-              text: "Entrar",
+            ElevatedButton(
+              child: Padding(
+                  padding: EdgeInsets.symmetric(vertical: 20),
+                  child: Text("Entrar",
+                      style: Get.theme.textTheme.headline5?.copyWith(
+                          color: Get.theme.canvasColor,
+                          fontWeight: FontWeight.w600))),
               onPressed: () {
                 Get.offAll(() => HomeView());
                 // AuthController.instance.login(LoginForm(

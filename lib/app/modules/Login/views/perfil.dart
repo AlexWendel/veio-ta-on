@@ -185,7 +185,7 @@ class PerfilView extends GetView {
               shape: BoxShape.circle,
               image: DecorationImage(
                 fit: BoxFit.cover,
-                image: NetworkImage("https://i.imgur.com/BoN9kdC.png"),
+                image: AssetImage("imgs/cj.png"),
               ),
             ),
           ),
@@ -209,7 +209,7 @@ class PerfilView extends GetView {
                   Container(
                     width: 260,
                     child: Text(
-                      "Paulete Margarete da silab akja aka",
+                      "Paulete Maragarete da Silva",
                       maxLines: 1,
                       style: TextStyle(
                           color: Color.fromRGBO(160, 160, 160, 1),
@@ -233,7 +233,7 @@ class PerfilView extends GetView {
                   Container(
                     width: 260,
                     child: Text(
-                      "*************6544",
+                      "000 000 000 000",
                       maxLines: 1,
                       style: TextStyle(
                           color: Color.fromRGBO(160, 160, 160, 1),
@@ -257,7 +257,7 @@ class PerfilView extends GetView {
                   Container(
                     width: 260,
                     child: Text(
-                      "alexwendel@gmail.com",
+                      "teste@snst.dev",
                       maxLines: 1,
                       style: TextStyle(
                           color: Color.fromRGBO(160, 160, 160, 1),

@@ -81,7 +81,7 @@ class HomeSliverAppBar extends GetWidget {
               shape: BoxShape.circle,
               image: DecorationImage(
                 fit: BoxFit.cover,
-                image: NetworkImage("https://i.imgur.com/BoN9kdC.png"),
+                image: AssetImage("imgs/cj.png"),
               ),
             ),
           ),
