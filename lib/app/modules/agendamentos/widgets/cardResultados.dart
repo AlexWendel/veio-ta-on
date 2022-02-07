@@ -38,7 +38,7 @@ class CardResultados extends GetView {
                 style: TextStyle(
                     color: headerGray,
                     fontWeight: FontWeight.w600,
-                    fontSize: defaultFontSize / context.textScaleFactor),
+                    fontSize: Get.theme.textTheme.headline6?.fontSize),
               ),
               SizedBox(height: 10),
               RichText(
@@ -75,24 +75,24 @@ class CardResultados extends GetView {
                   ],
                 ),
               ),
-              RichText(
-                overflow: TextOverflow.ellipsis,
-                text: TextSpan(
-                  style: DefaultTextStyle.of(context).style,
-                  children: <TextSpan>[
-                    TextSpan(
-                        text: 'Horário: ',
-                        style: TextStyle(
-                            fontWeight: FontWeight.w500,
-                            color: Colors.black54)),
-                    TextSpan(
-                        text: "13 de Fevereiro de 2022 às 14:30h",
-                        style: TextStyle(
-                            fontWeight: FontWeight.w400,
-                            color: Colors.black54)),
-                  ],
-                ),
-              )
+              // RichText(
+              //   overflow: TextOverflow.ellipsis,
+              //   text: TextSpan(
+              //     style: DefaultTextStyle.of(context).style,
+              //     children: <TextSpan>[
+              //       TextSpan(
+              //           text: 'Horário: ',
+              //           style: TextStyle(
+              //               fontWeight: FontWeight.w500,
+              //               color: Colors.black54)),
+              //       TextSpan(
+              //           text: "13 de Fevereiro de 2022 às 14:30h",
+              //           style: TextStyle(
+              //               fontWeight: FontWeight.w400,
+              //               color: Colors.black54)),
+              //     ],
+              //   ),
+              // )
             ],
           ),
           IconButton(

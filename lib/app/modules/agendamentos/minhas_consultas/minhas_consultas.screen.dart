@@ -15,23 +15,23 @@ class MinhasConsultasScreen extends GetView {
   List<Agendamento> defaultAgendamento = [
     Agendamento(
         medico: "Dr. Henrique Santos",
-        especialidade: "Ressonancia magnética",
+        especialidade: "Ressonância magnética",
         local: "Hospital Regional de Marabá",
-        protocolo: "999999999999",
+        protocolo: "999999999991231239",
         paciente: AuthController.instance.currentUser.value.name,
         data: "13/06/2022, às 15:00h"),
     Agendamento(
         medico: "Dr. Warley Galvão",
         especialidade: "Análise psiquiátrica",
         local: "Hospital Regional de Marabá",
-        protocolo: "999999999999",
+        protocolo: "99999999199912312319",
         paciente: AuthController.instance.currentUser.value.name,
         data: "13/02/2022, às 14:30h"),
     Agendamento(
         medico: "Dr. Josué Carvalho",
         especialidade: "Ressonancia magnética",
         local: "Hospital Regional de Marabá",
-        protocolo: "999999999999",
+        protocolo: "999999911199999",
         paciente: AuthController.instance.currentUser.value.name,
         data: "13/03/2023, às 14:00h"),
   ];
@@ -63,7 +63,6 @@ class MinhasConsultasScreen extends GetView {
             Obx(() => Container(
                 alignment: Alignment.center,
                 // height: 150,
-                margin: EdgeInsets.all(5),
                 decoration: BoxDecoration(
                   // color: Colors.grey.shade100,
                   borderRadius: BorderRadius.circular(8),
