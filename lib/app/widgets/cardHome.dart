@@ -50,22 +50,28 @@ class CardHome extends GetView {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(
-                          text,
-                          softWrap: true,
-                          style: TextStyle(
-                              color: Color.fromRGBO(120, 120, 120, 1),
-                              fontWeight: FontWeight.w600,
-                              fontSize:
-                                  defaultFontSize / context.textScaleFactor),
+                        Container(
+                          width: Get.width / 1.5,
+                          child: Text(
+                            text,
+                            softWrap: true,
+                            style: TextStyle(
+                                color: Color.fromRGBO(120, 120, 120, 1),
+                                fontWeight: FontWeight.w600,
+                                fontSize:
+                                    defaultFontSize / context.textScaleFactor),
+                          ),
                         ),
-                        Text(
-                          description,
-                          style: TextStyle(
-                              color: Color.fromRGBO(160, 160, 160, 1),
-                              fontWeight: FontWeight.w400,
-                              fontSize:
-                                  Get.theme.textTheme.headline6?.fontSize),
+                        Container(
+                          width: Get.width / 1.5,
+                          child: Text(
+                            description,
+                            style: TextStyle(
+                                color: Color.fromRGBO(160, 160, 160, 1),
+                                fontWeight: FontWeight.w400,
+                                fontSize:
+                                    Get.theme.textTheme.headline6?.fontSize),
+                          ),
                         ),
                       ],
                     ),

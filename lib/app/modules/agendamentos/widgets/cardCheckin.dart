@@ -81,7 +81,8 @@ class CardCheckin extends GetView {
                             fontWeight: FontWeight.w500,
                             color: Colors.black54)),
                     TextSpan(
-                        text: "13 de Fevereiro de 2022 às 14:30h",
+                        text:
+                            agendamento.data + " às " + agendamento.hora + "h",
                         style: TextStyle(
                             fontWeight: FontWeight.w400,
                             color: Colors.black54)),

@@ -29,6 +29,7 @@ class ConsultationPlaceView extends GetView<AgendamentosController> {
     BuildContext context,
   ) {
     AgendamentosController controller = Get.put(AgendamentosController());
+    controller.isPicked = false;
     return BottomNavBarDesignScreen(
         sliverAppBar: TitleSliverAppBar(title: "Escolha o local"),
         body: Column(children: [
@@ -36,7 +37,7 @@ class ConsultationPlaceView extends GetView<AgendamentosController> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Text("Etapa 3: Local da Consulta",
+                Text("Etapa 2: Local da Consulta",
                     style: Get.theme.textTheme.displaySmall?.copyWith(
                         color: Colors.black87, fontWeight: FontWeight.w800)),
                 SizedBox(height: 10),
@@ -97,9 +98,14 @@ class ConsultationPlaceView extends GetView<AgendamentosController> {
                   icon: Icon(Icons.arrow_back_ios_outlined)),
               GenericButton(
                   color: Get.theme.primaryColor,
-                  onPressed: () => Get.to(() => ConsultationMedicView(
-                        currentAgendamento: currentAgendamento,
-                      )),
+                  onPressed: () => {
+                        if (controller.isPicked)
+                          {
+                            Get.to(() => ConsultationMedicView(
+                                  currentAgendamento: currentAgendamento,
+                                ))
+                          }
+                      },
                   text: Text("Continuar",
                       style: Get.theme.textTheme.headline6
                           ?.copyWith(fontWeight: FontWeight.w500)),

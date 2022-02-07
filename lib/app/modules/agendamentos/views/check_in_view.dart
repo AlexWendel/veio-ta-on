@@ -150,8 +150,7 @@ class DetalhesExame extends GetWidget {
                   title: "Tipo de atendimento", value: exame.especialidade),
               DetalheExameField(
                   title: "Horário de atendimento",
-                  value:
-                      DateFormat.yMMMMEEEEd('pt_Br').format(DateTime.now())) //
+                  value: exame.data + " às " + exame.hora + "h") //
             ]));
   }
 }

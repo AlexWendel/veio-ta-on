@@ -13,13 +13,15 @@ class CheckInHome extends GetView {
   HomeController controller = Get.put(HomeController());
   List<Agendamento> defaultAgendamento = [
     Agendamento(
+        hora: "10:00",
         data: "25/10/2022",
-        especialidade: "Ressonância Magnutica",
+        especialidade: "Ressonância Magnética",
         medico: "Dr.Iago Costa Batima da silva",
         local: "Hospital Municipal de Marabá",
         paciente: "Alex Wendel Oliveira da Silva",
         protocolo: "111111111111111111111"),
     Agendamento(
+        hora: "16:00",
         data: "25/10/2022",
         especialidade: "Ressonância Magnética",
         medico: "Dr. Josué Carvalho Sarazaro",
@@ -27,6 +29,7 @@ class CheckInHome extends GetView {
         paciente: "Alex Wendel Oliveira da Silva",
         protocolo: "999999999999998"),
     Agendamento(
+        hora: "14:00",
         data: "25/10/2022",
         especialidade: "Tomografia Computadorizada",
         medico: "Dr. Henrique Santos",
@@ -34,6 +37,7 @@ class CheckInHome extends GetView {
         paciente: "Alex Wendel Oliveira da Silva",
         protocolo: "9998999+955"),
     Agendamento(
+        hora: "15:00",
         data: "25/10/2022",
         especialidade: "Análise psiquiátrica",
         medico: "Dr. Warley Rabelo Galvão",
@@ -88,10 +92,8 @@ class CheckInHome extends GetView {
                             medico: controller.agendamento[index - 3].medico,
                             especialidade:
                                 controller.agendamento[index - 3].especialidade,
-                            data: controller.agendamento[index - 3].data +
-                                " às " +
-                                controller.agendamento[index - 3].hora +
-                                "h"));
+                            data: controller.agendamento[index - 3].data,
+                            hora: controller.agendamento[index - 3].hora));
                   })),
         )
       ]),

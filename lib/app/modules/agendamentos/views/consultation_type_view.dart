@@ -30,6 +30,7 @@ class ConsultationTypeView extends GetView<AgendamentosController> {
   @override
   Widget build(BuildContext context) {
     AgendamentosController controller = Get.put(AgendamentosController());
+    controller.isPicked = false;
     return BottomNavBarDesignScreen(
       bottomNavBar: Container(
         padding: EdgeInsets.symmetric(vertical: 20),
@@ -42,9 +43,12 @@ class ConsultationTypeView extends GetView<AgendamentosController> {
             GenericButton(
                 color: Get.theme.primaryColor,
                 onPressed: () => {
-                      Get.to(() => ConsultationPlaceView(
-                            currentAgendamento: currentAgendamento,
-                          ))
+                      if (controller.isPicked)
+                        {
+                          Get.to(() => ConsultationPlaceView(
+                                currentAgendamento: currentAgendamento,
+                              ))
+                        }
                     },
                 text: Text("Próxima etapa",
                     style: Get.theme.textTheme.headline6
