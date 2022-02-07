@@ -90,7 +90,7 @@ class ConsultationMedicView extends GetView<AgendamentosController> {
                   color: Get.theme.primaryColor,
                   onPressed: () => Get.back(),
                   iconAtLeft: true,
-                  text: Text("Regressar",
+                  text: Text("Voltar",
                       style: Get.theme.textTheme.headline6
                           ?.copyWith(fontWeight: FontWeight.w500)),
                   icon: Icon(Icons.arrow_back_ios_outlined)),

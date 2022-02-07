@@ -69,7 +69,7 @@ class HomeView extends GetView<HomeController> {
                     onTap: () {
                       Get.to(() => ResultadosHome());
                     },
-                    text: "Resultados dos exames",
+                    text: "Resultados",
                     description: "Resultados dos seus exames"),
                 CardHome(
                     icon: Icon(Icons.calendar_view_week,
@@ -94,7 +94,7 @@ class HomeView extends GetView<HomeController> {
                       Get.to(() => SettingsView());
                     },
                     text: "Configurações",
-                    description: "Configure o seu aplicativo"),
+                    description: "Configurações do seu aplicativo"),
               ]),
         ),
         width: 1000,
