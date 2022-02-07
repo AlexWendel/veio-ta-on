@@ -29,7 +29,7 @@ class MinhasConsultasScreen extends GetView {
         data: "13/02/2022, às 14:30h"),
     Agendamento(
         medico: "Dr. Josué Carvalho",
-        especialidade: "Ressonancia magnética",
+        especialidade: "Ressonância magnética",
         local: "Hospital Regional de Marabá",
         protocolo: "999999911199999",
         paciente: AuthController.instance.currentUser.value.name,
