@@ -2,12 +2,22 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:hospital_maraba/app/utils/colorTheme.dart';
+import 'package:hospital_maraba/app/widgets/cardAgendamentos.dart';
+import 'package:hospital_maraba/app/widgets/cardHome.dart';
 
 class ScrollBox extends GetView {
-  List<Widget> itemList = [];
+  List<CardAgendamentos> itemList = [];
 
-  ScrollBox({List<Widget> itemList = const []}) {
+  ScrollBox({List<CardAgendamentos> itemList = const []}) {
     this.itemList = itemList;
+    List<Rx<Color>> t = <Rx<Color>>[];
+    for (int i = 0; i < itemList.length; i++) {
+      t.add(itemList[i].color);
+      itemList[i].index = i;
+    }
+    for (int i = 0; i < itemList.length; i++) {
+      itemList[i].relatives.value = t;
+    }
   }
 
   @override

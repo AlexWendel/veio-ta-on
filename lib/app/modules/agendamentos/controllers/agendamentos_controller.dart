@@ -7,6 +7,8 @@ class AgendamentosController extends GetxController {
   final count = 0.obs;
   final agendamento = Rx<Agendamento>;
 
+  final hilightColor = Get.theme.highlightColor.obs;
+
   @override
   void onInit() {
     super.onInit();
@@ -20,6 +22,10 @@ class AgendamentosController extends GetxController {
   @override
   void onClose() {}
   void increment() => count.value++;
+
+  setHilightColor(color) {
+    hilightColor.value = color;
+  }
 
   void createAgendamentoModel() {}
 }
