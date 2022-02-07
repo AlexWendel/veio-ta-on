@@ -4,6 +4,8 @@ import 'package:get/get.dart';
 import 'package:hospital_maraba/app/modules/bottomNavBarDesignScreen.dart';
 import 'package:hospital_maraba/app/utils/colorTheme.dart';
 import 'package:hospital_maraba/app/utils/common.sizes.dart';
+import 'package:hospital_maraba/app/widgets/appBarr.dart';
+import 'package:hospital_maraba/app/widgets/cardAgendamentos.dart';
 import 'package:hospital_maraba/app/widgets/cardHome.dart';
 import 'package:hospital_maraba/app/widgets/genericButton.dart';
 import 'package:hospital_maraba/app/widgets/inputText.dart';
@@ -42,17 +44,17 @@ class ConsultationPlaceView extends GetView {
             height: 10,
           ),
           ScrollBox(itemList: [
-            CardHome(
+            CardAgendamentos(
                 text: "Neurologista",
                 description: "Medico para a sua cabeça",
                 icon: Icon(Icons.tab),
                 onTap: () {}),
-            CardHome(
+            CardAgendamentos(
                 text: "Neurologista",
                 description: "Medico para a sua cabeça",
                 icon: Icon(Icons.tab),
                 onTap: () {}),
-            CardHome(
+            CardAgendamentos(
                 text: "Neurologista",
                 description: "Medico para a sua cabeça",
                 icon: Icon(Icons.tab),
@@ -61,6 +63,7 @@ class ConsultationPlaceView extends GetView {
         ]),
         sliverAppBar: TitleSliverAppBar(title: "Escolha o local"),
         bottomNavBar: Container(
+          width: context.width,
           padding: EdgeInsets.symmetric(vertical: 20),
           // height: 70,
           color: backGround,

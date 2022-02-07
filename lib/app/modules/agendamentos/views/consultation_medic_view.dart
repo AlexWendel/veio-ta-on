@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:hospital_maraba/app/modules/agendamentos/views/consultation_type_view.dart';
+
 import 'package:hospital_maraba/app/modules/bottomNavBarDesignScreen.dart';
 import 'package:hospital_maraba/app/utils/colorTheme.dart';
 import 'package:hospital_maraba/app/utils/common.sizes.dart';
-import 'package:hospital_maraba/app/widgets/appBarr.dart';
+
 import 'package:hospital_maraba/app/widgets/cardHome.dart';
 import 'package:hospital_maraba/app/widgets/genericButton.dart';
 import 'package:hospital_maraba/app/widgets/inputText.dart';
 import 'package:hospital_maraba/app/widgets/scrollBox.dart';
 
 import '../../../widgets/TitleSliverAppBar.dart';
+import '../../../widgets/cardAgendamentos.dart';
 import 'consultation_date_view.dart';
 
 class ConsultationMedicView extends GetView {
@@ -46,17 +47,17 @@ class ConsultationMedicView extends GetView {
             height: 10,
           ),
           ScrollBox(itemList: [
-            CardHome(
+            CardAgendamentos(
                 text: "Neurologista",
                 description: "Medico para a sua cabeça",
                 icon: Icon(Icons.tab),
                 onTap: () {}),
-            CardHome(
+            CardAgendamentos(
                 text: "Neurologista",
                 description: "Medico para a sua cabeça",
                 icon: Icon(Icons.tab),
                 onTap: () {}),
-            CardHome(
+            CardAgendamentos(
                 text: "Neurologista",
                 description: "Medico para a sua cabeça",
                 icon: Icon(Icons.tab),

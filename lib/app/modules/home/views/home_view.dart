@@ -5,6 +5,7 @@ import 'package:hospital_maraba/app/modules/agendamentos/minhas_consultas/minhas
 import 'package:hospital_maraba/app/modules/agendamentos/views/check_in_home.dart';
 import 'package:hospital_maraba/app/modules/agendamentos/views/check_in_view.dart';
 import 'package:hospital_maraba/app/modules/agendamentos/views/resultados_home.dart';
+import 'package:hospital_maraba/app/modules/home/views/sem_exames.dart';
 
 import 'package:hospital_maraba/app/modules/home/widgets/HomeSliverAppBar.dart';
 import 'package:hospital_maraba/app/modules/agendamentos/views/novo_agendamento_view.dart';
@@ -80,7 +81,9 @@ class HomeView extends GetView<HomeController> {
                 CardHome(
                     icon: Icon(Icons.circle_notifications_outlined,
                         size: mediumIconSize, color: iconGray),
-                    onTap: () {},
+                    onTap: () {
+                      Get.to(() => SemExames());
+                    },
                     text: "Notificações",
                     description: "Notificações do aplicativo"),
                 CardHome(
