@@ -42,7 +42,28 @@ class ResultadosHome extends GetView {
                 medico: "Dr.Iago Costa da silva",
                 local: "Hospital Municipal de Marabá",
                 paciente: "Alex Wendel Oliveira da Silva",
-                protocolo: "111111111111111111111"))
+                protocolo: "111111111111111111111")),
+        CardConsultas(
+            agendamento: Agendamento(
+                especialidade: "Ressonância Magnética",
+                medico: "Dr. Josué Carvalho Sarazaro",
+                local: "Hospital Regional de Marabá",
+                paciente: "Alex Wendel Oliveira da Silva",
+                protocolo: "99411516565158")),
+        CardConsultas(
+            agendamento: Agendamento(
+                especialidade: "Tomografia Computadorizada",
+                medico: "Dr. Henrique Santos",
+                local: "Hospital Municipal de Marabá",
+                paciente: "Alex Wendel Oliveira da Silva",
+                protocolo: "999999999999999")),
+        CardConsultas(
+            agendamento: Agendamento(
+                especialidade: "Análise psiquiátrica",
+                medico: "Dr. Warley Rabelo Galvão",
+                local: "Hospital Municipal de Marabá",
+                paciente: "Alex Wendel Oliveira da Silva",
+                protocolo: "999999999999989")),
       ]),
     );
   }

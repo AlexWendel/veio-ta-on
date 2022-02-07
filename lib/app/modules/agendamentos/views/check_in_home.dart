@@ -44,6 +44,27 @@ class CheckInHome extends GetView {
                 local: "Hospital Municipal de Marabá",
                 paciente: "Alex Wendel Oliveira da Silva",
                 protocolo: "111111111111111111111")),
+        CardCheckin(
+            agendamento: Agendamento(
+                especialidade: "Ressonância Magnética",
+                medico: "Dr. Josué Carvalho Sarazaro",
+                local: "Hospital Regional de Marabá",
+                paciente: "Alex Wendel Oliveira da Silva",
+                protocolo: "999999999999998")),
+        CardCheckin(
+            agendamento: Agendamento(
+                especialidade: "Tomografia Computadorizada",
+                medico: "Dr. Henrique Santos",
+                local: "Hospital Municipal de Marabá",
+                paciente: "Alex Wendel Oliveira da Silva",
+                protocolo: "9998999+955")),
+        CardCheckin(
+            agendamento: Agendamento(
+                especialidade: "Análise psiquiátrica",
+                medico: "Dr. Warley Rabelo Galvão",
+                local: "Hospital Municipal de Marabá",
+                paciente: "Alex Wendel Oliveira da Silva",
+                protocolo: "999999999999989")),
       ]),
     );
   }
