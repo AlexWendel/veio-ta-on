@@ -49,6 +49,20 @@ class ConsultationTypeView extends GetView<AgendamentosController> {
                                 currentAgendamento: currentAgendamento,
                               ))
                         }
+                      else
+                        {
+                          Get.defaultDialog(
+                            titleStyle: TextStyle(color: Colors.black54),
+                            middleTextStyle: TextStyle(color: Colors.black54),
+                            barrierDismissible: false,
+                            buttonColor: Get.theme.backgroundColor,
+                            onConfirm: () {},
+                            backgroundColor: backGround,
+                            title: "Selecione um Exame",
+                            middleText: "Exame não selecionado!",
+                            confirmTextColor: Colors.black54,
+                          )
+                        }
                     },
                 text: Text("Próxima etapa",
                     style: Get.theme.textTheme.headline6
