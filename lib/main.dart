@@ -20,7 +20,7 @@ Future<void> main() async {
   runApp(
     GetMaterialApp(
       theme: mainTheme,
-      title: "Application",
+      title: "Agendamento Fácil",
       initialRoute: AppPages.INITIAL,
       getPages: AppPages.routes,
       debugShowCheckedModeBanner: false,
