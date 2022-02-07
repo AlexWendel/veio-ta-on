@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hospital_maraba/app/modules/DefaultDesignScreen.dart';
+import 'package:hospital_maraba/app/modules/Login/views/login_view.dart';
 import 'package:hospital_maraba/app/modules/Login/views/perfil.dart';
 import 'package:hospital_maraba/app/modules/home/widgets/HomeSliverAppBar.dart';
 import 'package:hospital_maraba/app/modules/settings/controllers/settings_controller.dart';
@@ -50,7 +51,14 @@ class SettingsView extends GetView {
                 },
                 text: "Política de privacidade ",
                 description:
-                    "Veja todos os termos e conheça mais dobre os desenvolvedores")
+                    "Veja todos os termos e conheça mais dobre os desenvolvedores"),
+            CardHome(
+                icon: Icon(Icons.close, size: mediumIconSize, color: iconGray),
+                onTap: () {
+                  Get.to(() => LoginView());
+                },
+                text: "Sair da conta",
+                description: "Clique para fazer o logout")
           ]),
     );
   }
