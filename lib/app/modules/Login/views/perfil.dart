@@ -106,8 +106,6 @@ class PerfilView extends GetView {
         ),
         nomeInput,
         SizedBox(height: 8),
-        InputText(icon: Icon(Icons.edit), hintText: "Digite seu novo nome"),
-        SizedBox(height: 8),
         Text(
           "Foto",
           style: TextStyle(
@@ -198,7 +196,7 @@ class PerfilView extends GetView {
         color: Get.theme.highlightColor,
         borderRadius: BorderRadius.circular(8),
       ),
-      child: Container(constraints: BoxConstraints.expand(), child: 
+      child: Wrap(children: [
         Row(
           children: [
             Container(

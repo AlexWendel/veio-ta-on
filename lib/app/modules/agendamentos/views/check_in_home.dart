@@ -67,11 +67,9 @@ class CheckInHome extends GetView {
                     ?.copyWith(color: Colors.black54),
               )
             ]),
-        SizedBox(height: 8),
         Obx(
           () => Container(
               alignment: Alignment.center,
-              margin: EdgeInsets.all(5),
               decoration: BoxDecoration(borderRadius: BorderRadius.circular(8)),
               child: ListView.builder(
                   physics: NeverScrollableScrollPhysics(),
