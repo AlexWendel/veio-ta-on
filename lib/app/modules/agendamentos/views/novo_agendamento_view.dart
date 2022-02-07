@@ -14,6 +14,7 @@ class NovoAgendamentoView extends GetResponsiveView<NovoAgendamentoController> {
   Widget build(BuildContext context) {
     return BottomNavBarDesignScreen(
         bottomNavBar: Container(
+          padding: EdgeInsets.symmetric(vertical: 20),
           // height: 70,
           color: backGround,
           child: Row(

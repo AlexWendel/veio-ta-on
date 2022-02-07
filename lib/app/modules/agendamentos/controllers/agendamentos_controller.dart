@@ -5,7 +5,7 @@ class AgendamentosController extends GetxController {
   //TODO: Implement AgendamentosController
 
   final count = 0.obs;
-  final agendamento = Rx<Agendamento>;
+  final agendamento = <Agendamento>[].obs;
 
   final hilightColor = Get.theme.highlightColor.obs;
 

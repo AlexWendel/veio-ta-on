@@ -50,6 +50,7 @@ class MinhasConsultasScreen extends GetView<MinhasConsultasController> {
                 child: Column(children: [
                   CardConsultas(
                       agendamento: Agendamento(
+                          data: "25/10/2022",
                           especialidade: "Cirurgia de catarata",
                           medico: "Dr. João",
                           local: "Clínica dos olhos",
@@ -57,6 +58,7 @@ class MinhasConsultasScreen extends GetView<MinhasConsultasController> {
                           protocolo: "999999999999999")),
                   CardConsultas(
                       agendamento: Agendamento(
+                          data: "25/10/2022",
                           especialidade: "Ressonância Magnética",
                           medico: "Dr. Josué Carvalho Sarazaro",
                           local: "Hospital Regional de Marabá",
@@ -64,6 +66,7 @@ class MinhasConsultasScreen extends GetView<MinhasConsultasController> {
                           protocolo: "999999999999998")),
                   CardConsultas(
                       agendamento: Agendamento(
+                          data: "25/10/2022",
                           especialidade: "Tomografia Computadorizada",
                           medico: "Dr. Henrique Santos",
                           local: "Hospital Municipal de Marabá",
@@ -71,6 +74,7 @@ class MinhasConsultasScreen extends GetView<MinhasConsultasController> {
                           protocolo: "999999999999999")),
                   CardConsultas(
                       agendamento: Agendamento(
+                          data: "25/10/2022",
                           especialidade: "Análise psiquiátrica",
                           medico: "Dr. Warley Rabelo Galvão",
                           local: "Hospital Municipal de Marabá",

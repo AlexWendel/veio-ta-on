@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:hospital_maraba/app/models/agendamento.dart';
 import 'package:hospital_maraba/app/modules/bottomNavBarDesignScreen.dart';
 import 'package:hospital_maraba/app/utils/colorTheme.dart';
 import 'package:hospital_maraba/app/utils/common.sizes.dart';
@@ -14,6 +15,10 @@ import '../../../widgets/TitleSliverAppBar.dart';
 import 'consultation_medic_view.dart';
 
 class ConsultationPlaceView extends GetView {
+  Agendamento currentAgendamento;
+
+  ConsultationPlaceView({required this.currentAgendamento});
+
   @override
   Widget build(BuildContext context) {
     return BottomNavBarDesignScreen(
@@ -45,20 +50,26 @@ class ConsultationPlaceView extends GetView {
           ),
           ScrollBox(itemList: [
             CardAgendamentos(
-                text: "Neurologista",
+                text: "Instituto da visão",
                 description: "Medico para a sua cabeça",
                 icon: Icon(Icons.tab),
-                onTap: () {}),
+                onTap: () {
+                  currentAgendamento.local = "Instituto da visão";
+                }),
             CardAgendamentos(
-                text: "Neurologista",
+                text: "Clinica Popular",
                 description: "Medico para a sua cabeça",
                 icon: Icon(Icons.tab),
-                onTap: () {}),
+                onTap: () {
+                  currentAgendamento.local = "Clinica Popular";
+                }),
             CardAgendamentos(
-                text: "Neurologista",
+                text: "Clinica Mais Vida",
                 description: "Medico para a sua cabeça",
                 icon: Icon(Icons.tab),
-                onTap: () {})
+                onTap: () {
+                  currentAgendamento.local = "Clinica Mais Vida";
+                })
           ])
         ]),
         sliverAppBar: TitleSliverAppBar(title: "Escolha o local"),
@@ -75,14 +86,16 @@ class ConsultationPlaceView extends GetView {
                     color: Get.theme.primaryColor,
                     onPressed: () => Get.back(),
                     iconAtLeft: true,
-                    text: Text("Voltar etapa",
+                    text: Text("Regressar",
                         style: Get.theme.textTheme.headline6
                             ?.copyWith(fontWeight: FontWeight.w500)),
                     icon: Icon(Icons.arrow_back_ios_outlined)),
                 GenericButton(
                     color: Get.theme.primaryColor,
-                    onPressed: () => Get.to(() => ConsultationMedicView()),
-                    text: Text("Próxima etapa",
+                    onPressed: () => Get.to(() => ConsultationMedicView(
+                          currentAgendamento: currentAgendamento,
+                        )),
+                    text: Text("Continuar",
                         style: Get.theme.textTheme.headline6
                             ?.copyWith(fontWeight: FontWeight.w500)),
                     icon: Icon(Icons.arrow_forward_ios_rounded))

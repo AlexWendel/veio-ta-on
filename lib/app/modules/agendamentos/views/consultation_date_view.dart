@@ -13,12 +13,33 @@ import 'package:hospital_maraba/app/widgets/genericButton.dart';
 import 'package:hospital_maraba/app/widgets/inputText.dart';
 import 'package:hospital_maraba/app/widgets/scrollBox.dart';
 import 'package:intl/date_time_patterns.dart';
+import 'package:intl/intl.dart';
 
+import '../../../models/agendamento.dart';
 import '../../../widgets/TitleSliverAppBar.dart';
 import 'consultation_date_view.dart';
 import 'consultation_medic_view.dart';
 
 class ConsultationDateView extends GetView {
+  Agendamento currentAgendamento;
+  DateTime _selectedDate = DateTime.now();
+  TimeOfDay _selectedTime = TimeOfDay.now();
+
+  ConsultationDateView({required this.currentAgendamento});
+
+  _selectDate(BuildContext context) async {
+    final DateTime? selected = await showDatePicker(
+      lastDate: DateTime(2030),
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime.now(),
+    );
+
+    if (selected != null && selected != _selectedDate) _selectedDate = selected;
+  }
+
+  _selectTime(BuildContext context) {}
+
   @override
   Widget build(BuildContext context) {
     return BottomNavBarDesignScreen(
@@ -55,12 +76,12 @@ class ConsultationDateView extends GetView {
                 size: 50,
               ),
               onTap: () {
-                showDatePicker(
-                  lastDate: DateTime(2030),
-                  context: context,
-                  initialDate: DateTime.now(),
-                  firstDate: DateTime.now(),
-                );
+                _selectDate(context);
+
+                currentAgendamento.data =
+                    DateFormat('dd/MM/yyyy').format(_selectedDate);
+
+                print(currentAgendamento.data);
               }),
           DateCard(
               text: "HORÁRIO",
@@ -91,7 +112,7 @@ class ConsultationDateView extends GetView {
                     color: Get.theme.primaryColor,
                     onPressed: () => Get.back(),
                     iconAtLeft: true,
-                    text: Text("Voltar etapa",
+                    text: Text("Regressar",
                         style: Get.theme.textTheme.headline6
                             ?.copyWith(fontWeight: FontWeight.w500)),
                     icon: Icon(Icons.arrow_back_ios_outlined)),
