@@ -80,7 +80,9 @@ class HomeView extends GetView<HomeController> {
                 CardHome(
                     icon: Icon(Icons.circle_notifications_outlined,
                         size: mediumIconSize, color: iconGray),
-                    onTap: () {},
+                    onTap: () {
+                      Get.to(() => ResultadosHome());
+                    },
                     text: "Notificações",
                     description: "Notificações do aplicativo"),
                 CardHome(
