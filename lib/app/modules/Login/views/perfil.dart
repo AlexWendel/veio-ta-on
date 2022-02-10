@@ -43,7 +43,7 @@ class PerfilView extends GetView {
                   icon: Icon(Icons.arrow_back_ios_outlined,
                       color: Get.theme.canvasColor),
                   onPressed: () {
-                    () => Get.back();
+                    Get.back();
                   },
                   iconAtLeft: true,
                   color: Get.theme.errorColor,
