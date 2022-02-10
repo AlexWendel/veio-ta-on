@@ -44,9 +44,11 @@ class NovoAgendamentoView extends GetResponsiveView<NovoAgendamentoController> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Agendar uma nova consulta",
+                      "Agendar nova consulta",
                       style: Get.theme.textTheme.displaySmall?.copyWith(
-                          color: Colors.black54, fontWeight: FontWeight.bold),
+                          fontSize: 30 / context.textScaleFactor,
+                          color: Colors.black54,
+                          fontWeight: FontWeight.bold),
                     ),
                     SizedBox(height: 5),
                     RichText(
