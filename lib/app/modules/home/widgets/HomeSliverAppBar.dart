@@ -26,9 +26,9 @@ class HomeSliverAppBar extends GetWidget {
             ))),
       ),
       shadowColor: Colors.transparent,
-      leading: IconButton(
-          onPressed: () => Get.back(),
-          icon: Icon(backIcon, size: mediumIconSize)),
+      // leading: IconButton(
+      //     onPressed: () => Get.back(),
+      //     icon: Icon(backIcon, size: mediumIconSize)),
       title: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
