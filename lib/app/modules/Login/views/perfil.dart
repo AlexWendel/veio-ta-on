@@ -80,7 +80,7 @@ class PerfilView extends GetView {
                     Get.to(() => HomeView());
                   },
                   text: Text(
-                    "  Confirmar  ",
+                    "Confirmar",
                     style: Get.theme.textTheme.headline6,
                   ),
                 ),
