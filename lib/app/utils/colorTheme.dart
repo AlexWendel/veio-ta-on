@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:hospital_maraba/app/utils/common.colors.dart';
 import 'package:hospital_maraba/app/utils/common.sizes.dart';
-import 'package:hospital_maraba/app/utils/functions.colors.dart';
 
 const textFieldGray = Color.fromARGB(255, 241, 241, 241);
 const backGround = Color.fromARGB(255, 253, 253, 253);
-const verdeBosta = Color.fromARGB(255, 164, 228, 137);
+const verdeBosta = Color(0xFF008f38);
 const iconGray = Color.fromARGB(255, 121, 121, 121);
 const grayBackground = Color.fromARGB(255, 239, 239, 239);
 const cleareGrayBrackground = Color.fromARGB(255, 245, 245, 245);
@@ -16,27 +14,33 @@ final appbartext = TextStyle(
     color: Colors.black54, fontSize: defaultFontSize, fontFamily: 'OpenSans');
 // const background2 = Colors.grey.shade300;
 
-ThemeData mainTheme = ThemeData.light().copyWith(
-    highlightColor: textFieldGray,
-    canvasColor: backGround,
-    primaryTextTheme: TextTheme(
-      displaySmall: TextStyle(fontSize: 30),
-      displayMedium: TextStyle(fontSize: 35),
-      displayLarge: TextStyle(fontSize: 45),
-    ).apply(
-      displayColor: Colors.black54,
-      bodyColor: Colors.black54,
-    ),
-    textTheme: TextTheme(
-      displaySmall: TextStyle(fontSize: 30),
-      displayMedium: TextStyle(fontSize: 35),
-      displayLarge: TextStyle(fontSize: 45),
-    ).apply(
-      displayColor: Colors.black54,
-      bodyColor: Colors.black54,
-    )
-    // elevatedButtonTheme: ElevatedButtonThemeData()
-    );
+ThemeData mainTheme =
+    ThemeData(primaryColor: verdeBosta, primarySwatch: verdeBostaMaterialColor)
+        .copyWith(
+            backgroundColor: verdeBosta,
+            scaffoldBackgroundColor: verdeBosta,
+            highlightColor: textFieldGray,
+            canvasColor: Colors.white,
+            primaryTextTheme: TextTheme(
+                    // displaySmall: TextStyle(fontSize: 30),
+                    // displayMedium: TextStyle(fontSize: 35),
+                    // displayLarge: TextStyle(fontSize: 45),
+                    )
+                .apply(
+              displayColor: Colors.black54,
+              bodyColor: Colors.black54,
+            ),
+            textTheme: TextTheme(
+                    // displaySmall: TextStyle(fontSize: 30),
+                    // displayMedium: TextStyle(fontSize: 35),
+                    // displayLarge: TextStyle(fontSize: 45),
+                    )
+                .apply(
+              displayColor: Colors.black54,
+              bodyColor: Colors.black54,
+            )
+            // elevatedButtonTheme: ElevatedButtonThemeData()
+            );
     // colorScheme: ColorScheme.fromSwatch(
     //     primarySwatch: getMaterialColorFromColor(verdeBosta)));
     // primaryColor: verdeBosta,
