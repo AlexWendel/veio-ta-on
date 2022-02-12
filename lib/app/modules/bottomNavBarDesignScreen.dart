@@ -15,21 +15,8 @@ class BottomNavBarDesignScreen extends DefaultDesignScreen {
   @override
   Widget build(BuildContext context) {
     List<Widget> itemList = [
-      Container(
-        key: key,
-        margin: EdgeInsets.only(top: 40),
-        child: Padding(
-            padding: EdgeInsets.only(
-                left: 20, right: 20, top: 20, bottom: Get.height / 3),
-            child: body),
-        decoration: BoxDecoration(
-          color: Get.theme.canvasColor,
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(25),
-            topRight: Radius.circular(25),
-          ),
-        ),
-      ),
+      Padding(
+          padding: EdgeInsets.only(left: 20, right: 20, top: 20), child: body),
     ];
 
     return Scaffold(
@@ -38,10 +25,16 @@ class BottomNavBarDesignScreen extends DefaultDesignScreen {
       body: CustomScrollView(
         slivers: [
           sliverAppBar,
-          SliverList(
-              delegate: SliverChildBuilderDelegate(
-                  (context, index) => itemList[index],
-                  childCount: itemList.length)),
+          SliverFillRemaining(
+              child: Container(
+                  decoration: BoxDecoration(
+                    color: Get.theme.canvasColor,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(25),
+                      topRight: Radius.circular(25),
+                    ),
+                  ),
+                  child: Column(children: itemList))),
         ],
       ),
     );

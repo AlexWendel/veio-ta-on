@@ -12,33 +12,29 @@ class DefaultDesignScreen extends GetView {
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> itemList = [
-      Container(
-        margin: EdgeInsets.only(top: 40),
-        child: Padding(
-            padding: EdgeInsets.only(
-                left: 20, right: 20, top: 20, bottom: Get.height / 3),
-            child: body),
-        decoration: BoxDecoration(
-          color: Get.theme.canvasColor,
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(25),
-            topRight: Radius.circular(25),
-          ),
-        ),
-      ),
-    ];
+    List<Widget> itemList = [];
 
     return Scaffold(
         backgroundColor: Get.theme.backgroundColor,
-        body: CustomScrollView(
-          slivers: [
-            sliverAppBar,
-            SliverList(
-                delegate: SliverChildBuilderDelegate(
-                    (context, index) => itemList[index],
-                    childCount: itemList.length))
-          ],
-        ));
+        body: CustomScrollView(slivers: [
+          sliverAppBar,
+          SliverFillRemaining(
+            hasScrollBody: true,
+            child: Container(
+              margin: EdgeInsets.only(top: 20),
+              width: Get.width,
+              child: Padding(
+                  padding: EdgeInsets.all(20),
+                  child: Container(
+                      width: Get.width, height: Get.height, child: body)),
+              decoration: BoxDecoration(
+                color: Get.theme.canvasColor,
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(25),
+                    topRight: Radius.circular(25)),
+              ),
+            ),
+          )
+        ]));
   }
 }
