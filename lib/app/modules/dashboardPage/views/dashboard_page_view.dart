@@ -20,12 +20,15 @@ class DashboardPageView extends GetView<DashboardPageController> {
           ),
         ),
         bottomNavigationBar: BottomNavigationBar(
-          // fixedColor: Colors.black12,
+          fixedColor: Get.theme.canvasColor,
+          backgroundColor: Get.theme.primaryColor,
           selectedFontSize: 18,
-          iconSize: 20,
-          unselectedFontSize: 15,
-          unselectedItemColor: Colors.black45,
-          selectedItemColor: Colors.black,
+          // iconSize: 32,
+          selectedIconTheme:
+              IconThemeData(size: 32, color: Get.theme.canvasColor),
+          // unselectedFontSize: 15,
+          unselectedItemColor: Get.theme.canvasColor.withOpacity(0.8),
+          // selectedItemColor: Colors.black,
           onTap: controller.changePageIndex,
           currentIndex: controller.pageIndex.value,
           items: [
@@ -39,7 +42,7 @@ class DashboardPageView extends GetView<DashboardPageController> {
               icon: Icon(
                 Icons.add_circle,
               ),
-              label: "Criar conta",
+              label: "Cadastro",
             ),
           ],
         ),
