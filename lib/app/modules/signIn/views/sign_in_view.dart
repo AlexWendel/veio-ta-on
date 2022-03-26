@@ -15,6 +15,7 @@ class SignInView extends GetView<SingInController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: ListView(
         padding: EdgeInsets.symmetric(horizontal: 20),
         children: [

@@ -34,7 +34,7 @@ class LoginView extends GetView<LoginController> {
                 // shape: BoxShape.circle,
                 // color: backGround,
                 image: DecorationImage(
-                  fit: BoxFit.cover,
+                  fit: BoxFit.fitHeight,
                   image: AssetImage('imgs/realLogo.jpg'),
                 ),
               ),

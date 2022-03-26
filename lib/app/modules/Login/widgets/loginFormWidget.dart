@@ -80,58 +80,44 @@ class LoginFormWidget extends GetWidget {
               ),
             )
           ]),
-          InkWell(
-            onTap: () async {
-              showModalBottomSheet(
-                isScrollControlled: false,
-                useRootNavigator: false,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(20),
-                    topRight: Radius.circular(20),
-                  ),
-                  //side: BorderSide(color: primaryColor),
-                ),
-                context: context,
-                builder: (context) => Senha(),
-              );
-              //   Navigator.push(context,
-              //       MaterialPageRoute(builder: (context) => PerfilPage()));
-            },
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Text(
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Flexible(
+                child: Text(
                   "Esqueceu sua senha? ",
                   style: TextStyle(
                       fontSize: sectionHeaderFontSize / context.textScaleFactor,
                       color: Colors.black54),
                 ),
-                InkWell(
-                    onTap: () async {
-                      showModalBottomSheet(
-                        isScrollControlled: false,
-                        useRootNavigator: false,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(20),
-                            topRight: Radius.circular(20),
-                          ),
-                          //side: BorderSide(color: primaryColor),
+              ),
+              Flexible(
+                child: InkWell(
+                  onTap: () async {
+                    showModalBottomSheet(
+                      isScrollControlled: false,
+                      useRootNavigator: false,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(20),
+                          topRight: Radius.circular(20),
                         ),
-                        context: context,
-                        builder: (context) => Senha(),
-                      );
-                    },
-                    child: Text(
-                      "Clique aqui",
-                      style: TextStyle(
-                          fontSize:
-                              sectionHeaderFontSize / context.textScaleFactor,
-                          color: Colors.black87),
-                    )),
-              ],
-            ),
+                        //side: BorderSide(color: primaryColor),
+                      ),
+                      context: context,
+                      builder: (context) => Senha(),
+                    );
+                  },
+                  child: Text(
+                    "Clique aqui",
+                    style: TextStyle(
+                        fontSize:
+                            sectionHeaderFontSize / context.textScaleFactor,
+                        color: Colors.black87),
+                  ),
+                ),
+              )
+            ],
           ),
           Divider(
             color: Colors.transparent,

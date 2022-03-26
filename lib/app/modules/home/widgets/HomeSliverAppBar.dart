@@ -34,47 +34,59 @@ class HomeSliverAppBar extends GetWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(children: [
-            Text("Olá, ",
+            Flexible(
+              child: Text(
+                "Olá, ",
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.w700, /*color: Colors.black54*/
-                )),
-            Obx(() => Text(AuthController.instance.currentUser.value.firstName,
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w900, /*color: Colors.black54*/
-                ))),
+                ),
+              ),
+            ),
+            Flexible(
+              child: Obx(
+                () => Text(
+                  AuthController.instance.currentUser.value.firstName,
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w700, /*color: Colors.black54*/
+                  ),
+                ),
+              ),
+            ),
           ]),
           Row(children: [
             // Icon(Icons.circle_rounded,
             //     size: 14, color: Colors.lightGreenAccent),
-            Container(
-              alignment: Alignment.centerLeft,
-              width: Get.width / 2,
-              child: FittedBox(
-                fit: BoxFit.scaleDown,
-                child: RichText(
-                  text: TextSpan(
-                    text: 'Você tem ',
-                    style: TextStyle(
-                        fontSize: 14,
-                        /*color: Colors.black54*/
-                        fontWeight: FontWeight.w600),
-                    children: <TextSpan>[
-                      TextSpan(
-                          text: '4 ',
-                          style: Get.theme.textTheme.bodyMedium
-                              ?.copyWith(fontWeight: FontWeight.w800)),
-                      TextSpan(
-                          text: 'novas notificações!',
-                          style: Get.theme.textTheme.bodyMedium
-                              ?.copyWith(fontWeight: FontWeight.w600)),
-                    ],
+            Flexible(
+              child: Container(
+                alignment: Alignment.centerLeft,
+                width: Get.width / 2,
+                child: FittedBox(
+                  fit: BoxFit.scaleDown,
+                  child: RichText(
+                    text: TextSpan(
+                      text: 'Você tem ',
+                      style: TextStyle(
+                          fontSize: 14,
+                          /*color: Colors.black54*/
+                          fontWeight: FontWeight.w600),
+                      children: <TextSpan>[
+                        TextSpan(
+                            text: '4 ',
+                            style: Get.theme.textTheme.bodyMedium
+                                ?.copyWith(fontWeight: FontWeight.w800)),
+                        TextSpan(
+                            text: 'novas notificações!',
+                            style: Get.theme.textTheme.bodyMedium
+                                ?.copyWith(fontWeight: FontWeight.w600)),
+                      ],
+                    ),
                   ),
                 ),
               ),
-            )
-          ])
+            ),
+          ]),
         ],
       ),
       actions: [
