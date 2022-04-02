@@ -1,6 +1,12 @@
 class User {
-  User({this.name = "", this.email = "", this.password = "", this.rg = ""});
+  User(
+      {this.uid = "",
+      this.name = "",
+      this.email = "",
+      this.password = "",
+      this.rg = ""});
 
+  final String uid;
   String name;
   String email;
   String phoneNumber = "+00 00 0000 0000";

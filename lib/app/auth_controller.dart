@@ -1,67 +1,46 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
 import 'package:hospital_maraba/app/models/register_form.dart';
 import 'package:hospital_maraba/app/modules/dashboard/views/dashboard_view.dart';
 import 'package:hospital_maraba/app/modules/home/views/home_view.dart';
-import 'package:hospital_maraba/app/models/user.dart';
 import 'models/login_form.dart';
 
 class AuthController extends GetxController {
   static AuthController instance = Get.find();
   final controller = Get.put(AuthController);
-
-  var hasSeenLoginScreen = false.obs;
-  Rx<User> currentUser = User(
-          name: "Usuário de Teste",
-          email: "teste@snst.dev",
-          password: "teste123")
-      .obs;
-
-  // late Rx<User?> _user;
-  // FirebaseAuth auth = FirebaseAuth.instance;
+  FirebaseAuth auth = FirebaseAuth.instance;
 
   @override
   void onReady() {
     super.onReady();
-    // _user = Rx<User?>(auth.currentUser);
-    // _user.bindStream(auth.userChanges());
-    // ever(_user, _checkForLogin);
     _checkForLogin();
   }
 
   _checkForLogin() {
-    print("Lets goo");
-    if (!hasSeenLoginScreen.value) {
-      Get.off(() => DashboardView());
-    } else {
-      Get.off(() => HomeView());
-    }
-    //   print("Sem usuário, vá para a página de login");
-    // if (user == null) {
-    // Get.offAll(() => DashboardPageView());
-    // } else {
-    //   Get.offAll(HomeView());
-    // }
+    FirebaseAuth.instance.authStateChanges().listen((User? user) {
+      if (user == null) {
+        print('User is currently signed out!');
+        Get.off(() => DashboardView());
+      } else {
+        print('User is signed in!');
+        Get.off(() => HomeView());
+      }
+    });
   }
 
   void register(RegisterForm form) async {
-    // await auth.createUserWithEmailAndPassword(
-    //     email: form.email, password: form.password);
-    print(form.name);
-    print(form.email);
-    print(form.password);
+    await FirebaseAuth.instance.setPersistence(Persistence.NONE);
     if (!(form.email.isEmpty && form.password.isEmpty && form.name.isEmpty)) {
-      Get.snackbar("Registrado com sucesso!", "Usuário registrado",
-          backgroundColor: Get.theme.primaryColor,
-          snackPosition: SnackPosition.BOTTOM,
-          titleText: Text("Usuário registrado com sucesso!"),
-          messageText: Text("O usuário foi registrado com sucesso"));
+      //TODO: Check if this is working properly
 
-      currentUser.value.name = form.name;
-      currentUser.value.email = form.email;
-      currentUser.value.password = form.password;
-      Get.offAll(() => HomeView());
-      print("Nominho:" + currentUser.value.firstName);
+      // Get.snackbar("Registrado com sucesso!", "Usuário registrado",
+      //     backgroundColor: Get.theme.primaryColor,
+      //     snackPosition: SnackPosition.BOTTOM,
+      //     titleText: Text("Usuário registrado com sucesso!"),
+      //     messageText: Text("O usuário foi registrado com sucesso"));
+
     } else {
       Get.snackbar("Falha no registro", "Não foi possível criar seu usuário",
           backgroundColor: Get.theme.primaryColor,
@@ -69,22 +48,51 @@ class AuthController extends GetxController {
           titleText: Text("Falha no registro!"),
           messageText: Text("Todos os campos precisam ser preenchidos!"));
     }
+
+    try {
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+          email: form.email, password: form.password);
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'weak-password') {
+        print('The password provided is too weak.');
+        Get.snackbar("Falha no registro", "Não foi possível criar seu usuário",
+            backgroundColor: Get.theme.primaryColor,
+            snackPosition: SnackPosition.BOTTOM,
+            titleText: Text("Falha no registro!"),
+            messageText: Text(
+                "Senha informada muito fraca! Dica: Insira símbolos, números e/ou letras maiúsculas na sua senha."));
+      } else if (e.code == 'email-already-in-use') {
+        print('The account already exists for that email.');
+        Get.snackbar("Falha no registro", "Não foi possível criar seu usuário",
+            backgroundColor: Get.theme.primaryColor,
+            snackPosition: SnackPosition.BOTTOM,
+            titleText: Text("Falha no registro!"),
+            messageText: Text("Todos os campos precisam ser preenchidos!"));
+      } else {
+        print(e);
+        Get.snackbar("Falha no registro", "Não foi possível criar seu usuário",
+            backgroundColor: Get.theme.primaryColor,
+            snackPosition: SnackPosition.BOTTOM,
+            titleText: Text("Falha no registro!"),
+            messageText: Text(e.toString()));
+      }
+    }
   }
 
   void login(LoginForm form) async {
-    print(form.email);
-    if (!(form.email.isEmpty && form.password.isEmpty)) {
-      currentUser.value.email = form.email;
-      currentUser.value.password = form.password;
-      Get.offAll(() => HomeView());
-      print("Nominho:" + currentUser.value.firstName);
-    } else {
-      Get.snackbar("Sobre o Login", "Não foi possível realizar o login",
-          backgroundColor: Get.theme.primaryColor,
-          snackPosition: SnackPosition.BOTTOM,
-          titleText: Text("Falha no Login!"),
-          messageText: Text("Algum dos campos de login está vazio."));
-    }
+    await FirebaseAuth.instance.setPersistence(Persistence.NONE);
+    // if (!(form.email.isEmpty && form.password.isEmpty)) {
+    //   currentUser.value.email = form.email;
+    //   currentUser.value.password = form.password;
+    //   Get.offAll(() => HomeView());
+    //   print("Nominho:" + currentUser.value.firstName);
+    // } else {
+    //   Get.snackbar("Sobre o Login", "Não foi possível realizar o login",
+    //       backgroundColor: Get.theme.primaryColor,
+    //       snackPosition: SnackPosition.BOTTOM,
+    //       titleText: Text("Falha no Login!"),
+    //       messageText: Text("Algum dos campos de login está vazio."));
+    // }
   }
 
   void recuperarSenha() {
