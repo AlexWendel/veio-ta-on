@@ -18,6 +18,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
+  // ignore: constant_identifier_names
   static const INITIAL = Routes.DASHBOARD;
 
   static final routes = [

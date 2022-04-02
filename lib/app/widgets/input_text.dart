@@ -3,8 +3,8 @@ import 'package:hospital_maraba/app/utils/common.sizes.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 
-class InputText extends GetView {
-  List<String> texts = <String>[];
+class CustomInputText extends GetView {
+  final List<String> texts = <String>[];
   final itemHeight = <RxDouble>[];
   final Function? onChanged;
   final String hintText;
@@ -13,7 +13,7 @@ class InputText extends GetView {
   final Rx<TextEditingController> textFieldController =
       TextEditingController().obs;
 
-  InputText(
+  CustomInputText(
       {this.onChanged,
       required this.icon,
       required this.hintText,

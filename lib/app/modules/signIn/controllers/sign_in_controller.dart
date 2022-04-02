@@ -1,3 +1,4 @@
+// ignore_for_file: unnecessary_overrides
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hospital_maraba/app/auth_controller.dart';
@@ -5,21 +6,21 @@ import 'package:hospital_maraba/app/models/register_form.dart';
 import 'package:hospital_maraba/app/widgets/input_text.dart';
 
 class SignInController extends GetxController {
-  final nameInput = InputText(
+  final nameInput = CustomInputText(
           hintText: "Nome completo", icon: Icon(Icons.person_outline_rounded))
       .obs;
-  final emailInput =
-      InputText(hintText: "Digite o e-mail", icon: Icon(Icons.email_outlined))
-          .obs;
-  final emailConfirmInput =
-      InputText(hintText: "Confirme o e-mail", icon: Icon(Icons.email_outlined))
-          .obs;
-  final passwordInput = InputText(
+  final emailInput = CustomInputText(
+          hintText: "Digite o e-mail", icon: Icon(Icons.email_outlined))
+      .obs;
+  final emailConfirmInput = CustomInputText(
+          hintText: "Confirme o e-mail", icon: Icon(Icons.email_outlined))
+      .obs;
+  final passwordInput = CustomInputText(
     hintText: "Digite a senha",
     obfuscatedField: true,
     icon: Icon(Icons.lock_outline),
   ).obs;
-  final passwordConfirmInput = InputText(
+  final passwordConfirmInput = CustomInputText(
     hintText: "Confirme a senha",
     obfuscatedField: true,
     icon: Icon(Icons.lock_outline),
