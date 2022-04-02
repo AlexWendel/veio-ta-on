@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "961961820221",
+    "project_id": "agendamentos-maraba",
+    "storage_bucket": "agendamentos-maraba.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:961961820221:android:05b6ae10f742a8c2d0aa54",
+        "android_client_info": {
+          "package_name": "dev.snst.hospital_maraba"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "961961820221-t2nopk788uvrq0o614ibnibnqe8tfq9j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBcYthF_xejcwTfbFkSnOQ-c9Div0jjypc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "961961820221-t2nopk788uvrq0o614ibnibnqe8tfq9j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
