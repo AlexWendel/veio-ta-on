@@ -22,6 +22,7 @@ class RegisterForm {
 
   @override
   String toString() {
+    // ignore: unnecessary_brace_in_string_interps
     return 'RegisterForm: nome: ${name}\n cpf: ${cpf}\n rg: ${rg}\n susNumber: ${susNumber}\n phone: ${phone}\n email: ${email}\n emailConf: ${emailConfirmation}\n password: ${password}\n passwordConf: ${passwordConfirmation}';
   }
 }
