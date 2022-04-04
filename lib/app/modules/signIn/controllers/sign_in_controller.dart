@@ -9,6 +9,16 @@ class SignInController extends GetxController {
   final nameInput = CustomInputText(
           hintText: "Nome completo", icon: Icon(Icons.person_outline_rounded))
       .obs;
+  final cpfInput =
+      CPFInputText(icon: Icon(Icons.person_outline_rounded), hintText: "CPF")
+          .obs;
+  final rgInput =
+      RGInputText(icon: Icon(Icons.person_outline_rounded), hintText: "RG").obs;
+  final susCardInput = SusCardInputText(
+          icon: Icon(Icons.person_outline_rounded), hintText: "Cartão SUS")
+      .obs;
+  final phoneInput =
+      PhoneInputText(icon: Icon(Icons.phone), hintText: "Número Celular").obs;
   final emailInput = CustomInputText(
           hintText: "Digite o e-mail", icon: Icon(Icons.email_outlined))
       .obs;
@@ -28,9 +38,18 @@ class SignInController extends GetxController {
 
   register() {
     AuthController.instance.register(RegisterForm(
-        name: nameInput.value.textFieldController.value.value.text,
-        email: emailInput.value.textFieldController.value.value.text,
-        password: passwordInput.value.textFieldController.value.value.text));
+      name: nameInput.value.textFieldController.value.value.text,
+      cpf: maskCPF.getUnmaskedText(),
+      rg: maskRG.getUnmaskedText(),
+      susNumber: maskSusCard.getUnmaskedText(),
+      phone: maskPhone.getUnmaskedText(),
+      email: emailInput.value.textFieldController.value.value.text,
+      emailConfirmation:
+          emailConfirmInput.value.textFieldController.value.value.text,
+      password: passwordInput.value.textFieldController.value.value.text,
+      passwordConfirmation:
+          passwordConfirmInput.value.textFieldController.value.value.text,
+    ));
   }
 
   @override
