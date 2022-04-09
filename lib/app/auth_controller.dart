@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -22,19 +21,21 @@ class AuthController extends GetxController {
   }
 
   _checkForLogin() {
-    // FirebaseAuth.instance.authStateChanges().listen((User? user) {
-    //   if (user == null) {
-    //     print('User is currently signed out!');
-    //     Get.off(() => DashboardView());
-    //   } else {
-    //     print('User is signed in!');
-    //     Get.off(() => HomeView());
-    //   }
-    // });
+    //TODO: Isso está gerando problemas de estado no web
+
+    FirebaseAuth.instance.authStateChanges().listen((User? user) {
+      if (user == null) {
+        print('User is currently signed out!');
+        // Get.off(() => DashboardView());
+      } else {
+        print('User is signed in!');
+        // Get.off(() => HomeView());
+      }
+    });
   }
 
   void register(RegisterForm form) async {
-    await FirebaseAuth.instance.setPersistence(Persistence.NONE);
+    await FirebaseAuth.instance.setPersistence(Persistence.SESSION);
     print(form);
     if (form.name.isEmpty ||
         form.cpf.isEmpty ||
@@ -177,28 +178,36 @@ class AuthController extends GetxController {
         Get.snackbar("Falha no registro", "Não foi possível criar seu usuário",
             backgroundColor: Get.theme.primaryColor,
             snackPosition: SnackPosition.BOTTOM,
-            titleText: Text("Falha no registro!"),
+            titleText: Text("Falha no registro!",
+                style: TextStyle(color: Colors.white)),
             messageText: Text(
-                "Senha informada muito fraca! Dica: Insira símbolos, números e/ou letras maiúsculas na sua senha."));
+                "Senha informada muito fraca! Dica: Insira símbolos, números e/ou letras maiúsculas na sua senha.",
+                style: TextStyle(color: Colors.white)));
         return;
       } else if (e.code == 'email-already-in-use') {
         print('The account already exists for that email.');
         Get.snackbar("Falha no registro", "Não foi possível criar seu usuário",
             backgroundColor: Get.theme.primaryColor,
             snackPosition: SnackPosition.BOTTOM,
-            titleText: Text("Falha no registro!"),
-            messageText: Text("Todos os campos precisam ser preenchidos!"));
+            titleText: Text("Falha no registro!",
+                style: TextStyle(color: Colors.white)),
+            messageText: Text("Todos os campos precisam ser preenchidos!",
+                style: TextStyle(color: Colors.white)));
         return;
       } else {
         print(e);
         Get.snackbar("Falha no registro", "Não foi possível criar seu usuário",
             backgroundColor: Get.theme.primaryColor,
             snackPosition: SnackPosition.BOTTOM,
-            titleText: Text("Falha no registro!"),
-            messageText: Text(e.toString()));
+            titleText: Text("Falha no registro!",
+                style: TextStyle(color: Colors.white)),
+            messageText:
+                Text(e.toString(), style: TextStyle(color: Colors.white)));
         return;
       }
     }
+    //TODO: Verificar se o cartão do sus já está vinculado a uma conta.
+
     var currentUser = FirebaseAuth.instance.currentUser;
     DocumentReference userDataStorage = FirebaseFirestore.instance
         .collection('userDataStorage')
@@ -209,7 +218,6 @@ class AuthController extends GetxController {
           form.name.substring(form.name.indexOf(" ") + 1, form.name.length),
       "email": form.email,
       "rg": form.rg,
-      "senha": form.password,
       "telefone": form.phone,
       "cpf": form.cpf
     });
@@ -217,12 +225,62 @@ class AuthController extends GetxController {
         .collection('paciente')
         .doc('1')
         .set({'cartaoSUS': form.susNumber});
-    //TODO: Mostrar cadastro sucedido, e abrir tela principal
+
+    // Get.off(() => HomeView());
   }
 
   void login(LoginForm form) async {
-    await FirebaseAuth.instance.setPersistence(Persistence.NONE);
     //TODO: Configurar login com dados do Firestore
+
+    String queryDocumentReference = await FirebaseFirestore.instance
+        .collectionGroup('paciente')
+        .where('cartaoSUS', isEqualTo: form.susNumber)
+        .get()
+        .then((QuerySnapshot querySnapshot) {
+      print("Query executed. results:" + querySnapshot.size.toString());
+      if (querySnapshot.size != 0) {
+        return querySnapshot.docs[0].reference.parent.parent!.path;
+      }
+      return "null";
+    });
+    print(queryDocumentReference);
+    if (queryDocumentReference == "null") {
+      Get.snackbar("Falha no acesso", "Cartão SUS não encontrado!",
+          backgroundColor: Get.theme.primaryColor,
+          snackPosition: SnackPosition.BOTTOM,
+          titleText:
+              Text("Falha no acesso!", style: TextStyle(color: Colors.white)),
+          messageText: Text("Cartão SUS não encontrado!",
+              style: TextStyle(color: Colors.white)));
+      return null;
+    }
+    Map<String, dynamic> userData = await FirebaseFirestore.instance
+        .doc(queryDocumentReference)
+        .get()
+        .then((snapshot) => snapshot.data()!);
+
+    try {
+      UserCredential userCredential = await FirebaseAuth.instance
+          .signInWithEmailAndPassword(
+              email: userData["email"], password: form.password);
+      return;
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'wrong-password') {
+        print('Wrong password provided for that user.');
+        Get.snackbar("Falha no acesso", "Senha incorreta!",
+            backgroundColor: Get.theme.primaryColor,
+            snackPosition: SnackPosition.BOTTOM,
+            titleText:
+                Text("Falha no acesso!", style: TextStyle(color: Colors.white)),
+            messageText: Text("Senha incorreta!",
+                style: TextStyle(color: Colors.white)));
+        return;
+      }
+
+      print(e.code);
+    }
+
+    _checkForLogin();
   }
 
   void recuperarSenha() {
@@ -239,6 +297,7 @@ class AuthController extends GetxController {
   void logout() async {
     //TODO: Habilitar signout com o firebase
     // await auth.signOut();
+    // await FirebaseFirestore.instance.clearPersistence();
     Get.offAll(() => DashboardView());
   }
 }
