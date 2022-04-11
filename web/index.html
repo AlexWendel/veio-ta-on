@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <!--
     If you are serving your web app in a path other than the root, change the
@@ -27,7 +28,7 @@
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png"/>
+  <link rel="icon" type="image/png" href="favicon.png" />
 
   <title>hospital_maraba</title>
   <link rel="manifest" href="manifest.json">
@@ -36,6 +37,29 @@
   <!-- This script installs service_worker.js to provide PWA functionality to
        application. For more information, see:
        https://developers.google.com/web/fundamentals/primers/service-workers -->
+       <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-analytics.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+          apiKey: "AIzaSyDqPhMYKVDuUY4YtiDF4S9Kfp0o-6XQ0w0",
+          authDomain: "agendamentos-maraba.firebaseapp.com",
+          projectId: "agendamentos-maraba",
+          storageBucket: "agendamentos-maraba.appspot.com",
+          messagingSenderId: "961961820221",
+          appId: "1:961961820221:web:1dd51b99ea2c6398d0aa54",
+          measurementId: "G-48KZQR9BT3"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+      </script>
   <script>
     var serviceWorkerVersion = null;
     var scriptLoaded = false;
@@ -101,4 +125,5 @@
     }
   </script>
 </body>
+
 </html>

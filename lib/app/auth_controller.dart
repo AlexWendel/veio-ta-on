@@ -15,27 +15,27 @@ class AuthController extends GetxController {
   FirebaseFirestore firestore = FirebaseFirestore.instance;
 
   @override
-  void onReady() {
-    super.onReady();
+  void onInit() {
+    super.onInit();
     _checkForLogin();
   }
 
   _checkForLogin() {
-    //TODO: Isso está gerando problemas de estado no web
+    //TODO: Isso está gerando problemas de estado no web com o hotreload
 
     FirebaseAuth.instance.authStateChanges().listen((User? user) {
       if (user == null) {
         print('User is currently signed out!');
-        // Get.off(() => DashboardView());
+        Get.to(() => DashboardView());
       } else {
         print('User is signed in!');
-        // Get.off(() => HomeView());
+        Get.to(() => HomeView());
       }
     });
   }
 
   void register(RegisterForm form) async {
-    await FirebaseAuth.instance.setPersistence(Persistence.SESSION);
+    await FirebaseAuth.instance.setPersistence(Persistence.NONE);
     print(form);
     if (form.name.isEmpty ||
         form.cpf.isEmpty ||
@@ -90,7 +90,7 @@ class AuthController extends GetxController {
         ),
       );
       return;
-    } else if (form.susNumber.length < 15) {
+    } else if (form.susNumber.length != 15) {
       Get.snackbar("Falha no registro", "Não foi possível criar seu usuário",
           backgroundColor: Get.theme.primaryColor,
           snackPosition: SnackPosition.BOTTOM,
@@ -152,6 +152,19 @@ class AuthController extends GetxController {
           ),
           messageText: Text(
             "Os emails não conincidem!",
+            style: TextStyle(color: Colors.white),
+          ));
+      return;
+    } else if (form.password.length < 8) {
+      Get.snackbar("Falha no registro", "Não foi possível criar seu usuário",
+          backgroundColor: Get.theme.primaryColor,
+          snackPosition: SnackPosition.BOTTOM,
+          titleText: Text(
+            "Falha no registro!",
+            style: TextStyle(color: Colors.white),
+          ),
+          messageText: Text(
+            "A senha deve conter no mínimo 8 dígitos!",
             style: TextStyle(color: Colors.white),
           ));
       return;
@@ -225,13 +238,27 @@ class AuthController extends GetxController {
         .collection('paciente')
         .doc('1')
         .set({'cartaoSUS': form.susNumber});
-
+    _checkForLogin();
     // Get.off(() => HomeView());
   }
 
   void login(LoginForm form) async {
+    await FirebaseAuth.instance.setPersistence(Persistence.NONE);
     //TODO: Configurar login com dados do Firestore
-
+    if (form.susNumber.length != 15) {
+      Get.snackbar("Falha no acesso", "O cartão SUS tem 15 dígitos!",
+          backgroundColor: Get.theme.primaryColor,
+          snackPosition: SnackPosition.BOTTOM,
+          titleText: Text(
+            "Falha no acesso!",
+            style: TextStyle(color: Colors.white),
+          ),
+          messageText: Text(
+            "O cartão SUS tem 15 dígitos!",
+            style: TextStyle(color: Colors.white),
+          ));
+      return;
+    }
     String queryDocumentReference = await FirebaseFirestore.instance
         .collectionGroup('paciente')
         .where('cartaoSUS', isEqualTo: form.susNumber)
@@ -296,8 +323,8 @@ class AuthController extends GetxController {
 
   void logout() async {
     //TODO: Habilitar signout com o firebase
-    // await auth.signOut();
-    // await FirebaseFirestore.instance.clearPersistence();
+    await auth.signOut();
+    await FirebaseFirestore.instance.clearPersistence();
     Get.offAll(() => DashboardView());
   }
 }

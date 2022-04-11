@@ -1,5 +1,5 @@
 class LoginForm {
-  final String email;
+  final String susNumber;
   final String password;
-  LoginForm({this.email = "", this.password = ""});
+  LoginForm({this.susNumber = "", this.password = ""});
 }

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:hospital_maraba/app/auth_controller.dart';
+import 'package:flutter/rendering.dart';
 
 import 'package:get/get.dart';
 
@@ -13,11 +15,21 @@ class HomeView extends GetView<HomeController> {
         centerTitle: true,
       ),
       body: Center(
-        child: Text(
-          'HomeView is working',
-          style: TextStyle(fontSize: 20),
-        ),
-      ),
+          child: ListView(
+        // padding: EdgeInsets.only(left: 20, right: 20),
+        controller: ScrollController(),
+        children: [
+          Text(
+            'HomeView is working',
+            style: TextStyle(fontSize: 20),
+          ),
+          ElevatedButton(
+              onPressed: () {
+                AuthController.instance.logout();
+              },
+              child: Text("Logout"))
+        ],
+      )),
     );
   }
 }

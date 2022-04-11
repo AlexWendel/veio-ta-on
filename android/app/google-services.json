@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "961961820221-07q9mcq1u097dk8da2v5iokc1827686v.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "dev.snst.hospital_maraba",
+            "certificate_hash": "fb18c69aecb516a506461e524689f8500c5620a3"
+          }
+        },
+        {
           "client_id": "961961820221-t2nopk788uvrq0o614ibnibnqe8tfq9j.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -29,6 +37,13 @@
             {
               "client_id": "961961820221-t2nopk788uvrq0o614ibnibnqe8tfq9j.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "961961820221-04o93fk68r8scoe2mevdallhioulu20o.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "dev.snst.hospital-maraba"
+              }
             }
           ]
         }

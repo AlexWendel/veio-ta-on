@@ -4,6 +4,7 @@ import 'package:hospital_maraba/app/auth_controller.dart';
 import 'package:hospital_maraba/app/models/login_form.dart';
 import 'package:hospital_maraba/app/modules/Login/widgets/password_recovery.dart';
 import 'package:hospital_maraba/app/utils/common.sizes.dart';
+import 'package:hospital_maraba/app/widgets/input_text.dart';
 
 extension Utility on BuildContext {
   void nextEditableTextFocus() {
@@ -13,13 +14,13 @@ extension Utility on BuildContext {
   }
 }
 
-// Define a custom Form widget.
 class LoginFormWidget extends GetWidget {
   final _formKey = GlobalKey<FormState>();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final FocusNode passwordFocusNode = FocusNode();
-
+  final susCardInput = SusCardInputText(
+      icon: Icon(Icons.person_outline_rounded), hintText: "Cartão SUS");
   LoginFormWidget({Key? key}) : super(key: key);
 
   @override
@@ -29,32 +30,20 @@ class LoginFormWidget extends GetWidget {
       child: Column(
         children: <Widget>[
           Wrap(runSpacing: 10, children: [
-            TextField(
-              onChanged: (value) {},
-              style: TextStyle(color: Colors.black87),
-              keyboardType: TextInputType.emailAddress,
-              textInputAction: TextInputAction.next,
-              onEditingComplete: () =>
-                  FocusScope.of(context).requestFocus(passwordFocusNode),
-              controller: emailController,
-              decoration: InputDecoration(
-                focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(color: Get.theme.primaryColor)),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                hintText: "Digite seu email",
-                hintStyle: TextStyle(
-                    fontSize: defaultFontSize / context.textScaleFactor), //
-                prefixIcon: Icon(Icons.email_outlined, size: 27),
-              ),
-            ),
-            TextField(
+            susCardInput,
+            TextFormField(
               focusNode: passwordFocusNode,
               onChanged: (value) {},
               style: TextStyle(color: Colors.black87),
-              onSubmitted: (_) => FocusScope.of(context).unfocus(),
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'Insira sua senha!';
+                }
+                if (value.length < 8) {
+                  return 'A senha deve conter no mínimo 8 caracteres!';
+                }
+                return null;
+              },
               obscureText: true,
               textInputAction: TextInputAction.done,
               controller: passwordController,
@@ -65,7 +54,7 @@ class LoginFormWidget extends GetWidget {
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
                 ),
-                hintText: "Digite sua senha",
+                hintText: "Senha",
                 hintStyle: TextStyle(
                     fontSize: defaultFontSize / context.textScaleFactor),
                 prefixIcon: Icon(Icons.lock_outline, size: 27),
@@ -94,7 +83,6 @@ class LoginFormWidget extends GetWidget {
                           topLeft: Radius.circular(20),
                           topRight: Radius.circular(20),
                         ),
-                        //side: BorderSide(color: primaryColor),
                       ),
                       context: context,
                       builder: (context) => Senha(),
@@ -124,9 +112,10 @@ class LoginFormWidget extends GetWidget {
                         fontWeight: FontWeight.w600))),
             onPressed: () {
               // Validate returns true if the form is valid, or false otherwise.
+              // AuthController.instance.login(LoginForm());
               if (_formKey.currentState!.validate()) {
                 AuthController.instance.login(LoginForm(
-                    email: emailController.text,
+                    susNumber: maskSusCard.getUnmaskedText(),
                     password: passwordController.text));
               }
             },
