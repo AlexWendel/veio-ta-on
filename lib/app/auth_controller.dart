@@ -244,7 +244,10 @@ class AuthController extends GetxController {
   }
 
   void login(LoginForm form) async {
-    await FirebaseAuth.instance.setPersistence(Persistence.NONE);
+    try {
+      await FirebaseAuth.instance.setPersistence(Persistence.NONE);
+    } catch (e) {}
+
     if (form.susNumber.length != 15) {
       Get.snackbar("Falha no acesso", "O cartão SUS tem 15 dígitos!",
           backgroundColor: Get.theme.primaryColor,
@@ -259,6 +262,7 @@ class AuthController extends GetxController {
           ));
       return;
     }
+
     String queryDocumentReference = await FirebaseFirestore.instance
         .collectionGroup('paciente')
         .where('cartaoSUS', isEqualTo: form.susNumber)
@@ -268,8 +272,10 @@ class AuthController extends GetxController {
       if (querySnapshot.size != 0) {
         return querySnapshot.docs[0].reference.parent.parent!.path;
       }
+
       return "null";
     });
+
     print(queryDocumentReference);
     if (queryDocumentReference == "null") {
       Get.snackbar("Falha no acesso", "Cartão SUS não encontrado!",
