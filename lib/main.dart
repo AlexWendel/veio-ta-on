@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:hospital_maraba/app/auth_binding.dart';
 import 'package:hospital_maraba/app/auth_controller.dart';
+import 'package:hospital_maraba/app/utils/color_theme.dart';
 import 'package:hospital_maraba/app/utils/root.dart';
 import 'firebase_options.dart';
 
@@ -21,6 +22,7 @@ Future<void> main() async {
   runApp(
     GetMaterialApp(
       title: "Agendamento Fácil",
+      theme: mainTheme,
       initialBinding: AuthBinding(),
       home: Root(),
       getPages: AppPages.routes,
