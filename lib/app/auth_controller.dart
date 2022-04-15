@@ -204,7 +204,8 @@ class AuthController extends GetxController {
             snackPosition: SnackPosition.BOTTOM,
             titleText: Text("Falha no registro!",
                 style: TextStyle(color: Colors.white)),
-            messageText: Text("Todos os campos precisam ser preenchidos!",
+            messageText: Text(
+                "Uma conta já existe para este endereço de email!",
                 style: TextStyle(color: Colors.white)));
         return;
       } else {
@@ -244,7 +245,6 @@ class AuthController extends GetxController {
 
   void login(LoginForm form) async {
     await FirebaseAuth.instance.setPersistence(Persistence.NONE);
-    //TODO: Configurar login com dados do Firestore
     if (form.susNumber.length != 15) {
       Get.snackbar("Falha no acesso", "O cartão SUS tem 15 dígitos!",
           backgroundColor: Get.theme.primaryColor,
@@ -322,7 +322,6 @@ class AuthController extends GetxController {
   }
 
   void logout() async {
-    //TODO: Habilitar signout com o firebase
     await auth.signOut();
     await FirebaseFirestore.instance.clearPersistence();
     Get.offAll(() => DashboardView());
