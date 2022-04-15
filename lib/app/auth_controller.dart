@@ -12,6 +12,7 @@ class AuthController extends GetxController {
   static AuthController instance = Get.find();
   final controller = Get.put(AuthController);
   FirebaseAuth auth = FirebaseAuth.instance;
+  // Rx<User> _firebaseUser = Rx<User>();
   FirebaseFirestore firestore = FirebaseFirestore.instance;
 
   @override
@@ -26,10 +27,10 @@ class AuthController extends GetxController {
     FirebaseAuth.instance.authStateChanges().listen((User? user) {
       if (user == null) {
         print('User is currently signed out!');
-        Get.to(() => DashboardView());
+        Get.offAll(() => DashboardView());
       } else {
         print('User is signed in!');
-        Get.to(() => HomeView());
+        Get.offAll(() => HomeView());
       }
     });
   }
@@ -220,7 +221,7 @@ class AuthController extends GetxController {
         return;
       }
     }
-    //TODO: Verificar se o cartão do sus já está vinculado a uma conta.
+    //Verificar se o cartão do sus já está vinculado a uma conta.
 
     var currentUser = FirebaseAuth.instance.currentUser;
     DocumentReference userDataStorage = FirebaseFirestore.instance
@@ -244,7 +245,11 @@ class AuthController extends GetxController {
   }
 
   void login(LoginForm form) async {
-    await FirebaseAuth.instance.setPersistence(Persistence.NONE);
+    try {
+      await FirebaseAuth.instance.setPersistence(Persistence.SESSION);
+    } catch (e) {
+      print(e);
+    }
     if (form.susNumber.length != 15) {
       Get.snackbar("Falha no acesso", "O cartão SUS tem 15 dígitos!",
           backgroundColor: Get.theme.primaryColor,
@@ -306,7 +311,7 @@ class AuthController extends GetxController {
 
       print(e.code);
     }
-
+    print("Tentando fazer login");
     _checkForLogin();
   }
 
