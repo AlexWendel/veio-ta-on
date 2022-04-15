@@ -12,27 +12,14 @@ class AuthController extends GetxController {
   static AuthController instance = Get.find();
   final controller = Get.put(AuthController);
   FirebaseAuth auth = FirebaseAuth.instance;
-  // Rx<User> _firebaseUser = Rx<User>();
   FirebaseFirestore firestore = FirebaseFirestore.instance;
+  Rxn<User> _firebaseUser = Rxn<User>();
 
+  User? get user => _firebaseUser.value;
   @override
   void onInit() {
+    _firebaseUser.bindStream(auth.authStateChanges());
     super.onInit();
-    _checkForLogin();
-  }
-
-  _checkForLogin() {
-    //TODO: Isso está gerando problemas de estado no web com o hotreload
-
-    FirebaseAuth.instance.authStateChanges().listen((User? user) {
-      if (user == null) {
-        print('User is currently signed out!');
-        Get.offAll(() => DashboardView());
-      } else {
-        print('User is signed in!');
-        Get.offAll(() => HomeView());
-      }
-    });
   }
 
   void register(RegisterForm form) async {
@@ -221,7 +208,7 @@ class AuthController extends GetxController {
         return;
       }
     }
-    //Verificar se o cartão do sus já está vinculado a uma conta.
+    //TODO: Verificar se o cartão do sus já está vinculado a uma conta.
 
     var currentUser = FirebaseAuth.instance.currentUser;
     DocumentReference userDataStorage = FirebaseFirestore.instance
@@ -240,8 +227,6 @@ class AuthController extends GetxController {
         .collection('paciente')
         .doc('1')
         .set({'cartaoSUS': form.susNumber});
-    _checkForLogin();
-    // Get.off(() => HomeView());
   }
 
   void login(LoginForm form) async {
@@ -295,7 +280,6 @@ class AuthController extends GetxController {
       UserCredential userCredential = await FirebaseAuth.instance
           .signInWithEmailAndPassword(
               email: userData["email"], password: form.password);
-      return;
     } on FirebaseAuthException catch (e) {
       if (e.code == 'wrong-password') {
         print('Wrong password provided for that user.');
@@ -308,11 +292,9 @@ class AuthController extends GetxController {
                 style: TextStyle(color: Colors.white)));
         return;
       }
-
       print(e.code);
     }
-    print("Tentando fazer login");
-    _checkForLogin();
+    // _firebaseUser.value = FirebaseAuth.
   }
 
   void recuperarSenha() {
@@ -328,7 +310,13 @@ class AuthController extends GetxController {
 
   void logout() async {
     await auth.signOut();
-    await FirebaseFirestore.instance.clearPersistence();
+    try {
+      await FirebaseFirestore.instance.clearPersistence();
+    } catch (e) {
+      print(e);
+    }
+    _firebaseUser.value = null;
+    // await FirebaseFirestore.instance.clearPersistence();
     Get.offAll(() => DashboardView());
   }
 }

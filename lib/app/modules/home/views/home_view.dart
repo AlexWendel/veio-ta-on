@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:hospital_maraba/app/auth_controller.dart';
-import 'package:flutter/rendering.dart';
 
 import 'package:get/get.dart';
 
@@ -16,7 +15,7 @@ class HomeView extends GetView<HomeController> {
       ),
       body: Center(
           child: ListView(
-        // padding: EdgeInsets.only(left: 20, right: 20),
+        padding: EdgeInsets.only(left: 20, right: 20),
         controller: ScrollController(),
         children: [
           Text(
