@@ -13,25 +13,13 @@ class AuthController extends GetxController {
   final controller = Get.put(AuthController);
   FirebaseAuth auth = FirebaseAuth.instance;
   FirebaseFirestore firestore = FirebaseFirestore.instance;
+  Rxn<User> _firebaseUser = Rxn<User>();
 
+  User? get user => _firebaseUser.value;
   @override
   void onInit() {
+    _firebaseUser.bindStream(auth.authStateChanges());
     super.onInit();
-    _checkForLogin();
-  }
-
-  _checkForLogin() {
-    //TODO: Isso está gerando problemas de estado no web com o hotreload
-
-    FirebaseAuth.instance.authStateChanges().listen((User? user) {
-      if (user == null) {
-        print('User is currently signed out!');
-        Get.to(() => DashboardView());
-      } else {
-        print('User is signed in!');
-        Get.to(() => HomeView());
-      }
-    });
   }
 
   void register(RegisterForm form) async {
@@ -239,12 +227,14 @@ class AuthController extends GetxController {
         .collection('paciente')
         .doc('1')
         .set({'cartaoSUS': form.susNumber});
-    _checkForLogin();
-    // Get.off(() => HomeView());
   }
 
   void login(LoginForm form) async {
-    await FirebaseAuth.instance.setPersistence(Persistence.NONE);
+    try {
+      await FirebaseAuth.instance.setPersistence(Persistence.SESSION);
+    } catch (e) {
+      print(e);
+    }
     if (form.susNumber.length != 15) {
       Get.snackbar("Falha no acesso", "O cartão SUS tem 15 dígitos!",
           backgroundColor: Get.theme.primaryColor,
@@ -259,6 +249,7 @@ class AuthController extends GetxController {
           ));
       return;
     }
+
     String queryDocumentReference = await FirebaseFirestore.instance
         .collectionGroup('paciente')
         .where('cartaoSUS', isEqualTo: form.susNumber)
@@ -268,8 +259,10 @@ class AuthController extends GetxController {
       if (querySnapshot.size != 0) {
         return querySnapshot.docs[0].reference.parent.parent!.path;
       }
+
       return "null";
     });
+
     print(queryDocumentReference);
     if (queryDocumentReference == "null") {
       Get.snackbar("Falha no acesso", "Cartão SUS não encontrado!",
@@ -290,7 +283,6 @@ class AuthController extends GetxController {
       UserCredential userCredential = await FirebaseAuth.instance
           .signInWithEmailAndPassword(
               email: userData["email"], password: form.password);
-      return;
     } on FirebaseAuthException catch (e) {
       if (e.code == 'wrong-password') {
         print('Wrong password provided for that user.');
@@ -303,11 +295,9 @@ class AuthController extends GetxController {
                 style: TextStyle(color: Colors.white)));
         return;
       }
-
       print(e.code);
     }
-
-    _checkForLogin();
+    // _firebaseUser.value = FirebaseAuth.
   }
 
   void recuperarSenha() {
@@ -323,7 +313,13 @@ class AuthController extends GetxController {
 
   void logout() async {
     await auth.signOut();
-    await FirebaseFirestore.instance.clearPersistence();
+    try {
+      await FirebaseFirestore.instance.clearPersistence();
+    } catch (e) {
+      print(e);
+    }
+    _firebaseUser.value = null;
+    // await FirebaseFirestore.instance.clearPersistence();
     Get.offAll(() => DashboardView());
   }
 }

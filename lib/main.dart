@@ -3,7 +3,9 @@ import 'package:flutter/services.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:get/get.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:hospital_maraba/app/auth_binding.dart';
 import 'package:hospital_maraba/app/auth_controller.dart';
+import 'package:hospital_maraba/app/utils/root.dart';
 import 'firebase_options.dart';
 
 import 'app/modules/home/controllers/home_controller.dart';
@@ -16,11 +18,11 @@ Future<void> main() async {
       [DeviceOrientation.portraitDown, DeviceOrientation.portraitUp]);
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   Get.put(HomeController());
-  Get.put(AuthController());
   runApp(
     GetMaterialApp(
       title: "Agendamento Fácil",
-      initialRoute: AppPages.INITIAL,
+      initialBinding: AuthBinding(),
+      home: Root(),
       getPages: AppPages.routes,
       debugShowCheckedModeBanner: false,
       navigatorKey: Get.key,
