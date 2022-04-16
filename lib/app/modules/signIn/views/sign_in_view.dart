@@ -16,6 +16,7 @@ class SignInView extends GetView<SignInController> {
       padding: EdgeInsets.symmetric(horizontal: 20),
       children: [
         Container(
+            color: Get.theme.canvasColor,
             alignment: Alignment.centerLeft,
             padding: EdgeInsets.only(top: 30, bottom: 20, left: 5, right: 5),
             // height: 50,

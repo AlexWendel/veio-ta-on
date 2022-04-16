@@ -9,14 +9,14 @@ import 'package:hospital_maraba/app/widgets/CardHome.dart';
 class HomeSliverAppBar extends SliverAppBar {
   Widget build(BuildContext context) {
     return SliverAppBar(
-      toolbarHeight: 45 * context.textScaleFactor,
-      expandedHeight: 45 * context.textScaleFactor,
+      toolbarHeight: 100 * context.textScaleFactor,
+      expandedHeight: 100 * context.textScaleFactor,
       floating: true,
       snap: true,
       elevation: 0,
       flexibleSpace: Container(
         decoration: BoxDecoration(
-            color: Get.theme.backgroundColor,
+            color: Get.theme.canvasColor,
             border: Border(
                 bottom: BorderSide(
               width: 0.2,
