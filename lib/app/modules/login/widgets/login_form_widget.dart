@@ -48,6 +48,8 @@ class LoginFormWidget extends GetWidget {
               textInputAction: TextInputAction.done,
               controller: passwordController,
               decoration: InputDecoration(
+                fillColor: Colors.white,
+                filled: true,
                 focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                     borderSide: BorderSide(color: Get.theme.primaryColor)),

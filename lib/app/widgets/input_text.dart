@@ -58,6 +58,8 @@ class CustomInputText extends GetView {
         onEditingComplete: () => {},
         controller: textFieldController.value,
         decoration: InputDecoration(
+          fillColor: Colors.white,
+          filled: true,
           focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
               borderSide: BorderSide(color: Get.theme.primaryColor)),
@@ -115,6 +117,8 @@ class CPFInputText extends GetView {
         onEditingComplete: () => {},
         controller: textFieldController.value,
         decoration: InputDecoration(
+          fillColor: Colors.white,
+          filled: true,
           focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
               borderSide: BorderSide(color: Get.theme.primaryColor)),
@@ -172,6 +176,8 @@ class RGInputText extends GetView {
         onEditingComplete: () => {},
         controller: textFieldController.value,
         decoration: InputDecoration(
+          fillColor: Colors.white,
+          filled: true,
           focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
               borderSide: BorderSide(color: Get.theme.primaryColor)),
@@ -229,6 +235,8 @@ class SusCardInputText extends GetView {
         onEditingComplete: () => {},
         controller: textFieldController.value,
         decoration: InputDecoration(
+          fillColor: Colors.white,
+          filled: true,
           focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
               borderSide: BorderSide(color: Get.theme.primaryColor)),
@@ -286,6 +294,8 @@ class PhoneInputText extends GetView {
         onEditingComplete: () => {},
         controller: textFieldController.value,
         decoration: InputDecoration(
+          fillColor: Colors.white,
+          filled: true,
           focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
               borderSide: BorderSide(color: Get.theme.primaryColor)),
