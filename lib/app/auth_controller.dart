@@ -24,7 +24,9 @@ class AuthController extends GetxController {
   void register(RegisterForm form) async {
     try {
       await FirebaseAuth.instance.setPersistence(Persistence.NONE);
-    } catch (e) {}
+    } catch (e) {
+      print(e);
+    }
     print(form);
     if (form.name.isEmpty ||
         form.cpf.isEmpty ||
