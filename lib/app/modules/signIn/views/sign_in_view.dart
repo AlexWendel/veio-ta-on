@@ -17,7 +17,7 @@ class SignInView extends GetView<SignInController> {
       children: [
         Container(
             alignment: Alignment.centerLeft,
-            padding: EdgeInsets.only(top: 30, bottom: 20, left: 5, right: 5),
+            margin: EdgeInsets.only(top: 30, bottom: 20, left: 200, right: 200),
             // height: 50,
             width: double.maxFinite,
             child: Column(children: [

@@ -28,5 +28,5 @@ dev_dependencies:
 flutter: 
   uses-material-design: true
   assets:
-    - assets/images/realLogo.jpg
+    - assets/images/realLogo.png
     - assets/images/cj.png
