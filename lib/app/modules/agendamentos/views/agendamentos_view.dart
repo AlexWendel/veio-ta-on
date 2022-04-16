@@ -9,7 +9,6 @@ import 'package:hospital_maraba/app/utils/common.sizes.dart';
 import 'package:hospital_maraba/app/widgets/radioBox.dart';
 
 import '../../../widgets/input_text.dart';
-import '../../MainDesign.dart';
 import '../controllers/agendamentos_controller.dart';
 
 class AgendamentosView extends GetView<AgendamentosController> {
