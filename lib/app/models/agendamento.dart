@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_this
+
 class Agendamento {
 // ''[Consulta]
 // - id_consulta (unique_id)
@@ -12,5 +14,43 @@ class Agendamento {
 // - fez_checkin_em (datetime)
 // - confirmacao (bool)
 // - confirmado_em (datetime)''
-
+  Agendamento.fromJson(Map<String, Object> json, String uidConsulta)
+      : this(
+            agendadoEm: json['agendadoEm'] as DateTime,
+            agendadoPorIdUserRef: json['agendadoPor'] as String,
+            checkinPorIdUserRef: json['checkinPor'] as String,
+            confirmado: json['confirmado'] as bool,
+            confirmadoEm: json['confirmadoEm'] as DateTime,
+            fezCheckin: json['fezCheckIn'] as bool,
+            horario: json['horario'] as DateTime,
+            idConsulta: json['idConsulta'] as String,
+            idMedicoRef: uidConsulta,
+            idPacienteRef: json['idPacienteRef'] as String,
+            local: json['local'] as String);
+  Agendamento(
+      {this.idConsulta = "",
+      this.idPacienteRef = "",
+      this.idMedicoRef = "",
+      this.agendadoPorIdUserRef = "",
+      DateTime? agendadoEm,
+      this.local = "",
+      DateTime? horario,
+      this.checkinPorIdUserRef = "",
+      this.fezCheckin = false,
+      this.confirmado = false,
+      DateTime? confirmadoEm})
+      : this.agendadoEm = agendadoEm ?? DateTime.utc(2022),
+        this.horario = horario ?? DateTime.utc(2022),
+        this.confirmadoEm = confirmadoEm ?? DateTime.utc(2022);
+  String idConsulta;
+  String idPacienteRef;
+  String idMedicoRef;
+  String agendadoPorIdUserRef;
+  DateTime agendadoEm;
+  String local;
+  DateTime horario;
+  String checkinPorIdUserRef;
+  bool fezCheckin;
+  bool confirmado;
+  DateTime confirmadoEm;
 }
