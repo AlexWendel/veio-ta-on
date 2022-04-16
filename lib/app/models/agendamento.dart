@@ -1,4 +1,7 @@
-// ignore_for_file: unnecessary_this
+import 'package:hospital_maraba/app/models/exame.dart';
+import 'package:hospital_maraba/app/models/local.dart';
+
+import 'data.dart';
 
 class Agendamento {
 // ''[Consulta]
