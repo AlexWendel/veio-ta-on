@@ -20,12 +20,15 @@ class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     List<Widget> itemList = [
-      Text("Faça agendamento e check-in de suas consultas",
-          textAlign: TextAlign.start,
-          style: Get.theme.textTheme.displaySmall?.copyWith(
-              fontSize: defaultFontSize / context.textScaleFactor,
-              color: Colors.black54,
-              fontWeight: FontWeight.w500)),
+      Padding(
+        padding: EdgeInsets.symmetric(horizontal: 15),
+        child: Text("Faça agendamento e check-in de suas consultas",
+            textAlign: TextAlign.start,
+            style: Get.theme.textTheme.displaySmall?.copyWith(
+                fontSize: defaultFontSize / context.textScaleFactor,
+                color: Colors.black54,
+                fontWeight: FontWeight.w500)),
+      ),
       SizedBox(height: 20),
       Wrap(runSpacing: 0, children: [
         CardHome(
@@ -95,10 +98,7 @@ class HomeView extends GetView<HomeController> {
         flexibleSpace: Container(
           decoration: BoxDecoration(
               color: Get.theme.primaryColor,
-              border: Border(
-                  bottom: BorderSide(
-                width: 0.2,
-              ))),
+              border: Border.all(color: Colors.transparent)),
         ),
         shadowColor: Colors.transparent,
         // leading: IconButton(

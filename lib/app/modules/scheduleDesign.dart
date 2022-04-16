@@ -16,9 +16,9 @@ class ScheduleDesign extends GetView {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: 90,
+        toolbarHeight: 80,
         backgroundColor: Get.theme.primaryColor,
-        leadingWidth: 20,
+        leadingWidth: 30,
         titleSpacing: 20,
         title: appBarContent,
       ),
