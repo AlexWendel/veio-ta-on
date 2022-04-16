@@ -8,7 +8,6 @@ Future<UserLocal> getUserFromFirestore(String? uid) async {
       FirebaseFirestore.instance.collection('userDataStorage').withConverter(
           fromFirestore: (snapshot, _) {
             print("User ID: " + snapshot.id);
-            print(snapshot.data()!['consulta']);
             return UserLocal.fromJson(snapshot.data()!, snapshot.id);
           },
           toFirestore: (UserLocal user, _) => user.toJson());

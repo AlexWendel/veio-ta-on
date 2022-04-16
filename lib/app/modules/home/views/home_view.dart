@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hospital_maraba/app/auth_controller.dart';
 import 'package:hospital_maraba/app/data/database.dart';
 import 'package:hospital_maraba/app/modules/home/controllers/home_controller.dart';
 import 'package:hospital_maraba/app/modules/settings/views/settings_view.dart';
@@ -92,7 +91,7 @@ class HomeView extends GetView<HomeController> {
       body: itemList,
       sliverAppBar: SliverAppBar(
         toolbarHeight: 100 * context.textScaleFactor,
-        expandedHeight: 150 * context.textScaleFactor,
+        expandedHeight: 125 * context.textScaleFactor,
         floating: true,
         snap: true,
         elevation: 0,

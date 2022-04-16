@@ -8,7 +8,14 @@ import 'package:hospital_maraba/app/models/paciente.dart';
 class AgendamentosController extends GetxController {
   final count = 0.obs;
 
-  //
+  Agendamento cancelarConsulta(
+      Paciente pacinteRef, Agendamento agendamentoRef) {
+    // Checar se o agendamento existe
+    // Verificar se o agendamento ainda está no período válido de cancelamento
+    // Criar o documento no firebase
+    // Retornar a referencia ao documento do firebase
+    return Agendamento();
+  }
 
   @override
   void onInit() {
