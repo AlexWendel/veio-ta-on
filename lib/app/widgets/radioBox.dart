@@ -6,13 +6,17 @@ import 'package:hospital_maraba/app/widgets/radioButton.dart';
 import 'input_text.dart';
 
 class RadioBox extends GetView {
-  List locais = ["1", "2", "3", "4", "5"];
+  final List items;
+  final Icon icon;
+
+  RadioBox({required this.icon, required this.items});
+
   @override
   Widget build(BuildContext context) {
     List<Widget> radioList = [];
     RxList<bool> selectionList = RxList<bool>();
     RxList<Color> colorList = RxList<Color>();
-    for (int i = 0; i < locais.length; i++) {
+    for (int i = 0; i < items.length; i++) {
       selectionList.add(false);
       colorList.add(Get.theme.highlightColor);
       radioList.add(Obx(() => RadioButton(
@@ -27,9 +31,9 @@ class RadioBox extends GetView {
               }
             }
           },
-          text: "teste " + locais[i],
+          text: "teste " + items[i],
           description: "testando",
-          icon: Icon(Icons.abc),
+          icon: icon,
           height: 100,
           width: context.width)));
     }

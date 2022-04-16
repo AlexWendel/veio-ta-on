@@ -14,14 +14,20 @@ class AgendamentosView extends GetView<AgendamentosController> {
   @override
   Widget build(BuildContext context) {
     List<Widget> itemList = [
-      Text(
-        "Selecione o Tipo de Exame:",
-        style: TextStyle(
-            color: cardGray,
-            fontWeight: FontWeight.bold,
-            fontSize: titleFontSize / context.textScaleFactor),
+      Padding(
+        padding: EdgeInsets.symmetric(vertical: 10),
+        child: Text(
+          "Selecione o Tipo de Exame:",
+          style: TextStyle(
+              color: cardGray,
+              fontWeight: FontWeight.bold,
+              fontSize: titleFontSize / context.textScaleFactor),
+        ),
       ),
-      RadioBox()
+      RadioBox(
+        icon: Icon(Icons.local_activity),
+        items: ["", "", ""],
+      )
     ];
     return ScheduleDesign(
       body: itemList,
