@@ -301,7 +301,6 @@ class AuthController extends GetxController {
       }
       print(e.code);
     }
-    // _firebaseUser.value = FirebaseAuth.
   }
 
   void recuperarSenha() {
@@ -317,13 +316,11 @@ class AuthController extends GetxController {
 
   void logout() async {
     await auth.signOut();
-    try {
-      await FirebaseFirestore.instance.clearPersistence();
-    } catch (e) {
-      print(e);
-    }
-
-    // await FirebaseFirestore.instance.clearPersistence();
+    // try {
+    //   await FirebaseFirestore.instance.clearPersistence();
+    // } catch (e) {
+    //   print(e);
+    // }
     Get.offAll(() => DashboardView());
   }
 }
