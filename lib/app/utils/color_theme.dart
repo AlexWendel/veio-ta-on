@@ -18,7 +18,7 @@ ThemeData mainTheme =
     ThemeData(primaryColor: verdeBosta, primarySwatch: verdeBostaMaterialColor)
         .copyWith(
             backgroundColor: verdeBosta,
-            scaffoldBackgroundColor: verdeBosta,
+            scaffoldBackgroundColor: backGround,
             highlightColor: textFieldGray,
             canvasColor: Colors.white,
             primaryTextTheme: TextTheme(
