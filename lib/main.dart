@@ -8,7 +8,6 @@ import 'package:hospital_maraba/app/auth_controller.dart';
 import 'package:hospital_maraba/app/utils/color_theme.dart';
 import 'package:hospital_maraba/app/utils/root.dart';
 import 'firebase_options.dart';
-
 import 'app/modules/home/controllers/home_controller.dart';
 import 'app/routes/app_pages.dart';
 

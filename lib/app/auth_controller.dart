@@ -5,8 +5,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:hospital_maraba/app/models/register_form.dart';
 import 'package:hospital_maraba/app/modules/dashboard/views/dashboard_view.dart';
-import 'package:hospital_maraba/app/modules/home/views/home_view.dart';
 import 'models/login_form.dart';
+import 'utils/root.dart';
 
 class AuthController extends GetxController {
   static AuthController instance = Get.find();
@@ -23,7 +23,11 @@ class AuthController extends GetxController {
   }
 
   void register(RegisterForm form) async {
-    await FirebaseAuth.instance.setPersistence(Persistence.NONE);
+    try {
+      await FirebaseAuth.instance.setPersistence(Persistence.NONE);
+    } catch (e) {
+      print(e);
+    }
     print(form);
     if (form.name.isEmpty ||
         form.cpf.isEmpty ||
@@ -283,6 +287,7 @@ class AuthController extends GetxController {
       UserCredential userCredential = await FirebaseAuth.instance
           .signInWithEmailAndPassword(
               email: userData["email"], password: form.password);
+      print("logado disgraca");
     } on FirebaseAuthException catch (e) {
       if (e.code == 'wrong-password') {
         print('Wrong password provided for that user.');
@@ -318,8 +323,8 @@ class AuthController extends GetxController {
     } catch (e) {
       print(e);
     }
-    _firebaseUser.value = null;
+
     // await FirebaseFirestore.instance.clearPersistence();
-    Get.offAll(() => DashboardView());
+    Get.offAll(() => Root());
   }
 }
