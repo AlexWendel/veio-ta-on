@@ -19,7 +19,7 @@ class RadioBox extends GetView {
           color: colorList[i],
           onTap: () {
             selectionList[i] = true;
-            colorList[i] = Get.theme.backgroundColor.withAlpha(80);
+            colorList[i] = Get.theme.primaryColor.withOpacity(0.7);
             for (int j = 0; j < selectionList.length; j++) {
               if (j != i) {
                 selectionList[j] = false;
@@ -34,25 +34,10 @@ class RadioBox extends GetView {
           width: context.width)));
     }
 
-    return Column(
-      children: [
-        CustomInputText(
-          hintText: "Pesquisar Tipo de Exame",
-          icon: Icon(Icons.search),
-        ),
-        Container(
-          margin: EdgeInsets.symmetric(vertical: 20),
-          height: context.height / 2,
-          width: Get.width,
-          color: Get.theme.canvasColor,
-          child: ListView.builder(
-            itemBuilder: (BuildContext context, index) {
-              return radioList[index];
-            },
-            itemCount: radioList.length,
-          ),
-        ),
-      ],
+    return SingleChildScrollView(
+      child: Column(
+        children: radioList,
+      ),
     );
   }
 }

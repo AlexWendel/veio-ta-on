@@ -28,11 +28,13 @@ class CustomInputText extends GetView {
   final String hintText;
   final Icon icon;
   final bool obfuscatedField;
+  final double height;
   final Rx<TextEditingController> textFieldController =
       TextEditingController().obs;
 
   CustomInputText(
       {this.onChanged,
+      this.height = 60,
       required this.icon,
       required this.hintText,
       this.obfuscatedField = false});
@@ -40,7 +42,7 @@ class CustomInputText extends GetView {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 60,
+      height: height,
       alignment: Alignment.center,
       child: TextField(
         obscureText: obfuscatedField,
