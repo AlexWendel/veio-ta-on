@@ -317,11 +317,11 @@ class AuthController extends GetxController {
 
   void logout() async {
     await auth.signOut();
-    try {
-      await FirebaseFirestore.instance.clearPersistence();
-    } catch (e) {
-      print(e);
-    }
+    // try {
+    //   await FirebaseFirestore.instance.clearPersistence();
+    // } catch (e) {
+    //   print(e);
+    // }
 
     // await FirebaseFirestore.instance.clearPersistence();
     Get.offAll(() => Root());
