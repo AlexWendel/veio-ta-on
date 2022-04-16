@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:hospital_maraba/app/models/agendamento.dart';
 
 import '../models/user.dart';
 
@@ -18,3 +19,10 @@ Future<UserLocal> getUserFromFirestore(String? uid) async {
     return snapshot.data()!;
   });
 }
+
+Future<List<Agendamento>> getAgendamentoFromFirestoreUsingPacienteUid(
+    String uidAgendamento) async {
+  return [Agendamento()];
+}
+
+void createAgendamento(Agendamento formAgendamento) async {}
