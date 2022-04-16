@@ -283,9 +283,8 @@ class AuthController extends GetxController {
         .then((snapshot) => snapshot.data()!);
 
     try {
-      UserCredential userCredential = await FirebaseAuth.instance
-          .signInWithEmailAndPassword(
-              email: userData["email"], password: form.password);
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+          email: userData["email"], password: form.password);
       print("logado disgraca");
     } on FirebaseAuthException catch (e) {
       if (e.code == 'wrong-password') {
