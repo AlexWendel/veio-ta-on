@@ -7,9 +7,9 @@ class UserLocal {
       this.cpf = "",
       this.email = "",
       this.rg = ""});
-  UserLocal.fromJson(Map<String, Object?> json)
+  UserLocal.fromJson(Map<String, Object?> json, String uidFromDoc)
       : this(
-          // uid: json['uid'] as String,
+          uid: uidFromDoc,
           nome: json['nome'] as String,
           sobrenome: json['sobrenome'] as String,
           rg: json['rg'] as String,
