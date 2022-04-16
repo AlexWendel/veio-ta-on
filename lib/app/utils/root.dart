@@ -1,4 +1,4 @@
-import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hospital_maraba/app/auth_controller.dart';
 import '../modules/dashboard/views/dashboard_view.dart';

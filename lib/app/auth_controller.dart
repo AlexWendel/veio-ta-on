@@ -4,7 +4,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:hospital_maraba/app/models/register_form.dart';
-import 'package:hospital_maraba/app/modules/dashboard/views/dashboard_view.dart';
 import 'models/login_form.dart';
 import 'utils/root.dart';
 
