@@ -6,6 +6,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:hospital_maraba/app/models/register_form.dart';
 import 'package:hospital_maraba/app/modules/dashboard/views/dashboard_view.dart';
 import 'models/login_form.dart';
+import 'utils/root.dart';
 
 class AuthController extends GetxController {
   static AuthController instance = Get.find();
@@ -324,6 +325,6 @@ class AuthController extends GetxController {
     }
 
     // await FirebaseFirestore.instance.clearPersistence();
-    Get.offAll(() => DashboardView());
+    Get.offAll(() => Root());
   }
 }
