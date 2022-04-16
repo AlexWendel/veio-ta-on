@@ -95,7 +95,7 @@ class HomeView extends GetView<HomeController> {
         elevation: 0,
         flexibleSpace: Container(
           decoration: BoxDecoration(
-              color: Get.theme.backgroundColor,
+              color: Get.theme.primaryColor,
               border: Border(
                   bottom: BorderSide(
                 width: 0.2,
