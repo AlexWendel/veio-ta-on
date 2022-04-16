@@ -12,6 +12,7 @@ class DashboardView extends GetView<DashboardController> {
   Widget build(BuildContext context) {
     return GetBuilder<DashboardController>(builder: (controller) {
       return Scaffold(
+        backgroundColor: Get.theme.backgroundColor,
         body: SafeArea(
           child: IndexedStack(
             index: controller.pageIndex.value,

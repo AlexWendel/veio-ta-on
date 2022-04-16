@@ -17,8 +17,8 @@ final appbartext = TextStyle(
 ThemeData mainTheme =
     ThemeData(primaryColor: verdeBosta, primarySwatch: verdeBostaMaterialColor)
         .copyWith(
-            backgroundColor: verdeBosta,
-            scaffoldBackgroundColor: backGround,
+            backgroundColor: Colors.white,
+            scaffoldBackgroundColor: verdeBosta,
             highlightColor: textFieldGray,
             canvasColor: Colors.white,
             primaryTextTheme: TextTheme(
