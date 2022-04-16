@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hospital_maraba/app/modules/login/widgets/buttonSigin.dart';
+import 'package:hospital_maraba/app/modules/home/views/home_view.dart';
+import 'package:hospital_maraba/app/modules/login/widgets/recPass.dart';
 import 'package:hospital_maraba/app/utils/common.sizes.dart';
 import '../controllers/login_controller.dart';
 import 'package:hospital_maraba/app/modules/login/widgets/inputWdget.dart';
@@ -77,23 +78,26 @@ class LoginView extends GetView<LoginController> {
               ]),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  InkWell(
-                    onTap: () async {},
-                    child: Text(
-                      "Esqueci minha senha",
-                      style: TextStyle(
-                          fontSize: defaultFontSize / context.textScaleFactor,
-                          color: Get.theme.secondaryHeaderColor),
-                    ),
-                  ),
-                ],
+                children: [RecPass()],
               ),
               SizedBox(
                 height: 20,
               ),
 //------------Botão entrar----------------------------------------
-              ButtonSigin(),
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 200),
+                child: ElevatedButton(
+                  child: Padding(
+                      padding: EdgeInsets.symmetric(vertical: 20),
+                      child: Text("ENTRAR",
+                          style: Get.theme.textTheme.headline5?.copyWith(
+                              color: Get.theme.canvasColor,
+                              fontWeight: FontWeight.w600))),
+                  onPressed: () {
+                    Get.to(() => HomeView());
+                  },
+                ),
+              ),
               SizedBox(
                 height: 20,
               ),
