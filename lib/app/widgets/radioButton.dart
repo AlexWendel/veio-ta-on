@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hospital_maraba/app/utils/color_theme.dart';
 import 'package:hospital_maraba/app/utils/common.sizes.dart';
 import 'package:hospital_maraba/app/widgets/radioBox.dart';
 
@@ -33,7 +34,7 @@ class RadioButton extends GetResponsiveView {
           width: width,
           alignment: Alignment.center,
           height: height,
-          margin: EdgeInsets.all(10),
+          margin: EdgeInsets.symmetric(vertical: 10),
           padding: EdgeInsets.all(5),
           decoration: BoxDecoration(color: color),
           child: Row(
@@ -58,6 +59,7 @@ class RadioButton extends GetResponsiveView {
                       child: Text(
                         text,
                         style: TextStyle(
+                            color: cardGray,
                             fontWeight: FontWeight.w600,
                             fontSize:
                                 defaultFontSize / context.textScaleFactor),
@@ -74,6 +76,7 @@ class RadioButton extends GetResponsiveView {
                         description,
                         maxLines: 1,
                         style: TextStyle(
+                            color: cardGray,
                             fontWeight: FontWeight.w400,
                             fontSize: defaultCardDescriptionSize /
                                 context.textScaleFactor),
