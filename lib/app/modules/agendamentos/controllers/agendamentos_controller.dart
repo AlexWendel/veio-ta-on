@@ -32,6 +32,7 @@ class AgendamentosController extends GetxController {
     // Verificar se o agendamento ainda está no período válido de cancelamento
     // Criar o documento no firebase
     // Retornar a referencia ao documento do firebase
+    return Agendamento();
   }
 
   @override
