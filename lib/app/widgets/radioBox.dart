@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
+import 'package:hospital_maraba/app/modules/agendamentos/controllers/agendamentos_controller.dart';
 import 'package:hospital_maraba/app/widgets/radioButton.dart';
 import 'input_text.dart';
 
@@ -13,6 +14,7 @@ class RadioBox extends GetView {
 
   @override
   Widget build(BuildContext context) {
+    AgendamentosController controller = Get.put(AgendamentosController());
     List<Widget> radioList = [];
     RxList<bool> selectionList = RxList<bool>();
     RxList<Color> colorList = RxList<Color>();
@@ -31,8 +33,8 @@ class RadioBox extends GetView {
               }
             }
           },
-          text: "teste " + items[i],
-          description: "testando",
+          text: items[i].title,
+          description: items[i].description,
           icon: icon,
           height: 100,
           width: context.width)));
