@@ -1,4 +1,5 @@
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:hospital_maraba/app/modules/login/views/login_view.dart';
 import 'package:get/get.dart';
 import 'package:hospital_maraba/app/auth_controller.dart';
 import '../modules/dashboard/views/dashboard_view.dart';
@@ -10,7 +11,7 @@ class Root extends GetWidget<AuthController> {
     return Obx(() {
       return (Get.find<AuthController>().user != null)
           ? HomeView()
-          : DashboardView();
+          : LoginView();
     });
   }
 }

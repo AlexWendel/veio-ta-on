@@ -211,7 +211,6 @@ class AuthController extends GetxController {
         return;
       }
     }
-    //TODO: Verificar se o cartão do sus já está vinculado a uma conta.
 
     var currentUser = FirebaseAuth.instance.currentUser;
     DocumentReference userDataStorage = FirebaseFirestore.instance

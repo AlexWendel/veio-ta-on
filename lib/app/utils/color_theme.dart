@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hospital_maraba/app/utils/common.colors.dart';
 import 'package:hospital_maraba/app/utils/common.sizes.dart';
 
-const textFieldGray = Color.fromARGB(255, 241, 241, 241);
+const textFieldGray = Color(0xff545454);
 const backGround = Color.fromARGB(255, 253, 253, 253);
 const verdeBosta = Color(0xFF008f38);
 const iconGray = Color.fromARGB(255, 121, 121, 121);
@@ -17,10 +17,11 @@ final appbartext = TextStyle(
 ThemeData mainTheme =
     ThemeData(primaryColor: verdeBosta, primarySwatch: verdeBostaMaterialColor)
         .copyWith(
-            backgroundColor: verdeBosta,
+            backgroundColor: Colors.white,
             scaffoldBackgroundColor: verdeBosta,
             highlightColor: textFieldGray,
             canvasColor: Colors.white,
+            secondaryHeaderColor: Color(0xff545454),
             primaryTextTheme: TextTheme(
                     // displaySmall: TextStyle(fontSize: 30),
                     // displayMedium: TextStyle(fontSize: 35),
