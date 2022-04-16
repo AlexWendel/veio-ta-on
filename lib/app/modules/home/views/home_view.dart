@@ -1,17 +1,23 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hospital_maraba/app/auth_controller.dart';
+import 'package:hospital_maraba/app/data/database.dart';
 import 'package:hospital_maraba/app/modules/home/controllers/home_controller.dart';
 import 'package:hospital_maraba/app/modules/settings/views/settings_view.dart';
 import 'package:hospital_maraba/app/utils/common.sizes.dart';
 import 'package:hospital_maraba/app/modules/MainDesign.dart';
 import 'package:hospital_maraba/app/widgets/CardHome.dart';
 
+import '../../../models/user.dart';
 import '../../agendamentos/views/agendamentos_view.dart';
 
 class HomeView extends GetView<HomeController> {
   @override
   final HomeController controller = Get.find<HomeController>();
+
+  final user = getUserFromFirestore(FirebaseAuth.instance.currentUser!.uid);
+
   @override
   Widget build(BuildContext context) {
     List<Widget> itemList = [
@@ -80,82 +86,146 @@ class HomeView extends GetView<HomeController> {
     ];
 
     return MainDesign(
-        body: itemList,
-        sliverAppBar: SliverAppBar(
-            toolbarHeight: 45 * context.textScaleFactor,
-            expandedHeight: 100 * context.textScaleFactor,
-            floating: true,
-            snap: true,
-            elevation: 0,
-            flexibleSpace: Container(
-              decoration: BoxDecoration(
-                  color: Get.theme.backgroundColor,
-                  border: Border(
-                      bottom: BorderSide(
-                    width: 0.2,
-                  ))),
-            ),
-            shadowColor: Colors.transparent,
-            // leading: IconButton(
-            //     onPressed: () => Get.back(),
-            //     icon: Icon(backIcon, size: mediumIconSize)),
-            title: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(children: [
-                  Flexible(
-                    child: Text(
-                      "Olá, ",
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.w700, /*color: Colors.black54*/
-                      ),
-                    ),
-                  ),
-                  Flexible(
-                    child: Text(
-                      "Indivíduo",
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.w700, /*color: Colors.black54*/
-                      ),
-                    ),
-                  ),
-                ]),
-                Row(children: [
-                  // Icon(Icons.circle_rounded,
-                  //     size: 14, color: Colors.lightGreenAccent),
-                  Flexible(
-                    child: Container(
-                      alignment: Alignment.centerLeft,
-                      width: Get.width / 2,
-                      child: FittedBox(
-                        fit: BoxFit.scaleDown,
-                        child: RichText(
-                          text: TextSpan(
-                            text: 'Você tem ',
-                            style: TextStyle(
-                                fontSize: 14,
-                                /*color: Colors.black54*/
-                                fontWeight: FontWeight.w600),
-                            children: <TextSpan>[
-                              TextSpan(
-                                  text: '4 ',
-                                  style: Get.theme.textTheme.bodyMedium
-                                      ?.copyWith(fontWeight: FontWeight.w800)),
-                              TextSpan(
-                                  text: 'novas notificações!',
-                                  style: Get.theme.textTheme.bodyMedium
-                                      ?.copyWith(fontWeight: FontWeight.w600)),
-                            ],
+      body: itemList,
+      sliverAppBar: SliverAppBar(
+        toolbarHeight: 100 * context.textScaleFactor,
+        expandedHeight: 150 * context.textScaleFactor,
+        floating: true,
+        snap: true,
+        elevation: 0,
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+              color: Get.theme.backgroundColor,
+              border: Border(
+                  bottom: BorderSide(
+                width: 0.2,
+              ))),
+        ),
+        shadowColor: Colors.transparent,
+        // leading: IconButton(
+        //     onPressed: () => Get.back(),
+        //     icon: Icon(backIcon, size: mediumIconSize)),
+        title: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            FutureBuilder(
+                future: user,
+                builder:
+                    (BuildContext context, AsyncSnapshot<UserLocal> snapshot) {
+                  Widget children;
+                  if (snapshot.hasData) {
+                    children = Row(children: [
+                      Row(children: [
+                        Row(children: [
+                          Flexible(
+                            child: Text(
+                              "Olá, ",
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontWeight:
+                                    FontWeight.w700, /*color: Colors.black54*/
+                              ),
+                            ),
                           ),
-                        ),
+                          Flexible(
+                            child: Text(
+                              snapshot.data!.nome,
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontWeight:
+                                    FontWeight.w700, /*color: Colors.black54*/
+                              ),
+                            ),
+                          ),
+                        ]),
+                        Row(children: [
+                          // Icon(Icons.circle_rounded,
+                          //     size: 14, color: Colors.lightGreenAccent),
+                          Flexible(
+                            child: Container(
+                              alignment: Alignment.centerLeft,
+                              width: Get.width / 2,
+                              child: FittedBox(
+                                fit: BoxFit.scaleDown,
+                                child: RichText(
+                                  text: TextSpan(
+                                    text: 'Você tem ',
+                                    style: TextStyle(
+                                        fontSize: 14,
+                                        /*color: Colors.black54*/
+                                        fontWeight: FontWeight.w600),
+                                    children: <TextSpan>[
+                                      TextSpan(
+                                          text: '4 ',
+                                          style: Get.theme.textTheme.bodyMedium
+                                              ?.copyWith(
+                                                  fontWeight: FontWeight.w800)),
+                                      TextSpan(
+                                          text: 'novas notificações!',
+                                          style: Get.theme.textTheme.bodyMedium
+                                              ?.copyWith(
+                                                  fontWeight: FontWeight.w600)),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ])
+                      ])
+                    ]);
+                  } else if (snapshot.hasError) {
+                    children = Row(children: [
+                      const Icon(
+                        Icons.error_outline,
+                        color: Colors.red,
+                        size: 60,
                       ),
-                    ),
-                  ),
-                ]),
-              ],
-            )));
+                      Padding(
+                        padding: const EdgeInsets.only(top: 16),
+                        child: Text('Error: ${snapshot.error}'),
+                      )
+                    ]);
+                  } else {
+                    children = Row(children: [
+                      SizedBox(
+                        width: 60,
+                        height: 60,
+                        child: CircularProgressIndicator(),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(top: 16),
+                        child: Text('Awaiting result...'),
+                      )
+                    ]);
+                  }
+                  return children;
+                }),
+          ],
+        ),
+
+        actions: [
+          InkWell(
+            onTap: () {
+              //TODO: Página perfil
+
+              // Get.to(() => PerfilView());
+            },
+            child: Container(
+              margin: EdgeInsets.only(top: 5, right: 5, bottom: 10),
+              width: 40,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                image: DecorationImage(
+                  fit: BoxFit.cover,
+                  image: AssetImage("assets/images/cj.png"),
+                ),
+              ),
+            ),
+          )
+        ],
+      ),
+    );
   }
 }
