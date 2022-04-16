@@ -22,7 +22,16 @@ class AgendamentosController extends GetxController {
 // - fez_checkin_em (datetime)
 // - confirmacao (bool)
 // - confirmado_em (datetime)
+    // Chamar o firebase pra criar o document
     return Agendamento();
+  }
+
+  Agendamento cancelarConsulta(
+      Paciente pacinteRef, Agendamento agendamentoRef) {
+    // Checar se o agendamento existe
+    // Verificar se o agendamento ainda está no período válido de cancelamento
+    // Criar o documento no firebase
+    // Retornar a referencia ao documento do firebase
   }
 
   @override
