@@ -105,105 +105,104 @@ class HomeView extends GetView<HomeController> {
         // leading: IconButton(
         //     onPressed: () => Get.back(),
         //     icon: Icon(backIcon, size: mediumIconSize)),
-        title: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            FutureBuilder(
-                future: user,
-                builder:
-                    (BuildContext context, AsyncSnapshot<UserLocal> snapshot) {
-                  Widget children;
-                  if (snapshot.hasData) {
-                    children = Row(children: [
-                      Row(children: [
-                        Row(children: [
-                          Flexible(
-                            child: Text(
-                              "Olá, ",
-                              style: TextStyle(
-                                fontSize: 20,
-                                fontWeight:
-                                    FontWeight.w700, /*color: Colors.black54*/
-                              ),
-                            ),
-                          ),
-                          Flexible(
-                            child: Text(
-                              snapshot.data!.nome,
-                              style: TextStyle(
-                                fontSize: 20,
-                                fontWeight:
-                                    FontWeight.w700, /*color: Colors.black54*/
-                              ),
-                            ),
-                          ),
-                        ]),
-                        Row(children: [
-                          // Icon(Icons.circle_rounded,
-                          //     size: 14, color: Colors.lightGreenAccent),
-                          Flexible(
-                            child: Container(
-                              alignment: Alignment.centerLeft,
-                              width: Get.width / 2,
-                              child: FittedBox(
-                                fit: BoxFit.scaleDown,
-                                child: RichText(
-                                  text: TextSpan(
-                                    text: 'Você tem ',
-                                    style: TextStyle(
-                                        fontSize: 14,
-                                        /*color: Colors.black54*/
-                                        fontWeight: FontWeight.w600),
-                                    children: <TextSpan>[
-                                      TextSpan(
-                                          text: '4 ',
-                                          style: Get.theme.textTheme.bodyMedium
-                                              ?.copyWith(
-                                                  fontWeight: FontWeight.w800)),
-                                      TextSpan(
-                                          text: 'novas notificações!',
-                                          style: Get.theme.textTheme.bodyMedium
-                                              ?.copyWith(
-                                                  fontWeight: FontWeight.w600)),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ])
-                      ])
-                    ]);
-                  } else if (snapshot.hasError) {
-                    children = Row(children: [
-                      const Icon(
-                        Icons.error_outline,
-                        color: Colors.red,
-                        size: 60,
+        title: FutureBuilder(
+            future: user,
+            builder: (BuildContext context, AsyncSnapshot<UserLocal> snapshot) {
+              List<Widget> children;
+              if (snapshot.hasData) {
+                children = [
+                  Row(children: [
+                    Flexible(
+                      child: Text(
+                        "Olá, ",
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w700, /*color: Colors.black54*/
+                        ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 16),
-                        child: Text('Error: ${snapshot.error}'),
-                      )
-                    ]);
-                  } else {
-                    children = Row(children: [
-                      SizedBox(
-                        width: 60,
-                        height: 60,
-                        child: CircularProgressIndicator(),
+                    ),
+                    Flexible(
+                      child: Text(
+                        snapshot.data!.nome,
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w700, /*color: Colors.black54*/
+                        ),
                       ),
-                      Padding(
-                        padding: EdgeInsets.only(top: 16),
-                        child: Text('Awaiting result...'),
-                      )
-                    ]);
-                  }
-                  return children;
-                }),
-          ],
-        ),
+                    ),
+                  ]),
+                  Row(children: [
+                    // Icon(Icons.circle_rounded,
+                    //     size: 14, color: Colors.lightGreenAccent),
+                    Flexible(
+                      child: Container(
+                        alignment: Alignment.centerLeft,
+                        width: Get.width / 2,
+                        child: FittedBox(
+                          fit: BoxFit.scaleDown,
+                          child: RichText(
+                            text: TextSpan(
+                              text: 'Você tem ',
+                              style: TextStyle(
+                                  fontSize: 14,
+                                  /*color: Colors.black54*/
+                                  fontWeight: FontWeight.w600),
+                              children: <TextSpan>[
+                                TextSpan(
+                                    text: '4 ',
+                                    style: Get.theme.textTheme.bodyMedium
+                                        ?.copyWith(
+                                            fontWeight: FontWeight.w800)),
+                                TextSpan(
+                                    text: 'novas notificações!',
+                                    style: Get.theme.textTheme.bodyMedium
+                                        ?.copyWith(
+                                            fontWeight: FontWeight.w600)),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ]),
+                ];
+              } else if (snapshot.hasError) {
+                children = [
+                  Row(children: [
+                    const Icon(
+                      Icons.error_outline,
+                      color: Colors.red,
+                      size: 60,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 16),
+                      child: Text('Error: ${snapshot.error}'),
+                    )
+                  ])
+                ];
+              } else {
+                children = [
+                  Row(children: [
+                    SizedBox(
+                      width: 60,
+                      height: 60,
+                      child: CircularProgressIndicator(
+                        color: Get.theme.backgroundColor,
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(top: 16),
+                      child: Text('Carregando dados...'),
+                    )
+                  ]),
+                ];
+              }
+              return Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: children,
+              );
+            }),
 
         actions: [
           InkWell(
