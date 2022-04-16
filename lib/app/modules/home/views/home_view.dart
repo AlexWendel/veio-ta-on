@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hospital_maraba/app/auth_controller.dart';
 import 'package:hospital_maraba/app/modules/home/controllers/home_controller.dart';
 import 'package:hospital_maraba/app/modules/settings/views/settings_view.dart';
 import 'package:hospital_maraba/app/utils/common.sizes.dart';
