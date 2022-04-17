@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_this
+
 import 'package:hospital_maraba/app/models/exame.dart';
 import 'package:hospital_maraba/app/models/local.dart';
 
@@ -17,7 +19,7 @@ class Agendamento {
 // - fez_checkin_em (datetime)
 // - confirmacao (bool)
 // - confirmado_em (datetime)''
-  Agendamento.fromJson(Map<String, Object> json, String uidConsulta)
+  Agendamento.fromJson(Map<String, Object?> json, String uidConsulta)
       : this(
             agendadoEm: json['agendadoEm'] as DateTime,
             agendadoPorIdUserRef: json['agendadoPor'] as String,
@@ -26,8 +28,8 @@ class Agendamento {
             confirmadoEm: json['confirmadoEm'] as DateTime,
             fezCheckin: json['fezCheckIn'] as bool,
             horario: json['horario'] as DateTime,
-            idConsulta: json['idConsulta'] as String,
-            idMedicoRef: uidConsulta,
+            idConsulta: uidConsulta,
+            idMedicoRef: json['idMedico'] as String,
             idPacienteRef: json['idPacienteRef'] as String,
             local: json['local'] as String);
   Agendamento(
@@ -56,4 +58,18 @@ class Agendamento {
   bool fezCheckin;
   bool confirmado;
   DateTime confirmadoEm;
+  Map<String, Object?> toJson() {
+    return {
+      'agendadoEm': agendadoEm,
+      'agendadoPor': agendadoPorIdUserRef,
+      'checkinPor': checkinPorIdUserRef,
+      'confirmado': confirmado,
+      'confirmadoEm': confirmadoEm,
+      'fezCheckIn': fezCheckin,
+      'horario': horario,
+      'idMedico': idMedicoRef,
+      'idPacienteRef': idPacienteRef,
+      'local': local,
+    };
+  }
 }
