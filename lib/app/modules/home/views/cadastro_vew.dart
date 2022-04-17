@@ -4,6 +4,7 @@ import 'package:hospital_maraba/app/modules/home/controllers/home_controller.dar
 import 'package:hospital_maraba/app/modules/home/widgets/appBarWidget.dart';
 import 'package:hospital_maraba/app/modules/home/widgets/cardPaciente.dart';
 import 'package:hospital_maraba/app/modules/home/widgets/headerWidget.dart';
+import 'package:hospital_maraba/app/modules/home/widgets/inputNormal.dart';
 import 'package:hospital_maraba/app/modules/home/widgets/seachWidget.dart';
 import 'package:hospital_maraba/app/modules/login/widgets/inputWdget.dart';
 import 'package:hospital_maraba/app/modules/settings/views/settings_view.dart';
@@ -76,11 +77,10 @@ class CadastroView extends GetView<HomeController> {
                           width: 600,
                           child: Column(
                             children: [
-                              InputWidget(
-                                  inputText:
-                                      "Digite o nome completo do paciente",
-                                  obscure: false,
-                                  icone: Icon(null))
+                              InputNormal(
+                                inputText: "Digite o nome completo do paciente",
+                                obscure: false,
+                              )
                               // TextFormField(
                               //   // focusNode: passwordFocusNode,
                               //   style: TextStyle(color: Colors.black87),
@@ -123,10 +123,10 @@ class CadastroView extends GetView<HomeController> {
                           width: 600,
                           child: Column(
                             children: [
-                              InputWidget(
-                                  inputText: "digite o email do paciente",
-                                  obscure: false,
-                                  icone: Icon(null))
+                              InputNormal(
+                                inputText: "digite o email do paciente",
+                                obscure: false,
+                              )
                             ],
                           ),
                         ),
@@ -153,10 +153,10 @@ class CadastroView extends GetView<HomeController> {
                           width: 280,
                           child: Column(
                             children: [
-                              InputWidget(
-                                  inputText: "Digite o CPF do paciente",
-                                  obscure: false,
-                                  icone: Icon(null))
+                              InputNormal(
+                                inputText: "Digite o CPF do paciente",
+                                obscure: false,
+                              )
                             ],
                           ),
                         ),
@@ -177,10 +177,10 @@ class CadastroView extends GetView<HomeController> {
                           width: 280,
                           child: Column(
                             children: [
-                              InputWidget(
-                                  inputText: "N° de cartão SUS",
-                                  obscure: false,
-                                  icone: Icon(null))
+                              InputNormal(
+                                inputText: "N° de cartão SUS",
+                                obscure: false,
+                              )
                             ],
                           ),
                         ),
@@ -201,10 +201,10 @@ class CadastroView extends GetView<HomeController> {
                           width: 600,
                           child: Column(
                             children: [
-                              InputWidget(
-                                  inputText: "confirme o email do paciente",
-                                  obscure: false,
-                                  icone: Icon(null))
+                              InputNormal(
+                                inputText: "confirme o email do paciente",
+                                obscure: false,
+                              )
                             ],
                           ),
                         ),
@@ -231,10 +231,10 @@ class CadastroView extends GetView<HomeController> {
                           width: 280,
                           child: Column(
                             children: [
-                              InputWidget(
-                                  inputText: "Digite sua senha",
-                                  obscure: true,
-                                  icone: Icon(null))
+                              InputNormal(
+                                inputText: "Digite sua senha",
+                                obscure: true,
+                              )
                             ],
                           ),
                         ),
@@ -256,10 +256,10 @@ class CadastroView extends GetView<HomeController> {
                           width: 280,
                           child: Column(
                             children: [
-                              InputWidget(
-                                  inputText: "Confirme sua senha",
-                                  obscure: true,
-                                  icone: Icon(null))
+                              InputNormal(
+                                inputText: "Confirme sua senha",
+                                obscure: true,
+                              )
                             ],
                           ),
                         ),
