@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hospital_maraba/app/modules/home/controllers/home_controller.dart';
 import 'package:hospital_maraba/app/modules/home/views/cadastro_vew.dart';
+import 'package:hospital_maraba/app/modules/home/views/home_view.dart';
 import 'package:hospital_maraba/app/modules/home/widgets/cardPaciente.dart';
 import 'package:hospital_maraba/app/modules/settings/views/settings_view.dart';
 import 'package:hospital_maraba/app/utils/common.sizes.dart';
@@ -17,6 +18,13 @@ class HeaderWidget extends GetResponsiveWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         InkWell(
+          highlightColor: Colors.transparent,
+          splashColor: Colors.transparent,
+          focusColor: Colors.transparent,
+          hoverColor: Colors.transparent,
+          onTap: () {
+            Get.to(() => HomeView());
+          },
           child: Text(
             "Home",
             style: TextStyle(
@@ -35,6 +43,10 @@ class HeaderWidget extends GetResponsiveWidget {
           color: Get.theme.secondaryHeaderColor,
         ),
         InkWell(
+          highlightColor: Colors.transparent,
+          splashColor: Colors.transparent,
+          focusColor: Colors.transparent,
+          hoverColor: Colors.transparent,
           child: Text(
             "Realizar Consulta",
             style: TextStyle(
@@ -53,6 +65,10 @@ class HeaderWidget extends GetResponsiveWidget {
           color: Get.theme.secondaryHeaderColor,
         ),
         InkWell(
+          highlightColor: Colors.transparent,
+          splashColor: Colors.transparent,
+          focusColor: Colors.transparent,
+          hoverColor: Colors.transparent,
           child: Text(
             "Resultados de exames",
             style: TextStyle(
@@ -71,6 +87,10 @@ class HeaderWidget extends GetResponsiveWidget {
           color: Get.theme.secondaryHeaderColor,
         ),
         InkWell(
+          highlightColor: Colors.transparent,
+          splashColor: Colors.transparent,
+          focusColor: Colors.transparent,
+          hoverColor: Colors.transparent,
           onTap: () {
             Get.to(() => CadastroView());
           },

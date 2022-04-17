@@ -39,6 +39,10 @@ class AppBarWidget extends GetResponsiveWidget {
             onPressed: () {},
             iconSize: 50,
             color: Get.theme.primaryColor,
+            highlightColor: Colors.transparent,
+            splashColor: Colors.transparent,
+            focusColor: Colors.transparent,
+            hoverColor: Colors.transparent,
           ),
         ), //IconButton
       ], //<Widget

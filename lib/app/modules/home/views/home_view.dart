@@ -32,7 +32,7 @@ class HomeView extends GetView<HomeController> {
             ),
             HeaderWidget(),
             Divider(
-              height: 8,
+              height: 10,
               thickness: 0.1,
               color: Get.theme.secondaryHeaderColor,
             ),
