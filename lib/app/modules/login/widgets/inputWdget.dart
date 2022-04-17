@@ -30,7 +30,7 @@ class InputWidget extends GetResponsiveWidget {
         // controller: passwordController,
         decoration: InputDecoration(
           fillColor: Colors.white,
-          filled: obscure,
+          filled: true,
           focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(4),
               borderSide: BorderSide(color: Get.theme.primaryColor)),

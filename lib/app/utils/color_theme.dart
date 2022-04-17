@@ -22,6 +22,7 @@ ThemeData mainTheme =
             highlightColor: textFieldGray,
             canvasColor: Colors.white,
             secondaryHeaderColor: Color(0xff545454),
+            hoverColor: Color(0xffaaaaaa),
             primaryTextTheme: TextTheme(
                     // displaySmall: TextStyle(fontSize: 30),
                     // displayMedium: TextStyle(fontSize: 35),

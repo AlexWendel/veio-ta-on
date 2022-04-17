@@ -5,6 +5,7 @@ import 'package:hospital_maraba/app/modules/home/widgets/appBarWidget.dart';
 import 'package:hospital_maraba/app/modules/home/widgets/cardPaciente.dart';
 import 'package:hospital_maraba/app/modules/home/widgets/headerWidget.dart';
 import 'package:hospital_maraba/app/modules/home/widgets/seachWidget.dart';
+import 'package:hospital_maraba/app/modules/login/widgets/inputWdget.dart';
 import 'package:hospital_maraba/app/modules/settings/views/settings_view.dart';
 import 'package:hospital_maraba/app/utils/common.sizes.dart';
 import 'package:hospital_maraba/app/modules/MainDesign.dart';
@@ -12,7 +13,7 @@ import 'package:hospital_maraba/app/widgets/CardHome.dart';
 
 import '../../agendamentos/views/agendamentos_view.dart';
 
-class HomeView extends GetView<HomeController> {
+class CadastroView extends GetView<HomeController> {
   @override
   @override
   Widget build(BuildContext context) {
@@ -41,7 +42,7 @@ class HomeView extends GetView<HomeController> {
             SizedBox(height: 20),
             InkWell(
               child: Text(
-                "Próximos atendimentos",
+                "Cadastrar novo paciente",
                 style: TextStyle(
                   fontSize: defaultFontSize,
                   color:
@@ -56,55 +57,29 @@ class HomeView extends GetView<HomeController> {
             Expanded(
               flex: 2,
               child: ListView(children: [
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    CardPaciente(),
-                    CardPaciente(),
-                    CardPaciente(),
-                    CardPaciente(),
-                  ],
-                ),
-                SizedBox(
-                  height: 60,
+                Text(
+                  "Senha",
+                  style: TextStyle(
+                      fontSize: sectionSubheaderFontSize,
+                      color: Get.theme.highlightColor),
                 ),
                 Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    CardPaciente(),
-                    CardPaciente(),
-                    CardPaciente(),
-                    CardPaciente(),
+                    InputWidget(
+                      icone: Icon(null),
+                      inputText: "Digite o nome completo do paciente",
+                      obscure: false,
+                    ),
+                    VerticalDivider(
+                      width: 20,
+                    ),
+                    InputWidget(
+                      icone: Icon(null),
+                      inputText: "Digite o email do paciente",
+                      obscure: false,
+                    ),
                   ],
-                ),
-                SizedBox(
-                  height: 60,
-                ),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    CardPaciente(),
-                    CardPaciente(),
-                    CardPaciente(),
-                    CardPaciente(),
-                  ],
-                ),
-                SizedBox(
-                  height: 60,
-                ),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    CardPaciente(),
-                    CardPaciente(),
-                    CardPaciente(),
-                    CardPaciente(),
-                  ],
-                ),
+                )
               ]),
             ),
           ],
