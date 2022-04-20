@@ -40,9 +40,6 @@ class CadastroView extends GetView<HomeController> {
               color: Get.theme.secondaryHeaderColor,
             ),
             SizedBox(height: 15),
-            SeachWidget(
-                text:
-                    "Digite o nome ou número do cartão de SUS de um paciente"),
             SizedBox(height: 20),
             Text(
               "Cadastrar novo paciente",
@@ -104,7 +101,6 @@ class CadastroView extends GetView<HomeController> {
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         Campos_input(
                             title: "Email (não obrigatório)",
@@ -117,8 +113,9 @@ class CadastroView extends GetView<HomeController> {
                             descript: "Confirme o email do paciente",
                             height: 80,
                             width: 500),
+                        SizedBox(height: 20),
                         Text(
-                          "",
+                          "", //gambira p alinha elementos
                           style: TextStyle(
                               fontSize: sectionSubheaderFontSize,
                               color: Get.theme.highlightColor),
@@ -139,7 +136,13 @@ class CadastroView extends GetView<HomeController> {
                               ),
                             ),
                           ),
-                        )
+                        ),
+                        Text(
+                          "", //gambira p alinha elementos
+                          style: TextStyle(
+                              fontSize: sectionSubheaderFontSize,
+                              color: Get.theme.highlightColor),
+                        ),
                       ],
                     ),
                   ],

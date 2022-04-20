@@ -5,7 +5,7 @@ import 'package:hospital_maraba/app/modules/home/controllers/home_controller.dar
 import 'package:hospital_maraba/app/modules/home/widgets/campos_input.dart';
 import 'package:hospital_maraba/app/modules/home/widgets/appBarWidget.dart';
 import 'package:hospital_maraba/app/modules/home/widgets/headerWidget.dart';
-import 'package:hospital_maraba/app/modules/home/widgets/seachWidget.dart';
+import 'package:hospital_maraba/app/utils/color_theme.dart';
 import 'package:hospital_maraba/app/utils/common.sizes.dart';
 
 class NovaConsulta extends GetView<HomeController> {
@@ -42,10 +42,11 @@ class NovaConsulta extends GetView<HomeController> {
               flex: 2,
               child: ListView(children: [
                 Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Campos_input(
                             title: "Nome",
@@ -71,28 +72,96 @@ class NovaConsulta extends GetView<HomeController> {
                           ],
                         ),
                         SizedBox(height: 20),
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Campos_input(
-                                title: "Senha",
-                                descript: "Digite uma Senha para paciente",
-                                height: 80,
-                                width: 230),
-                            SizedBox(width: 40),
-                            Campos_input(
-                                title: "Senha",
-                                descript: "Confrime a senha do paciente",
-                                height: 80,
-                                width: 230),
-                          ],
+                        Text(
+                          "Selecione uma data",
+                          style: TextStyle(
+                              fontSize: sectionSubheaderFontSize,
+                              color: Get.theme.highlightColor),
                         ),
+                        SizedBox(height: 5),
+                        Container(
+                          // height: 0,
+                          width: 500,
+                          padding: EdgeInsets.all(5),
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(5),
+                              border: Border.all(color: cardGray)),
+                          child: Column(
+                            children: [
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  InkWell(onTap: () {}, child: Text("20/06")),
+                                  InkWell(onTap: () {}, child: Text("20/06")),
+                                  InkWell(onTap: () {}, child: Text("20/06")),
+                                  InkWell(onTap: () {}, child: Text("20/06")),
+                                  InkWell(onTap: () {}, child: Text("20/06")),
+                                  InkWell(onTap: () {}, child: Text("20/06")),
+                                  InkWell(onTap: () {}, child: Text("20/06")),
+                                  InkWell(onTap: () {}, child: Text("20/06")),
+                                  InkWell(onTap: () {}, child: Text("20/06")),
+                                  InkWell(onTap: () {}, child: Text("20/06")),
+                                ],
+                              ),
+                              SizedBox(height: 5),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  InkWell(onTap: () {}, child: Text("20/06")),
+                                  InkWell(onTap: () {}, child: Text("20/06")),
+                                  InkWell(onTap: () {}, child: Text("20/06")),
+                                  InkWell(onTap: () {}, child: Text("20/06")),
+                                  InkWell(onTap: () {}, child: Text("20/06")),
+                                  InkWell(onTap: () {}, child: Text("20/06")),
+                                  InkWell(onTap: () {}, child: Text("20/06")),
+                                  InkWell(onTap: () {}, child: Text("20/06")),
+                                  InkWell(onTap: () {}, child: Text("20/06")),
+                                  InkWell(onTap: () {}, child: Text("20/06")),
+                                ],
+                              ),
+                              SizedBox(height: 5),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  InkWell(onTap: () {}, child: Text("20/06")),
+                                  InkWell(onTap: () {}, child: Text("20/06")),
+                                  InkWell(onTap: () {}, child: Text("20/06")),
+                                  InkWell(onTap: () {}, child: Text("20/06")),
+                                  InkWell(onTap: () {}, child: Text("20/06")),
+                                  InkWell(onTap: () {}, child: Text("20/06")),
+                                  InkWell(onTap: () {}, child: Text("20/06")),
+                                  InkWell(onTap: () {}, child: Text("20/06")),
+                                  InkWell(onTap: () {}, child: Text("20/06")),
+                                  InkWell(onTap: () {}, child: Text("20/06")),
+                                ],
+                              ),
+                              SizedBox(height: 5),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  InkWell(onTap: () {}, child: Text("20/06")),
+                                  InkWell(onTap: () {}, child: Text("20/06")),
+                                  InkWell(onTap: () {}, child: Text("20/06")),
+                                  InkWell(onTap: () {}, child: Text("20/06")),
+                                  InkWell(onTap: () {}, child: Text("20/06")),
+                                  InkWell(onTap: () {}, child: Text("20/06")),
+                                  InkWell(onTap: () {}, child: Text("20/06")),
+                                  InkWell(onTap: () {}, child: Text("20/06")),
+                                  InkWell(onTap: () {}, child: Text("20/06")),
+                                  InkWell(onTap: () {}, child: Text("20/06")),
+                                ],
+                              ),
+                            ],
+                          ),
+                        )
                       ],
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Campos_input(
                             title: "Tipo de atendimento",
@@ -101,11 +170,11 @@ class NovaConsulta extends GetView<HomeController> {
                             width: 500),
                         SizedBox(height: 20),
                         Campos_input(
-                            title: "Número do cartão SUS",
-                            descript:
-                                "Digite o número de cartão SUS do paciente",
+                            title: "Confirmar email (não obrigatório)",
+                            descript: "Confirme o email do paciente",
                             height: 80,
-                            width: 280),
+                            width: 500),
+                        SizedBox(height: 20),
                         Text(
                           "",
                           style: TextStyle(
@@ -128,7 +197,13 @@ class NovaConsulta extends GetView<HomeController> {
                               ),
                             ),
                           ),
-                        )
+                        ),
+                        Text(
+                          "",
+                          style: TextStyle(
+                              fontSize: sectionSubheaderFontSize,
+                              color: Get.theme.highlightColor),
+                        ),
                       ],
                     ),
                   ],
