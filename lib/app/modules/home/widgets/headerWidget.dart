@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hospital_maraba/app/modules/home/controllers/home_controller.dart';
 import 'package:hospital_maraba/app/modules/home/views/cadastro_vew.dart';
-import 'package:hospital_maraba/app/modules/home/views/examesView.dart';
+import 'package:hospital_maraba/app/modules/home/views/nova_consulta.dart';
+import 'package:hospital_maraba/app/modules/home/views/resultados_exames.dart';
 import 'package:hospital_maraba/app/modules/home/views/home_view.dart';
 import 'package:hospital_maraba/app/modules/home/widgets/cardPaciente.dart';
 import 'package:hospital_maraba/app/modules/settings/views/settings_view.dart';
@@ -44,12 +45,15 @@ class HeaderWidget extends GetResponsiveWidget {
           color: Get.theme.secondaryHeaderColor,
         ),
         InkWell(
+          onTap: () {
+            Get.to(NovaConsulta());
+          },
           highlightColor: Colors.transparent,
           splashColor: Colors.transparent,
           focusColor: Colors.transparent,
           hoverColor: Colors.transparent,
           child: Text(
-            "Realizar Consulta",
+            "Nova consulta",
             style: TextStyle(
               fontSize: defaultFontSize,
               color:
