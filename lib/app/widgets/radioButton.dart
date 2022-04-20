@@ -12,9 +12,11 @@ class RadioButton extends GetResponsiveView {
   final Icon icon;
   final double width;
   final double height;
-  int _id = 0;
+  final bool isSelected;
+  final String id;
 
   RadioButton({
+    required this.id,
     required this.color,
     required this.onTap,
     required this.text,
@@ -22,7 +24,7 @@ class RadioButton extends GetResponsiveView {
     required this.icon,
     required this.height,
     required this.width,
-  });
+  }) : isSelected = false;
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +61,7 @@ class RadioButton extends GetResponsiveView {
                       child: Text(
                         text,
                         style: TextStyle(
-                            color: cardGray,
+                            color: Get.theme.hintColor,
                             fontWeight: FontWeight.w600,
                             fontSize:
                                 defaultFontSize / context.textScaleFactor),
@@ -76,13 +78,13 @@ class RadioButton extends GetResponsiveView {
                         description,
                         maxLines: 1,
                         style: TextStyle(
-                            color: cardGray,
+                            color: Get.theme.hintColor.withOpacity(0.5),
                             fontWeight: FontWeight.w400,
                             fontSize: defaultCardDescriptionSize /
                                 context.textScaleFactor),
                       ),
                     ),
-                  )
+                  ),
                 ],
               )
             ],

@@ -1,75 +1,40 @@
-// ignore_for_file: unnecessary_this
-
-import 'package:hospital_maraba/app/models/exame.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:hospital_maraba/app/models/especialidade.dart';
 import 'package:hospital_maraba/app/models/local.dart';
+import 'package:hospital_maraba/app/models/paciente.dart';
+import 'package:hospital_maraba/app/models/usuario.dart';
 
-import 'data.dart';
+part 'agendamento.freezed.dart';
+part 'agendamento.g.dart';
 
-class Agendamento {
-// ''[Consulta]
-// - id_consulta (unique_id)
-// - paciente (pacienteRef)
-// - medico (medicoRef)
-// - agendada_por (usuarioRef)
-// - agendado_em (datetime)
-// - local (localRef)
-// - horario (datetime)
-// - fez_checkin (bool)
-// - checkin_por (gerenciadorRef)
-// - fez_checkin_em (datetime)
-// - confirmacao (bool)
-// - confirmado_em (datetime)''
-  Agendamento.fromJson(Map<String, Object?> json, String uidConsulta)
-      : this(
-            agendadoEm: json['agendadoEm'] as DateTime,
-            agendadoPorIdUserRef: json['agendadoPor'] as String,
-            checkinPorIdUserRef: json['checkinPor'] as String,
-            confirmado: json['confirmado'] as bool,
-            confirmadoEm: json['confirmadoEm'] as DateTime,
-            fezCheckin: json['fezCheckIn'] as bool,
-            horario: json['horario'] as DateTime,
-            idConsulta: uidConsulta,
-            idMedicoRef: json['idMedico'] as String,
-            idPacienteRef: json['idPacienteRef'] as String,
-            local: json['local'] as String);
-  Agendamento(
-      {this.idConsulta = "",
-      this.idPacienteRef = "",
-      this.idMedicoRef = "",
-      this.agendadoPorIdUserRef = "",
-      DateTime? agendadoEm,
-      this.local = "",
-      DateTime? horario,
-      this.checkinPorIdUserRef = "",
-      this.fezCheckin = false,
-      this.confirmado = false,
-      DateTime? confirmadoEm})
-      : this.agendadoEm = agendadoEm ?? DateTime.utc(2022),
-        this.horario = horario ?? DateTime.utc(2022),
-        this.confirmadoEm = confirmadoEm ?? DateTime.utc(2022);
-  String idConsulta;
-  String idPacienteRef;
-  String idMedicoRef;
-  String agendadoPorIdUserRef;
-  DateTime agendadoEm;
-  String local;
-  DateTime horario;
-  String checkinPorIdUserRef;
-  bool fezCheckin;
-  bool confirmado;
-  DateTime confirmadoEm;
-  Map<String, Object?> toJson() {
-    return {
-      'agendadoEm': agendadoEm,
-      'agendadoPor': agendadoPorIdUserRef,
-      'checkinPor': checkinPorIdUserRef,
-      'confirmado': confirmado,
-      'confirmadoEm': confirmadoEm,
-      'fezCheckIn': fezCheckin,
-      'horario': horario,
-      'idMedico': idMedicoRef,
-      'idPacienteRef': idPacienteRef,
-      'local': local,
-    };
-  }
+enum EstagioDoAgendamento {
+  MARCADO,
+  CONFIRMADO,
+  CHECKIN,
+  FINALIZADO,
+}
+
+@freezed
+class Agendamento with _$Agendamento {
+  factory Agendamento({
+    required String id,
+    required Paciente paciente,
+    required Usuario agendadoPor,
+    required DateTime agendadoPara,
+    required DateTime agendadoEm,
+    required Local local,
+    required Especialidade especialidade,
+    required EstagioDoAgendamento estadoAgendamento,
+    @Default(false) bool confirmado,
+    @Default(null) Usuario? confirmadoPor,
+    @Default(false) bool fezCheckin,
+    @Default(false) bool foiRemarcado,
+    DateTime? fezCheckinEm,
+    Usuario? checkinFeitoPor,
+    DateTime? confirmadoEm,
+    DateTime? remarcadoEm,
+  }) = _Agendamento;
+
+  factory Agendamento.fromJson(Map<String, dynamic> json) =>
+      _$AgendamentoFromJson(json);
 }

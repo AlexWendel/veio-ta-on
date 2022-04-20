@@ -14,7 +14,6 @@ import '../../agendamentos/views/agendamentos_view.dart';
 class HomeView extends GetView<HomeController> {
   @override
   final HomeController controller = Get.find<HomeController>();
-
   final user = getUserFromFirestore(FirebaseAuth.instance.currentUser!.uid);
 
   @override
@@ -38,29 +37,29 @@ class HomeView extends GetView<HomeController> {
             },
             text: "Agendar consulta",
             description: "Agende uma nova consulta"),
-        CardHome(
-            icon: Icon(Icons.check_box_outlined, size: mediumIconSize),
-            onTap: () {
-              // Get.to(CheckInHome());
-              // () => CheckInView(
-              // Agendamento(
-              //   especialidade: "Tratamento para Vício de Valorant",
-              //   medico: "Warley Rabelo Xeradão",
-              //   paciente: "Paulinho Paixão Bacana Pereira",
-              //   local: "Hospício Municipal de Marabá",
-              //   protocolo: "9999999999999999"))
-              //   );
-            },
-            text: "Fazer check-in",
-            description: "Gerar QR Code de uma consulta"),
         // CardHome(
-        //     icon: Icon(Icons.notes_outlined,
-        //         size: mediumIconSize, color: iconGray),
+        //     icon: Icon(Icons.check_box_outlined, size: mediumIconSize),
         //     onTap: () {
-        //       Get.to(() => ResultadosHome());
+        //       // Get.to(CheckInHome());
+        //       // () => CheckInView(
+        //       // Agendamento(
+        //       //   especialidade: "Tratamento para Vício de Valorant",
+        //       //   medico: "Warley Rabelo Xeradão",
+        //       //   paciente: "Paulinho Paixão Bacana Pereira",
+        //       //   local: "Hospício Municipal de Marabá",
+        //       //   protocolo: "9999999999999999"))
+        //       //   );
         //     },
-        //     text: "Resultados",
-        //     description: "Resultados dos seus exames"),
+        //     text: "Fazer check-in",
+        //     description: "Gerar QR Code de uma consulta"),
+        // // CardHome(
+        // //     icon: Icon(Icons.notes_outlined,
+        // //         size: mediumIconSize, color: iconGray),
+        // //     onTap: () {
+        // //       Get.to(() => ResultadosHome());
+        // //     },
+        // //     text: "Resultados",
+        // //     description: "Resultados dos seus exames"),
         CardHome(
             icon: Icon(Icons.calendar_view_week, size: mediumIconSize),
             onTap: () {
@@ -69,21 +68,21 @@ class HomeView extends GetView<HomeController> {
             text: "Minhas consultas",
             description: "Veja suas consultas agendadas"),
 
-        CardHome(
-            icon:
-                Icon(Icons.circle_notifications_outlined, size: mediumIconSize),
-            onTap: () {
-              // Get.to(() => SemExames());
-            },
-            text: "Notificações",
-            description: "Notificações do aplicativo"),
-        CardHome(
-            icon: Icon(Icons.settings_outlined, size: mediumIconSize),
-            onTap: () {
-              Get.to(() => SettingsView());
-            },
-            text: "Configurações",
-            description: "Configurações do seu aplicativo"),
+        // CardHome(
+        //     icon:
+        //         Icon(Icons.circle_notifications_outlined, size: mediumIconSize),
+        //     onTap: () {
+        //       // Get.to(() => SemExames());
+        //     },
+        //     text: "Notificações",
+        //     description: "Notificações do aplicativo"),
+        // CardHome(
+        //     icon: Icon(Icons.settings_outlined, size: mediumIconSize),
+        //     onTap: () {
+        //       Get.to(() => SettingsView());
+        //     },
+        //     text: "Configurações",
+        //     description: "Configurações do seu aplicativo"),
       ])
     ];
 
@@ -131,8 +130,9 @@ class HomeView extends GetView<HomeController> {
                     ),
                   ]),
                   Row(children: [
-                    // Icon(Icons.circle_rounded,
-                    //     size: 14, color: Colors.lightGreenAccent),
+                    Icon(Icons.circle_rounded,
+                        size: 14, color: Colors.lightGreenAccent),
+                    SizedBox(width: 5),
                     Flexible(
                       child: Container(
                         alignment: Alignment.centerLeft,
@@ -141,23 +141,23 @@ class HomeView extends GetView<HomeController> {
                           fit: BoxFit.scaleDown,
                           child: RichText(
                             text: TextSpan(
-                              text: 'Você tem ',
+                              text: 'Não há novas notificações.',
                               style: TextStyle(
                                   fontSize: 14,
                                   /*color: Colors.black54*/
                                   fontWeight: FontWeight.w600),
-                              children: <TextSpan>[
-                                TextSpan(
-                                    text: '4 ',
-                                    style: Get.theme.textTheme.bodyMedium
-                                        ?.copyWith(
-                                            fontWeight: FontWeight.w800)),
-                                TextSpan(
-                                    text: 'novas notificações!',
-                                    style: Get.theme.textTheme.bodyMedium
-                                        ?.copyWith(
-                                            fontWeight: FontWeight.w600)),
-                              ],
+                              // children: <TextSpan>[
+                              //   TextSpan(
+                              //       text: '4 ',
+                              //       style: Get.theme.textTheme.bodyMedium
+                              //           ?.copyWith(
+                              //               fontWeight: FontWeight.w800)),
+                              //   TextSpan(
+                              //       text: 'novas notificações!',
+                              //       style: Get.theme.textTheme.bodyMedium
+                              //           ?.copyWith(
+                              //               fontWeight: FontWeight.w600)),
+                              // ],
                             ),
                           ),
                         ),

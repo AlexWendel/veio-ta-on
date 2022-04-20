@@ -1,6 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:hospital_maraba/app/data/database.dart';
+import 'package:hospital_maraba/app/models/especialidade.dart';
 import 'package:hospital_maraba/app/models/radioItem.dart';
 import 'package:hospital_maraba/app/modules/agendamentos/views/localView.dart';
 import 'package:hospital_maraba/app/modules/scheduleDesign.dart';
@@ -14,32 +17,51 @@ import '../controllers/agendamentos_controller.dart';
 class AgendamentosView extends GetView<AgendamentosController> {
   @override
   Widget build(BuildContext context) {
+    var controller = Get.put(AgendamentosController());
+
     List<Widget> itemList = [
       Padding(
-        padding: EdgeInsets.symmetric(vertical: 10),
-        child: Text(
-          "Selecione o Tipo de Exame:",
-          style: TextStyle(
-              color: cardGray,
-              fontWeight: FontWeight.bold,
-              fontSize: titleFontSize / context.textScaleFactor),
-        ),
-      ),
-      RadioBox(
-        icon: Icon(Icons.local_activity),
-        items: [
-          RadioItem(title: "Teste", description: "testando", id: 0),
-          RadioItem(title: "Teste", description: "testando", id: 0),
-          RadioItem(title: "Teste", description: "testando", id: 0),
-          RadioItem(title: "Teste", description: "testando", id: 0),
-          RadioItem(title: "Teste", description: "testando", id: 0),
-          RadioItem(title: "Teste", description: "testando", id: 0)
-        ],
-      )
+          padding: EdgeInsets.symmetric(vertical: 10),
+          child: Column(children: [
+            Text(
+              "Selecione o tipo de agendamento:",
+              style: TextStyle(
+                  color: Get.theme.hintColor.withOpacity(0.6),
+                  fontWeight: FontWeight.bold,
+                  fontSize: Get.textTheme.headlineMedium?.fontSize),
+            )
+          ])),
+      FutureBuilder<QuerySnapshot>(
+          future: FirebaseFirestore.instance
+              .collection('especialidades')
+              .orderBy("adicionadaEm")
+              .get(),
+          builder: ((context, AsyncSnapshot<QuerySnapshot> snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return CircularProgressIndicator();
+            } else if (snapshot.connectionState == ConnectionState.done &&
+                snapshot.hasData) {
+              var especialidades = snapshot.data?.docs
+                  .map((e) => RadioItem(
+                      id: e.id, title: e["nome"], description: e["descricao"]))
+                  .toList() as List<RadioItem>;
+              controller.selectedEspecialidade = RadioBox(
+                  icon: Icon(Icons.local_activity), items: especialidades);
+              return controller.selectedEspecialidade as Widget;
+            }
+            return Text("Sem dados");
+          })),
     ];
     return ScheduleDesign(
       onPressed: () {
-        Get.to(() => LocalView());
+        if (controller.selectedEspecialidade?.selectedItem == null) {
+          Get.defaultDialog(
+              title: "Erro na etapa",
+              backgroundColor: Get.theme.primaryColor,
+              middleText: "Você precisa selecionar uma especialidade!");
+        } else {
+          Get.to(() => LocalView());
+        }
       },
       actionText: "Prosseguir",
       body: itemList,

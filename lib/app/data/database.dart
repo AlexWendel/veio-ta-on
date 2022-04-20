@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:hospital_maraba/app/models/agendamento.dart';
+import 'package:hospital_maraba/app/models/especialidade.dart';
 import 'package:hospital_maraba/app/models/local.dart';
-
 import '../models/user.dart';
 
 Future<UserLocal> getUserFromFirestore(String? uid) async {
@@ -21,23 +21,32 @@ Future<UserLocal> getUserFromFirestore(String? uid) async {
   });
 }
 
-//TODO: Inserir dados no database e testar se está funcionando
-Future<List<QueryDocumentSnapshot<Agendamento>>>
-    getAgendamentoFromFirestoreUsingPacienteUid(String uidAgendamento) async {
-  final agendamentoRef = FirebaseFirestore.instance
-      .collection('consulta')
-      .withConverter(
-          fromFirestore: (snapshot, _) =>
-              Agendamento.fromJson(snapshot.data()!, snapshot.id),
-          toFirestore: (Agendamento agendamento, _) => agendamento.toJson());
-  final querySnapshot =
-      await agendamentoRef.where('pacienteID', isEqualTo: uidAgendamento).get();
-  return querySnapshot.docs;
+// TODO: Inserir dados no database e testar se está funcionando
+// TODO: Permitir também buscar diretamente por cartão do SUS, CPF, Nome ou RG
+Future<List<Agendamento>> getAllAgendamentosFromPaciente(
+    String pacienteID) async {
+  return [];
 }
 
-//TODO Fazer...
+// TODO : Implementar listagem todas as especialidades
+Future<List<Especialidade>> getAllEspecialidades() async {
+  var especialidadesRef =
+      FirebaseFirestore.instance.collection("especialidade");
+  var especialidades = especialidadesRef
+      .get()
+      .then((snapshot) => List<Especialidade>.from(snapshot.docs));
+  return especialidades;
+}
+
+// TODO : Implementar listagem de todos os locais
+Future<List<Especialidade>> getAllLocais() async {
+  return [];
+}
+
+//TODO : Criar agendamento e inserir no banco de dados...
 void createAgendamento(Agendamento formAgendamento) async {}
+
 //TODO Fazer...
 Future<List<Local>> getLocalFromFirestore() async {
-  return [Local()];
+  return [];
 }

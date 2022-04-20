@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -233,11 +234,13 @@ class AuthController extends GetxController {
   }
 
   void login(LoginForm form) async {
-    try {
-      await FirebaseAuth.instance.setPersistence(Persistence.SESSION);
-    } catch (e) {
-      print(e);
-    }
+    // SOMENTE PARA WEB
+    // try {
+    //   await FirebaseAuth.instance.setPersistence(Persistence.SESSION);
+    // } catch (e) {
+    //   print(e);
+    // }
+
     if (form.susNumber.length != 15) {
       Get.snackbar("Falha no acesso", "O cartão SUS tem 15 dígitos!",
           backgroundColor: Get.theme.primaryColor,

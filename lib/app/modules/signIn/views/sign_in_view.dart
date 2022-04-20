@@ -22,8 +22,8 @@ class SignInView extends GetView<SignInController> {
             // height: 50,
             width: double.maxFinite,
             child: Column(children: [
-              Text("Preencha os campos abaixo para criar sua conta",
-                  style: Get.theme.textTheme.displayMedium
+              Text("Preencha os campos abaixo para criar sua conta:",
+                  style: Get.theme.textTheme.displaySmall
                       ?.copyWith(color: Colors.black54)),
               SizedBox(height: 8),
               Divider(

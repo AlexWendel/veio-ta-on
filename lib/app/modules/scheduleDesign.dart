@@ -31,12 +31,15 @@ class ScheduleDesign extends GetView {
         backgroundColor: Get.theme.primaryColor,
         leadingWidth: 30,
         titleSpacing: 20,
-        title: appBarContent,
+        title: Text("Realizar agendamento"),
       ),
       backgroundColor: Get.theme.canvasColor,
-      body: SingleChildScrollView(
-        padding: EdgeInsets.symmetric(horizontal: 5),
-        child: Column(children: body),
+      body: SafeArea(
+        // padding: EdgeInsets.symmetric(horizontal: 5),
+        child: Padding(
+            padding: EdgeInsets.all(20),
+            child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start, children: body)),
       ),
     );
   }

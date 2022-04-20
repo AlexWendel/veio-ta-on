@@ -18,7 +18,7 @@ class SignInController extends GetxController {
           icon: Icon(Icons.person_outline_rounded), hintText: "Cartão SUS")
       .obs;
   final phoneInput =
-      PhoneInputText(icon: Icon(Icons.phone), hintText: "Número Celular").obs;
+      PhoneInputText(icon: Icon(Icons.phone), hintText: "Telefone").obs;
   final emailInput = CustomInputText(
           hintText: "Digite o e-mail", icon: Icon(Icons.email_outlined))
       .obs;
