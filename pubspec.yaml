@@ -16,12 +16,17 @@ dependencies:
   mask_text_input_formatter: 2.3.0
   hive_flutter: ^1.1.0
   intl: ^0.17.0
+  freezed_annotation: ^1.1.0
+  json_annotation: any
   flutter: 
     sdk: flutter
 
 dev_dependencies: 
   flutter_lints: ^1.0.0
   lints: 1.0.1
+  freezed: ^1.1.1
+  json_serializable: any
+  build_runner: any
   flutter_test: 
     sdk: flutter
 
