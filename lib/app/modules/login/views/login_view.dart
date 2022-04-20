@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hospital_maraba/app/modules/home/views/home_view.dart';
+import 'package:hospital_maraba/app/modules/home/views/localSet.dart';
 import 'package:hospital_maraba/app/modules/login/widgets/recPass.dart';
 import 'package:hospital_maraba/app/utils/common.sizes.dart';
 import '../controllers/login_controller.dart';
@@ -94,7 +95,7 @@ class LoginView extends GetView<LoginController> {
                               color: Get.theme.canvasColor,
                               fontWeight: FontWeight.w600))),
                   onPressed: () {
-                    Get.to(() => HomeView());
+                    Get.to(() => LocalSet());
                   },
                 ),
               ),

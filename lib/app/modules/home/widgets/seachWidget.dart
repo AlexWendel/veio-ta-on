@@ -12,6 +12,10 @@ import 'package:hospital_maraba/app/widgets/CardHome.dart';
 import '../../agendamentos/views/agendamentos_view.dart';
 
 class SeachWidget extends GetResponsiveWidget {
+  final String text;
+
+  SeachWidget({required this.text});
+
   @override
   Widget build(BuildContext context) {
     return TextFormField(
@@ -33,7 +37,7 @@ class SeachWidget extends GetResponsiveWidget {
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(4),
         ),
-        hintText: "Digite o nome ou número do cartão de SUS de um paciente",
+        hintText: text,
       ),
     );
   }

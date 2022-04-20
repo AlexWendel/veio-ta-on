@@ -39,7 +39,9 @@ class CadastroView extends GetView<HomeController> {
               color: Get.theme.secondaryHeaderColor,
             ),
             SizedBox(height: 15),
-            SeachWidget(),
+            SeachWidget(
+                text:
+                    "Digite o nome ou número do cartão de SUS de um paciente"),
             SizedBox(height: 20),
             InkWell(
               child: Text(
@@ -81,28 +83,6 @@ class CadastroView extends GetView<HomeController> {
                                 inputText: "Digite o nome completo do paciente",
                                 obscure: false,
                               )
-                              // TextFormField(
-                              //   // focusNode: passwordFocusNode,
-                              //   style: TextStyle(color: Colors.black87),
-                              //   obscureText: false,
-                              //   textInputAction: TextInputAction.done,
-                              //   // controller: passwordController,
-                              //   decoration: InputDecoration(
-                              //     fillColor: Colors.white,
-                              //     filled: true,
-                              //     focusedBorder: OutlineInputBorder(
-                              //         borderRadius: BorderRadius.circular(4),
-                              //         borderSide: BorderSide(
-                              //             color: Get.theme.primaryColor)),
-                              //     border: OutlineInputBorder(
-                              //       borderRadius: BorderRadius.circular(4),
-                              //     ),
-                              //     hintText: "Nome",
-                              //     hintStyle: TextStyle(
-                              //         fontSize: defaultFontSize /
-                              //             context.textScaleFactor),
-                              //   ),
-                              // ),
                             ],
                           ),
                         ),

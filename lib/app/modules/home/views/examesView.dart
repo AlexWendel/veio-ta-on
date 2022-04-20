@@ -12,7 +12,7 @@ import 'package:hospital_maraba/app/widgets/CardHome.dart';
 
 import '../../agendamentos/views/agendamentos_view.dart';
 
-class HomeView extends GetView<HomeController> {
+class ExamesView extends GetView<HomeController> {
   @override
   @override
   Widget build(BuildContext context) {
@@ -43,7 +43,7 @@ class HomeView extends GetView<HomeController> {
             SizedBox(height: 20),
             InkWell(
               child: Text(
-                "Próximos atendimentos",
+                "Exames atentidos",
                 style: TextStyle(
                   fontSize: defaultFontSize,
                   color:
