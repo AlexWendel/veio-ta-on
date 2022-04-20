@@ -79,7 +79,10 @@ class LoginView extends GetView<LoginController> {
               ]),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
-                children: [RecPass()],
+                children: [
+//------------Esqueci minha senha----------------------------------------
+                  RecPass()
+                ],
               ),
               SizedBox(
                 height: 20,

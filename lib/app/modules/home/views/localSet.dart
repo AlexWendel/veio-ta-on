@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hospital_maraba/app/modules/home/controllers/home_controller.dart';
+import 'package:hospital_maraba/app/modules/home/views/home_view.dart';
 import 'package:hospital_maraba/app/modules/home/widgets/appBarWidget.dart';
 import 'package:hospital_maraba/app/modules/home/widgets/cardLocal.dart';
 import 'package:hospital_maraba/app/modules/home/widgets/cardPaciente.dart';
@@ -70,7 +71,7 @@ class LocalSet extends GetView<HomeController> {
                   children: [
                     CardLocal(
                         img: 'assets/images/hospital.png',
-                        text: "Hospital municipal de Marabá"),
+                        text: "Hospital Regional De Marabá"),
                     CardLocal(
                         img: 'assets/images/hospital.png',
                         text: "Hospital Regional De Marabá"),

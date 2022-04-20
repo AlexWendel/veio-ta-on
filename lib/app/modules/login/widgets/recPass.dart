@@ -10,6 +10,7 @@ class RecPass extends GetResponsiveWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
+      hoverColor: Colors.transparent,
       onTap: () async {
         Get.defaultDialog(
           title: "Recuperar senha ",

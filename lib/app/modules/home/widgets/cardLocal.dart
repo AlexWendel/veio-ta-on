@@ -24,20 +24,20 @@ class CardLocal extends GetResponsiveWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () {
-        Get.to(() => HomeView());
-      },
-      child: Container(
-        padding: EdgeInsets.all(15),
-        margin: EdgeInsets.all(0),
-        height: 190,
-        width: 230,
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(8),
-            border:
-                Border.all(color: Get.theme.secondaryHeaderColor, width: 0.3)),
-        child: Column(
+    return Card(
+      elevation: 8,
+      shadowColor: Get.theme.hoverColor,
+      child: InkWell(
+        // hoverColor: Get.theme.hintColor,
+        onTap: () {
+          Get.to(HomeView());
+        },
+        child: Container(
+          padding: EdgeInsets.all(15),
+          margin: EdgeInsets.all(0),
+          height: 190,
+          width: 230,
+          child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -62,7 +62,9 @@ class CardLocal extends GetResponsiveWidget {
                   fontWeight: FontWeight.w500,
                 ),
               ),
-            ]),
+            ],
+          ),
+        ),
       ),
     );
   }
