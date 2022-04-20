@@ -48,15 +48,13 @@ class LocalSet extends GetView<HomeController> {
             SizedBox(height: 15),
             SeachWidget(text: "Digite um local para pesquisar"),
             SizedBox(height: 20),
-            InkWell(
-              child: Text(
-                "Próximos atendimentos",
-                style: TextStyle(
-                  fontSize: defaultFontSize,
-                  color:
-                      // Color(0xff545454
-                      Get.theme.primaryColor,
-                ),
+            Text(
+              "Escolha um local de atendimento",
+              style: TextStyle(
+                fontSize: defaultFontSize,
+                color:
+                    // Color(0xff545454
+                    Get.theme.primaryColor,
               ),
             ),
             SizedBox(

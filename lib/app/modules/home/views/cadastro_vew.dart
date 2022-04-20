@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hospital_maraba/app/modules/home/controllers/home_controller.dart';
+import 'package:hospital_maraba/app/modules/home/widgets/campos_input.dart';
 import 'package:hospital_maraba/app/modules/home/widgets/appBarWidget.dart';
 import 'package:hospital_maraba/app/modules/home/widgets/cardPaciente.dart';
 import 'package:hospital_maraba/app/modules/home/widgets/headerWidget.dart';
@@ -43,20 +44,12 @@ class CadastroView extends GetView<HomeController> {
                 text:
                     "Digite o nome ou número do cartão de SUS de um paciente"),
             SizedBox(height: 20),
-            InkWell(
-              child: Text(
-                "Cadastrar novo paciente",
-                style: TextStyle(
-                  fontSize: defaultFontSize,
-                  color:
-                      // Color(0xff545454
-                      Get.theme.primaryColor,
-                ),
-              ),
+            Text(
+              "Cadastrar novo paciente",
+              style: TextStyle(
+                  fontSize: defaultFontSize, color: Get.theme.primaryColor),
             ),
-            SizedBox(
-              height: 20,
-            ),
+            SizedBox(height: 20),
             Expanded(
               flex: 2,
               child: ListView(children: [
@@ -65,215 +58,90 @@ class CadastroView extends GetView<HomeController> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          "Nome",
-                          style: TextStyle(
-                              fontSize: sectionSubheaderFontSize,
-                              color: Get.theme.highlightColor),
+                        Campos_input(
+                            title: "nome",
+                            descript: "Digite o nome do paciente",
+                            height: 80,
+                            width: 500),
+                        SizedBox(height: 20),
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Campos_input(
+                                title: "CPF",
+                                descript: "Digite o CPF do paciente",
+                                height: 80,
+                                width: 200),
+                            SizedBox(width: 20),
+                            Campos_input(
+                                title: "Cartão SUS",
+                                descript: "Digite o Cartão SUS do paciente",
+                                height: 80,
+                                width: 280),
+                          ],
                         ),
-                        Container(
-                          padding: EdgeInsets.only(top: 5),
-                          height: 80,
-                          width: 600,
-                          child: Column(
-                            children: [
-                              InputNormal(
-                                inputText: "Digite o nome completo do paciente",
-                                obscure: false,
-                              )
-                            ],
-                          ),
+                        SizedBox(height: 20),
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Campos_input(
+                                title: "Senha",
+                                descript: "Digite uma Senha para paciente",
+                                height: 80,
+                                width: 230),
+                            SizedBox(width: 40),
+                            Campos_input(
+                                title: "Senha",
+                                descript: "Confrime a senha do paciente",
+                                height: 80,
+                                width: 230),
+                          ],
                         ),
                       ],
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        Text(
-                          "Email (não obrigatório)",
-                          style: TextStyle(
-                              fontSize: sectionSubheaderFontSize,
-                              color: Get.theme.highlightColor),
-                        ),
-                        Container(
-                          padding: EdgeInsets.only(top: 5),
-                          height: 80,
-                          width: 600,
-                          child: Column(
-                            children: [
-                              InputNormal(
-                                inputText: "digite o email do paciente",
-                                obscure: false,
-                              )
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "CPF",
-                          style: TextStyle(
-                              fontSize: sectionSubheaderFontSize,
-                              color: Get.theme.highlightColor),
-                        ),
-                        Container(
-                          padding: EdgeInsets.only(top: 5),
-                          height: 80,
-                          width: 280,
-                          child: Column(
-                            children: [
-                              InputNormal(
-                                inputText: "Digite o CPF do paciente",
-                                obscure: false,
-                              )
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Cartão SUS",
-                          style: TextStyle(
-                              fontSize: sectionSubheaderFontSize,
-                              color: Get.theme.highlightColor),
-                        ),
-                        Container(
-                          padding: EdgeInsets.only(top: 5),
-                          height: 80,
-                          width: 280,
-                          child: Column(
-                            children: [
-                              InputNormal(
-                                inputText: "N° de cartão SUS",
-                                obscure: false,
-                              )
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Confirmar email",
-                          style: TextStyle(
-                              fontSize: sectionSubheaderFontSize,
-                              color: Get.theme.highlightColor),
-                        ),
-                        Container(
-                          padding: EdgeInsets.only(top: 5),
-                          height: 80,
-                          width: 600,
-                          child: Column(
-                            children: [
-                              InputNormal(
-                                inputText: "confirme o email do paciente",
-                                obscure: false,
-                              )
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Senha",
-                          style: TextStyle(
-                              fontSize: sectionSubheaderFontSize,
-                              color: Get.theme.highlightColor),
-                        ),
-                        Container(
-                          padding: EdgeInsets.only(top: 5),
-                          height: 60,
-                          width: 280,
-                          child: Column(
-                            children: [
-                              InputNormal(
-                                inputText: "Digite sua senha",
-                                obscure: true,
-                              )
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          "Confirmar senha",
-                          style: TextStyle(
-                              fontSize: sectionSubheaderFontSize,
-                              color: Get.theme.highlightColor),
-                        ),
-                        Container(
-                          padding: EdgeInsets.only(top: 5),
-                          height: 60,
-                          width: 280,
-                          child: Column(
-                            children: [
-                              InputNormal(
-                                inputText: "Confirme sua senha",
-                                obscure: true,
-                              )
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
+                        Campos_input(
+                            title: "Email (não obrigatório)",
+                            descript: "Digite o email do paciente",
+                            height: 80,
+                            width: 500),
+                        SizedBox(height: 20),
+                        Campos_input(
+                            title: "Confirmar email (não obrigatório)",
+                            descript: "Confirme o email do paciente",
+                            height: 80,
+                            width: 500),
                         Text(
                           "",
                           style: TextStyle(
                               fontSize: sectionSubheaderFontSize,
                               color: Get.theme.highlightColor),
                         ),
-                        Container(
-                          height: 60,
-                          width: 200,
-                          child: ElevatedButton(
-                            child: Padding(
-                                padding: EdgeInsets.only(top: 3, bottom: 3),
-                                child: Text("Cadastrar",
-                                    style: Get.theme.textTheme.headline5
-                                        ?.copyWith(
-                                            color: Get.theme.canvasColor,
-                                            fontWeight: FontWeight.w600))),
-                            onPressed: () {},
+                        Card(
+                          elevation: 5,
+                          shadowColor: Get.theme.hoverColor,
+                          child: InkWell(
+                            onTap: () {},
+                            child: Container(
+                              padding: EdgeInsets.all(15),
+                              child: Text(
+                                "Cadastrar ",
+                                style: TextStyle(
+                                    fontSize: defaultFontSize,
+                                    color: Get.theme.primaryColor,
+                                    fontWeight: FontWeight.w500),
+                              ),
+                            ),
                           ),
-                        ),
+                        )
                       ],
                     ),
-                    Container(
-                      width: 360,
-                    )
                   ],
                 ),
               ]),

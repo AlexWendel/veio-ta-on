@@ -41,15 +41,13 @@ class HomeView extends GetView<HomeController> {
                 text:
                     "Digite o nome ou número do cartão de SUS de um paciente"),
             SizedBox(height: 20),
-            InkWell(
-              child: Text(
-                "Próximos atendimentos",
-                style: TextStyle(
-                  fontSize: defaultFontSize,
-                  color:
-                      // Color(0xff545454
-                      Get.theme.primaryColor,
-                ),
+            Text(
+              "Próximos atendimentos",
+              style: TextStyle(
+                fontSize: defaultFontSize,
+                color:
+                    // Color(0xff545454
+                    Get.theme.primaryColor,
               ),
             ),
             SizedBox(

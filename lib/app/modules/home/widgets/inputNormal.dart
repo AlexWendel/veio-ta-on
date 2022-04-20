@@ -36,8 +36,7 @@ class InputNormal extends GetResponsiveWidget {
             borderRadius: BorderRadius.circular(4),
           ),
           hintText: inputText,
-          hintStyle:
-              TextStyle(fontSize: defaultFontSize / context.textScaleFactor),
+          hintStyle: TextStyle(fontSize: sectionSubheaderFontSize),
         ),
       )
     ]);

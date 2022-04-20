@@ -27,15 +27,12 @@ class ExamesView extends GetView<HomeController> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(
-              height: 20,
-            ),
+            SizedBox(height: 20),
             HeaderWidget(),
             Divider(
-              height: 10,
-              thickness: 0.1,
-              color: Get.theme.secondaryHeaderColor,
-            ),
+                height: 10,
+                thickness: 0.1,
+                color: Get.theme.secondaryHeaderColor),
             SizedBox(height: 15),
             SeachWidget(
                 text:
@@ -45,16 +42,10 @@ class ExamesView extends GetView<HomeController> {
               child: Text(
                 "Exames atentidos",
                 style: TextStyle(
-                  fontSize: defaultFontSize,
-                  color:
-                      // Color(0xff545454
-                      Get.theme.primaryColor,
-                ),
+                    fontSize: defaultFontSize, color: Get.theme.primaryColor),
               ),
             ),
-            SizedBox(
-              height: 20,
-            ),
+            SizedBox(height: 20),
             Expanded(
               flex: 2,
               child: ListView(children: [
@@ -68,9 +59,7 @@ class ExamesView extends GetView<HomeController> {
                     CardPaciente(),
                   ],
                 ),
-                SizedBox(
-                  height: 60,
-                ),
+                SizedBox(height: 60),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -81,9 +70,7 @@ class ExamesView extends GetView<HomeController> {
                     CardPaciente(),
                   ],
                 ),
-                SizedBox(
-                  height: 60,
-                ),
+                SizedBox(height: 60),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -94,9 +81,7 @@ class ExamesView extends GetView<HomeController> {
                     CardPaciente(),
                   ],
                 ),
-                SizedBox(
-                  height: 60,
-                ),
+                SizedBox(height: 60),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
