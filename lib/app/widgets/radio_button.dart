@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hospital_maraba/app/utils/color_theme.dart';
 import 'package:hospital_maraba/app/utils/common.sizes.dart';
-import 'package:hospital_maraba/app/widgets/radioBox.dart';
 
 class RadioButton extends GetResponsiveView {
   final Color color;

@@ -1,11 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
-import 'package:hospital_maraba/app/models/radioItem.dart';
-import 'package:hospital_maraba/app/modules/agendamentos/controllers/agendamentos_controller.dart';
-import 'package:hospital_maraba/app/widgets/radioButton.dart';
-import 'input_text.dart';
+import 'package:hospital_maraba/app/widgets/radio_button.dart';
+
+class RadioItem {
+  final String id;
+  final String title;
+  final String description;
+
+  RadioItem({required this.id, required this.title, required this.description});
+}
 
 class RadioBox extends GetView {
   final List<RadioItem> items;
