@@ -2,19 +2,19 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hospital_maraba/app/data/database.dart';
+import 'package:hospital_maraba/app/models/user.dart';
+import 'package:hospital_maraba/app/modules/agendamentos/views/agendamentos_view.dart';
+import 'package:hospital_maraba/app/modules/agendamentos/views/minhasConsultasView.dart';
 import 'package:hospital_maraba/app/modules/home/controllers/home_controller.dart';
-import 'package:hospital_maraba/app/modules/settings/views/settings_view.dart';
 import 'package:hospital_maraba/app/utils/common.sizes.dart';
 import 'package:hospital_maraba/app/modules/MainDesign.dart';
-import 'package:hospital_maraba/app/widgets/CardHome.dart';
-
-import '../../../models/user.dart';
-import '../../agendamentos/views/agendamentos_view.dart';
+import 'package:hospital_maraba/app/widgets/home_card.dart';
 
 class HomeView extends GetView<HomeController> {
   @override
   final HomeController controller = Get.find<HomeController>();
-  final user = getUserFromFirestore(FirebaseAuth.instance.currentUser!.uid);
+  final user = Get.find<DatabaseService>()
+      .getUserFromFirestore(FirebaseAuth.instance.currentUser!.uid);
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +63,7 @@ class HomeView extends GetView<HomeController> {
         CardHome(
             icon: Icon(Icons.calendar_view_week, size: mediumIconSize),
             onTap: () {
-              // Get.to(() => MinhasConsultasScreen());
+              Get.to(() => MinhasConsultasView());
             },
             text: "Minhas consultas",
             description: "Veja suas consultas agendadas"),
