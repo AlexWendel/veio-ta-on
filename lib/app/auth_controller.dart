@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -23,12 +22,6 @@ class AuthController extends GetxController {
   }
 
   void register(RegisterForm form) async {
-    try {
-      await FirebaseAuth.instance.setPersistence(Persistence.NONE);
-    } catch (e) {
-      print(e);
-    }
-    print(form);
     if (form.name.isEmpty ||
         form.cpf.isEmpty ||
         form.rg.isEmpty ||
