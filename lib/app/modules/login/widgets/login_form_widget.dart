@@ -116,9 +116,14 @@ class LoginFormWidget extends GetWidget {
               // Validate returns true if the form is valid, or false otherwise.
               // AuthController.instance.login(LoginForm());
               if (_formKey.currentState!.validate()) {
-                AuthController.instance.login(LoginForm(
-                    susNumber: maskSusCard.getUnmaskedText(),
-                    password: passwordController.text));
+                try {
+                  AuthController.instance.login(LoginForm(
+                      susNumber: maskSusCard.getUnmaskedText(),
+                      password: passwordController.text));
+                } catch (e) {
+                  Get.showSnackbar(GetSnackBar(
+                      title: "Erro no login", message: e.toString()));
+                }
               }
             },
           )
