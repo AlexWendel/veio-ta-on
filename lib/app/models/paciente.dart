@@ -1,13 +1,13 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:hospital_maraba/app/models/user.dart';
-
-// part 'paciente.freezed.dart';
-// part 'paciente.g.dart';
 
 class Paciente extends UserLocal {
   late String susNumber;
+  late DocumentReference referenceDoc;
 
-  Paciente({required this.susNumber});
+  Paciente({required this.susNumber}) {
+    susNumber = susNumber;
+  }
 
   @override
   Map<String, dynamic> toJson() {
@@ -16,14 +16,14 @@ class Paciente extends UserLocal {
     return json;
   }
 
-  Paciente.fromJson(Map<String, dynamic> json) {
-    uid = json["id"];
-    nome = json["nome"];
-    sobrenome = json["sobrenome"];
-    cpf = json["cpf"];
-    rg = json["rg"];
-    telefone = json["telefone"];
-    email = json["email"];
-    susNumber = json["susNumber"];
-  }
+  // factory Paciente.fromJson(Map<String, dynamic> json) => {
+  //   uid = json["id"];
+  //   nome = json["nome"];
+  //   sobrenome = json["sobrenome"];
+  //   cpf = json["cpf"];
+  //   rg = json["rg"];
+  //   telefone = json["telefone"];
+  //   email = json["email"];
+  //   susNumber = json["susNumber"];
+  // }
 }

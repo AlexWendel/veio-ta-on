@@ -1,17 +1,29 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
+class Especialidade {
+  String id;
+  String nome;
+  String descricao;
+  String nomeMedicoEspecialista;
+  List<String>? palavrasChave;
 
-part 'especialidade.freezed.dart';
-part 'especialidade.g.dart';
+  Especialidade(
+      {required this.id,
+      required this.nome,
+      required this.descricao,
+      required this.nomeMedicoEspecialista,
+      palavrasChave});
 
-@freezed
-class Especialidade with _$Especialidade {
-  const factory Especialidade(
-      {required String id,
-      required String nome,
-      required String descricao,
-      required String nomeMedicoEspecialista}) = _Especialidade;
+  factory Especialidade.fromJson(Map<String, dynamic> json) => Especialidade(
+      id: json["id"],
+      nome: json["nome"],
+      descricao: json["descricao"],
+      nomeMedicoEspecialista: json["nomeMedicoEspecialista"]);
 
-  factory Especialidade.fromJson(Map<String, dynamic> json) =>
-      _$EspecialidadeFromJson(json);
+  Map<String, dynamic> toJson() {
+    return {
+      "id": id,
+      "nome": nome,
+      "descricao": descricao,
+      "nomeMedicoEspecialista": nomeMedicoEspecialista
+    };
+  }
 }

@@ -1,20 +1,45 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'usuario.freezed.dart';
-part 'usuario.g.dart';
-
 @freezed
-class Usuario with _$Usuario {
-  factory Usuario({
-    required String id,
-    required String nome,
-    required String sobrenome,
-    required String rg,
-    required String cpf,
-    String? telefone,
-    String? email,
-  }) = _Usuario;
+class Usuario {
+  DocumentReference? referenceDoc;
+  String id;
+  String nome;
+  String sobrenome;
+  String rg;
+  String cpf;
+  String? telefone;
+  String? email;
+  String? susCard;
+  DateTime registradoEm;
 
-  factory Usuario.fromJson(Map<String, dynamic> json) =>
-      _$UsuarioFromJson(json);
+  Usuario(
+      {required this.id,
+      required this.nome,
+      required this.sobrenome,
+      required this.rg,
+      required this.cpf,
+      required this.registradoEm,
+      this.telefone,
+      this.email,
+      this.susCard});
+
+  factory Usuario.fromJson(Map<String, dynamic> json) => Usuario(
+      id: json["id"] ?? "",
+      nome: json["nome"],
+      cpf: json["cpf"],
+      rg: json["rg"],
+      sobrenome: json["sobrenome"],
+      registradoEm: (json["registradoEm"] as Timestamp).toDate());
+
+  factory Usuario.fromDocument(Map<String, dynamic> json) => Usuario(
+      id: json["id"] ?? "",
+      nome: json["nome"],
+      cpf: json["cpf"],
+      rg: json["rg"],
+      sobrenome: json["sobrenome"],
+      registradoEm: (json["registradoEm"] as Timestamp).toDate());
+
+  // Usuario.onlyReference({required this.referenceDoc});
 }

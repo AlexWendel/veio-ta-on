@@ -1,20 +1,72 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hospital_maraba/app/models/especialidade.dart';
 
-part 'local.freezed.dart';
-part 'local.g.dart';
+class LocalPartial {
+  DocumentReference referenceDoc;
+  LocalPartial({required this.referenceDoc});
+}
 
-@freezed
-class Local with _$Local {
-  factory Local(
-      {required String nome,
-      required String endereco,
-      required String bairro,
-      required String cidade,
-      required String uf,
-      required String referencia,
-      @Default([0, 0]) List<int> coordenadas,
-      @Default(<Especialidade>[]) List<Especialidade> especialidades}) = _Local;
+class Local {
+  String id;
+  String nome;
+  String endereco;
+  String bairro;
+  String? cidade;
+  String? uf;
+  String? referencia;
+  Map<String, dynamic>? coordenadas;
+  List<dynamic>? especialidades;
 
-  factory Local.fromJson(Map<String, dynamic> json) => _$LocalFromJson(json);
+  Local(
+      {required this.id,
+      required this.nome,
+      required this.endereco,
+      required this.bairro,
+      required this.referencia,
+      required this.especialidades,
+      this.uf,
+      this.cidade,
+      this.coordenadas});
+
+  factory Local.fromJson(Map<String, dynamic> json) => Local(
+        id: json["id"],
+        nome: json["nome"],
+        endereco: json["endereco"],
+        bairro: json["bairro"],
+        cidade: json["cidade"],
+        uf: json["uf"],
+        referencia: json["referencia"],
+        especialidades:
+            json["especialidades"], // TODO:INCLUDE FIREBASE ESPECIALIDADES
+        // coordenadas: (json["coordenadas"]) => { var point = GeoPoint(); point.latitude= json["latitude"]; point.longitude = json["longitude"];return point}),
+      );
+
+  factory Local.fromSnapshot(Map<String, dynamic> snapshot) {
+    return Local(
+      id: snapshot["id"],
+      nome: snapshot["nome"],
+      endereco: snapshot["endereco"],
+      bairro: snapshot["bairro"],
+      cidade: snapshot["cidade"],
+      uf: snapshot["uf"],
+      referencia: snapshot["referencia"],
+      especialidades:
+          snapshot["especialidades"], // TODO:INCLUDE FIREBASE ESPECIALIDADES
+      // coordenadas: (json["coordenadas"]) => { var point = GeoPoint(); point.latitude= json["latitude"]; point.longitude = json["longitude"];return point}),
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      "nome": nome,
+      "bairro": bairro,
+      "cidade": cidade,
+      "endereco": endereco,
+      "especialidades": especialidades,
+      "referencia": referencia,
+      "uf": uf,
+      "coordenadas": coordenadas
+    };
+  }
 }
