@@ -1,18 +1,11 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
-import 'package:hospital_maraba/app/data/database.dart';
 import 'package:hospital_maraba/app/models/especialidade.dart';
-import 'package:hospital_maraba/app/models/radioItem.dart';
+import 'package:hospital_maraba/app/modules/agendamentos/controllers/agendamentos_controller.dart';
 import 'package:hospital_maraba/app/modules/agendamentos/views/localView.dart';
 import 'package:hospital_maraba/app/modules/scheduleDesign.dart';
-import 'package:hospital_maraba/app/utils/color_theme.dart';
-import 'package:hospital_maraba/app/utils/common.sizes.dart';
-import 'package:hospital_maraba/app/widgets/radioBox.dart';
-
-import '../../../widgets/input_text.dart';
-import '../controllers/agendamentos_controller.dart';
+import 'package:hospital_maraba/app/widgets/input_text.dart';
+import 'package:hospital_maraba/app/widgets/radio_box.dart';
 
 class AgendamentosView extends GetView<AgendamentosController> {
   @override
@@ -31,20 +24,26 @@ class AgendamentosView extends GetView<AgendamentosController> {
                   fontSize: Get.textTheme.headlineMedium?.fontSize),
             )
           ])),
-      FutureBuilder<QuerySnapshot>(
-          future: FirebaseFirestore.instance
-              .collection('especialidades')
-              .orderBy("adicionadaEm")
-              .get(),
-          builder: ((context, AsyncSnapshot<QuerySnapshot> snapshot) {
+      FutureBuilder<List<Especialidade>>(
+          future: controller.getAllEspecialidades(),
+          builder: ((context, AsyncSnapshot<List<Especialidade>> snapshot) {
+            // Caso esteja carregando, mostrar o widget de carregamento
             if (snapshot.connectionState == ConnectionState.waiting) {
               return CircularProgressIndicator();
             } else if (snapshot.connectionState == ConnectionState.done &&
                 snapshot.hasData) {
-              var especialidades = snapshot.data?.docs
+              if (snapshot.data!.isEmpty) {
+                return Center(
+                    child: Text("Não há especialidades cadastradas.",
+                        style: Get.textTheme.headlineSmall!.copyWith(
+                            color: Get.theme.focusColor.withOpacity(0.8))));
+              }
+
+              var especialidades = snapshot.data!
                   .map((e) => RadioItem(
-                      id: e.id, title: e["nome"], description: e["descricao"]))
-                  .toList() as List<RadioItem>;
+                      id: e.id, title: e.nome, description: e.descricao))
+                  .toList();
+
               controller.selectedEspecialidade = RadioBox(
                   icon: Icon(Icons.local_activity), items: especialidades);
               return controller.selectedEspecialidade as Widget;
