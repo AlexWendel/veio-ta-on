@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../widgets/input_text.dart';
-
 class ScheduleDesign extends GetView {
   final List<Widget> body;
   final Widget appBarContent;

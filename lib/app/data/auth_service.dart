@@ -9,8 +9,10 @@ class AuthService extends GetxService {
 
   @override
   void onReady() async {
-    currentUser =
-        await getUserFromFirestore(FirebaseAuth.instance.currentUser!.uid);
+    if (FirebaseAuth.instance.currentUser?.uid != null) {
+      currentUser = await Get.find<DatabaseService>()
+          .getUserFromFirestore(FirebaseAuth.instance.currentUser?.uid);
+    }
     super.onInit();
   }
 }
