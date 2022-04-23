@@ -1,20 +1,16 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
-import 'package:hospital_maraba/app/models/radioItem.dart';
+import 'package:hospital_maraba/app/models/local.dart';
 import 'package:hospital_maraba/app/modules/scheduleDesign.dart';
-import 'package:hospital_maraba/app/utils/color_theme.dart';
-import 'package:hospital_maraba/app/utils/common.sizes.dart';
-import 'package:hospital_maraba/app/widgets/radioBox.dart';
+import 'package:hospital_maraba/app/widgets/radio_box.dart';
 
 import '../../../widgets/input_text.dart';
-import '../../MainDesign.dart';
 import '../controllers/agendamentos_controller.dart';
 import 'dataView.dart';
 
 class LocalView extends GetView<AgendamentosController> {
-  var controller = Get.put(AgendamentosController());
+  @override
+  final controller = Get.put(AgendamentosController());
 
   @override
   Widget build(BuildContext context) {
@@ -29,34 +25,40 @@ class LocalView extends GetView<AgendamentosController> {
               fontSize: Get.textTheme.headlineMedium?.fontSize),
         ),
       ),
-      FutureBuilder<QuerySnapshot>(
-          future: FirebaseFirestore.instance
-              .collection('local')
-              // TODO: FILTRAR OS LOCAIS POR TIPO DE EXAME
-              .orderBy("adicionadoEm")
-              .get(),
-          builder: ((context, AsyncSnapshot<QuerySnapshot> snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return CircularProgressIndicator();
-            } else if (snapshot.connectionState == ConnectionState.done &&
-                snapshot.hasData) {
-              var locaisList = snapshot.data?.docs
-                  .map((e) => RadioItem(
-                      id: e.id,
-                      title: e["nome"],
-                      description: e["endereco"] + "," + e["bairro"]))
-                  .toList() as List<RadioItem>;
-              controller.selectedLocal =
-                  RadioBox(icon: Icon(Icons.local_activity), items: locaisList);
-              return controller.selectedLocal as Widget;
+      FutureBuilder<List<Local>>(
+          future: controller.getAllLocaisWithSelectedEspecialidade(),
+          builder: ((context, AsyncSnapshot<List<Local>> snapshot) {
+            switch (snapshot.connectionState) {
+              case ConnectionState.waiting:
+                return Center(child: CircularProgressIndicator());
+
+              case ConnectionState.done:
+                if (snapshot.data!.isEmpty) {
+                  return Center(
+                      child: Text("Não há locais com essa especialidade",
+                          style: Get.textTheme.headlineSmall!.copyWith(
+                              color: Get.theme.focusColor.withOpacity(0.8))));
+                }
+
+                List<RadioItem> locaisList = snapshot.data!
+                    .map((e) => RadioItem(
+                        id: e.id,
+                        title: e.nome,
+                        description: e.endereco + ", " + e.bairro))
+                    .toList();
+
+                controller.selectedLocal = RadioBox(
+                    icon: Icon(Icons.local_activity), items: locaisList);
+                return controller.selectedLocal as Widget;
+
+              default:
+                break;
             }
+
             return Text("Sem dados");
           })),
-      RadioBox(
-        icon: Icon(Icons.local_activity),
-        items: [],
-      )
     ];
+
     return ScheduleDesign(
       onPressed: () {
         if (controller.selectedLocal?.selectedItem == null) {
