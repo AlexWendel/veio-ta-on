@@ -157,24 +157,7 @@ class NovaConsulta extends GetView<HomeController> {
                               ),
                             ],
                           ),
-                        )
-                      ],
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Campos_input(
-                            title: "Tipo de atendimento",
-                            descript: "Digite o email do paciente",
-                            height: 80,
-                            width: 500),
-                        SizedBox(height: 20),
-                        Campos_input(
-                            title: "Confirmar email (não obrigatório)",
-                            descript: "Confirme o email do paciente",
-                            height: 80,
-                            width: 500),
-                        SizedBox(height: 20),
+                        ),
                         Text(
                           "",
                           style: TextStyle(
@@ -203,6 +186,109 @@ class NovaConsulta extends GetView<HomeController> {
                           style: TextStyle(
                               fontSize: sectionSubheaderFontSize,
                               color: Get.theme.highlightColor),
+                        ),
+                      ],
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Campos_input(
+                            title: "Tipo de atendimento",
+                            descript: "Digite o email do paciente",
+                            height: 80,
+                            width: 500),
+                        SizedBox(height: 20),
+                        Campos_input(
+                            title: "Confirmar email (não obrigatório)",
+                            descript: "Confirme o email do paciente",
+                            height: 80,
+                            width: 500),
+                        SizedBox(height: 20),
+                        Text(
+                          "Selecione um horário",
+                          style: TextStyle(
+                              fontSize: sectionSubheaderFontSize,
+                              color: Get.theme.highlightColor),
+                        ),
+                        SizedBox(height: 5),
+                        Container(
+                          // height: 0,
+                          width: 500,
+                          padding: EdgeInsets.all(5),
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(5),
+                              border: Border.all(color: cardGray)),
+                          child: Column(
+                            children: [
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  InkWell(onTap: () {}, child: Text("08:00")),
+                                  InkWell(onTap: () {}, child: Text("09:00")),
+                                  InkWell(onTap: () {}, child: Text("10:00")),
+                                  InkWell(onTap: () {}, child: Text("11:00")),
+                                  InkWell(onTap: () {}, child: Text("12:00")),
+                                  InkWell(onTap: () {}, child: Text("13:00")),
+                                  InkWell(onTap: () {}, child: Text("14:00")),
+                                  InkWell(onTap: () {}, child: Text("15:00")),
+                                  InkWell(onTap: () {}, child: Text("16:00")),
+                                  InkWell(onTap: () {}, child: Text("17:00")),
+                                ],
+                              ),
+                              SizedBox(height: 5),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  InkWell(onTap: () {}, child: Text("08:00")),
+                                  InkWell(onTap: () {}, child: Text("09:00")),
+                                  InkWell(onTap: () {}, child: Text("10:00")),
+                                  InkWell(onTap: () {}, child: Text("11:00")),
+                                  InkWell(onTap: () {}, child: Text("12:00")),
+                                  InkWell(onTap: () {}, child: Text("13:00")),
+                                  InkWell(onTap: () {}, child: Text("14:00")),
+                                  InkWell(onTap: () {}, child: Text("15:00")),
+                                  InkWell(onTap: () {}, child: Text("16:00")),
+                                  InkWell(onTap: () {}, child: Text("17:00")),
+                                ],
+                              ),
+                              SizedBox(height: 5),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  InkWell(onTap: () {}, child: Text("08:00")),
+                                  InkWell(onTap: () {}, child: Text("09:00")),
+                                  InkWell(onTap: () {}, child: Text("10:00")),
+                                  InkWell(onTap: () {}, child: Text("11:00")),
+                                  InkWell(onTap: () {}, child: Text("12:00")),
+                                  InkWell(onTap: () {}, child: Text("13:00")),
+                                  InkWell(onTap: () {}, child: Text("14:00")),
+                                  InkWell(onTap: () {}, child: Text("15:00")),
+                                  InkWell(onTap: () {}, child: Text("16:00")),
+                                  InkWell(onTap: () {}, child: Text("17:00")),
+                                ],
+                              ),
+                              SizedBox(height: 5),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  InkWell(onTap: () {}, child: Text("08:00")),
+                                  InkWell(onTap: () {}, child: Text("09:00")),
+                                  InkWell(onTap: () {}, child: Text("10:00")),
+                                  InkWell(onTap: () {}, child: Text("11:00")),
+                                  InkWell(onTap: () {}, child: Text("12:00")),
+                                  InkWell(onTap: () {}, child: Text("13:00")),
+                                  InkWell(onTap: () {}, child: Text("14:00")),
+                                  InkWell(onTap: () {}, child: Text("15:00")),
+                                  InkWell(onTap: () {}, child: Text("16:00")),
+                                  InkWell(onTap: () {}, child: Text("17:00")),
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
                       ],
                     ),
