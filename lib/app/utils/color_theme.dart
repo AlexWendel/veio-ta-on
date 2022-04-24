@@ -3,6 +3,8 @@ import 'package:hospital_maraba/app/utils/common.colors.dart';
 import 'package:hospital_maraba/app/utils/common.sizes.dart';
 
 const textFieldGray = Color.fromARGB(255, 241, 241, 241);
+const backGroundCard = Color(0xffF2F2F2);
+const backCard = Color(0xffC4C4C4);
 const backGround = Color.fromARGB(255, 253, 253, 253);
 const verdeBosta = Color(0xFF008f38);
 const iconGray = Color.fromARGB(255, 121, 121, 121);
