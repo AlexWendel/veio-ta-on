@@ -76,6 +76,15 @@ class DatabaseService extends GetxService {
     });
   }
 
+  Future<UserLocal?>? findUserByEmail(String email) async {
+    return userConverter.where("email", isEqualTo: email).get().then((value) {
+      if (value.docs.isNotEmpty) {
+        return value.docs.first.data();
+      }
+      return null;
+    });
+  }
+
   // TODO: Permitir também buscar diretamente por cartão do SUS, CPF, Nome ou RG
   Future<List<Agendamento>> getAllAgendamentosFromPaciente(
       String pacienteID) async {
