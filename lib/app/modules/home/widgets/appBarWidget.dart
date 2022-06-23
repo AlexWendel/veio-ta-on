@@ -15,7 +15,7 @@ class AppBarWidget extends GetResponsiveWidget {
     return AppBar(
       elevation: 1,
       backgroundColor: Get.theme.canvasColor,
-      leading: Row(
+      title: Row(
         children: [
           SizedBox(
             width: 60,
@@ -46,10 +46,10 @@ class AppBarWidget extends GetResponsiveWidget {
           ),
         ), //IconButton
       ], //<Widget
-      title: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [],
-      ),
+      // title: Row(
+      //   mainAxisAlignment: MainAxisAlignment.center,
+      //   children: [],
+      // ),
     );
   }
 }

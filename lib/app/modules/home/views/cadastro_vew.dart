@@ -16,7 +16,9 @@ import 'package:hospital_maraba/app/widgets/CardHome.dart';
 import '../../agendamentos/views/agendamentos_view.dart';
 
 class CadastroView extends GetView<HomeController> {
-  @override
+  final String localID;
+
+  CadastroView({required this.localID});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,7 +35,9 @@ class CadastroView extends GetView<HomeController> {
             SizedBox(
               height: 20,
             ),
-            HeaderWidget(),
+            HeaderWidget(
+              localID: localID,
+            ),
             Divider(
               height: 10,
               thickness: 0.1,

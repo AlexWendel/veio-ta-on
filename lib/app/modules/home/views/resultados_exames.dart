@@ -13,7 +13,9 @@ import 'package:hospital_maraba/app/widgets/CardHome.dart';
 import '../../agendamentos/views/agendamentos_view.dart';
 
 class ExamesView extends GetView<HomeController> {
-  @override
+  final String localID;
+
+  ExamesView({required this.localID});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,7 +30,7 @@ class ExamesView extends GetView<HomeController> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(height: 20),
-            HeaderWidget(),
+            HeaderWidget(localID: localID),
             Divider(
                 height: 10,
                 thickness: 0.1,

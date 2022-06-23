@@ -7,12 +7,21 @@ import 'package:hospital_maraba/app/auth_binding.dart';
 import 'package:hospital_maraba/app/auth_controller.dart';
 import 'package:hospital_maraba/app/utils/color_theme.dart';
 import 'package:hospital_maraba/app/utils/root.dart';
+import 'app/data/auth_service.dart';
+import 'app/data/database.dart';
 import 'firebase_options.dart';
 import 'app/modules/home/controllers/home_controller.dart';
 import 'app/routes/app_pages.dart';
 
+Future<void> initServices() async {
+  await Get.putAsync<AuthService>(() async => AuthService());
+  Get.lazyPut(() => DatabaseService());
+  print("Starting Auth Service");
+}
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await initServices();
   await Hive.initFlutter();
   SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitDown, DeviceOrientation.portraitUp]);

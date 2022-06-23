@@ -9,6 +9,10 @@ import 'package:hospital_maraba/app/utils/color_theme.dart';
 import 'package:hospital_maraba/app/utils/common.sizes.dart';
 
 class NovaConsulta extends GetView<HomeController> {
+  final String localID;
+
+  NovaConsulta({required this.localID});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,7 +29,9 @@ class NovaConsulta extends GetView<HomeController> {
             SizedBox(
               height: 20,
             ),
-            HeaderWidget(),
+            HeaderWidget(
+              localID: localID,
+            ),
             Divider(
               height: 10,
               thickness: 0.1,

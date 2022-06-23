@@ -14,6 +14,10 @@ import 'package:hospital_maraba/app/widgets/CardHome.dart';
 import '../../agendamentos/views/agendamentos_view.dart';
 
 class HeaderWidget extends GetResponsiveWidget {
+  final String localID;
+
+  HeaderWidget({required this.localID});
+
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -25,7 +29,9 @@ class HeaderWidget extends GetResponsiveWidget {
           focusColor: Colors.transparent,
           hoverColor: Colors.transparent,
           onTap: () {
-            Get.to(() => HomeView());
+            Get.to(() => HomeView(
+                  localID: localID,
+                ));
           },
           child: Text(
             "Home",
@@ -46,7 +52,9 @@ class HeaderWidget extends GetResponsiveWidget {
         ),
         InkWell(
           onTap: () {
-            Get.to(NovaConsulta());
+            Get.to(NovaConsulta(
+              localID: localID,
+            ));
           },
           highlightColor: Colors.transparent,
           splashColor: Colors.transparent,
@@ -71,7 +79,9 @@ class HeaderWidget extends GetResponsiveWidget {
         ),
         InkWell(
           onTap: () {
-            Get.to(() => ExamesView());
+            Get.to(() => ExamesView(
+                  localID: localID,
+                ));
           },
           highlightColor: Colors.transparent,
           splashColor: Colors.transparent,
@@ -100,7 +110,9 @@ class HeaderWidget extends GetResponsiveWidget {
           focusColor: Colors.transparent,
           hoverColor: Colors.transparent,
           onTap: () {
-            Get.to(() => CadastroView());
+            Get.to(() => CadastroView(
+                  localID: localID,
+                ));
           },
           child: Text(
             "Cadastrar Paciente",

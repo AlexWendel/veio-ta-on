@@ -16,11 +16,9 @@ import '../../agendamentos/views/agendamentos_view.dart';
 class CardLocal extends GetResponsiveWidget {
   final String text;
   final String img;
+  final String localID;
 
-  CardLocal({
-    required this.text,
-    required this.img,
-  });
+  CardLocal({required this.text, required this.img, required this.localID});
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +28,7 @@ class CardLocal extends GetResponsiveWidget {
       child: InkWell(
         // hoverColor: Get.theme.hintColor,
         onTap: () {
-          Get.to(HomeView());
+          Get.to(HomeView(localID: localID));
         },
         child: Container(
           padding: EdgeInsets.all(15),
