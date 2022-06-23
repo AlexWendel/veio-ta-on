@@ -35,9 +35,7 @@ class ScheduleDesign extends GetView {
       body: SafeArea(
         // padding: EdgeInsets.symmetric(horizontal: 5),
         child: Padding(
-            padding: EdgeInsets.all(20),
-            child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start, children: body)),
+            padding: EdgeInsets.all(20), child: ListView(children: body)),
       ),
     );
   }

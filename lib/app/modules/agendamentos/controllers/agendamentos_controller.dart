@@ -7,6 +7,9 @@ import 'package:hospital_maraba/app/models/especialidade.dart';
 import 'package:hospital_maraba/app/models/local.dart';
 import 'package:hospital_maraba/app/widgets/radio_box.dart';
 
+import '../../../models/day.dart';
+import '../../../models/month.dart';
+
 class AgendamentosController extends GetxController {
   final count = 0.obs;
   DatabaseService databaseService = Get.find<DatabaseService>();
@@ -15,6 +18,10 @@ class AgendamentosController extends GetxController {
   List<Especialidade> especialidades = [];
   RadioBox? selectedEspecialidade;
   RadioBox? selectedLocal;
+
+  final RxnString selectedMonth = RxnString();
+  final RxnString selectedDay = RxnString();
+  final RxnString selectedHour = RxnString();
 
   @override
   void onInit() {

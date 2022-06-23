@@ -1,7 +1,17 @@
+import 'package:hospital_maraba/app/models/horario.dart';
+
+import 'horario.dart';
+
 class Data {
-  final String day;
-  final String month;
+  final String monthName;
+  final List<String> days;
   final String year;
 
-  Data({required this.day, required this.month, required this.year});
+  List<Horario> horarios = [];
+
+  Data(
+      {required this.monthName,
+      required this.days,
+      required this.year,
+      required this.horarios});
 }

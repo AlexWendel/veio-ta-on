@@ -1,30 +1,36 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hospital_maraba/app/models/data.dart';
+import 'package:hospital_maraba/app/models/day.dart';
+import 'package:hospital_maraba/app/models/month.dart';
 import 'package:hospital_maraba/app/modules/agendamentos/controllers/agendamentos_controller.dart';
 import 'package:hospital_maraba/app/modules/agendamentos/widgets/data_select.dart';
 import 'package:hospital_maraba/app/modules/agendamentos/widgets/set_month.dart';
 import 'package:hospital_maraba/app/modules/scheduleDesign.dart';
 import 'package:hospital_maraba/app/utils/color_theme.dart';
 import 'package:hospital_maraba/app/utils/common.sizes.dart';
+import 'package:hospital_maraba/app/widgets/datepicker.dart';
 import 'package:hospital_maraba/app/widgets/input_text.dart';
 
 class DataView extends GetView<AgendamentosController> {
   @override
   final controller = Get.put(AgendamentosController());
 
+  List<Month> months = [
+    Month(
+        monthName: "Janeiro",
+        days: [Day(dayName: "01", hours: []), Day(dayName: "02", hours: [])]),
+    Month(
+        monthName: "Fevereiro",
+        days: [Day(dayName: "04", hours: []), Day(dayName: "05", hours: [])]),
+    Month(
+        monthName: "Junho",
+        days: [Day(dayName: "07", hours: []), Day(dayName: "08", hours: [])])
+  ];
+
   @override
   Widget build(BuildContext context) {
     List<Widget> itemList = [
-      Padding(
-        padding: EdgeInsets.symmetric(vertical: 10),
-        child: Text(
-          "Selecione a data do atendimento:",
-          style: TextStyle(
-              color: Get.theme.hintColor.withOpacity(0.6),
-              fontWeight: FontWeight.bold,
-              fontSize: Get.textTheme.headlineMedium?.fontSize),
-        ),
-      ),
       // FutureBuilder<DocumentSnapshot>(
       //     builder: (context, AsyncSnapshot<DocumentSnapshot> snapshot) {
       //       return Text("Time picker",
@@ -39,22 +45,14 @@ class DataView extends GetView<AgendamentosController> {
       //         .doc("mcHnTMVfUWADyf3vOOF5")
       //         .get()),
 
-      setMonth(
-        tapBack: () {},
-        month: "Abril",
-        tapForWard: () {},
-      ),
-      SizedBox(
-        height: 20,
-      ),
-      Text(
-        "Clique em um dia para prosseguir",
-        style: TextStyle(fontSize: titleFontSize, color: cardGray),
-      ),
-      SizedBox(
-        height: 5,
-      ),
-      DataSelect()
+      // Text(
+      //   "Clique em um dia para prosseguir",
+      //   style: TextStyle(fontSize: titleFontSize, color: cardGray),
+      // ),
+      // SizedBox(
+      //   height: 5,
+      // ),
+      DatePicker(months: months, crossAxisCount: 7)
     ];
     return ScheduleDesign(
       onPressed: () {

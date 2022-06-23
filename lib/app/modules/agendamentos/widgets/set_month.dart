@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:hospital_maraba/app/utils/color_theme.dart';
 import 'package:hospital_maraba/app/utils/common.sizes.dart';
 
-class setMonth extends GetResponsiveWidget {
+class setMonth extends GetView {
   final String month;
   final Function()? tapBack;
   final Function()? tapForWard;
@@ -29,7 +29,7 @@ class setMonth extends GetResponsiveWidget {
 //.......seta pra voltar
 
           InkWell(
-            onTap: tapForWard,
+            onTap: tapBack,
             child: Container(
               // height: 40,
               width: 30,
