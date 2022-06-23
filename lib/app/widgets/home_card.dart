@@ -24,7 +24,6 @@ class CardHome extends GetView {
           child: Container(
             width: Get.width,
             alignment: Alignment.center,
-            height: 100,
             margin: EdgeInsets.symmetric(vertical: 5),
             padding: EdgeInsets.all(5),
             decoration: BoxDecoration(

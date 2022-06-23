@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:hospital_maraba/app/data/database.dart';
 import 'package:hospital_maraba/app/models/agendamento.dart';
 import 'package:hospital_maraba/app/models/especialidade.dart';
+import 'package:hospital_maraba/app/models/hour.dart';
 import 'package:hospital_maraba/app/models/local.dart';
 import 'package:hospital_maraba/app/widgets/radio_box.dart';
 
@@ -18,10 +19,11 @@ class AgendamentosController extends GetxController {
   List<Especialidade> especialidades = [];
   RadioBox? selectedEspecialidade;
   RadioBox? selectedLocal;
+  RadioBox? selectedHourBox;
 
-  final RxnString selectedMonth = RxnString();
-  final RxnString selectedDay = RxnString();
-  final RxnString selectedHour = RxnString();
+  final Rxn<Month> selectedMonth = Rxn<Month>();
+  final Rxn<Day> selectedDay = Rxn<Day>();
+  final Rxn<Hour> selectedHour = Rxn<Hour>();
 
   @override
   void onInit() {
@@ -45,7 +47,16 @@ class AgendamentosController extends GetxController {
       especialidade: databaseService.especialidadesCollectionRef
           .doc(selectedEspecialidade?.selectedItem?.id as String),
       agendadoEm: DateTime.now(),
-      agendadoPara: DateTime.now(), // TODO: Specify datetime,
+      agendadoPara: DateTime(
+          DateTime.now().year,
+          this.selectedMonth.value!.monthValue,
+          int.parse(this.selectedDay.value!.dayName),
+          int.parse(this.selectedHourBox!.selectedItem!.title.split(":")[0]),
+          int.parse(this
+              .selectedHourBox!
+              .selectedItem!
+              .title
+              .split(":")[1])), // TODO: Specify datetime,
       agendadoPor: databaseService.userDataCollectionRef
           .doc(FirebaseAuth.instance.currentUser?.uid),
       estadoAgendamento: EstagioDoAgendamento.marcado,

@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hospital_maraba/app/models/data.dart';
+import 'package:hospital_maraba/app/models/day.dart';
 import 'package:hospital_maraba/app/models/month.dart';
 import 'package:hospital_maraba/app/modules/agendamentos/controllers/agendamentos_controller.dart';
 import 'package:hospital_maraba/app/modules/agendamentos/widgets/set_month.dart';
@@ -10,7 +10,7 @@ Rxn<Color> _selectedButtonColor = Rxn<Color>();
 Rxn<Color> _selectedButtonTextColor = Rxn<Color>();
 final RxInt _monthIndex = RxInt(0);
 
-AgendamentosController _controller = Get.put(AgendamentosController());
+AgendamentosController _controller = Get.find<AgendamentosController>();
 
 disableSelectedButton() {
   _selectedButtonColor.value = Get.theme.highlightColor;
@@ -18,7 +18,7 @@ disableSelectedButton() {
 }
 
 class DateButton extends GetView {
-  final String day;
+  final Day day;
   final Rxn<Color> color = Rxn<Color>(Get.theme.highlightColor);
   final Rxn<Color> textColor = Rxn<Color>(Get.theme.disabledColor);
   bool isSelected = false;
@@ -43,7 +43,7 @@ class DateButton extends GetView {
             height: 60,
             color: color.value,
             child: Text(
-              day,
+              day.dayName,
               style: TextStyle(color: textColor.value),
             ),
           )),
@@ -87,9 +87,9 @@ class DatePicker extends GetView {
                           child: DateButton(
                             onPressed: () {
                               _controller.selectedMonth.value =
-                                  months[_monthIndex.value].monthName;
+                                  months[_monthIndex.value];
                             },
-                            day: months[_monthIndex.value].days[index].dayName,
+                            day: months[_monthIndex.value].days[index],
                           ),
                         )),
               ),

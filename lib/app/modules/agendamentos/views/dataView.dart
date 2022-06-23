@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hospital_maraba/app/models/data.dart';
+
 import 'package:hospital_maraba/app/models/day.dart';
+import 'package:hospital_maraba/app/models/hour.dart';
 import 'package:hospital_maraba/app/models/month.dart';
 import 'package:hospital_maraba/app/modules/agendamentos/controllers/agendamentos_controller.dart';
+import 'package:hospital_maraba/app/modules/agendamentos/views/horaView.dart';
 import 'package:hospital_maraba/app/modules/agendamentos/widgets/data_select.dart';
 import 'package:hospital_maraba/app/modules/agendamentos/widgets/set_month.dart';
 import 'package:hospital_maraba/app/modules/scheduleDesign.dart';
@@ -17,15 +19,30 @@ class DataView extends GetView<AgendamentosController> {
   final controller = Get.put(AgendamentosController());
 
   List<Month> months = [
-    Month(
-        monthName: "Janeiro",
-        days: [Day(dayName: "01", hours: []), Day(dayName: "02", hours: [])]),
-    Month(
-        monthName: "Fevereiro",
-        days: [Day(dayName: "04", hours: []), Day(dayName: "05", hours: [])]),
-    Month(
-        monthName: "Junho",
-        days: [Day(dayName: "07", hours: []), Day(dayName: "08", hours: [])])
+    Month(monthValue: 01, monthName: "Janeiro", days: [
+      Day(
+          dayName: "01",
+          hours: [Hour(hour: 9), Hour(hour: 10), Hour(hour: 11)]),
+      Day(
+          dayName: "02",
+          hours: [Hour(hour: 12), Hour(hour: 13), Hour(hour: 14)])
+    ]),
+    Month(monthValue: 2, monthName: "Fevereiro", days: [
+      Day(
+          dayName: "04",
+          hours: [Hour(hour: 12), Hour(hour: 13), Hour(hour: 14)]),
+      Day(
+          dayName: "05",
+          hours: [Hour(hour: 15), Hour(hour: 16), Hour(hour: 17)])
+    ]),
+    Month(monthValue: 6, monthName: "Junho", days: [
+      Day(
+          dayName: "07",
+          hours: [Hour(hour: 12), Hour(hour: 13), Hour(hour: 14)]),
+      Day(
+          dayName: "08",
+          hours: [Hour(hour: 18), Hour(hour: 19), Hour(hour: 20)])
+    ])
   ];
 
   @override
@@ -56,19 +73,24 @@ class DataView extends GetView<AgendamentosController> {
     ];
     return ScheduleDesign(
       onPressed: () {
-        controller.createAgendamento().then((value) => Get.defaultDialog(
-              titleStyle: TextStyle(color: Colors.black54),
-              middleTextStyle: TextStyle(color: Colors.black54),
-              barrierDismissible: false,
-              buttonColor: Get.theme.backgroundColor,
-              onConfirm: () {
-                // Get.offAll(() => HoraView());
-              },
-              backgroundColor: backGround,
-              title: "Concluído",
-              middleText: "Agendamento realizado com sucesso",
-              confirmTextColor: Colors.black54,
-            ));
+        // controller.createAgendamento().then((value) => Get.defaultDialog(
+        //       titleStyle: TextStyle(color: Colors.black54),
+        //       middleTextStyle: TextStyle(color: Colors.black54),
+        //       barrierDismissible: false,
+        //       buttonColor: Get.theme.backgroundColor,
+        //       onConfirm: () {
+        //         // Get.offAll(() => HoraView());
+        //       },
+        //       backgroundColor: backGround,
+        //       title: "Concluído",
+        //       middleText: "Agendamento realizado com sucesso",
+        //       confirmTextColor: Colors.black54,
+        //     ));
+
+        if (controller.selectedMonth.value != null &&
+            controller.selectedDay.value != null) {
+          Get.to(() => HoraView());
+        }
       },
       actionText: "Prosseguir",
       body: itemList,

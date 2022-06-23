@@ -54,7 +54,7 @@ class MinhasConsultasView extends GetView {
 
                         var listaDeAgendamentos = snapshot.data!
                             .map((e) => CardHome(
-                                text: e.especialidade.toString(),
+                                text: (e.especialidade.toString()),
                                 description: "Local: ${e.local.toString()}",
                                 icon: Icon(Icons.medical_services),
                                 onTap: () {}))
