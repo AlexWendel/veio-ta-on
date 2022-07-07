@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
 import 'package:hospital_maraba/app/models/agendamento.dart';
+import 'package:hospital_maraba/app/models/datas_disponiveis.dart';
 import 'package:hospital_maraba/app/models/especialidade.dart';
 import 'package:hospital_maraba/app/models/local.dart';
 import 'package:hospital_maraba/app/models/user.dart';
@@ -10,6 +11,7 @@ const agendamentosCollection = "agendamento";
 const locaisCollection = "local";
 const especialidadesCollection = "especialidades";
 const horariosCollection = "horarios_agendamentos";
+const datasCollection = "datas_agendamentos";
 
 class DatabaseService extends GetxService {
   final CollectionReference userDataCollectionRef =
@@ -66,6 +68,19 @@ class DatabaseService extends GetxService {
 
   final CollectionReference datasAgendamentosCollectionRef =
       FirebaseFirestore.instance.collection(horariosCollection);
+
+  final CollectionReference datas_disponiveisRef =
+      FirebaseFirestore.instance.collection(datasCollection);
+
+  final CollectionReference<Data_disponivel> datas_disponiveisConverter =
+      FirebaseFirestore.instance.collection(datasCollection).withConverter(
+          fromFirestore: (snapshot, _) {
+            Map<String, dynamic> data = snapshot.data()!;
+            data.putIfAbsent("id", () => snapshot.id);
+            return Data_disponivel.fromJson(data);
+          },
+          toFirestore: (Data_disponivel data_disponivel, _) =>
+              data_disponivel.toJson());
 
   Future<UserLocal> getUserFromFirestore(String? uid) async {
     return userConverter.doc(uid).get().then((snapshot) {
@@ -152,5 +167,14 @@ class DatabaseService extends GetxService {
   Future<void> cancelAgendamento(String agendamentoID) async {
     // TODO: Checar se o agendamento realmente existe antes de tentar deletar. Throw erro se não existir.
     return agendamentosCollectionRef.doc(agendamentoID).delete();
+  }
+
+  Future<List<Data_disponivel>> getDatesByMonth(
+      String month, String year) async {
+    return datas_disponiveisConverter
+        .where("disponivel", isEqualTo: true)
+        .where("agendadoPara", isEqualTo: year + "-" + month)
+        .get()
+        .then((value) => value.docs.map((e) => e.data()).toList());
   }
 }
