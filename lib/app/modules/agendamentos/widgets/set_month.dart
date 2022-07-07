@@ -3,8 +3,23 @@ import 'package:get/get.dart';
 import 'package:hospital_maraba/app/utils/color_theme.dart';
 import 'package:hospital_maraba/app/utils/common.sizes.dart';
 
+Map<int, String> _months = {
+  1: "Janeiro",
+  2: "Fevereiro",
+  3: "Março",
+  4: "Abril",
+  5: "Maio",
+  6: "Junho",
+  7: "Julho",
+  8: "Agosto",
+  9: "Setembro",
+  10: "Outubro",
+  11: "Novembro",
+  12: "Dezembro"
+};
+
 class setMonth extends GetView {
-  final String month;
+  final int month;
   final Function()? tapBack;
   final Function()? tapForWard;
 
@@ -59,7 +74,7 @@ class setMonth extends GetView {
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 10),
             child: Text(
-              month,
+              _months[month]!,
               style: TextStyle(
                   color: Get.theme.hintColor.withOpacity(0.6),
                   fontSize: titleFontSize),

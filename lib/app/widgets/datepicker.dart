@@ -5,6 +5,7 @@ import 'package:hospital_maraba/app/models/day.dart';
 import 'package:hospital_maraba/app/models/month.dart';
 import 'package:hospital_maraba/app/modules/agendamentos/controllers/agendamentos_controller.dart';
 import 'package:hospital_maraba/app/modules/agendamentos/widgets/set_month.dart';
+import 'package:jiffy/jiffy.dart';
 
 Rxn<Color> _selectedButtonColor = Rxn<Color>();
 Rxn<Color> _selectedButtonTextColor = Rxn<Color>();
@@ -54,6 +55,8 @@ class DateButton extends GetView {
 class DatePicker extends GetView {
   List<Month> months;
   final crossAxisCount;
+  Rxn<DateTime> date = Rxn(DateTime.now());
+  final DateTime startDate = DateTime.now();
 
   DatePicker({
     required this.months,
@@ -64,15 +67,15 @@ class DatePicker extends GetView {
     return Obx(() => Column(
           children: [
             setMonth(
-                month: months[_monthIndex.value].monthName,
+                month: date.value!.month,
                 tapBack: () {
-                  if (_monthIndex.value > 0) {
-                    _monthIndex.value -= 1;
+                  if (date.value!.month > startDate.month) {
+                    date.value = Jiffy(date.value).add(months: -1).dateTime;
                   }
                 },
                 tapForWard: () {
-                  if (_monthIndex.value < months.length - 1) {
-                    _monthIndex.value += 1;
+                  if (date.value!.month < 12) {
+                    date.value = Jiffy(date.value).add(months: 1).dateTime;
                   }
                 }),
             Container(

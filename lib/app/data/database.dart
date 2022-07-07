@@ -4,6 +4,7 @@ import 'package:hospital_maraba/app/models/agendamento.dart';
 import 'package:hospital_maraba/app/models/datas_disponiveis.dart';
 import 'package:hospital_maraba/app/models/especialidade.dart';
 import 'package:hospital_maraba/app/models/local.dart';
+import 'package:hospital_maraba/app/models/month.dart';
 import 'package:hospital_maraba/app/models/user.dart';
 
 const userCollection = "userDataStorage";
@@ -169,11 +170,23 @@ class DatabaseService extends GetxService {
     return agendamentosCollectionRef.doc(agendamentoID).delete();
   }
 
-  Future<List<Data_disponivel>> getDatesByMonth(
-      String month, String year) async {
+  Future<List<Data_disponivel>> getDates() async {
     return datas_disponiveisConverter
         .where("disponivel", isEqualTo: true)
-        .where("agendadoPara", isEqualTo: year + "-" + month)
+        .where("agendadoPara", isGreaterThanOrEqualTo: DateTime.now())
+        .where("agendado")
+        .orderBy('agendadoPara')
+        .get()
+        .then((value) => value.docs.map((e) => e.data()).toList());
+  }
+
+  Future<List<Data_disponivel>> getDatesByMonth(
+      String year, String month) async {
+    return datas_disponiveisConverter
+        .where("disponivel", isEqualTo: true)
+        .where("agendadoPara", isEqualTo: year + '-' + month)
+        .where("agendado")
+        .orderBy('agendadoPara')
         .get()
         .then((value) => value.docs.map((e) => e.data()).toList());
   }
