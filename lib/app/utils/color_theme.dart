@@ -21,6 +21,7 @@ ThemeData mainTheme =
             scaffoldBackgroundColor: verdeBosta,
             highlightColor: textFieldGray,
             canvasColor: Colors.white,
+            primaryColorDark: Color(0xff002B16),
             secondaryHeaderColor: Color(0xff545454),
             hoverColor: Color(0xffD4D4D4),
             primaryTextTheme: TextTheme(

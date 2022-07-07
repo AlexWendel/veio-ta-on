@@ -110,52 +110,6 @@ class LocalSet extends GetView<HomeController> {
                       }
                       return children;
                     }),
-                // CardLocal(
-                //     img: 'assets/images/hospital.png',
-                //     text: "Hospital Regional De Marabá"),
-
-                // SizedBox(
-                //   height: 45,
-                // ),
-                // Row(
-                //   crossAxisAlignment: CrossAxisAlignment.center,
-                //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //   children: [
-                //     CardLocal(
-                //         img: 'assets/images/hospital.png',
-                //         text: "Hospital municipal de Marabá"),
-                //     CardLocal(
-                //         img: 'assets/images/hospital.png',
-                //         text: "Hospital Regional De Marabá"),
-                //     CardLocal(
-                //         img: 'assets/images/hospital.png',
-                //         text: "Hospital Materno Infantil De Marabá - HMI"),
-                //     CardLocal(
-                //         img: 'assets/images/hospital.png',
-                //         text: "Hospital de Guarnição de Marabá"),
-                //   ],
-                // ),
-                // SizedBox(
-                //   height: 45,
-                // ),
-                // Row(
-                //   crossAxisAlignment: CrossAxisAlignment.center,
-                //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //   children: [
-                //     CardLocal(
-                //         img: 'assets/images/hospital.png',
-                //         text: "Hospital municipal de Marabá"),
-                //     CardLocal(
-                //         img: 'assets/images/hospital.png',
-                //         text: "Hospital Regional De Marabá"),
-                //     CardLocal(
-                //         img: 'assets/images/hospital.png',
-                //         text: "Hospital Materno Infantil De Marabá - HMI"),
-                //     CardLocal(
-                //         img: 'assets/images/hospital.png',
-                //         text: "Hospital de Guarnição de Marabá"),
-                //   ],
-                // ),
               ]),
             ),
           ],

@@ -18,38 +18,27 @@ class AppBarWidget extends GetResponsiveWidget {
       title: Row(
         children: [
           SizedBox(
-            width: 60,
-          ),
+              // width: 60,
+              ),
           Image.asset(
             'assets/images/realLogo.png',
             height: 50,
           ),
           Container(
-              child: Text('Central de Atendimento',
+              child: Text('  Saúde Marabá',
                   style: TextStyle(
                       color: Get.theme.primaryColor, fontSize: titleFontSize)))
         ],
       ),
       actions: <Widget>[
         Padding(
-          padding: const EdgeInsets.only(right: 50),
-          child: IconButton(
-            icon: Icon(Icons.person),
-            tooltip: 'Perfil',
-            onPressed: () {},
-            iconSize: 50,
-            color: Get.theme.primaryColor,
-            highlightColor: Colors.transparent,
-            splashColor: Colors.transparent,
-            focusColor: Colors.transparent,
-            hoverColor: Colors.transparent,
-          ),
-        ), //IconButton
-      ], //<Widget
-      // title: Row(
-      //   mainAxisAlignment: MainAxisAlignment.center,
-      //   children: [],
-      // ),
+            padding: const EdgeInsets.only(right: 50, top: 5),
+            child: Text(
+              "16:50",
+              style: TextStyle(
+                  color: Get.theme.primaryColorDark, fontSize: titleFontSize),
+            )),
+      ],
     );
   }
 }

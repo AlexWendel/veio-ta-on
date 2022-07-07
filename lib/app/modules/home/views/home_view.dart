@@ -34,6 +34,7 @@ class HomeView extends GetView<HomeController> {
         child: AppBarWidget(),
       ),
       body: Container(
+        color: Get.theme.primaryColor,
         padding: EdgeInsets.symmetric(horizontal: 60),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -41,141 +42,195 @@ class HomeView extends GetView<HomeController> {
             SizedBox(
               height: 20,
             ),
-            HeaderWidget(localID: localID),
-            Divider(
-              height: 10,
-              thickness: 0.1,
-              color: Get.theme.secondaryHeaderColor,
-            ),
-            SizedBox(height: 15),
-            SeachWidget(
-                text:
-                    "Digite o nome ou número do cartão de SUS de um paciente"),
-            SizedBox(height: 20),
-            Text(
-              "Próximos atendimentos",
-              style: TextStyle(
-                fontSize: defaultFontSize,
-                color:
-                    // Color(0xff545454
-                    Get.theme.primaryColor,
-              ),
-            ),
-            SizedBox(
-              height: 20,
-            ),
             Expanded(
               flex: 2,
               child: ListView(children: [
+                Text(
+                  "Atendimento postinho Hiroshi Matsuda",
+                  style: TextStyle(
+                    fontSize: titleFontSize,
+                    color: Get.theme.canvasColor,
+                  ),
+                ),
+                SizedBox(height: 40),
                 Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    FutureBuilder(
-                        future: agendamentos,
-                        builder: (BuildContext context,
-                            AsyncSnapshot<List<Agendamento>> snapshot) {
-                          Widget children = Container();
-                          if (snapshot.hasData) {
-                            // children = Wrap(
-                            //   children: [
-                            //     for (var item in snapshot.data!)
-                            //       CardPaciente(
-                            //           img: 'assets/images/hospital.png',
-                            //           text: item.nome,
-                            //           localID: item.id,
-                            //           ),
-                            //   ],
-                            // );
-                            for (var item in snapshot.data!) {
-                              print(item.agendadoPor.path);
-                              var cu = FutureBuilder(
-                                future: Get.find<DatabaseService>()
-                                    .userReference(item.paciente.path),
-                                builder: (BuildContext context,
-                                    AsyncSnapshot<UserLocal> snapshot) {
-                                  print('cu');
-                                  if (snapshot.hasData) {
-                                    // print(snapshot.data!.nome);
-                                  }
-                                  return Container();
-                                },
-                              );
-                            }
-                          } else if (snapshot.hasError) {
-                            children = Row(children: [
-                              const Icon(
-                                Icons.error_outline,
-                                color: Colors.red,
-                                size: 60,
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(top: 16),
-                                child: Text('Error: ${snapshot.error}'),
-                              )
-                            ]);
-                          } else {
-                            children = Row(children: [
-                              SizedBox(
-                                width: 60,
-                                height: 60,
-                                child: CircularProgressIndicator(
-                                  color: Get.theme.primaryColor,
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.only(top: 16),
-                                child: Text('Carregando dados...'),
-                              )
-                            ]);
-                          }
-                          return children;
-                        }),
-                    // CardPaciente(),
-                    // CardPaciente(),
-                    // CardPaciente(),
-                    // CardPaciente(),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Paciente:",
+                          style: TextStyle(
+                              fontSize: defaultFontSize,
+                              color: Get.theme.primaryColorDark,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        SizedBox(height: 10),
+                        Container(
+                          width: 500,
+                          child: Text(
+                            "João rocha Almeida",
+                            style: TextStyle(
+                              fontSize: mediumIconSize,
+                              color: Get.theme.canvasColor,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 20),
+                    VerticalDivider(
+                      width: 70,
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Local:",
+                          style: TextStyle(
+                              fontSize: defaultFontSize,
+                              color: Get.theme.primaryColorDark,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        SizedBox(height: 10),
+                        Container(
+                          width: 500,
+                          child: Text(
+                            "Infectologista - sala 02",
+                            style: TextStyle(
+                              fontSize: mediumIconSize,
+                              color: Get.theme.canvasColor,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    VerticalDivider(
+                      width: 70,
+                    ),
+                    SizedBox(height: 20),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Hora:",
+                          style: TextStyle(
+                              fontSize: defaultFontSize,
+                              color: Get.theme.primaryColorDark,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        SizedBox(height: 10),
+                        Text(
+                          "17:00",
+                          style: TextStyle(
+                            fontSize: mediumIconSize,
+                            color: Get.theme.canvasColor,
+                          ),
+                        ),
+                      ],
+                    ),
                   ],
                 ),
-                // SizedBox(
-                //   height: 60,
-                // ),
-                // Row(
-                //   crossAxisAlignment: CrossAxisAlignment.center,
-                //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //   children: [
-                //     CardPaciente(),
-                //     CardPaciente(),
-                //     CardPaciente(),
-                //     CardPaciente(),
-                //   ],
-                // ),
-                // SizedBox(
-                //   height: 60,
-                // ),
-                // Row(
-                //   crossAxisAlignment: CrossAxisAlignment.center,
-                //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //   children: [
-                //     CardPaciente(),
-                //     CardPaciente(),
-                //     CardPaciente(),
-                //     CardPaciente(),
-                //   ],
-                // ),
-                // SizedBox(
-                //   height: 60,
-                // ),
-                // Row(
-                //   crossAxisAlignment: CrossAxisAlignment.center,
-                //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //   children: [
-                //     CardPaciente(),
-                //     CardPaciente(),
-                //     CardPaciente(),
-                //     CardPaciente(),
-                //   ],
-                // ),
+                SizedBox(height: 30),
+                Container(
+                  color: Get.theme.primaryColorDark,
+                  height: 1,
+                  width: 300,
+                  margin: EdgeInsets.symmetric(horizontal: 200),
+                ),
+                SizedBox(height: 30),
+                Text(
+                  "Atendimento postinho Hiroshi Matsuda",
+                  style: TextStyle(
+                    fontSize: titleFontSize,
+                    color: Get.theme.canvasColor,
+                  ),
+                ),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(height: 30),
+                        Text(
+                          "Alex Wndell",
+                          style: TextStyle(
+                              fontSize: defaultFontSize,
+                              color: Get.theme.canvasColor,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        SizedBox(height: 10),
+                        Container(
+                          width: 500,
+                          child: Text(
+                            "16:30",
+                            style: TextStyle(
+                              fontSize: mediumIconSize,
+                              color: Get.theme.canvasColor,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 20),
+                    VerticalDivider(
+                      width: 10,
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(height: 30),
+                        Text(
+                          "Fabricio Neves",
+                          style: TextStyle(
+                              fontSize: defaultFontSize,
+                              color: Get.theme.canvasColor,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        SizedBox(height: 10),
+                        Container(
+                          width: 500,
+                          child: Text(
+                            "15:30",
+                            style: TextStyle(
+                              fontSize: mediumIconSize,
+                              color: Get.theme.canvasColor,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    VerticalDivider(
+                      width: 10,
+                    ),
+                    SizedBox(height: 20),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(height: 30),
+                        Text(
+                          "João Marcos de Solza",
+                          style: TextStyle(
+                              fontSize: defaultFontSize,
+                              color: Get.theme.canvasColor,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        SizedBox(height: 10),
+                        Text(
+                          "14:20",
+                          style: TextStyle(
+                            fontSize: mediumIconSize,
+                            color: Get.theme.canvasColor,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ]),
             ),
           ],
