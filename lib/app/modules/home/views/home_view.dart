@@ -4,18 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hospital_maraba/app/data/database.dart';
 import 'package:hospital_maraba/app/models/agendamento.dart';
-import 'package:hospital_maraba/app/models/user.dart';
 import 'package:hospital_maraba/app/modules/home/controllers/home_controller.dart';
+import 'package:hospital_maraba/app/modules/home/views/agendamentoView.dart';
 import 'package:hospital_maraba/app/modules/home/widgets/appBarWidget.dart';
 import 'package:hospital_maraba/app/modules/home/widgets/cardPaciente.dart';
 import 'package:hospital_maraba/app/modules/home/widgets/headerWidget.dart';
 import 'package:hospital_maraba/app/modules/home/widgets/seachWidget.dart';
-import 'package:hospital_maraba/app/modules/settings/views/settings_view.dart';
 import 'package:hospital_maraba/app/utils/common.sizes.dart';
-import 'package:hospital_maraba/app/modules/MainDesign.dart';
-import 'package:hospital_maraba/app/widgets/CardHome.dart';
-
-import '../../agendamentos/views/agendamentos_view.dart';
 
 class HomeView extends GetView<HomeController> {
   final String localID;
@@ -67,115 +62,72 @@ class HomeView extends GetView<HomeController> {
             Expanded(
               flex: 2,
               child: ListView(children: [
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    FutureBuilder(
-                        future: agendamentos,
-                        builder: (BuildContext context,
-                            AsyncSnapshot<List<Agendamento>> snapshot) {
-                          Widget children = Container();
-                          if (snapshot.hasData) {
-                            // children = Wrap(
-                            //   children: [
-                            //     for (var item in snapshot.data!)
-                            //       CardPaciente(
-                            //           img: 'assets/images/hospital.png',
-                            //           text: item.nome,
-                            //           localID: item.id,
-                            //           ),
-                            //   ],
-                            // );
-                            for (var item in snapshot.data!) {
-                              print(item.agendadoPor.path);
-                              var cu = FutureBuilder(
-                                future: Get.find<DatabaseService>()
-                                    .userReference(item.paciente.path),
-                                builder: (BuildContext context,
-                                    AsyncSnapshot<UserLocal> snapshot) {
-                                  print('cu');
-                                  if (snapshot.hasData) {
-                                    // print(snapshot.data!.nome);
-                                  }
-                                  return Container();
+                FutureBuilder(
+                    future: agendamentos,
+                    builder: (BuildContext context,
+                        AsyncSnapshot<List<Agendamento>> snapshot) {
+                      Widget children = Container();
+                      if (snapshot.hasData) {
+                        children = Wrap(
+                          spacing: 10.0,
+                          runSpacing: 20.0,
+                          children: [
+                            for (var agendamento in snapshot.data!)
+                              InkWell(
+                                onTap: () {
+                                  Get.to(() => AgendamentoView(
+                                      agendamento: agendamento));
                                 },
-                              );
-                            }
-                          } else if (snapshot.hasError) {
-                            children = Row(children: [
-                              const Icon(
-                                Icons.error_outline,
-                                color: Colors.red,
-                                size: 60,
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(top: 16),
-                                child: Text('Error: ${snapshot.error}'),
-                              )
-                            ]);
-                          } else {
-                            children = Row(children: [
-                              SizedBox(
-                                width: 60,
-                                height: 60,
-                                child: CircularProgressIndicator(
-                                  color: Get.theme.primaryColor,
+                                child: CardPaciente(
+                                  agendamento: agendamento,
                                 ),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.only(top: 16),
-                                child: Text('Carregando dados...'),
                               )
-                            ]);
-                          }
-                          return children;
-                        }),
-                    // CardPaciente(),
-                    // CardPaciente(),
-                    // CardPaciente(),
-                    // CardPaciente(),
-                  ],
-                ),
-                // SizedBox(
-                //   height: 60,
-                // ),
-                // Row(
-                //   crossAxisAlignment: CrossAxisAlignment.center,
-                //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //   children: [
-                //     CardPaciente(),
-                //     CardPaciente(),
-                //     CardPaciente(),
-                //     CardPaciente(),
-                //   ],
-                // ),
-                // SizedBox(
-                //   height: 60,
-                // ),
-                // Row(
-                //   crossAxisAlignment: CrossAxisAlignment.center,
-                //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //   children: [
-                //     CardPaciente(),
-                //     CardPaciente(),
-                //     CardPaciente(),
-                //     CardPaciente(),
-                //   ],
-                // ),
-                // SizedBox(
-                //   height: 60,
-                // ),
-                // Row(
-                //   crossAxisAlignment: CrossAxisAlignment.center,
-                //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //   children: [
-                //     CardPaciente(),
-                //     CardPaciente(),
-                //     CardPaciente(),
-                //     CardPaciente(),
-                //   ],
-                // ),
+                          ],
+                        );
+                        // for (var item in snapshot.data!) {
+                        //   print(item.agendadoPor.path);
+                        //   var cu = FutureBuilder(
+                        //     future: Get.find<DatabaseService>()
+                        //         .userReference(item.paciente.path),
+                        //     builder: (BuildContext context,
+                        //         AsyncSnapshot<UserLocal> snapshot) {
+                        //       print('cu');
+                        //       if (snapshot.hasData) {
+                        //         // print(snapshot.data!.nome);
+                        //       }
+                        //       return Container();
+                        //     },
+                        //   );
+                        // }
+                      } else if (snapshot.hasError) {
+                        children = Row(children: [
+                          const Icon(
+                            Icons.error_outline,
+                            color: Colors.red,
+                            size: 60,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 16),
+                            child: Text('Error: ${snapshot.error}'),
+                          )
+                        ]);
+                      } else {
+                        children = Row(children: [
+                          SizedBox(
+                            width: 60,
+                            height: 60,
+                            child: CircularProgressIndicator(
+                              color: Get.theme.primaryColor,
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(top: 16),
+                            child: Text('Carregando dados...'),
+                          )
+                        ]);
+                      }
+                      return children;
+                    }),
               ]),
             ),
           ],
