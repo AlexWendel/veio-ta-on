@@ -1,37 +1,41 @@
-import 'dart:convert';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:hospital_maraba/app/models/usuario.dart';
 
 import 'local.dart';
 
-class Data_disponivel {
+class DataDisponivel {
   String? id;
-  Local local;
-  Usuario adicionadoPor;
+  DocumentReference local;
+  DocumentReference adicionadoPor;
   DateTime agendadoPara;
   bool disponivel;
 
-  Data_disponivel(
+  DataDisponivel(
       {this.id,
       required this.local,
       required this.adicionadoPor,
       required this.agendadoPara,
       required this.disponivel});
 
-  factory Data_disponivel.fromJson(Map<String, dynamic> json) =>
-      Data_disponivel(
-          id: json['id'],
-          local: json['local'],
-          adicionadoPor: json['adicionadoPor'],
-          agendadoPara: (json['agendadoPara'] as Timestamp).toDate(),
-          disponivel: json['disponivel']);
+  factory DataDisponivel.fromJson(Map<String, dynamic> json) {
+    print("fromJson");
+    DataDisponivel dd = DataDisponivel(
+        id: json['id'] ?? "",
+        local: json["local"],
+        adicionadoPor: json["adicionadoPor"],
+        agendadoPara: (json["agendadoPara"] as Timestamp).toDate(),
+        disponivel: json["disponivel"]);
+    print(dd.disponivel);
+    return dd;
+  }
 
-  Map<String, dynamic> toJson() => {
-        "id": id,
-        "local": local,
-        "adicionadoPor": adicionadoPor,
-        "agendadoPara": agendadoPara,
-        "disponivel": disponivel
-      };
+  Map<String, dynamic> toJson() {
+    return {
+      "id": id,
+      "local": local,
+      "adicionadoPor": adicionadoPor,
+      "agendadoPara": agendadoPara,
+      "disponivel": disponivel
+    };
+  }
 }

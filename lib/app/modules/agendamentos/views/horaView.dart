@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hospital_maraba/app/models/datas_disponiveis.dart';
 
 import 'package:hospital_maraba/app/models/day.dart';
 import 'package:hospital_maraba/app/models/month.dart';
@@ -21,18 +22,6 @@ class HoraView extends GetView<AgendamentosController> {
 
   @override
   Widget build(BuildContext context) {
-    List<RadioItem> radioList = [];
-    for (int i = 0; i < controller.selectedDay.value!.hours.length; i++) {
-      radioList.add(RadioItem(
-          id: i.toString(),
-          title: controller.selectedDay.value!.hours[i].hour.toString() +
-              ":" +
-              controller.selectedDay.value!.hours[i].minute.toString(),
-          description: "Selecione o Horario"));
-    }
-
-    controller.selectedHourBox =
-        RadioBox(icon: Icon(Icons.watch_later_outlined), items: radioList);
     // List<RadioItem> cards =
     List<Widget> itemList = [
       // FutureBuilder<DocumentSnapshot>(
@@ -56,7 +45,37 @@ class HoraView extends GetView<AgendamentosController> {
       // SizedBox(
       //   height: 5,
       // ),
-      controller.selectedHourBox as Widget
+      FutureBuilder(
+          future: controller.getDatesByDay(controller.currentDate.value!),
+          builder: ((context, AsyncSnapshot<List<DataDisponivel>> snapshot) {
+            switch (snapshot.connectionState) {
+              case ConnectionState.waiting:
+                return Center(child: CircularProgressIndicator());
+              case ConnectionState.done:
+                if (snapshot.data!.isEmpty) {
+                  return Center(
+                    child: Text(
+                      "Sem itens",
+                      style: TextStyle(color: Colors.black),
+                    ),
+                  );
+                }
+                List<RadioItem> horas = snapshot.data!
+                    .map((e) => RadioItem(
+                        id: e.id ?? "",
+                        title:
+                            "${e.agendadoPara.hour}:${e.agendadoPara.minute}",
+                        description:
+                            "${e.agendadoPara.day}/${e.agendadoPara.month}/${e.agendadoPara.year}"))
+                    .toList();
+                controller.selectedHourBox = RadioBox(
+                    icon: Icon(Icons.watch_later_outlined), items: horas);
+
+                return controller.selectedHourBox as Widget;
+            }
+
+            return Text('Sem dados');
+          }))
     ];
     return ScheduleDesign(
       onPressed: () {

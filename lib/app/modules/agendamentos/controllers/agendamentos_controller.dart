@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:hospital_maraba/app/data/database.dart';
 import 'package:hospital_maraba/app/models/agendamento.dart';
+import 'package:hospital_maraba/app/models/datas_disponiveis.dart';
 import 'package:hospital_maraba/app/models/especialidade.dart';
 import 'package:hospital_maraba/app/models/hour.dart';
 import 'package:hospital_maraba/app/models/local.dart';
@@ -21,9 +22,7 @@ class AgendamentosController extends GetxController {
   RadioBox? selectedLocal;
   RadioBox? selectedHourBox;
 
-  final Rxn<Month> selectedMonth = Rxn<Month>();
-  final Rxn<Day> selectedDay = Rxn<Day>();
-  final Rxn<Hour> selectedHour = Rxn<Hour>();
+  Rxn<DateTime> currentDate = Rxn<DateTime>();
 
   @override
   void onInit() {
@@ -39,6 +38,7 @@ class AgendamentosController extends GetxController {
   Future<void> getData() async {}
 
   Future<void> createAgendamento() async {
+    databaseService.trancaData(selectedHourBox!.selectedItem!.id);
     Agendamento newAgendamento = Agendamento(
       paciente: databaseService.userDataCollectionRef
           .doc(FirebaseAuth.instance.currentUser?.uid),
@@ -48,14 +48,11 @@ class AgendamentosController extends GetxController {
           .doc(selectedEspecialidade?.selectedItem?.id as String),
       agendadoEm: DateTime.now(),
       agendadoPara: DateTime(
-          DateTime.now().year,
-          this.selectedMonth.value!.monthValue,
-          int.parse(this.selectedDay.value!.dayName),
-          int.parse(this.selectedHourBox!.selectedItem!.title.split(":")[0]),
-          int.parse(this
-              .selectedHourBox!
-              .selectedItem!
-              .title
+          currentDate.value!.year,
+          currentDate.value!.month,
+          currentDate.value!.day,
+          int.parse(selectedHourBox!.selectedItem!.title.split(":")[0]),
+          int.parse(selectedHourBox!.selectedItem!.title
               .split(":")[1])), // TODO: Specify datetime,
       agendadoPor: databaseService.userDataCollectionRef
           .doc(FirebaseAuth.instance.currentUser?.uid),
@@ -72,5 +69,13 @@ class AgendamentosController extends GetxController {
 
   Future<List<Especialidade>> getAllEspecialidades() async {
     return databaseService.getAllEspecialidades();
+  }
+
+  Future<List<DataDisponivel>> getDatesByMonth(int year, int month) async {
+    return databaseService.getDatesByMonth(year, month);
+  }
+
+  Future<List<DataDisponivel>> getDatesByDay(DateTime date) async {
+    return databaseService.getDatesByDay(date);
   }
 }

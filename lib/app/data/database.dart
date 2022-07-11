@@ -6,6 +6,7 @@ import 'package:hospital_maraba/app/models/especialidade.dart';
 import 'package:hospital_maraba/app/models/local.dart';
 import 'package:hospital_maraba/app/models/month.dart';
 import 'package:hospital_maraba/app/models/user.dart';
+import 'package:jiffy/jiffy.dart';
 
 const userCollection = "userDataStorage";
 const agendamentosCollection = "agendamento";
@@ -73,15 +74,15 @@ class DatabaseService extends GetxService {
   final CollectionReference datas_disponiveisRef =
       FirebaseFirestore.instance.collection(datasCollection);
 
-  final CollectionReference<Data_disponivel> datas_disponiveisConverter =
+  final CollectionReference<DataDisponivel> datasConverter =
       FirebaseFirestore.instance.collection(datasCollection).withConverter(
-          fromFirestore: (snapshot, _) {
-            Map<String, dynamic> data = snapshot.data()!;
-            data.putIfAbsent("id", () => snapshot.id);
-            return Data_disponivel.fromJson(data);
+          fromFirestore: (snapshot, options) {
+            Map<String, dynamic>? data = snapshot.data();
+            // Adicionando ID aos dados que vão para o model;
+            data!.putIfAbsent("id", () => snapshot.id);
+            return DataDisponivel.fromJson(data);
           },
-          toFirestore: (Data_disponivel data_disponivel, _) =>
-              data_disponivel.toJson());
+          toFirestore: (DataDisponivel local, _) => local.toJson());
 
   Future<UserLocal> getUserFromFirestore(String? uid) async {
     return userConverter.doc(uid).get().then((snapshot) {
@@ -170,24 +171,27 @@ class DatabaseService extends GetxService {
     return agendamentosCollectionRef.doc(agendamentoID).delete();
   }
 
-  Future<List<Data_disponivel>> getDates() async {
-    return datas_disponiveisConverter
+  Future<List<DataDisponivel>> getDatesByMonth(int year, int month) async {
+    print("${year}-${month}");
+    return datasConverter
         .where("disponivel", isEqualTo: true)
-        .where("agendadoPara", isGreaterThanOrEqualTo: DateTime.now())
-        .where("agendado")
-        .orderBy('agendadoPara')
+        .where("agendadoPara", isGreaterThanOrEqualTo: DateTime(year, month))
+        .where("agendadoPara",
+            isLessThan: Jiffy(DateTime(year, month)).add(months: 1).dateTime)
         .get()
         .then((value) => value.docs.map((e) => e.data()).toList());
   }
 
-  Future<List<Data_disponivel>> getDatesByMonth(
-      String year, String month) async {
-    return datas_disponiveisConverter
+  Future<List<DataDisponivel>> getDatesByDay(DateTime date) async {
+    return datasConverter
         .where("disponivel", isEqualTo: true)
-        .where("agendadoPara", isEqualTo: year + '-' + month)
-        .where("agendado")
-        .orderBy('agendadoPara')
+        .where("agendadoPara", isGreaterThanOrEqualTo: date)
+        .where("agendadoPara", isLessThan: Jiffy(date).add(days: 1).dateTime)
         .get()
         .then((value) => value.docs.map((e) => e.data()).toList());
+  }
+
+  Future<void> trancaData(String dataId) async {
+    return datas_disponiveisRef.doc(dataId).update({"disponivel": false});
   }
 }

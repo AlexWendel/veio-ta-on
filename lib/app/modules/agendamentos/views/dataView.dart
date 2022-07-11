@@ -69,7 +69,7 @@ class DataView extends GetView<AgendamentosController> {
       // SizedBox(
       //   height: 5,
       // ),
-      DatePicker(months: months, crossAxisCount: 7)
+      DatePicker(crossAxisCount: 7)
     ];
     return ScheduleDesign(
       onPressed: () {
@@ -87,9 +87,10 @@ class DataView extends GetView<AgendamentosController> {
         //       confirmTextColor: Colors.black54,
         //     ));
 
-        if (controller.selectedMonth.value != null &&
-            controller.selectedDay.value != null) {
+        if (controller.currentDate.value != null) {
           Get.to(() => HoraView());
+        } else {
+          print("nulo");
         }
       },
       actionText: "Prosseguir",
