@@ -72,6 +72,9 @@ class HoraView extends GetView<AgendamentosController> {
                     icon: Icon(Icons.watch_later_outlined), items: horas);
 
                 return controller.selectedHourBox as Widget;
+
+              default:
+                break;
             }
 
             return Text('Sem dados');

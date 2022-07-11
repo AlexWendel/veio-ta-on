@@ -1,8 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:get/get.dart';
-import 'package:hospital_maraba/app/models/day.dart';
-import 'package:hospital_maraba/app/models/month.dart';
 import 'package:hospital_maraba/app/modules/agendamentos/controllers/agendamentos_controller.dart';
 import 'package:hospital_maraba/app/modules/agendamentos/widgets/set_month.dart';
 import 'package:jiffy/jiffy.dart';
@@ -11,7 +9,6 @@ import '../models/datas_disponiveis.dart';
 
 Rxn<Color> _selectedButtonColor = Rxn<Color>();
 Rxn<Color> _selectedButtonTextColor = Rxn<Color>();
-final RxInt _monthIndex = RxInt(0);
 
 disableSelectedButton() {
   _selectedButtonColor.value = Get.theme.highlightColor;
@@ -123,6 +120,8 @@ class DatePicker extends GetView {
                                   ),
                                 )),
                       );
+                    default:
+                      break;
                   }
                   return Text('Sem dados');
                 }),
