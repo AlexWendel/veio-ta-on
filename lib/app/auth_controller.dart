@@ -251,7 +251,7 @@ class AuthController extends GetxController {
 
     String queryDocumentReference = await FirebaseFirestore.instance
         .collectionGroup('paciente')
-        .where('cartaoSUS', isEqualTo: form.susNumber)
+        .where('email', isEqualTo: form.susNumber)
         .get()
         .then((QuerySnapshot querySnapshot) {
       print("Query executed. results:" + querySnapshot.size.toString());
