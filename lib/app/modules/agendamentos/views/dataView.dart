@@ -45,6 +45,20 @@ class DataView extends GetView<AgendamentosController> {
     ])
   ];
 
+  // DateTime selectedDate = DateTime.now();
+  Rx<DateTime> selectedDate = Rx<DateTime>(DateTime.now());
+
+  Future<void> _selectDate(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+        context: context,
+        initialDate: selectedDate.value,
+        firstDate: DateTime.now(),
+        lastDate: DateTime(2101));
+    if (picked != null && picked != selectedDate.value) {
+      selectedDate.value = picked;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     List<Widget> itemList = [
@@ -69,7 +83,21 @@ class DataView extends GetView<AgendamentosController> {
       // SizedBox(
       //   height: 5,
       // ),
-      DatePicker(crossAxisCount: 7)
+      // DatePicker(crossAxisCount: 7)
+      Obx(() => Container(
+            width: 100,
+            alignment: Alignment.center,
+            child: Text("${selectedDate.value.toLocal()}".split(' ')[0],
+                style: Get.theme.textTheme.headline5?.copyWith(
+                    color: Get.theme.primaryColor,
+                    fontWeight: FontWeight.w600)),
+          )),
+      SizedBox(
+        height: 20.0,
+      ),
+      ElevatedButton(
+          onPressed: () => {_selectDate(context)},
+          child: Text('Selecionar data'))
     ];
     return ScheduleDesign(
       onPressed: () {
