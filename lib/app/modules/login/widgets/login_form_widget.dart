@@ -19,8 +19,6 @@ class LoginFormWidget extends GetWidget {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final FocusNode passwordFocusNode = FocusNode();
-  final susCardInput = SusCardInputText(
-      icon: Icon(Icons.person_outline_rounded), hintText: "Cartão SUS");
   LoginFormWidget({Key? key}) : super(key: key);
 
   @override
@@ -30,7 +28,22 @@ class LoginFormWidget extends GetWidget {
       child: Column(
         children: <Widget>[
           Wrap(runSpacing: 10, children: [
-            susCardInput,
+            TextFormField(
+              style: TextStyle(color: Colors.black87),
+              decoration: InputDecoration(
+                  fillColor: Colors.white,
+                  filled: true,
+                  focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: BorderSide(color: Get.theme.primaryColor)),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  hintStyle: TextStyle(
+                      fontSize: defaultFontSize / context.textScaleFactor),
+                  hintText: "Email",
+                  prefixIcon: Icon(Icons.email_outlined)),
+            ),
             TextFormField(
               focusNode: passwordFocusNode,
               onChanged: (value) {},
