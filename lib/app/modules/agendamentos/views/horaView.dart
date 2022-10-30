@@ -20,6 +20,19 @@ class HoraView extends GetView<AgendamentosController> {
   @override
   final controller = Get.find<AgendamentosController>();
 
+  Rx<TimeOfDay> selectedHour = Rx<TimeOfDay>(TimeOfDay.now());
+
+  Future<void> _selectHour(BuildContext context) async {
+    final TimeOfDay? picked = await showTimePicker(
+      context: context,
+      initialTime: selectedHour.value,
+    );
+    if (picked != null && picked != selectedHour.value) {
+      selectedHour.value = picked;
+      controller.currentTime.value = picked;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     // List<RadioItem> cards =
@@ -45,44 +58,24 @@ class HoraView extends GetView<AgendamentosController> {
       // SizedBox(
       //   height: 5,
       // ),
-      FutureBuilder(
-          future: controller.getDatesByDay(controller.currentDate.value!),
-          builder: ((context, AsyncSnapshot<List<DataDisponivel>> snapshot) {
-            switch (snapshot.connectionState) {
-              case ConnectionState.waiting:
-                return Center(child: CircularProgressIndicator());
-              case ConnectionState.done:
-                if (snapshot.data!.isEmpty) {
-                  return Center(
-                    child: Text(
-                      "Sem itens",
-                      style: TextStyle(color: Colors.black),
-                    ),
-                  );
-                }
-                List<RadioItem> horas = snapshot.data!
-                    .map((e) => RadioItem(
-                        id: e.id ?? "",
-                        title:
-                            "${e.agendadoPara.hour}:${e.agendadoPara.minute}",
-                        description:
-                            "${e.agendadoPara.day}/${e.agendadoPara.month}/${e.agendadoPara.year}"))
-                    .toList();
-                controller.selectedHourBox = RadioBox(
-                    icon: Icon(Icons.watch_later_outlined), items: horas);
-
-                return controller.selectedHourBox as Widget;
-
-              default:
-                break;
-            }
-
-            return Text('Sem dados');
-          }))
+      Obx(() => Container(
+            width: 100,
+            alignment: Alignment.center,
+            child: Text("${selectedHour.value.format(context)}",
+                style: Get.theme.textTheme.headline5?.copyWith(
+                    color: Get.theme.primaryColor,
+                    fontWeight: FontWeight.w600)),
+          )),
+      SizedBox(
+        height: 20.0,
+      ),
+      ElevatedButton(
+          onPressed: () => {_selectHour(context)},
+          child: Text('Selecionar horario'))
     ];
     return ScheduleDesign(
       onPressed: () {
-        controller.createAgendamento().then((value) => Get.defaultDialog(
+        controller.createAgendamento(context).then((value) => Get.defaultDialog(
               titleStyle: TextStyle(color: Colors.black54),
               middleTextStyle: TextStyle(color: Colors.black54),
               barrierDismissible: false,

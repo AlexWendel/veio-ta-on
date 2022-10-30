@@ -56,6 +56,7 @@ class DataView extends GetView<AgendamentosController> {
         lastDate: DateTime(2101));
     if (picked != null && picked != selectedDate.value) {
       selectedDate.value = picked;
+      controller.currentDate.value = picked;
     }
   }
 
