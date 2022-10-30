@@ -24,7 +24,7 @@ class LoginView extends GetView<LoginController> {
                 color: Get.theme.canvasColor,
                 image: DecorationImage(
                   fit: BoxFit.fitHeight,
-                  image: AssetImage('assets/images/realLogo.jpg'),
+                  image: AssetImage('assets/images/logo.png'),
                 ),
               ),
             ),
