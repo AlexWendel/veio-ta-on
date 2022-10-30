@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 const headerGray = Color.fromRGBO(120, 120, 120, 1);
-const verdeBosta = Color.fromRGBO(0, 143, 56, 1);
+const verdeBosta = Color(0xFF212021);
 
 Map<int, Color> generateMapFromColor(Color color) {
   return {
