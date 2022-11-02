@@ -12,7 +12,7 @@ class AuthController extends GetxController {
   final controller = Get.put(AuthController);
   FirebaseAuth auth = FirebaseAuth.instance;
   FirebaseFirestore firestore = FirebaseFirestore.instance;
-  Rxn<User> _firebaseUser = Rxn<User>();
+  final Rxn<User> _firebaseUser = Rxn<User>();
 
   User? get user => _firebaseUser.value;
   @override
@@ -22,195 +22,47 @@ class AuthController extends GetxController {
   }
 
   void register(RegisterForm form) async {
-    if (form.name.isEmpty ||
-        form.cpf.isEmpty ||
-        form.rg.isEmpty ||
-        form.susNumber.isEmpty ||
-        form.phone.isEmpty ||
-        form.email.isEmpty ||
-        form.emailConfirmation.isEmpty ||
-        form.password.isEmpty ||
-        form.passwordConfirmation.isEmpty) {
-      Get.snackbar(
-        "Falha no registro",
-        "Não foi possível criar seu usuário",
-        backgroundColor: Get.theme.primaryColor,
-        snackPosition: SnackPosition.BOTTOM,
-        titleText: Text(
-          "Falha no registro!",
-          style: TextStyle(color: Colors.white),
-        ),
-        messageText: Text(
-          "Todos os campos precisam ser preenchidos!",
-          style: TextStyle(color: Colors.white),
-        ),
-      );
-      return;
-    } else if (!form.cpf.isCpf) {
-      Get.snackbar("Falha no registro", "Não foi possível criar seu usuário",
-          backgroundColor: Get.theme.primaryColor,
-          snackPosition: SnackPosition.BOTTOM,
-          titleText: Text(
-            "Falha no registro!",
-            style: TextStyle(color: Colors.white),
-          ),
-          messageText: Text(
-            "Insira um CPF válido",
-            style: TextStyle(color: Colors.white),
-          ));
-      return;
-    } else if (form.rg.length < 7) {
-      Get.snackbar(
-        "Falha no registro",
-        "Não foi possível criar seu usuário",
-        backgroundColor: Get.theme.primaryColor,
-        snackPosition: SnackPosition.BOTTOM,
-        titleText: Text(
-          "Falha no registro!",
-          style: TextStyle(color: Colors.white),
-        ),
-        messageText: Text(
-          "Insira um RG válido",
-          style: TextStyle(color: Colors.white),
-        ),
-      );
-      return;
-    } else if (form.susNumber.length != 15) {
-      Get.snackbar("Falha no registro", "Não foi possível criar seu usuário",
-          backgroundColor: Get.theme.primaryColor,
-          snackPosition: SnackPosition.BOTTOM,
-          titleText: Text(
-            "Falha no registro!",
-            style: TextStyle(color: Colors.white),
-          ),
-          messageText: Text(
-            "Insira um número do SUS válido",
-            style: TextStyle(color: Colors.white),
-          ));
-      return;
-    } else if (form.phone.length < 11) {
-      Get.snackbar("Falha no registro", "Não foi possível criar seu usuário",
-          backgroundColor: Get.theme.primaryColor,
-          snackPosition: SnackPosition.BOTTOM,
-          titleText: Text(
-            "Falha no registro!",
-            style: TextStyle(color: Colors.white),
-          ),
-          messageText: Text(
-            "Insira um número de telefone válido",
-            style: TextStyle(color: Colors.white),
-          ));
-      return;
-    } else if (!form.email.isEmail) {
-      Get.snackbar("Falha no registro", "Não foi possível criar seu usuário",
-          backgroundColor: Get.theme.primaryColor,
-          snackPosition: SnackPosition.BOTTOM,
-          titleText: Text(
-            "Falha no registro!",
-            style: TextStyle(color: Colors.white),
-          ),
-          messageText: Text(
-            "Insira um email válido",
-            style: TextStyle(color: Colors.white),
-          ));
-      return;
-    } else if (!form.emailConfirmation.isEmail) {
-      Get.snackbar("Falha no registro", "Não foi possível criar seu usuário",
-          backgroundColor: Get.theme.primaryColor,
-          snackPosition: SnackPosition.BOTTOM,
-          titleText: Text(
-            "Falha no registro!",
-            style: TextStyle(color: Colors.white),
-          ),
-          messageText: Text(
-            "Insira um email válido no campo de confirmação",
-            style: TextStyle(color: Colors.white),
-          ));
-      return;
-    } else if (form.email != form.emailConfirmation) {
-      Get.snackbar("Falha no registro", "Não foi possível criar seu usuário",
-          backgroundColor: Get.theme.primaryColor,
-          snackPosition: SnackPosition.BOTTOM,
-          titleText: Text(
-            "Falha no registro!",
-            style: TextStyle(color: Colors.white),
-          ),
-          messageText: Text(
-            "Os emails não conincidem!",
-            style: TextStyle(color: Colors.white),
-          ));
-      return;
-    } else if (form.password.length < 8) {
-      Get.snackbar("Falha no registro", "Não foi possível criar seu usuário",
-          backgroundColor: Get.theme.primaryColor,
-          snackPosition: SnackPosition.BOTTOM,
-          titleText: Text(
-            "Falha no registro!",
-            style: TextStyle(color: Colors.white),
-          ),
-          messageText: Text(
-            "A senha deve conter no mínimo 8 dígitos!",
-            style: TextStyle(color: Colors.white),
-          ));
-      return;
-    } else if (form.password != form.passwordConfirmation) {
-      Get.snackbar("Falha no registro", "Não foi possível criar seu usuário",
-          backgroundColor: Get.theme.primaryColor,
-          snackPosition: SnackPosition.BOTTOM,
-          titleText: Text(
-            "Falha no registro!",
-            style: TextStyle(color: Colors.white),
-          ),
-          messageText: Text(
-            "As senhas não conincidem!",
-            style: TextStyle(color: Colors.white),
-          ));
-      return;
-    }
+    String errorMessage;
+    Map<String, String> errorMessages = {
+      'weak-password':
+          "Senha informada muito fraca! Dica: Insira símbolos, números e/ou letras maiúsculas na sua senha.",
+      'email-already-in-use': "Uma conta já existe para este endereço de email!"
+    };
+
     try {
+      form.validate();
       await FirebaseAuth.instance.createUserWithEmailAndPassword(
           email: form.email, password: form.password);
-    } on FirebaseAuthException catch (e) {
-      if (e.code == 'weak-password') {
-        print('The password provided is too weak.');
-        Get.snackbar("Falha no registro", "Não foi possível criar seu usuário",
-            backgroundColor: Get.theme.primaryColor,
-            snackPosition: SnackPosition.BOTTOM,
-            titleText: Text("Falha no registro!",
-                style: TextStyle(color: Colors.white)),
-            messageText: Text(
-                "Senha informada muito fraca! Dica: Insira símbolos, números e/ou letras maiúsculas na sua senha.",
-                style: TextStyle(color: Colors.white)));
-        return;
-      } else if (e.code == 'email-already-in-use') {
-        print('The account already exists for that email.');
-        Get.snackbar("Falha no registro", "Não foi possível criar seu usuário",
-            backgroundColor: Get.theme.primaryColor,
-            snackPosition: SnackPosition.BOTTOM,
-            titleText: Text("Falha no registro!",
-                style: TextStyle(color: Colors.white)),
-            messageText: Text(
-                "Uma conta já existe para este endereço de email!",
-                style: TextStyle(color: Colors.white)));
-        return;
-      } else {
-        print(e);
-        Get.snackbar("Falha no registro", "Não foi possível criar seu usuário",
-            backgroundColor: Get.theme.primaryColor,
-            snackPosition: SnackPosition.BOTTOM,
-            titleText: Text("Falha no registro!",
-                style: TextStyle(color: Colors.white)),
-            messageText:
-                Text(e.toString(), style: TextStyle(color: Colors.white)));
-        return;
+    } catch (e) {
+      errorMessage = e.toString();
+      if (e.runtimeType == FirebaseAuthException) {
+        e as FirebaseAuthException;
+        errorMessage = e.message.toString();
+        if (errorMessages.containsKey(e.code)) {
+          errorMessage = errorMessages[e.code]!;
+        }
       }
-    }
-    //TODO: Verificar se o cartão do sus já está vinculado a uma conta.
 
+      Get.snackbar("Falha no registro", "Não foi possível criar seu usuário",
+          backgroundColor: Get.theme.primaryColor,
+          snackPosition: SnackPosition.BOTTOM,
+          titleText: Text(
+            "Falha no registro!",
+            style: TextStyle(color: Colors.white),
+          ),
+          messageText: Text(
+            errorMessage,
+            style: TextStyle(color: Colors.white),
+          ));
+      return;
+    }
+
+    //TODO: Verificar se o cartão do sus já está vinculado a uma conta.
     var currentUser = FirebaseAuth.instance.currentUser;
     DocumentReference userDataStorage = FirebaseFirestore.instance
         .collection('userDataStorage')
         .doc(currentUser?.uid);
+
     await userDataStorage.set({
       "nome": form.name.substring(0, form.name.indexOf(" ")),
       "sobrenome":
@@ -220,6 +72,7 @@ class AuthController extends GetxController {
       "telefone": form.phone,
       "cpf": form.cpf
     });
+
     await userDataStorage
         .collection('paciente')
         .doc('1')
@@ -227,60 +80,10 @@ class AuthController extends GetxController {
   }
 
   void login(LoginForm form) async {
-    // SOMENTE PARA WEB
-    // try {
-    //   await FirebaseAuth.instance.setPersistence(Persistence.SESSION);
-    // } catch (e) {
-    //   print(e);
-    // }
-
-    if (form.susNumber.length != 15) {
-      Get.snackbar("Falha no acesso", "O cartão SUS tem 15 dígitos!",
-          backgroundColor: Get.theme.primaryColor,
-          snackPosition: SnackPosition.BOTTOM,
-          titleText: Text(
-            "Falha no acesso!",
-            style: TextStyle(color: Colors.white),
-          ),
-          messageText: Text(
-            "O cartão SUS tem 15 dígitos!",
-            style: TextStyle(color: Colors.white),
-          ));
-      return;
-    }
-
-    String queryDocumentReference = await FirebaseFirestore.instance
-        .collectionGroup('paciente')
-        .where('email', isEqualTo: form.susNumber)
-        .get()
-        .then((QuerySnapshot querySnapshot) {
-      print("Query executed. results:" + querySnapshot.size.toString());
-      if (querySnapshot.size != 0) {
-        return querySnapshot.docs[0].reference.parent.parent!.path;
-      }
-
-      return "null";
-    });
-
-    print(queryDocumentReference);
-    if (queryDocumentReference == "null") {
-      Get.snackbar("Falha no acesso", "Cartão SUS não encontrado!",
-          backgroundColor: Get.theme.primaryColor,
-          snackPosition: SnackPosition.BOTTOM,
-          titleText:
-              Text("Falha no acesso!", style: TextStyle(color: Colors.white)),
-          messageText: Text("Cartão SUS não encontrado!",
-              style: TextStyle(color: Colors.white)));
-      return null;
-    }
-    Map<String, dynamic> userData = await FirebaseFirestore.instance
-        .doc(queryDocumentReference)
-        .get()
-        .then((snapshot) => snapshot.data()!);
-
+    print("Tentando logar");
     try {
       await FirebaseAuth.instance.signInWithEmailAndPassword(
-          email: userData["email"], password: form.password);
+          email: form.susNumber, password: form.password);
       print("logado disgraca");
     } on FirebaseAuthException catch (e) {
       if (e.code == 'wrong-password') {
