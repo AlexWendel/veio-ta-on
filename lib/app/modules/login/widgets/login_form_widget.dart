@@ -29,6 +29,7 @@ class LoginFormWidget extends GetWidget {
         children: <Widget>[
           Wrap(runSpacing: 10, children: [
             TextFormField(
+              controller: emailController,
               style: TextStyle(color: Colors.black87),
               decoration: InputDecoration(
                   fillColor: Colors.white,
@@ -131,7 +132,7 @@ class LoginFormWidget extends GetWidget {
               if (_formKey.currentState!.validate()) {
                 try {
                   AuthController.instance.login(LoginForm(
-                      susNumber: maskSusCard.getUnmaskedText(),
+                      susNumber: emailController.text,
                       password: passwordController.text));
                 } catch (e) {
                   Get.showSnackbar(GetSnackBar(
