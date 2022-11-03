@@ -103,6 +103,7 @@ class CardConsultas extends GetView {
           splashColor: Get.theme.splashColor,
           onTap: onTap,
           child: Container(
+            height: 100,
             width: Get.width,
             alignment: Alignment.center,
             margin: EdgeInsets.symmetric(vertical: 5),
