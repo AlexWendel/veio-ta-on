@@ -44,7 +44,7 @@ class LocalView extends GetView<AgendamentosController> {
                     .map((e) => RadioItem(
                         id: e.id,
                         title: e.nome,
-                        description: e.endereco + ", " + e.bairro))
+                        description: "${e.endereco!}, ${e.bairro}"))
                     .toList();
 
                 controller.selectedLocal = RadioBox(

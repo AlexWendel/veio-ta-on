@@ -13,10 +13,12 @@ import 'package:hospital_maraba/app/utils/color_theme.dart';
 import 'package:hospital_maraba/app/utils/common.sizes.dart';
 import 'package:hospital_maraba/app/widgets/datepicker.dart';
 import 'package:hospital_maraba/app/widgets/input_text.dart';
+import 'package:intl/intl.dart';
 
 class DataView extends GetView<AgendamentosController> {
   @override
   final controller = Get.put(AgendamentosController());
+  final dateFormatter = DateFormat('dd-MM-yyyy');
 
   List<Month> months = [
     Month(monthValue: 01, monthName: "Janeiro", days: [
@@ -88,7 +90,9 @@ class DataView extends GetView<AgendamentosController> {
       Obx(() => Container(
             width: 100,
             alignment: Alignment.center,
-            child: Text("${selectedDate.value.toLocal()}".split(' ')[0],
+            child: Text(
+                "${dateFormatter.format(selectedDate.value.toLocal())}"
+                    .split(' ')[0],
                 style: Get.theme.textTheme.headline5?.copyWith(
                     color: Get.theme.primaryColor,
                     fontWeight: FontWeight.w600)),
