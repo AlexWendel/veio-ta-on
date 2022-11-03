@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:hospital_maraba/app/data/database.dart';
 import 'package:hospital_maraba/app/models/agendamento.dart';
 import 'package:hospital_maraba/app/modules/MainDesign.dart';
+import 'package:hospital_maraba/app/modules/agendamentos/views/consulta_view.dart';
 import 'package:hospital_maraba/app/widgets/home_card.dart';
 
 class MinhasConsultasView extends GetView {
@@ -53,11 +54,15 @@ class MinhasConsultasView extends GetView {
                         }
 
                         var listaDeAgendamentos = snapshot.data!
-                            .map((e) => CardHome(
+                            .map((e) => CardConsultas(
                                 text: (e.especialidade.toString()),
                                 description: "Local: ${e.local.toString()}",
                                 icon: Icon(Icons.medical_services),
-                                onTap: () {}))
+                                onTap: () {
+                                  Get.to(() => ConsultaView(
+                                        consulta: e,
+                                      ));
+                                }))
                             .toList();
                         return Column(children: listaDeAgendamentos);
                       }

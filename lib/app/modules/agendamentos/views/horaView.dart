@@ -24,9 +24,14 @@ class HoraView extends GetView<AgendamentosController> {
 
   Future<void> _selectHour(BuildContext context) async {
     final TimeOfDay? picked = await showTimePicker(
-      context: context,
-      initialTime: selectedHour.value,
-    );
+        context: context,
+        initialTime: selectedHour.value,
+        builder: (context, child) {
+          return MediaQuery(
+              data:
+                  MediaQuery.of(context).copyWith(alwaysUse24HourFormat: true),
+              child: child!);
+        });
     if (picked != null && picked != selectedHour.value) {
       selectedHour.value = picked;
       controller.currentTime.value = picked;
