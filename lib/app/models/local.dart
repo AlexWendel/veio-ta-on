@@ -10,8 +10,8 @@ class LocalPartial {
 class Local {
   String id;
   String nome;
-  String endereco;
-  String bairro;
+  String? endereco;
+  String? bairro;
   String? cidade;
   String? uf;
   String? referencia;
@@ -21,10 +21,10 @@ class Local {
   Local(
       {required this.id,
       required this.nome,
-      required this.endereco,
-      required this.bairro,
-      required this.referencia,
-      required this.especialidades,
+      this.endereco,
+      this.bairro,
+      this.referencia,
+      this.especialidades,
       this.uf,
       this.cidade,
       this.coordenadas});

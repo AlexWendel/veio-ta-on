@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:hospital_maraba/app/models/agendamento.dart';
 import 'package:hospital_maraba/app/models/datas_disponiveis.dart';
@@ -14,6 +15,13 @@ const locaisCollection = "local";
 const especialidadesCollection = "especialidades";
 const horariosCollection = "horarios_agendamentos";
 const datasCollection = "datas_agendamentos";
+const Map<String, String> okTiltei = {
+  "VhScNCxSTO6pcvZ0NWe7": "UBS Hiroshi Matsuda",
+  "ljcQ69pidkj3Ukxjqznu": "Especialidade 4",
+  "1owF7yV9WYZkc9deizCR": "Especialidade 3",
+  "jQS7W6as8FQtz3lB6T7A": "Especialidade 2",
+  "yqElFcl8OCfq9PNcFXZr": "Especialidade 1",
+};
 
 class DatabaseService extends GetxService {
   final CollectionReference userDataCollectionRef =
@@ -27,6 +35,8 @@ class DatabaseService extends GetxService {
 
   final CollectionReference agendamentosCollectionRef =
       FirebaseFirestore.instance.collection(agendamentosCollection);
+  final CollectionReference locaisCollectionRef =
+      FirebaseFirestore.instance.collection(locaisCollection);
 
   final CollectionReference<Agendamento> agendamentosConverter =
       FirebaseFirestore.instance
@@ -35,13 +45,15 @@ class DatabaseService extends GetxService {
               fromFirestore: (snapshot, _) {
                 Map<String, dynamic> data = snapshot.data()!;
                 data.putIfAbsent("id", () => snapshot.id);
-                return Agendamento.fromJson(data);
+                Agendamento agendamento = Agendamento.fromJson(data);
+                agendamento.local =
+                    okTiltei[(agendamento.local as DocumentReference).id];
+                agendamento.especialidade = okTiltei[
+                    (agendamento.especialidade as DocumentReference).id];
+                return agendamento;
               },
               toFirestore: (Agendamento agendamento, _) =>
                   agendamento.toJson());
-
-  final CollectionReference locaisCollectionRef =
-      FirebaseFirestore.instance.collection(locaisCollection);
 
   final CollectionReference<Local> locaisConverter =
       FirebaseFirestore.instance.collection(locaisCollection).withConverter(
@@ -106,11 +118,13 @@ class DatabaseService extends GetxService {
   Future<List<Agendamento>> getAllAgendamentosFromPaciente(
       String pacienteID) async {
     DocumentReference pacienteRef = userDataCollectionRef.doc(pacienteID);
-
     return agendamentosConverter
         .where("paciente", isEqualTo: pacienteRef)
         .get()
-        .then((value) => value.docs.map((e) => e.data()).toList());
+        .then((value) async => value.docs.map((e) {
+              Agendamento agendamento = e.data();
+              return agendamento;
+            }).toList());
   }
 
   Future<List<Agendamento>> getAllAgendamentosFromLocal(String localID) async {
@@ -139,10 +153,7 @@ class DatabaseService extends GetxService {
   }
 
   Future<Local> getLocal(String localID) async {
-    return locaisConverter.doc(localID).get().then((value) => value.data()!);
-    //     // TODO: Obter dados e gerar model pra cada especialidade
-    //     return value.data();
-    // });
+    return locaisConverter.get().then((value) => (value.docs.first.data()));
   }
 
   Future<List<Local>> getAllLocais() async {
