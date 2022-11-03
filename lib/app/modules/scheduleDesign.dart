@@ -40,3 +40,28 @@ class ScheduleDesign extends GetView {
     );
   }
 }
+
+class ConsultaDesign extends GetView {
+  final List<Widget> body;
+
+  ConsultaDesign({required this.body});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        toolbarHeight: 80,
+        backgroundColor: Get.theme.primaryColor,
+        leadingWidth: 30,
+        titleSpacing: 20,
+        title: Text("Consulta"),
+      ),
+      backgroundColor: Get.theme.canvasColor,
+      body: SafeArea(
+        // padding: EdgeInsets.symmetric(horizontal: 5),
+        child: Padding(
+            padding: EdgeInsets.all(20), child: ListView(children: body)),
+      ),
+    );
+  }
+}
