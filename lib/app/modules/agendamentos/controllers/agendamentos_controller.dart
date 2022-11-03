@@ -52,11 +52,8 @@ class AgendamentosController extends GetxController {
           currentDate.value!.year,
           currentDate.value!.month,
           currentDate.value!.day,
-          int.parse(currentTime.value!.format(context).split(":")[0]),
-          int.parse(currentTime.value!
-              .format(context)
-              .split(":")[1]
-              .split(' ')[0])), // TODO: Specify datetime,
+          currentTime.value!.hour,
+          currentTime.value!.minute), // TODO: Specify datetime,
       agendadoPor: databaseService.userDataCollectionRef
           .doc(FirebaseAuth.instance.currentUser?.uid),
       estadoAgendamento: EstagioDoAgendamento.marcado,

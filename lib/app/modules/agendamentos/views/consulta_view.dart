@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
 import 'package:get/get.dart';
@@ -9,8 +10,9 @@ import '../../../widgets/input_text.dart';
 import '../../scheduleDesign.dart';
 
 class ConsultaView extends GetView {
+  final dateFormatter = DateFormat('dd-MM-yyyy');
   final consulta;
-  const ConsultaView({
+  ConsultaView({
     Key? key,
     this.consulta,
   }) : super(key: key);
@@ -38,7 +40,7 @@ class ConsultaView extends GetView {
                         Get.textTheme.bodyText2?.copyWith(color: Colors.black),
                   ),
                   Text(
-                    '${consulta.agendadoPara.toString().split(' ')[0]} - ${consulta.agendadoPara.toString().split(' ')[1].split('.')[0]}',
+                    '${dateFormatter.format(consulta.agendadoPara).toString().split(' ')[0]} - ${consulta.agendadoPara.toString().split(' ')[1].split('.')[0]}',
                     style:
                         Get.textTheme.bodyText2?.copyWith(color: Colors.black),
                   ),
